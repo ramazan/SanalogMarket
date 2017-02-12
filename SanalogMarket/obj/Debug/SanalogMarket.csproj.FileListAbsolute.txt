@@ -28,3 +28,33 @@ c:\users\ramazan demir\documents\visual studio 2013\Projects\SanalogMarket\Sanal
 c:\users\ramazan demir\documents\visual studio 2013\Projects\SanalogMarket\SanalogMarket\bin\EntityFramework.SqlServer.dll
 c:\users\ramazan demir\documents\visual studio 2013\Projects\SanalogMarket\SanalogMarket\bin\EntityFramework.xml
 c:\users\ramazan demir\documents\visual studio 2013\Projects\SanalogMarket\SanalogMarket\bin\EntityFramework.SqlServer.xml
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\SanalogMarket.dll.config
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\SanalogMarket.dll
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\SanalogMarket.pdb
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\Antlr3.Runtime.dll
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\EntityFramework.dll
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\EntityFramework.SqlServer.dll
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\Newtonsoft.Json.dll
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\System.Web.Helpers.dll
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\System.Web.Mvc.dll
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\System.Web.Optimization.dll
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\System.Web.Razor.dll
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\System.Web.WebPages.dll
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\System.Web.WebPages.Razor.dll
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\WebGrease.dll
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\EntityFramework.xml
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\EntityFramework.SqlServer.xml
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\System.Web.Helpers.xml
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\System.Web.Mvc.xml
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\System.Web.Optimization.xml
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\System.Web.Razor.xml
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\System.Web.WebPages.xml
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\System.Web.WebPages.Razor.xml
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\Newtonsoft.Json.xml
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\Antlr3.Runtime.pdb
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\obj\Debug\SanalogMarket.csprojResolveAssemblyReference.cache
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\obj\Debug\SanalogMarket.dll
+C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\obj\Debug\SanalogMarket.pdb

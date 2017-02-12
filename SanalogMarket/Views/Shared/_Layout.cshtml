@@ -19,13 +19,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Sanalog Market</a>
+                    <a class="navbar-brand" href="/Home/Index">Sanalog Market</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Link</a></li>
+@*                        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>*@
+                        <li><a href="/productCode/Category_index">SELL PRODUCT</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
@@ -85,12 +85,17 @@
 
 <div class="container body-content">
     @RenderBody()
-    <hr/>
+  
+</div>
+    
+    <br/><br />
+    <br />
+    <br />
+
+<hr />
     <footer>
         <p class="alert-success">&copy; @DateTime.Now.Year - Sanalog Market Place</p>
     </footer>
-</div>
-
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
 @RenderSection("scripts", required: false)

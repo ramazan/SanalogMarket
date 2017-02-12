@@ -1,0 +1,179 @@
+﻿@model SanalogMarket.Models.ProductCode
+
+@{
+    ViewBag.Title = "Product Details";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>ProductCode</h4>
+        <hr />
+       
+    </div>
+ 
+    <div class="container">
+        <div class="jumbotron">
+            <h2>@Html.DisplayFor(model=>model.Title) Mobile Application </h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="panel panel-default" id="headings">
+                    <div class="panel-heading">
+                      Prpject Screenshots
+                    </div>
+                    <img src=@Html.DisplayFor(model=>model.Screenshot) style="height: 360px; width: 530px;"/>
+                    <ul class="pagination" style="padding-left: 140px;">
+                        <li>
+                            <a href="#">Prev</a>
+                        </li>
+                        <li>
+                            <a href="#">1</a>
+                        </li>
+                        <li>
+                            <a href="#">2</a>
+                        </li>
+                        <li>
+                            <a href="#">3</a>
+                        </li>
+                        <li>
+                            <a href="#">4</a>
+                        </li>
+                        <li>
+                            <a href="#">Next</a>
+                        </li>
+                    </ul>
+
+                    <ul class="pager">
+                        <li>
+                            <a href="#">Prev</a>
+                        </li>
+                        <li>
+                            <a href="#">Next</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="col-lg-5">
+                <div class="panel panel-default" id="content-formatting">
+                    <div class="panel-heading"style="background-color: #ffffff">
+                        <a style="color: #676767;padding: 5px">Price</a>
+                        <span class="category-counter" style="color: #000000; font-size: 35px;  ">@Html.DisplayFor(model => model.Price) $</span>
+                    </div>
+                    <div style="padding-left: 10px; padding-right: 10px;">
+                        <p class="lead">@Html.DisplayFor(model => model.Title)</p>
+                        <p>@Html.DisplayFor(model => model.Description)</p>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Category)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Category)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.SubCategory)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.SubCategory)
+                        </dd>
+                    </div>
+                    <hr>
+                    <div class="row">
+                             <p><a class="btn btn-warning btn-block" href="#" title="Buy">ADD TO CART</a></p>
+                            <p><a class="btn btn-primary btn-block" href="#" title="Buy">BUY NOW!</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default" id="forms">
+            <div class="panel-heading">
+                Forms
+            </div>
+            <form>
+                <fieldset>
+                    <legend>Legend</legend>
+                    <div class="form-group">
+                        <label for="exampleInputEmail">Email address</label>
+                        <input type="text" class="form-control" id="exampleInputEmail" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">File input</label>
+                        <input type="file" id="exampleInputFile">
+                        <p class="help-block">Example block-level help text here.</p>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox">Check me out
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </fieldset>
+            </form>
+            <hr>
+            <form class="form-inline">
+                <input type="text" class="form-control" placeholder="Email" style="width: 200px;">
+                <input type="password" class="form-control" placeholder="Password" style="width: 200px;">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">Remember me
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-default">Sign in</button>
+            </form>
+            <hr>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group has-warning">
+                    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group has-error">
+                    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group has-success">
+                    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                    <div class="col-lg-10">
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox">Remember me
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-default">Sign in</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+       </div>
+
+</body>
+</html>

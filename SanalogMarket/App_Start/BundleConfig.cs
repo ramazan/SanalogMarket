@@ -37,6 +37,12 @@ namespace SanalogMarket
                 "~/Content/AdminLTE.css",
                 "~/Content/AdminLTE.min.css",
                 "~/Content/skins/skin-*"));
+            bundles.Add(new StyleBundle("~/Content/HomeProduct").Include(
+              "~/Content/HomeProduct.css"
+           ));
+
+
+
         }
     }
 }
