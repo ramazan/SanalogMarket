@@ -2,3 +2,4 @@
 !/packages/*/lib/*.dll
 
 !*.dll
+SanalogMarket/bin/SanalogMarket.dll.config
