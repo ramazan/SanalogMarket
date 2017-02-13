@@ -38,7 +38,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.SubCategory, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <select id="product" name="product"></select>
+                    <select id="subcategory" name="subcategory"></select>
 
                     @Html.ValidationMessageFor(model => model.SubCategory, "", new { @class = "text-danger" })
                 </div>
@@ -118,7 +118,7 @@
                                     function(data) {
                                         $.each(data,
                                             function() {
-                                                $('#product')
+                                                $('#subcategory')
                                                     .append('<option value=' +
                                                         this.ID +
                                                         '>' +
@@ -137,13 +137,13 @@
                 // Dropdown list change event.
                 $('#category')
                     .change(function() {
-                        $('#product option').remove();
+                        $('#subcategory option').remove();
                         $.getJSON('/ProductCode/GetProducts',
                                 { intCatID: $('#category').val() },
                                 function(data) {
                                     $.each(data,
                                         function() {
-                                            $('#product')
+                                            $('#subcategory')
                                                 .append('<option value=' +
                                                     this.ID +
                                                     '>' +

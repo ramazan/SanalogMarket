@@ -46,7 +46,7 @@ namespace SanalogMarket.Controllers
 
         [HttpPost]
         public ActionResult Category_index(ProductCode gelenCode, HttpPostedFileBase file,
-            HttpPostedFileBase fileproject, HttpPostedFileBase fileIcon, string category, string product)
+            HttpPostedFileBase fileproject, HttpPostedFileBase fileIcon, string category, string subcategory)
         {
             if (ModelState.IsValid)
             {
@@ -100,8 +100,8 @@ namespace SanalogMarket.Controllers
                     gelenCode.Icon = yol;
                 }
 
-                gelenCode.SubCategory = Convert.ToInt32(category);
-                gelenCode.Category = Convert.ToInt32(product);
+                gelenCode.Category = Convert.ToInt32(category);
+                gelenCode.SubCategory = Convert.ToInt32(subcategory);
                 gelenCode.IsValid = 0;
 
                 int UserID = (int) Session["UserId"];
