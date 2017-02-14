@@ -25,19 +25,12 @@ namespace SanalogMarket.Models
         [Display(Name = "Product Price")]
         public int Price { get; set; }
 
-        public virtual int Category { get; set; }
-        public virtual int SubCategory { get; set; }
+        public string Category { get; set; }
+        public string SubCategory { get; set; }
 
         public int IsValid { get; set; }
 
         public virtual User User { get; set; }
     }
 
-    public class ProductCodeCategory
-    {
-        public ProductCode Code { get; set; }
-        public Category Category { get; set; }
-        public SubCategory SubCategory { get; set; }
-
-    }
-}
+  }

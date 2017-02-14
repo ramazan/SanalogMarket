@@ -1,30 +1,28 @@
 ﻿@using System.Collections
-@model IEnumerable<SanalogMarket.Models.ProductCodeCategory>
 @{
     ViewBag.Title = "Home Page";
 }
 
-@foreach (var item in Model)
+@foreach (var item in ViewBag.TProduct)
 {
     <div class='col-md-3 col-sm-6 col-xs-12' style="width: 260px; height: 380px; ">
         <div class="category-box border-1 wow fadeInUpQuick animated" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; ">
             <ul>
                 <li>
-                    <img src=@item.Code.Screenshot style="height: 250px;width: 230px; padding: 5px;border-radius:10px" />
+                    <img src=@item.Screenshot style="height: 250px;width: 230px; padding: 5px;border-radius:10px" />
                 </li>
                 <li>
-                    <h4 style="color: #0d47a1;padding: 5px">@item.Code.Title</h4>
+                    <h4 style="color: #0d47a1;padding: 5px">@item.Title</h4>
                 </li>
                 <li>
-                    <h5 style="color: #3a3a3a;padding: 5px">@item.Category.Name / @item.SubCategory.Name</h5>
+                    <h5 style="color: #3a3a3a;padding: 5px">@item.Category / @item.SubCategory</h5>
                 </li>
                 <li>
                     <a style="color: #676767;padding: 5px">12 June 2017</a>
-                    <span class="category-counter" style="color: #000000; font-size: 25px; ">@item.Code.Price $</span>
+                    <span class="category-counter" style="color: #000000; font-size: 25px; ">@item.Price $</span>
                 </li>
                 <li>
-                <li><a href="@Url.Action("Details","ProductCode", new { id=item.Code.ID })">Details</a></li>
-                </li>
+                <li><a href="@Url.Action("Details","ProductCode", new { id=item.ID })">Details</a></li>
             </ul>
         </div>
     </div>

@@ -20,7 +20,7 @@ namespace SanalogMarket.Controllers
             return View();
         }
 
-        public ActionResult Category_index()
+        public ActionResult New()
         {
             if (Session["UserId"] == null)
                 return RedirectToAction("Login", "User");
@@ -38,14 +38,16 @@ namespace SanalogMarket.Controllers
             return Json(dbBaglantisi.Categories.ToList(), JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetProducts(int intCatID)
+        public ActionResult GetProducts(string catName)
         {
+            Category category = dbBaglantisi.Categories.Where(p => p.Name == catName).FirstOrDefault();
+            int intCatID = category.ID;
             var products = dbBaglantisi.SubCategories.ToList().Where(p => p.Category_ID == intCatID);
             return Json(products, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public ActionResult Category_index(ProductCode gelenCode, HttpPostedFileBase file,
+        public ActionResult New(ProductCode gelenCode, HttpPostedFileBase file,
             HttpPostedFileBase fileproject, HttpPostedFileBase fileIcon, string category, string subcategory)
         {
             if (ModelState.IsValid)
@@ -53,7 +55,7 @@ namespace SanalogMarket.Controllers
                 if (file != null)
 
                 {
-                    if (file.ContentLength > 10240*100)
+                    if (file.ContentLength > 10240 * 100)
                     {
                         ModelState.AddModelError("photo", "The size of the file should not 2 MB");
                         ViewBag.FotoError = "The size of the file should not exceed  2 MB";
@@ -89,8 +91,8 @@ namespace SanalogMarket.Controllers
                     gelenCode.Filepath = yol;
                 }
                 if (fileIcon != null)
-                {   
-                    FileInfo dosya=new FileInfo(fileIcon.FileName);
+                {
+                    FileInfo dosya = new FileInfo(fileIcon.FileName);
                     // extract only the filename
                     var fileName = Path.GetFileName(fileIcon.FileName);
                     var path = Server.MapPath("/Project_Icon/" + dosya.Name);
@@ -100,8 +102,8 @@ namespace SanalogMarket.Controllers
                     gelenCode.Icon = yol;
                 }
 
-                gelenCode.Category = Convert.ToInt32(category);
-                gelenCode.SubCategory = Convert.ToInt32(subcategory);
+                gelenCode.Category = category;
+                gelenCode.SubCategory = subcategory;
                 gelenCode.IsValid = 0;
 
                 int UserID = (int) Session["UserId"];
@@ -118,6 +120,7 @@ namespace SanalogMarket.Controllers
 
             return View();
         }
+
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -134,15 +137,12 @@ namespace SanalogMarket.Controllers
                 ViewBag.product = product;
             }
             return View(product);
-           
         }
+
         [HttpPost]
         public ActionResult Details()
         {
-
-
             return View();
-
         }
     }
 }
