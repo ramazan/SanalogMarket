@@ -56,7 +56,7 @@ namespace SanalogMarket.Controllers
 
                 dbBaglantisi.SaveChanges();
 
-                return RedirectToAction("Login", "User");
+                return RedirectToAction("Index", "Home");
             }
 
             ViewBag.HataMesjı = "Kayıt başarısız.";
