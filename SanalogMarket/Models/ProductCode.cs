@@ -25,6 +25,8 @@ namespace SanalogMarket.Models
         [Display(Name = "Product Price")]
         public int Price { get; set; }
 
+        public DateTime CreateDate { get; set; }
+
         public string Category { get; set; }
         public string SubCategory { get; set; }
 

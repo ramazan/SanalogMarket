@@ -28,7 +28,7 @@ namespace SanalogMarket.Controllers
         public ActionResult Register()
         {
             if (Session["AdminUserName"] == null)
-               return RedirectToAction("Login", "Admin");
+                return RedirectToAction("Login", "Admin");
 
             if (Session["AdminRole"].ToString() != "Admin")
                 return RedirectToAction("Index", "Admin");
@@ -63,7 +63,6 @@ namespace SanalogMarket.Controllers
 
                 ModelState.AddModelError("", "Kullanıcı Başarıyla kaydedildi");
                 return RedirectToAction("Admins", "Admin");
-
             }
 
             ViewBag.HataMesjı = "Kayıt başarısız.";
@@ -116,7 +115,7 @@ namespace SanalogMarket.Controllers
             return View();
         }
 
-        
+
         public ActionResult Logout()
         {
             Session.Abandon();
@@ -165,7 +164,7 @@ namespace SanalogMarket.Controllers
 
             return View();
         }
-        
+
         public ActionResult Admins()
         {
             if (Session["AdminUserName"] == null)
@@ -175,7 +174,7 @@ namespace SanalogMarket.Controllers
             var list = dbBaglantisi.Admins.ToList();
             return View(list);
         }
-       
+
         public ActionResult Users()
         {
             if (Session["AdminUserName"] == null)
@@ -188,9 +187,9 @@ namespace SanalogMarket.Controllers
 
         public ActionResult RegisterUser()
         {
-            return  View();
+            return View();
         }
-        
+
         [HttpPost]
         public ActionResult RegisterUser(User createUser)
         {
@@ -223,6 +222,19 @@ namespace SanalogMarket.Controllers
 
             ViewBag.HataMesjı = "Kayıt başarısız.";
             return View();
+        }
+
+
+        public ActionResult ProductCode()
+        {
+
+            if (Session["AdminId"] == null)
+                return RedirectToAction("Login");
+
+
+            var product = dbBaglantisi.Codes.Where(p => p.IsValid == 0).ToList();
+
+            return View(product);
         }
     }
 }

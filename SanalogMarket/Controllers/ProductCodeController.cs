@@ -102,6 +102,7 @@ namespace SanalogMarket.Controllers
                     gelenCode.Icon = yol;
                 }
 
+                gelenCode.CreateDate = DateTime.Now;
                 gelenCode.Category = category;
                 gelenCode.SubCategory = subcategory;
                 gelenCode.IsValid = 0;
