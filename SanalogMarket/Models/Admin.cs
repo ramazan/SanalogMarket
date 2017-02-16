@@ -43,5 +43,7 @@ namespace SanalogMarket.Models
 
         [Required]
         public string Role { get; set; }
+
+        public string Avatar { get; set; }
     }
 }

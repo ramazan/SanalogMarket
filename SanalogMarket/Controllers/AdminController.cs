@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
@@ -54,7 +55,7 @@ namespace SanalogMarket.Controllers
 
                 createAdmin.RegisterTime = DateTime.Now;
                 createAdmin.LastLoginTime = new DateTime(1953, 1, 1);
-
+                createAdmin.Avatar = "/Project_Icon/user.png";
 
                 dbBaglantisi.Admins.Add(createAdmin);
 
@@ -78,7 +79,7 @@ namespace SanalogMarket.Controllers
         [HttpPost]
         public ActionResult Login(Admin admin)
         {
-            if(!(admin.Username ==null || admin.Password ==null) )
+            if (!(admin.Username == null || admin.Password == null))
             {
                 using (var sha256 = SHA256.Create())
                 {
@@ -91,7 +92,8 @@ namespace SanalogMarket.Controllers
 
                 try
                 {
-                    var admn = dbBaglantisi.Admins.Single(u => u.Username == admin.Username && u.Password == admin.Password);
+                    var admn =
+                        dbBaglantisi.Admins.Single(u => u.Username == admin.Username && u.Password == admin.Password);
 
                     if (admn != null)
                     {
@@ -99,6 +101,7 @@ namespace SanalogMarket.Controllers
                         Session["AdminUserName"] = admn.Username;
                         Session["AdminName"] = admn.Name + " " + admn.Surname;
                         Session["AdminRole"] = admn.Role;
+                        Session["AdminAvatar"] = admn.Avatar;
 
                         admn.LastLoginTime = DateTime.Now;
 
@@ -112,7 +115,6 @@ namespace SanalogMarket.Controllers
                     Console.WriteLine(e);
                     ModelState.AddModelError("", "Kullanıcı Adı veya Şifre Yanlış");
                 }
-
             }
 
 
@@ -231,7 +233,6 @@ namespace SanalogMarket.Controllers
 
         public ActionResult ProductCode()
         {
-
             if (Session["AdminId"] == null)
                 return RedirectToAction("Login");
 
@@ -239,6 +240,88 @@ namespace SanalogMarket.Controllers
             var product = dbBaglantisi.Codes.Where(p => p.IsValid == 0).ToList();
 
             return View(product);
+        }
+
+
+
+        public ActionResult ProductCodeApproved()
+        {
+            if (Session["AdminId"] == null)
+                return RedirectToAction("Login");
+
+
+            var product = dbBaglantisi.Codes.Where(p => p.IsValid == 1).ToList();
+
+            return View(product);
+        }
+
+
+        public ActionResult ProductCodeDetails(int? id)
+        {
+
+            if (Session["AdminId"] == null)
+                return RedirectToAction("Login");
+            
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var product = dbBaglantisi.Codes.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+//            else
+//            {
+//                ViewBag.product = product;
+//            }
+            return View(product);
+        }
+
+
+        public ActionResult ProductCodeEdit(int? id)
+        {
+
+            if (Session["AdminId"] == null)
+                return RedirectToAction("Login");
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var product = dbBaglantisi.Codes.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+//            else
+//            {
+//                ViewBag.product = product;
+//            }
+            return View(product);
+        }
+
+        [HttpPost]
+        public ActionResult ProductCodeEdit(ProductCode editedProductCode)
+        {
+            try
+            {
+                ProductCode product = dbBaglantisi.Codes.Find(editedProductCode.ID);
+
+                product.IsValid = editedProductCode.IsValid;
+                product.Price = editedProductCode.Price;
+
+                dbBaglantisi.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError("", "Bi hata oldu kardeş :(");
+                Console.WriteLine(e);
+                throw;
+            }
+
+            ViewBag.Succes = "Düzenleme başarılı";
+            return View();
         }
     }
 }
