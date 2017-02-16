@@ -15,9 +15,9 @@ namespace SanalogMarket.Controllers
         public ActionResult Index()
         {
 //          Bir sonraki adımımız aşağıdaki gibi sadece onaylanmış olan ürünleri göstermek olacak.
-//          var product = db.Codes.Where(p => p.IsValid == 1).ToList();
+          var product = db.Codes.Where(p => p.IsValid == 1).ToList();
 
-            var product = db.Codes.ToList();
+//            var product = db.Codes.ToList();
             ViewBag.TProduct = product;
             return View();
         }

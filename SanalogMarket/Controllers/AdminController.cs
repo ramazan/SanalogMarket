@@ -243,7 +243,6 @@ namespace SanalogMarket.Controllers
         }
 
 
-
         public ActionResult ProductCodeApproved()
         {
             if (Session["AdminId"] == null)
@@ -258,10 +257,9 @@ namespace SanalogMarket.Controllers
 
         public ActionResult ProductCodeDetails(int? id)
         {
-
             if (Session["AdminId"] == null)
                 return RedirectToAction("Login");
-            
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -271,17 +269,12 @@ namespace SanalogMarket.Controllers
             {
                 return HttpNotFound();
             }
-//            else
-//            {
-//                ViewBag.product = product;
-//            }
             return View(product);
         }
 
 
         public ActionResult ProductCodeEdit(int? id)
         {
-
             if (Session["AdminId"] == null)
                 return RedirectToAction("Login");
 
@@ -294,10 +287,7 @@ namespace SanalogMarket.Controllers
             {
                 return HttpNotFound();
             }
-//            else
-//            {
-//                ViewBag.product = product;
-//            }
+
             return View(product);
         }
 

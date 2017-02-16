@@ -134,10 +134,7 @@ namespace SanalogMarket.Controllers
             {
                 return HttpNotFound();
             }
-            else
-            {
-                ViewBag.product = product;
-            }
+            
             return View(product);
         }
 
