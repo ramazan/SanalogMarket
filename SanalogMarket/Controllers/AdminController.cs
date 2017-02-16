@@ -78,37 +78,41 @@ namespace SanalogMarket.Controllers
         [HttpPost]
         public ActionResult Login(Admin admin)
         {
-            using (var sha256 = SHA256.Create())
+            if(!(admin.Username ==null || admin.Password ==null) )
             {
-                var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(admin.Password));
-                var hash = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
-
-                admin.Password = hash;
-            }
-
-
-            try
-            {
-                var admn = dbBaglantisi.Admins.Single(u => u.Username == admin.Username && u.Password == admin.Password);
-
-                if (admn != null)
+                using (var sha256 = SHA256.Create())
                 {
-                    Session["AdminId"] = admn.Id;
-                    Session["AdminUserName"] = admn.Username;
-                    Session["AdminName"] = admn.Name + " " + admn.Surname;
-                    Session["AdminRole"] = admn.Role;
+                    var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(admin.Password));
+                    var hash = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
 
-                    admn.LastLoginTime = DateTime.Now;
-
-                    dbBaglantisi.SaveChanges();
-
-                    return RedirectToAction("Index");
+                    admin.Password = hash;
                 }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                ModelState.AddModelError("", "Kullanıcı Adı veya Şifre Yanlış");
+
+
+                try
+                {
+                    var admn = dbBaglantisi.Admins.Single(u => u.Username == admin.Username && u.Password == admin.Password);
+
+                    if (admn != null)
+                    {
+                        Session["AdminId"] = admn.Id;
+                        Session["AdminUserName"] = admn.Username;
+                        Session["AdminName"] = admn.Name + " " + admn.Surname;
+                        Session["AdminRole"] = admn.Role;
+
+                        admn.LastLoginTime = DateTime.Now;
+
+                        dbBaglantisi.SaveChanges();
+
+                        return RedirectToAction("Index");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    ModelState.AddModelError("", "Kullanıcı Adı veya Şifre Yanlış");
+                }
+
             }
 
 

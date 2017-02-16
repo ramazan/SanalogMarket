@@ -72,40 +72,42 @@ namespace SanalogMarket.Controllers
         [HttpPost]
         public ActionResult Login(User user)
         {
-            using (var sha256 = SHA256.Create())
+            if (!(user.Username == null || user.Password == null))
             {
-                var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(user.Password));
-                var hash = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
-
-                user.Password = hash;
-            }
-
-
-            try
-            {
-                var usr = dbBaglantisi.Users.Single(u => u.Username == user.Username && u.Password == user.Password);
-
-                if (usr != null)
+                using (var sha256 = SHA256.Create())
                 {
-                    Session["UserId"] = usr.Id;
-                    Session["UserName"] = usr.Username;
-                    Session["Email"] = usr.Email;
-                    Session["Name"] = usr.Name;
-                    Session["LastName"] = usr.Surname;
+                    var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(user.Password));
+                    var hash = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
 
-                    usr.LastLoginTime = DateTime.Now;
-                    dbBaglantisi.SaveChanges();
-
-                    return RedirectToAction("Index");
+                    user.Password = hash;
                 }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                ModelState.AddModelError("", "Kullanıcı Adı veya Şifre Yanlış");
-            }
 
 
+                try
+                {
+                    var usr = dbBaglantisi.Users.Single(u => u.Username == user.Username && u.Password == user.Password);
+
+                    if (usr != null)
+                    {
+                        Session["UserId"] = usr.Id;
+                        Session["UserName"] = usr.Username;
+                        Session["Email"] = usr.Email;
+                        Session["Name"] = usr.Name;
+                        Session["LastName"] = usr.Surname;
+
+                        usr.LastLoginTime = DateTime.Now;
+                        dbBaglantisi.SaveChanges();
+
+                        return RedirectToAction("Index");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    ModelState.AddModelError("", "Kullanıcı Adı veya Şifre Yanlış");
+                }
+
+            }
             return View();
         }
 
