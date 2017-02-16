@@ -116,8 +116,9 @@ namespace SanalogMarket.Controllers
                 }
                 dbBaglantisi.Codes.Add(gelenCode);
                 dbBaglantisi.SaveChanges();
-            }
 
+               return RedirectToAction("Success", new { returnUrl = Request.RawUrl });
+            }
 
             return View();
         }
@@ -143,6 +144,19 @@ namespace SanalogMarket.Controllers
         [HttpPost]
         public ActionResult Details()
         {
+            return View();
+        }
+
+        public ActionResult Success(string returnUrl)
+        {
+        
+            //Bir onceki url'i alarak kontrol ediyorum.    
+            string oncekiUrl = returnUrl;
+            if (oncekiUrl != "/ProductCode/New")  // Eğer yönlendirme ürün yükleme sayfasından değilse anasayfaya yönlendir.
+            {
+                RedirectToAction("Index", "Home");
+            }         
+
             return View();
         }
     }
