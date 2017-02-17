@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web.UI.WebControls
+@using SanalogMarket.Models
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -24,18 +26,30 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                     <ul class="nav navbar-nav">
-@*                        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>*@
-                        <li><a href="/ProductCode/New">SELL PRODUCT</a></li>
+                        @*                        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>*@
+                        <li>
+                            <a href="/ProductCode/New">SELL PRODUCT</a>
+                        </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
+                                <li>
+                                    <a href="#">Action</a>
+                                </li>
+                                <li>
+                                    <a href="#">Another action</a>
+                                </li>
+                                <li>
+                                    <a href="#">Something else here</a>
+                                </li>
                                 <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
+                                <li>
+                                    <a href="#">Separated link</a>
+                                </li>
                                 <li class="divider"></li>
-                                <li><a href="#">One more separated link</a></li>
+                                <li>
+                                    <a href="#">One more separated link</a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -47,27 +61,39 @@
                     </form>
                     <ul class="nav navbar-nav navbar-right">
                         @if (Session["UserName"] != null)
-                            {
-                          
-                                <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dear, @Session["Name"]  Welcome!  <span class="caret"></span></a>
+                        {
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dear, @Session["Name"] Welcome! <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="/User/Profile">My Profile</a></li>
-                                    <li><a href="@Url.Action("Logout","Home")">Log out</a></li>
-                           
+                                    <li>
+                                        <a href="/User/Profile">My Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Logout", "Home")">Log out</a>
+                                    </li>
+
                                 </ul>
-                                  </li>
-                            
-                            
-                            
-                            }
+                            </li>
+                        }
                         else
                         {
+                            <li >@{
+                            if (Session["cart"] == null)
+                            {
+                                <a href="/ShoppingCart/Index"><i class="glyphicon glyphicon-shopping-cart"></i> Cart : 0</a>
+                            }
+                            else
+                            {
+                                List<ProductCode> cart = (List<ProductCode>)Session["cart"];
+                                <a href="/ShoppingCart/Index"><i class="glyphicon glyphicon-shopping-cart"></i> @cart.Count</a>
+                        }
+                            
+                        } </li>
+
                             <li>@Html.ActionLink("Login", "Login", "User")</li>
                             <li>@Html.ActionLink("Register", "Register", "User")</li>
-
                         }
-                          
+
                     </ul>
                 </div>
             </div>
@@ -76,26 +102,21 @@
 
     </div>
 </div>
-    
-    
-   
-    
-    
-    
+
 
 <div class="container body-content" style="padding-top: 50px;">
     @RenderBody()
-  
-</div>
-    
-    <br/><br />
-    <br />
-    <br />
 
-<hr />
-    <footer>
-        <p class="alert-success">&copy; @DateTime.Now.Year - Sanalog Market Place</p>
-    </footer>
+</div>
+
+<br/><br/>
+<br/>
+<br/>
+
+<hr/>
+<footer>
+    <p class="alert-success">&copy; @DateTime.Now.Year - Sanalog Market Place</p>
+</footer>
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
 @RenderSection("scripts", required: false)
