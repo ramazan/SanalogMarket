@@ -12,12 +12,14 @@ namespace SanalogMarket.Models
         [Key]
         public int ID { get; set; }
 
-        [Display(Name = "Project Title")]
+        [Display(Name = "Name")]
         [Required(ErrorMessage = "Proje Başlığı Boş bırakılamaz")]
         public string Title { get; set; }
-
+        [Display(Name = "Thumbnail")]
         public string Icon { get; set; }
+        [Display(Name = "Screenshots")]
         public string Screenshot { get; set; }
+        [Display(Name = "Main File(s)")]
         public string Filepath { get; set; }
 
         [Display(Name = "Description")]
@@ -25,7 +27,7 @@ namespace SanalogMarket.Models
 
         [Display(Name = "Product Price")]
         public int Price { get; set; }
-
+        public int SalesPrice { get; set; }
         [DisplayName("Creating Date")]
         public DateTime CreateDate { get; set; }
 
@@ -34,7 +36,8 @@ namespace SanalogMarket.Models
 
         [DisplayName("Yayında mı")]
         public int IsValid { get; set; }
-
+        public string Comment { get; set; }
+        public string Tags { get; set; }
         public virtual User User { get; set; }
     }
 
