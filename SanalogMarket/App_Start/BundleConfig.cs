@@ -38,11 +38,13 @@ namespace SanalogMarket
                 "~/Content/AdminLTE.min.css",
                 "~/Content/skins/skin-*"));
             bundles.Add(new StyleBundle("~/Content/HomeProduct").Include(
-              "~/Content/HomeProduct.css"
+              "~/Content/HomeProduct.css",
+              "~/Content/font-awesome/css/font-awesome.css",
+              "~/Content/font-awesome/css/font-awesome.min.css"
            ));
 
 
 
         }
     }
-}
+}  

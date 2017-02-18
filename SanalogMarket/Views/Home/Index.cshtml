@@ -3,37 +3,113 @@
     ViewBag.Title = "Home Page";
 }
 
-@foreach (var item in ViewBag.TProduct)
-{
-    <div class='col-md-3 col-sm-6 col-xs-12' style="width: 260px; height: 380px; ">
-        <div class="category-box border-1 wow fadeInUpQuick animated" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; ">
-            <ul>
-                <li>
-                    <img src=@item.Screenshot style="height: 250px;width: 230px; padding: 5px;border-radius:10px" />
-                </li>
-                <li>
-                    <h4 style="color: #0d47a1;padding: 5px">@item.Title</h4>
-                </li>
-                <li>
-                    <h5 style="color: #3a3a3a;padding: 5px">@item.Category / @item.SubCategory</h5>
-                </li>
-                <li>
-@*                    <a style="color: #676767;padding: 5px">@item.CreateDate</a>*@
-                    <span class="category-counter" style="color: #000000; font-size: 25px; ">@item.Price $</span>
-                </li>
-                <li>
-                <li><a href="@Url.Action("Details","ProductCode", new { id=item.ID })">Details</a></li>
-                <li><a href="@Url.Action("OrderNow","ShoppingCart", new { id=item.ID })">Order Now</a></li>
+@*@foreach (var item in ViewBag.TProduct)*@
+@*{*@
+@*    <div class='col-md-3 col-sm-6 col-xs-12' style="width: 260px; height: 380px; ">*@
+@*        <div class="category-box border-1 wow fadeInUpQuick animated" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; ">*@
+@*            <ul>*@
+@*                <li>*@
+@*                    <img src=@item.Screenshot style="height: 250px;width: 230px; padding: 5px;border-radius:10px" />*@
+@*                </li>*@
+@*                <li>*@
+@*                    <h4 style="color: #0d47a1;padding: 5px">@item.Title</h4>*@
+@*                </li>*@
+@*                <li>*@
+@*                    <h5 style="color: #3a3a3a;padding: 5px">@item.Category / @item.SubCategory</h5>*@
+@*                </li>*@
+@*                <li>*@
+@*                    $1$                    <a style="color: #676767;padding: 5px">@item.CreateDate</a>#1#*@
+@*                    <span class="category-counter" style="color: #000000; font-size: 25px; ">@item.Price $</span>*@
+@*                </li>*@
+@*                <li>*@
+@*                <li><a href="@Url.Action("Details","ProductCode", new { id=item.ID })">Details</a></li>*@
+@*                <li><a href="@Url.Action("OrderNow","ShoppingCart", new { id=item.ID })">Order Now</a></li>*@
+@**@
+@*            </ul>*@
+@*        </div>*@
+@*    </div>*@
+@**@
+@**@
+@*}*@
 
-            </ul>
+
+
+<div class="container">
+<div class="row">
+<div class="row">
+    <div class="col-md-9">
+        <h3>
+           Featured Product
+        </h3>
+    </div>
+    <div class="col-md-3">
+        <!-- Controls -->
+        <div class="controls pull-right hidden-xs">
+            <a class="left fa fa-chevron-left btn btn-success" href="#carousel-example"
+               data-slide="prev"></a><a class="right fa fa-chevron-right btn btn-success" href="#carousel-example"
+                                        data-slide="next"></a>
         </div>
     </div>
+</div>
+<div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel">
+<!-- Wrapper for slides -->
+<div class="carousel-inner">
+<div class="item active">
+    <div class="row">
+       @{ int slideCount = 0;}
+        @foreach (var item in ViewBag.TProduct)
+        {
+            slideCount++;
+            
+            <div class="col-sm-3">
+                <div class="col-item">
+                    <div class="photo">
+                        <img src="@item.Screenshot" class="img-responsive" alt="a"/>
+                    </div>
+                    <div class="info">
+                        <div class="row">
+                            <div class="price col-md-6">
+                                <h5>
+                                    @item.Title
+                                </h5>
+                                <h5 class="price-text-color">
+                                    $@item.Price
+                                </h5>
+                            </div>
+                            <div class="rating hidden-sm col-md-6">
+                                <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
+                                </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
+                                </i><i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="separator clear-left">
+                            <p class="btn-add">
+                                <i class="fa fa-shopping-cart"></i><a href="@Url.Action("OrderNow","ShoppingCart",new {id= item.ID})" class="hidden-sm">Add to cart</a>
+                            </p>
+                            <p class="btn-details">
+                                <i class="fa fa-list"></i><a href="@Url.Action("Details","ProductCode", new { id=item.ID })" class="hidden-sm">More details</a>
+                            </p>
+                        </div>
+                        <div class="clearfix">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            if (slideCount == 4)
+            {
+              @Html.Raw("</div></div><div class='item'><div class='row'>");
+                
+            }
+        }
 
-}
-
-
-
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
 @Styles.Render("~/Content/HomeProduct")
+
