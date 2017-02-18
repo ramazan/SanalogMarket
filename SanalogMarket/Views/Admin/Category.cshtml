@@ -1,0 +1,21 @@
+﻿@model  IEnumerable<SanalogMarket.Models.Category>
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@foreach (var item in Model)
+{
+    
+    @Html.ActionLink("Alt kategori ekle","Category","Admin",new {id = item.ID})<br/>   
+    <b> @item.Name</b>
+    <br/>
+    foreach (var a in item.SubCategories)
+    {
+        
+            @a.Name
+    <br/>
+    }<br/><br/>
+    
+    
+    
+    }
+    

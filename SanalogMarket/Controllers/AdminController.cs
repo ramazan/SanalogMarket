@@ -313,5 +313,11 @@ namespace SanalogMarket.Controllers
             ViewBag.Succes = "Düzenleme başarılı";
             return View();
         }
+
+        public ActionResult Category()
+        {
+            var item = dbBaglantisi.Categories.ToList();
+            return View(item);
+        }
     }
 }

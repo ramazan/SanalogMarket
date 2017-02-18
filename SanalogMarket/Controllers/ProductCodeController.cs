@@ -42,7 +42,7 @@ namespace SanalogMarket.Controllers
         {
             Category category = dbBaglantisi.Categories.Where(p => p.Name == catName).FirstOrDefault();
             int intCatID = category.ID;
-            var products = dbBaglantisi.SubCategories.ToList().Where(p => p.Category_ID == intCatID);
+            var products = dbBaglantisi.SubCategories.ToList().Where(p => p.Category.ID == intCatID);
             return Json(products, JsonRequestBehavior.AllowGet);
         }
 
@@ -117,7 +117,7 @@ namespace SanalogMarket.Controllers
                 dbBaglantisi.Codes.Add(gelenCode);
                 dbBaglantisi.SaveChanges();
 
-               return RedirectToAction("Success", new { returnUrl = Request.RawUrl });
+                return RedirectToAction("Success", new {returnUrl = Request.RawUrl});
             }
 
             return View();
@@ -134,7 +134,7 @@ namespace SanalogMarket.Controllers
             {
                 return HttpNotFound();
             }
-            
+
             return View(product);
         }
 
@@ -146,13 +146,13 @@ namespace SanalogMarket.Controllers
 
         public ActionResult Success(string returnUrl)
         {
-        
             //Bir onceki url'i alarak kontrol ediyorum.    
             string oncekiUrl = returnUrl;
-            if (oncekiUrl != "/ProductCode/New")  // Eğer yönlendirme ürün yükleme sayfasından değilse anasayfaya yönlendir.
+            if (oncekiUrl != "/ProductCode/New")
+                // Eğer yönlendirme ürün yükleme sayfasından değilse anasayfaya yönlendir.
             {
                 RedirectToAction("Index", "Home");
-            }         
+            }
 
             return View();
         }

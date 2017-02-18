@@ -12,6 +12,6 @@ namespace SanalogMarket.Models
         public int ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public int Category_ID { get; set; }
+        public virtual Category Category{ get; set; }
     }
 }
