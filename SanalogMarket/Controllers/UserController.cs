@@ -25,6 +25,11 @@ namespace SanalogMarket.Controllers
 
         public ActionResult Register()
         {
+            if (Session["UserId"] != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return View();
         }
 
@@ -56,7 +61,8 @@ namespace SanalogMarket.Controllers
 
                 dbBaglantisi.SaveChanges();
 
-                return RedirectToAction("Index", "Home");
+                ViewBag.Mesaj = "Kaydınız Başarıyla gerçekleşti!";
+                return View();
             }
 
             ViewBag.HataMesjı = "Kayıt başarısız.";
@@ -65,6 +71,11 @@ namespace SanalogMarket.Controllers
 
         public ActionResult Login()
         {
+            if (Session["UserId"]!=null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
             return View();
         }
 
@@ -104,7 +115,8 @@ namespace SanalogMarket.Controllers
                 catch (Exception e)
                 {
                     Console.WriteLine(e);
-                    ModelState.AddModelError("", "Kullanıcı Adı veya Şifre Yanlış");
+                    ViewBag.HataMesjı = "Kullanıcı Adı veya Şifre Yanlış";
+
                 }
 
             }

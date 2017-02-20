@@ -62,6 +62,21 @@
                     <ul class="nav navbar-nav navbar-right">
                         @if (Session["UserName"] != null)
                         {
+                            <li >@{
+                            if (Session["cart"] == null)
+                            {
+                                <a href="/ShoppingCart/Index"><i class="glyphicon glyphicon-shopping-cart"></i> Cart : 0</a>
+                            }
+                            else
+                            {
+                                List<ProductCode> cart = (List<ProductCode>)Session["cart"];
+                                <a href="/ShoppingCart/Index"><i class="glyphicon glyphicon-shopping-cart"></i> @cart.Count</a>
+                        }
+                            
+                        } </li>
+                            
+                            
+                            
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dear, @Session["Name"] Welcome! <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
@@ -74,6 +89,7 @@
 
                                 </ul>
                             </li>
+                            
                         }
                         else
                         {
