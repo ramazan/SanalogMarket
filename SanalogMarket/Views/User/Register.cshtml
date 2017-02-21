@@ -1,73 +1,110 @@
 ﻿@model SanalogMarket.Models.User
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Register";
 }
 
-<h2>Create</h2>
+<div class="container">
+
+    <div id="signupbox" style="margin-top: 0px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Sign Up</div>
+                <div style="float: right; font-size: 85%; position: relative; top: -10px">
+                    <a href="/User/Login">Sign in</a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <form id="signupform" class="form-horizontal" role="form" action="/User/Register" method="post">
+
+                    @if (ViewBag.HataMesjı != null)
+                    {
+                        <div id="signupalert" class="alert alert-danger">
+                            <span>@ViewBag.HataMesjı</span>
+                        </div>
+                    }
 
 
-@ViewBag.HataMesjı
+                    @if (ViewBag.Mesaj != null)
+                    {
+                        <div id="success" class="alert alert-success">
+                            <span>@ViewBag.Mesaj</span>
+                        </div>
+                    }
 
 
-@using (Html.BeginForm("Register","User",FormMethod.Post)) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>User</h4>
-        <hr />
-        @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, new {@class = "col-md-3 control-label"})
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name)
-                @Html.ValidationMessageFor(model => model.Name)
+
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" placeholder="Name" data-val="true" data-val-required="First name is required" id="Name" name="Name" value="">
+                            @Html.ValidationMessageFor(model => model.Name)
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Surname" class="col-md-3 control-label">Last Name</label>
+                        <div class="col-md-9">
+                            <input class="form-control" data-val="true" placeholder="Last Name" data-val-required="Last name is required" id="Surname" name="Surname" type="text" value="">
+                            @Html.ValidationMessageFor(model => model.Surname)
+
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Username, new {@class = "control-label col-md-3"})
+
+                        <div class="col-md-9">
+                            <input class="form-control" data-val="true" placeholder="Username" data-val-required="Username is required" id="Username" name="Username" type="text" value="">
+                            @Html.ValidationMessageFor(model => model.Username)
+
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, new {@class = "control-label col-md-3"})
+
+                        <div class="col-md-9">
+                            <input class="form-control" data-val="true" placeholder="E-mail" data-val-email="E-mail alanı geçerli bir e-posta adresi değil." data-val-required="E-mail alanı gereklidir." id="Email" name="Email" type="email" value="">
+                            @Html.ValidationMessageFor(model => model.Email)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password, new {@class = "control-label col-md-3"})
+
+                        <div class="col-md-9">
+                            <input class="form-control" data-val="true" placeholder="Password" data-val-required="Password is required" id="Password" name="Password" type="password" value="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <!-- Button -->
+                        <div class="col-md-offset-3 col-md-9">
+                            <input id="btn-signup" type="submit" class="btn btn-info" value="Sign Up">
+                        </div>
+                    </div>
+
+                    <div style="border-top: 1px solid #999; padding-top: 20px" class="form-group">
+
+                        <div class="col-md-offset-3 col-md-9">
+                            <button id="btn-fbsignup" type="button" class="btn btn-primary"><i class="icon-facebook"></i> Sign Up with Facebook</button>
+                        </div>
+
+                    </div>
+
+
+                </form>
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Surname, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Surname)
-                @Html.ValidationMessageFor(model => model.Surname)
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Username, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Username)
-                @Html.ValidationMessageFor(model => model.Username)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email)
-                @Html.ValidationMessageFor(model => model.Email)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Password)
-                @Html.ValidationMessageFor(model => model.Password)
-            </div>
-        </div>
-
-       
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
     </div>
-}
-
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
