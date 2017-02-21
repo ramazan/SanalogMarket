@@ -206,17 +206,6 @@ namespace SanalogMarket
                     db.SubCategories.Add(cat7);
                     db.SubCategories.Add(cat8);
 
-//                    db.SaveChanges();
-
-                    cat.SubCategories.Add(sub);
-                    cat.SubCategories.Add(scat1);
-                    cat.SubCategories.Add(scat2);
-                    cat.SubCategories.Add(scat3);
-                    cat.SubCategories.Add(sub1);
-                    cat.SubCategories.Add(sub12);
-                    cat.SubCategories.Add(sub13);
-                    cat.SubCategories.Add(sub14);
-
                     if (categoryCount <= 0)
                     {
                         db.Categories.Add(cat);
