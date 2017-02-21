@@ -14,9 +14,12 @@ namespace SanalogMarket.Controllers
     {
         DbBaglantisi dbBaglantisi = new DbBaglantisi();
         public ProductCode product;
+        public static int gelenID;
         // GET: ProductCode
         public ActionResult Index()
         {
+            
+            
             return View();
         }
 
@@ -35,8 +38,18 @@ namespace SanalogMarket.Controllers
 
         public ActionResult GetCategories()
         {
-            return Json(dbBaglantisi.Categories.ToList(), JsonRequestBehavior.AllowGet);
+            var a = dbBaglantisi.Categories.ToList();
+
+            return Json(a, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult GetComments()
+        {
+            
+            return Json(dbBaglantisi.Comments.Where(p => p.Product.ID == gelenID).ToList(),
+                    JsonRequestBehavior.AllowGet);
+        }
+
 
         public ActionResult GetProducts(string catName)
         {
@@ -125,6 +138,12 @@ namespace SanalogMarket.Controllers
 
         public ActionResult Details(int? id)
         {
+            if (Session["UserId"] == null)
+            {
+                @ViewBag.Control = "0";
+            }
+
+            gelenID = (int) id;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -155,6 +174,24 @@ namespace SanalogMarket.Controllers
             }
 
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddComment(string yorum)
+        {
+            Comment cm = new Comment();
+            int id = Convert.ToInt32(Session["UserId"]);
+            User EkleyenUser = dbBaglantisi.Users.Where(u => u.Id == id).FirstOrDefault();
+            product = dbBaglantisi.Codes.Find(gelenID);
+            cm.CommentTime = DateTime.Now;
+            cm.User = EkleyenUser;
+            cm.Product = product;
+            cm.Content = yorum;
+            dbBaglantisi.Comments.Add(cm);
+            dbBaglantisi.SaveChanges();
+
+
+            return RedirectToAction("Details", "ProductCode", new {id = gelenID});
         }
     }
 }

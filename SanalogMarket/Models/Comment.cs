@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Web;
+using System.Web.Script.Serialization;
 
 namespace SanalogMarket.Models
 {
@@ -19,8 +20,10 @@ namespace SanalogMarket.Models
         [DataType(DataType.DateTime)]
         public DateTime CommentTime { get; set; }
 
+        [ScriptIgnore(ApplyToOverrides = true)]
         public virtual User User { get; set; }
 
-        //public virtual Product Product;{get;set;}
+        [ScriptIgnore(ApplyToOverrides = true)]
+        public virtual ProductCode Product {get;set;}
     }
 }
