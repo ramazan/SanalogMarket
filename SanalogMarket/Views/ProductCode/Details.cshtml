@@ -14,7 +14,7 @@
 <body>
 <div>
     <h4>ProductCode</h4>
-    <hr/>
+    <hr/>   
 
 </div>
 
@@ -187,7 +187,7 @@
 @using (Html.BeginForm("AddComment", "ProductCode", FormMethod.Post)) { 
     if (Model.Comment.ToList().Count != 0)
     {
-        foreach (var item in Model.Comment.ToList())
+        foreach (var item in Model.Comments.ToList())
         {
             <div class="container">
                 <div class="row">
@@ -199,10 +199,10 @@
                     <div class="col-sm-5">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <strong> @{ string adSoyad = item.User.Name + " " + item.User.Surname; } @adSoyad </strong> <span class="text-muted">@item.CommentTime.ToShortDateString()</span>
+                                <strong> @{ string adSoyad = item.User.Name + " " + item.User.Surname; } @adSoyad - </strong> <span class="text-muted">@item.CommentTime.ToShortDateString()</span>
                             </div>
                             <div class="panel-body">
-                                Panel content - @item.Content
+                                    @item.Content
                             </div><!-- /panel-body -->
                         </div><!-- /panel panel-default -->
                     </div><!-- /col-sm-5 -->

@@ -36,7 +36,9 @@ namespace SanalogMarket.Models
 
         [DisplayName("Yayında mı")]
         public int IsValid { get; set; }
-        public string Comment { get; set; }
+
+        public string Comment { get; set; } 
+        public virtual List<Comment> Comments { get; set; }
         public string Tags { get; set; }
         public virtual User User { get; set; }
     }

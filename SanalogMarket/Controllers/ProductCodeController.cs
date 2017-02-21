@@ -143,7 +143,8 @@ namespace SanalogMarket.Controllers
                 @ViewBag.Control = "0";
             }
 
-            gelenID = (int) id;
+            gelenID = Convert.ToInt32(id);
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
