@@ -127,6 +127,8 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductCodeController.cs" />
+    <Compile Include="Controllers\ProductThemeController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -138,6 +140,9 @@
     <Compile Include="Models\DbBaglantisi.cs" />
     <Compile Include="Models\ProductCode.cs" />
     <Compile Include="Models\SubCategory.cs" />
+    <Compile Include="Models\Theme\ProductTheme.cs" />
+    <Compile Include="Models\Theme\ThemeCategory.cs" />
+    <Compile Include="Models\Theme\ThemeSubCategory.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -153,10 +158,15 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-2.2.3.min.js" />
+    <Content Include="Scripts\jquery.multi-select.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="ThemeFiles\Project_File\user.png" />
+    <Content Include="ThemeFiles\Project_Icon\user %281%29.png" />
+    <Content Include="ThemeFiles\Screenshots\user %282%29.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -186,6 +196,9 @@
     <Content Include="Views\Admin\RegisterUser.cshtml" />
     <Content Include="Views\ProductCode\Details.cshtml" />
     <Content Include="Views\ProductCode\New.cshtml" />
+    <Content Include="Views\ProductTheme\Create.cshtml" />
+    <Content Include="Views\ProductTheme\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

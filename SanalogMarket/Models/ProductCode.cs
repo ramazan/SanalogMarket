@@ -30,6 +30,11 @@ namespace SanalogMarket.Models
         public int SalesPrice { get; set; }
         [DisplayName("Creating Date")]
         public DateTime CreateDate { get; set; }
+        public string HighResolution { get; set; }
+        public string imza { get; set; }
+        public string SoftwarVersion { get; set; }
+        public  string FilesIncluded { get; set; }
+        public  string Browsers { get; set; }
 
         public string Category { get; set; }
         public string SubCategory { get; set; }

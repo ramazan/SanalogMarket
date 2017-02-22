@@ -1,4 +1,5 @@
-﻿@model SanalogMarket.Models.ProductCode
+﻿@using System.Web.UI.WebControls
+@model SanalogMarket.Models.ProductCode
 @{
     ViewBag.Title = "New";
 }
@@ -21,6 +22,8 @@
             <div class="jumbotron " style="background-color: #f5f5f5">
                 <h2 style="color: #454545 ">Upload an item to project </h2>
                 <h4 style="color: #454545 ">Upload file </h4>
+                <h3 style="color: #8b0000;text-align: center">@ViewBag.Imza</h3>
+                <h3 style="color: #8b0000;text-align: center">@ViewBag.Screenshot</h3>
             </div>
             <div class="row">
                 <div class="col-lg-7">
@@ -174,28 +177,31 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Icon, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    <input type="file" name="fileIcon" value="Publish Project Icon" />
+                                    <input name="filesToUpload[]" id="filesToUpload" type="file" multiple="" />
                                     @Html.ValidationMessageFor(model => model.Icon, "", new { @class = "text-danger" })
+                                    @ViewBag.icon
                                     <small>JPEG or PNG 80x80px Thumbnail</small>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Screenshot, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    <input type="file" name="file" value="Publish Screenshot" />
-                                    @Html.ValidationMessageFor(model => model.Screenshot, "", new { @class = "text-danger" })
-                                    @ViewBag.FotoError
-                                </div>
-                                <small>ZIP file of images (png/jpg) w/ optional text descriptions for display on the site</small>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Filepath, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    <input type="file" name="fileproject" value="Publish file" id="FileUpload1" />
-                                    @Html.ValidationMessageFor(model => model.Filepath, "", new { @class = "text-danger" })
-                                </div>
-                                <small>ZIP - All files for buyers, not including preview images</small>
-                            </div>
+                            @*                            <div class="form-group">*@
+                            @*                                @Html.LabelFor(model => model.Screenshot, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            @*                                <div class="col-md-10">*@
+                            @*                                    <input type="file" name="file" value="Publish Screenshot" />*@
+                            @*                                    @Html.ValidationMessageFor(model => model.Screenshot, "", new { @class = "text-danger" })*@
+                            @*                                    @ViewBag.FotoError*@
+                            @*                                    @ViewBag.Screenshot*@
+                            @*                                </div>*@
+                            @*                                <small>ZIP file of images (png/jpg) w/ optional text descriptions for display on the site</small>*@
+                            @*                            </div>*@
+                            @*                            <div class="form-group">*@
+                            @*                                @Html.LabelFor(model => model.Filepath, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            @*                                <div class="col-md-10">*@
+                            @*                                    <input type="file" name="fileproject" value="Publish file" id="FileUpload1" />*@
+                            @*                                    @Html.ValidationMessageFor(model => model.Filepath, "", new { @class = "text-danger" })*@
+                            @*                                    @ViewBag.filepath*@
+                            @*                                </div>*@
+                            @*                                <small>ZIP - All files for buyers, not including preview images</small>*@
+                            @*                            </div>*@
                         </div>
 
                     </div>
@@ -251,11 +257,11 @@
                             <br />
                             <div class="form-group">
                                 @Html.Label("Compatible Browsers", new { @class = "control-label col-md-2" })
-                                @Html.CheckBox("Null", false, new { @checked = "checked", @class = "control-label col-md-1" });
+                                @Html.CheckBox("Browser", false, new { @checked = "checked", @class = "control-label col-md-1" });
 
                                 <label for="Null" style="padding-right:5px">N/A</label>
                                 <br />
-                                <select multiple="multiple" style="width: 250px; padding-left: 10px;">
+                                <select multiple="multiple" name="browser" id="browser" style="width: 250px; padding-left: 10px;">
                                     <option value="1">Opera</option>
                                     <option value="2">Firefox</option>
                                     <option value="3">Safari</option>
@@ -263,11 +269,18 @@
                                     <option value="5">Chrome</option>
                                     <option value="6">Edge</option>
                                 </select>
+
+
+                                <h6 style="text-align: center;">
+                                    Press and hold ctrl to make multiple selections
+                                </h6>
+
+                                <br />
                             </div>
                             <br />
                             <div class="form-group">
                                 @Html.Label("Files Included", new { @class = "control-label col-md-2" })
-                                <select multiple="multiple" style="width: 250px; padding-left: 10px;">
+                                <select multiple="multiple" id="fileinculude" name="fileinculude" style="width: 250px; padding-left: 10px;">
                                     <option value="1">.js</option>
                                     <option value="2">.html</option>
                                     <option value="3">.xml</option>
@@ -277,15 +290,21 @@
                                     <option value="5">.java</option>
                                     <option value="6">.jar</option>
                                 </select>
+
+                                <h6 style="text-align: center;">
+                                    Press and hold ctrl to make multiple selections
+                                </h6>
+
+                                <br />
                             </div>
                             <br />
                             <div class="form-group">
                                 @Html.Label("Software Version", new { @class = "control-label col-md-2" })
-                                @Html.CheckBox("Null", false, new { @checked = "checked", @class = "control-label col-md-1" });
+                                @Html.CheckBox("Version", false, new { @checked = "checked", @class = "control-label col-md-1" });
 
                                 <label for="Null" style="padding-right:5px">N/A</label>
                                 <br />
-                                <select multiple="multiple" style="width: 250px; padding-left: 10px;">
+                                <select multiple="multiple" name="version" id="version" style="width: 250px; padding-left: 10px;">
                                     <option value="1">Angular JS</option>
                                     <option value="2">ReactJS</option>
                                     <option value="3">jQery</option>
@@ -296,6 +315,12 @@
                                     <option value="6">Android 6.0</option>
                                     <option value="6">Swift2</option>
                                 </select>
+
+                                <h6 style="text-align: center;">
+                                    Press and hold ctrl to make multiple selections
+                                </h6>
+
+                                <br />
                             </div>
                             <br />
                             <br />
@@ -411,18 +436,25 @@
 
                                     @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
                                     <br />
+                                    <br />
                                     <div class="col-md-10">
-                                        @Html.CheckBox("Null", false, new { @checked = "checked", @class = "control-label col-md-1" });
+
+                                        @Html.CheckBox("imza", false, new { @checked = "checked", @class = "control-label col-md-1" });
                                         <small style="padding-right: 10px;">
                                             Any images, sounds, video, code, flash, or other assets that are not my own work, have been appropriately licensed for use in the file preview or main download. Other than these items, this work is entirely my own and I have full rights to sell it on SanalogCode.
                                         </small>
+                                        <br />
+
+                                        <br />
+
                                     </div>
                                 </div>
+
                             </div>
 
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Publish Product" class="btn btn-success" />
+                                    <input type="submit" value="Publish Product" class="btn btn-success " />
                                 </div>
                             </div>
 
@@ -434,6 +466,7 @@
 
             </div>
 
+
         </div>
 
     </body>
@@ -444,10 +477,12 @@
 }
 
 
+
 @section scripts {
-    <script src="~/scripts/multiple-select.js"></script>
+ 
     <script src="~/scripts/jquery-1.10.2.js"></script>
-    <script src="~/Content/jquery.form.js"></script>
+    <script src="~/scripts/jquery.multi-select.js"></script>    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document)
             .ready(function() {
@@ -506,7 +541,95 @@
                                 alert('Error getting products!');
                             });
                     });
+
+
+
+                $("#Version")
+                    .change(function () {
+                        if (document.getElementById("Version").checked == true) {
+
+                            document.getElementById("version").disabled = true;
+                        } else {
+
+                            document.getElementById("version").disabled = false;
+                        }
+                    });
+
+                $("#Browser")
+                    .change(function () {
+                        if (document.getElementById("Browser").checked == true) {
+
+                            document.getElementById("browser").disabled = true;
+                        } else {
+
+                            document.getElementById("browser").disabled = false;
+                        }
+                    });
+
+                //JQery and Ajax with multiple select Dropdownlist.....and Post    /ProductCode/..
+                $("#imza")
+                    .change(function () {
+                        if (document.getElementById("imza").checked == true) {
+                            var selectedValues = [];
+                            $("#version :selected")
+                                .each(function () {
+                                    selectedValues.push($(this).text());
+                                });
+
+                            var postData = { values: selectedValues };
+                            console.log(selectedValues + "1");
+                            $.ajax({
+                                type: "POST",
+                                url: "/ProductCode/getVersion",
+                                data: postData,
+                                success: function (data) {
+
+                                },
+                                dataType: "string",
+                                traditional: true
+                            });
+
+
+
+                            var selectedValues2 = [];
+                            $("#fileinculude :selected")
+                                .each(function () {
+                                    selectedValues2.push($(this).text());
+                                });
+                            console.log(selectedValues2 + "2");
+                            var postData = { values: selectedValues2 };
+                            $.ajax({
+                                type: "POST",
+                                url: "/ProductCode/getFileInculeded",
+                                data: postData,
+                                success: function (data) {
+
+                                },
+                                dataType: "string",
+                                traditional: true
+                            });
+                            var selectedValues3 = [];
+                            $("#browser :selected")
+                                .each(function () {
+                                    selectedValues3.push($(this).text());
+                                });
+                            console.log(selectedValues3 + "3");
+                            var postData = { values: selectedValues3 };
+                            $.ajax({
+                                type: "POST",
+                                url: "/ProductCode/getBrowser",
+                                data: postData,
+                                success: function (data) {
+
+                                },
+                                dataType: "string",
+                                traditional: true
+                            });
+                        }
+                    });
+
             });
+      
     </script>
 
 
