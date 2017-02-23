@@ -10,8 +10,7 @@
     @Html.AntiForgeryToken()
 
     
-    <br/>
-    <div class="alert alert-success">@ViewBag.Succes</div>
+    @ViewBag.Succes
     <div class="form-horizontal">
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.ID)
@@ -91,17 +90,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IsValid, new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-@*                                @Html.EditorFor(model => model.IsValid,new {@style="display-none;"})*@
-                @if (Convert.ToInt32(ViewData["CheckState"]) == 1)
-                {
-                    @Html.CheckBox("IsValid", true)
-                }
-                else
-                {
-                    @Html.CheckBox("IsValid", false)
-                }
-                @*               @Html.ValidationMessageFor(model => model.IsValid)*@
-
+                @Html.EditorFor(model => model.IsValid)
+                @Html.ValidationMessageFor(model => model.IsValid)
             </div>
         </div>
 

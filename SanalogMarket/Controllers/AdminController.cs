@@ -288,27 +288,17 @@ namespace SanalogMarket.Controllers
                 return HttpNotFound();
             }
 
-            ViewData["CheckState"] = product.IsValid;
             return View(product);
         }
 
         [HttpPost]
-        public ActionResult ProductCodeEdit(ProductCode editedProductCode, bool IsValid)
+        public ActionResult ProductCodeEdit(ProductCode editedProductCode)
         {
             try
             {
                 ProductCode product = dbBaglantisi.Codes.Find(editedProductCode.ID);
 
-                if (IsValid == true)
-                {
-                    product.IsValid = 1;
-                }
-                else
-                {
-                    product.IsValid = 0;
-
-                }
-//                product.IsValid = editedProductCode.IsValid;
+                product.IsValid = editedProductCode.IsValid;
                 product.Price = editedProductCode.Price;
 
                 dbBaglantisi.SaveChanges();

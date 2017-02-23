@@ -96,8 +96,8 @@ else
                 </td>
                 <td>@Html.DisplayFor(modelItem => item.User.Name)</td>
                 <td>
-                    @Html.ActionLink("Edit", "ProductCodeEdit", new { id = item.ID }, new { @class = "btn-sm btn-info" }) |
-                    @Html.ActionLink("Details", "ProductCodeDetails", new { id = item.ID }, new { @class = "btn-sm btn-success" }) |
+                    @Html.ActionLink("Edit", "ProductCodeEdit", new {id = item.ID}) |
+                    @Html.ActionLink("Details", "ProductCodeDetails", new {id = item.ID}) |
                     @*            @Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
                 </td>
             </tr>
