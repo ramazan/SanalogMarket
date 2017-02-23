@@ -32,5 +32,15 @@ namespace SanalogMarket.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult SellProduct()
+        {
+            if (Session["UserId"] == null)
+                return RedirectToAction("Login", "User");
+
+
+            return View();
+        }
+
     }
 }

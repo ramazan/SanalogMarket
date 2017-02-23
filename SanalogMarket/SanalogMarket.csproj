@@ -216,6 +216,7 @@
     <Content Include="Views\ProductTheme\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\ProductTheme\Details.cshtml" />
+    <Content Include="Views\Home\SellProduct.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
