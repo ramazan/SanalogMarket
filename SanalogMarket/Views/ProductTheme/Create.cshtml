@@ -1,11 +1,11 @@
 ﻿@using System.Web.UI.WebControls
-@model SanalogMarket.Models.ProductCode
+@model SanalogMarket.Models.Theme.ProductTheme
 @{
     ViewBag.Title = "New";
 }
 @Styles.Render("~/Content/multiple-select.css")
 
-@using (Html.BeginForm("New", "ProductCode", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "ProductTheme", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 
     @Html.AntiForgeryToken()
@@ -28,13 +28,13 @@
     <div class="row">
         <div class="col-lg-7">
             <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
-                <h4 style="color: #454545; text-align: center;">Hi! Before you upload to CodeCanyon for the first time. </h4>
+                <h4 style="color: #454545; text-align: center;">Hi! Before you upload to ThemeForest for the first time.</h4>
                 <br />
                 <h5 style="color: #8f919d; padding-left: 10px;">Here's a checklist to get you ready to upload:</h5>
                 <br />
-                <h5 style="color:#6e6e6f; padding-left: 10px;">1. Read the standards and requirements for the item(s) you want to sell on ProductCode</h5>
+                <h5 style="color:#6e6e6f; padding-left: 10px;">1. Read the standards and requirements for the item(s) you want to sell on ThemeForest.</h5>
                 <h5 style="color:#6e6e6f; padding-left: 10px;">2. Make sure your files, supporting information and assets are all organised and ready for upload.</h5>
-                <h5 style="color:#6e6e6f; padding-left: 10px;">3. Follow our upload instructions to make sure it all goes smoothly.</h5>
+                <h5 style="color:#6e6e6f; padding-left: 10px;">3.Follow our upload instructions to make sure it all goes smoothly.</h5>
                 <br />
 
             </div>
@@ -173,36 +173,35 @@
             <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
                 <h3 style="color: #454545; padding-left: 10px;">Files </h3>
                 <br />
-
                 <div class="form-horizontal" style="padding: 15px;">
                     <div class="form-group">
                         @Html.LabelFor(model => model.Icon, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            <input name="files" id="files" type="file" multiple="multiple" />
+                            <input type="file" name="fileIcon" value="Publish Project Icon" />
                             @Html.ValidationMessageFor(model => model.Icon, "", new { @class = "text-danger" })
                             @ViewBag.icon
                             <small>JPEG or PNG 80x80px Thumbnail</small>
                         </div>
                     </div>
-                    @*                            <div class="form-group">*@
-                    @*                                @Html.LabelFor(model => model.Screenshot, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                    @*                                <div class="col-md-10">*@
-                    @*                                    <input type="file" name="file" value="Publish Screenshot" />*@
-                    @*                                    @Html.ValidationMessageFor(model => model.Screenshot, "", new { @class = "text-danger" })*@
-                    @*                                    @ViewBag.FotoError*@
-                    @*                                    @ViewBag.Screenshot*@
-                    @*                                </div>*@
-                    @*                                <small>ZIP file of images (png/jpg) w/ optional text descriptions for display on the site</small>*@
-                    @*                            </div>*@
-                    @*                            <div class="form-group">*@
-                    @*                                @Html.LabelFor(model => model.Filepath, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                    @*                                <div class="col-md-10">*@
-                    @*                                    <input type="file" name="fileproject" value="Publish file" id="FileUpload1" />*@
-                    @*                                    @Html.ValidationMessageFor(model => model.Filepath, "", new { @class = "text-danger" })*@
-                    @*                                    @ViewBag.filepath*@
-                    @*                                </div>*@
-                    @*                                <small>ZIP - All files for buyers, not including preview images</small>*@
-                    @*                            </div>*@
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Screenshot, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="file" name="file" value="Publish Screenshot" />
+                            @Html.ValidationMessageFor(model => model.Screenshot, "", new { @class = "text-danger" })
+                            @ViewBag.FotoError
+                            @ViewBag.Screenshot
+                        </div>
+                        <small>ZIP file of images (png/jpg) w/ optional text descriptions for display on the site</small>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Filepath, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="file" name="fileproject" value="Publish file" id="FileUpload1" />
+                            @Html.ValidationMessageFor(model => model.Filepath, "", new { @class = "text-danger" })
+                            @ViewBag.filepath
+                        </div>
+                        <small>ZIP - All files for buyers, not including preview images</small>
+                    </div>
                 </div>
 
             </div>
@@ -263,12 +262,18 @@
                         <label for="Null" style="padding-right:5px">N/A</label>
                         <br />
                         <select multiple="multiple" name="browser" id="browser" style="width: 250px; padding-left: 10px;">
-                            <option value="1">Opera</option>
-                            <option value="2">Firefox</option>
-                            <option value="3">Safari</option>
-                            <option value="4">Opera</option>
-                            <option value="5">Chrome</option>
-                            <option value="6">Edge</option>
+                            <option value="1">IE6</option>
+                            <option value="2">IE7</option>
+                            <option value="3">IE8</option>
+                            <option value="4">IE9</option>
+                            <option value="5">IE10</option>
+                            <option value="6">IE11</option>
+                            <option value="7">Firefox</option>
+                            <option value="8">Safari</option>
+                            <option value="9">Opera</option>
+                            <option value="10">Chrome</option>
+                            <option value="11">Edge</option>
+                                
                         </select>
 
 
@@ -282,14 +287,12 @@
                     <div class="form-group">
                         @Html.Label("Files Included", new { @class = "control-label col-md-2" })
                         <select multiple="multiple" id="fileinculude" name="fileinculude" style="width: 250px; padding-left: 10px;">
-                            <option value="1">.js</option>
-                            <option value="2">.html</option>
-                            <option value="3">.xml</option>
-                            <option value="4">.css</option>
-                            <option value="5">.php</option>
-                            <option value="6">.net</option>
-                            <option value="5">.java</option>
-                            <option value="6">.jar</option>
+                            <option value="1">Layered PSD</option>
+                            <option value="2">Layered PNG</option>
+                            <option value="3">HTML Files</option>
+                            <option value="4">CSS Files</option>
+                            <option value="5">JS Files</option>
+                            <option value="6">Ecwid CSS Files</option>
                         </select>
 
                         <h6 style="text-align: center;">
@@ -300,21 +303,27 @@
                     </div>
                     <br />
                     <div class="form-group">
-                        @Html.Label("Software Version", new { @class = "control-label col-md-2" })
-                        @Html.CheckBox("Version", false, new { @checked = "checked", @class = "control-label col-md-1" });
+                        @Html.Label("Compatible With", new { @class = "control-label col-md-2" })
+                        @Html.CheckBox("CompatibleWith", false, new { @checked = "checked", @class = "control-label col-md-1" });
 
                         <label for="Null" style="padding-right:5px">N/A</label>
                         <br />
-                        <select multiple="multiple" name="version" id="version" style="width: 250px; padding-left: 10px;">
-                            <option value="1">Angular JS</option>
-                            <option value="2">ReactJS</option>
-                            <option value="3">jQery</option>
-                            <option value="4">Moo Tools 1.2</option>
-                            <option value="5">Android 4.4</option>
-                            <option value="6">Android 4.5</option>
-                            <option value="5">Android 5.0</option>
-                            <option value="6">Android 6.0</option>
-                            <option value="6">Swift2</option>
+                        <select multiple="multiple" name="compatiblewith" id="compatiblewith" style="width: 250px; padding-left: 10px;">
+                            <option value="1">Ecwid</option>
+                            <option value="2">Bootstrap 3.x</option>
+                            <option value="3">Bootstrap 2.3.x</option>
+                            <option value="4">Bootstrap 2.2.2</option>
+                            <option value="5">Bootstrap 2.2.1</option>
+                            <option value="6">Bootstrap 2.1.1</option>
+                            <option value="7">Bootstrap 2.1.0</option>
+                            <option value="8">Bootstrap 2.0.4</option>
+                            <option value="9">Bootstrap 2.0.3</option>
+                            <option value="10">Bootstrap 2.0.2</option>
+                            <option value="11">Bootstrap 2.0.1</option>
+                            <option value="12">Bootstrap 2.0</option>
+                            <option value="13">Foundation 6</option>
+                            <option value="14">Foundation 5</option>
+                            <option value="15">Foundation 4</option>
                         </select>
 
                         <h6 style="text-align: center;">
@@ -406,11 +415,11 @@
                         <div class="col-md-10 ">
                             <label for="regular-price" style="font-size: 13px; padding-right: 20px;">Extended License</label>
                             <label for="regular-price" style="font-size: 17px;">$</label>
-                            @Html.EditorFor(model => model.SalesPrice, new { htmlAttributes = new { @class = "form-control" }, })
+                            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" }, })
                             <label for="regular-price" style="font-size: 17px; padding-left: 10px;">+</label>
                             <label for="regular-price" style="font-size: 13px; padding-left: 10px;color: #82b546">Buyer Free</label>
                             <label for="regular-price" style="font-size: 17px; padding-left: 10px;color: #82b546">$20</label>
-                            @Html.ValidationMessageFor(model => model.SalesPrice, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
                         </div>
 
                     </div>
@@ -452,11 +461,48 @@
                         </div>
 
                     </div>
+                            
+                            
+                    <div class="form-horizontal" style="padding: 15px;">
+                        <div class="form-group">
+                            @Html.Label("Support", new { @class = "control-label col-md-2" })
+                            <div class="col-md-10 " style="padding-top: 10px;">
+                                Yes: <input checked="checked"
+                                            id="support"
+                                            name="support"
+                                            type="radio"
+                                            value="True" />
 
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Publish Product" class="btn btn-success " />
+                                No: <input id="support"
+                                           name="support"
+                                           type="radio"
+                                           value="False" />
+                                       
+                            </div>
+
                         </div>
+                        <br />
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.DemoURL, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DemoURL, "", new { @class = "text-danger" })
+
+                                      
+                            </div>
+                        </div>
+
+
+                                
+
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Publish Product" class="btn btn-success " />
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
@@ -465,12 +511,61 @@
 
         </div>
 
-    </div>
-
 
     </div>
-      
-    </body>
+    </div>
+@*        <div class="row">*@
+@*            <div class="col-sm-12">*@
+@*                <h3>User Comments </h3>*@
+@*            </div><!-- /col-sm-12 -->*@
+@*        </div><!-- /row -->*@
+@*        @using (Html.BeginForm("AddComment", "ProductCode", FormMethod.Post))*@
+@*        {*@
+@*            if (Model.Comment.ToList().Count != 0)*@
+@*            {*@
+@*                foreach (var item in Model.Comments.ToList())*@
+@*                {*@
+@*                    <div class="container">*@
+@*                        <div class="row">*@
+@*                            <div class="col-sm-1">*@
+@*                                <div class="thumbnail">*@
+@*                                    <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">*@
+@*                                </div><!-- /thumbnail -->*@
+@*                            </div><!-- /col-sm-1 -->*@
+@*                            <div class="col-sm-5">*@
+@*                                <div class="panel panel-default">*@
+@*                                    <div class="panel-heading">*@
+@*                                        <strong> @{ string adSoyad = item.User.Name + " " + item.User.Surname; } @adSoyad - </strong> <span class="text-muted">@item.CommentTime.ToShortDateString()</span>*@
+@*                                    </div>*@
+@*                                    <div class="panel-body">*@
+@*                                        @item.Content*@
+@*                                    </div><!-- /panel-body -->*@
+@*                                </div><!-- /panel panel-default -->*@
+@*                            </div><!-- /col-sm-5 -->*@
+@*                        </div><!-- /row -->*@
+@*                    </div>*@
+@*            <!-- /container -->*@
+@*                }*@
+@*            }*@
+@*            else*@
+@*            {*@
+@*                <div></div>*@
+@*            }*@
+@**@
+@*            <div class="alert" id="comment" name="comment1" style="padding: 20px">*@
+@**@
+@*                <textarea cols="1009" name="yorum"></textarea><br />*@
+@*                <input type="submit" value="Yorumu gönder" />*@
+@**@
+@*            </div>*@
+@*            <div class="col-md-6" id="notcomment" style="background-color:lightgreen">*@
+@**@
+@*                <h4 style="color:white">Yorum yapabilmek için lütfen giriş yapınız</h4>*@
+@**@
+@*            </div>*@
+@**@
+@*        }   *@
+   </body>
 </html>
 
 
@@ -480,15 +575,15 @@
 
 
 @section scripts {
- 
+    <script src="~/scripts/multiple-select.js"></script>
     <script src="~/scripts/jquery-1.10.2.js"></script>
-    <script src="~/scripts/jquery.multi-select.js"></script>    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="~/Content/jquery.form.js"></script>
     <script type="text/javascript">
         $(document)
             .ready(function() {
                 // Get a list of categories and a list of products of the first category.
-                $.getJSON('/ProductCode/GetCategories',
+                $.getJSON('/ProductTheme/GetCategories',
                         null,
                         function(data) {
                             $.each(data,
@@ -500,7 +595,7 @@
                                             this.Name +
                                             '</option>');
                                 });
-                            $.getJSON('/ProductCode/GetProducts',
+                            $.getJSON('/ProductTheme/GetProducts',
                                     { catName: $('#category').val() },
                                     function(data) {
                                         $.each(data,
@@ -525,7 +620,7 @@
                 $('#category')
                     .change(function() {
                         $('#subcategory option').remove();
-                        $.getJSON('/ProductCode/GetProducts',
+                        $.getJSON('/ProductTheme/GetProducts',
                                 { catName: $('#category').val() },
                                 function(data) {
                                     $.each(data,
@@ -542,22 +637,29 @@
                                 alert('Error getting products!');
                             });
                     });
+            });
+
+    </script>
 
 
+    @*      Dropdownlist konrol*@
+  <script>
+        $(document)
+            .ready(function() {
 
-                $("#Version")
-                    .change(function () {
-                        if (document.getElementById("Version").checked == true) {
+                $("#CompatibleWith")
+                    .change(function() {
+                        if (document.getElementById("CompatibleWith").checked == true) {
 
-                            document.getElementById("version").disabled = true;
+                            document.getElementById("compatiblewith").disabled = true;
                         } else {
 
-                            document.getElementById("version").disabled = false;
+                            document.getElementById("compatiblewith").disabled = false;
                         }
                     });
 
                 $("#Browser")
-                    .change(function () {
+                    .change(function() {
                         if (document.getElementById("Browser").checked == true) {
 
                             document.getElementById("browser").disabled = true;
@@ -569,39 +671,34 @@
 
                 //JQery and Ajax with multiple select Dropdownlist.....and Post    /ProductCode/..
                 $("#imza")
-                    .change(function () {
+                    .change(function() {
                         if (document.getElementById("imza").checked == true) {
                             var selectedValues = [];
-                            $("#version :selected")
-                                .each(function () {
+                            $("#compatiblewith :selected")
+                                .each(function() {
                                     selectedValues.push($(this).text());
                                 });
-
                             var postData = { values: selectedValues };
-                            console.log(selectedValues + "1");
                             $.ajax({
                                 type: "POST",
-                                url: "/ProductCode/getVersion",
+                                url: "/ProductTheme/getCompatibleWith",
                                 data: postData,
-                                success: function (data) {
+                                success: function(data) {
 
                                 },
                                 dataType: "string",
                                 traditional: true
                             });
 
-
-
                             var selectedValues2 = [];
                             $("#fileinculude :selected")
                                 .each(function () {
                                     selectedValues2.push($(this).text());
                                 });
-                            console.log(selectedValues2 + "2");
                             var postData = { values: selectedValues2 };
                             $.ajax({
                                 type: "POST",
-                                url: "/ProductCode/getFileInculeded",
+                                url: "/ProductTheme/getFileInculeded",
                                 data: postData,
                                 success: function (data) {
 
@@ -614,11 +711,10 @@
                                 .each(function () {
                                     selectedValues3.push($(this).text());
                                 });
-                            console.log(selectedValues3 + "3");
                             var postData = { values: selectedValues3 };
                             $.ajax({
                                 type: "POST",
-                                url: "/ProductCode/getBrowser",
+                                url: "/ProductTheme/getBrowser",
                                 data: postData,
                                 success: function (data) {
 
@@ -629,11 +725,9 @@
                         }
                     });
 
-            });
-      
-    </script>
-    
+            })
 
+</script>
 
 
 }

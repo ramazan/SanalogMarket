@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using SanalogMarket.Models;
+using SanalogMarket.Models.Theme;
 
 namespace SanalogMarket
 {
@@ -19,6 +20,63 @@ namespace SanalogMarket
 
                 int categoryCount = db.Categories.Count();
                 int SubCategoryCount = db.SubCategories.Count();
+
+                int ThemecategoryCount = db.ThemeCategories.Count();
+                int ThemeSubcayegorycount = db.ThemeSubCategories.Count();
+
+                ThemeCategory thcat = new ThemeCategory
+                {
+                    Name = "Site Templates",
+                    Description = "Site Templates"
+                };
+                ThemeCategory thcat1 = new ThemeCategory
+                {
+                    Name = "CMS Themes",
+                    Description = "CMS Themes"
+                };
+                ThemeCategory thcat2 = new ThemeCategory
+                {
+                    Name = "Wordpress",
+                    Description = "Wordpress"
+                };
+                ThemeSubCategory tsub = new ThemeSubCategory
+                {
+                    Name = "Photography",
+                    Description = "Photography",
+                    Category=thcat
+                };
+
+                ThemeSubCategory tsub1 = new ThemeSubCategory
+                {
+                    Name = "Education",
+                    Description = "Education",
+                    Category = thcat
+                };
+                ThemeSubCategory tsub2 = new ThemeSubCategory
+                {
+                    Name = "Deneme",
+                    Description = "Deneme",
+                    Category = thcat1
+                };
+                ThemeSubCategory tsub3 = new ThemeSubCategory
+                {
+                    Name = "Deneme2",
+                    Description = "Deneme2",
+                    Category = thcat1
+                };
+                ThemeSubCategory tsub4 = new ThemeSubCategory
+                {
+                    Name = "Camera",
+                    Description = "Camera",
+                    Category = thcat2
+                };
+                ThemeSubCategory tsub5 = new ThemeSubCategory
+                {
+                    Name = "Computer",
+                    Description = "Computer",
+                    Category = thcat2
+                };
+
 
                 Category cat = new Category
                 {
@@ -216,9 +274,9 @@ namespace SanalogMarket
                         db.SaveChanges();
                     }
 
+              
 
-
-                    User usr = new User
+                        User usr = new User
                     {
                         Name = "admin",
                         Surname = "admin",
@@ -246,6 +304,27 @@ namespace SanalogMarket
                     db.Admins.Add(admin);
                     db.Users.Add(usr);
                     db.SaveChanges();
+                }
+
+                if (ThemecategoryCount <= 0)
+                {
+                    db.ThemeSubCategories.Add(tsub);
+                    db.ThemeSubCategories.Add(tsub1);
+                    db.ThemeSubCategories.Add(tsub2);
+                    db.ThemeSubCategories.Add(tsub3);
+                    db.ThemeSubCategories.Add(tsub4);
+                    db.ThemeSubCategories.Add(tsub5);
+                   // db.SaveChanges();
+
+                    if (ThemecategoryCount <= 0)
+                    {
+                        db.ThemeCategories.Add(thcat);
+                        db.ThemeCategories.Add(thcat1);
+                        db.ThemeCategories.Add(thcat2);
+
+
+                        db.SaveChanges();
+                    }
                 }
             }
             AreaRegistration.RegisterAllAreas();

@@ -8,18 +8,21 @@ using System.Web;
 using System.Web.Mvc;
 using SanalogMarket.Models;
 
+
 namespace SanalogMarket.Controllers
 {
     public class ProductCodeController : Controller
     {
         DbBaglantisi dbBaglantisi = new DbBaglantisi();
         public ProductCode product;
+        public static string softwareVersion;
+        public static string fileinculeded;
+        public static string browser;
         public static int gelenID;
+        public List<string> fileList;
         // GET: ProductCode
         public ActionResult Index()
         {
-            
-            
             return View();
         }
 
@@ -35,21 +38,17 @@ namespace SanalogMarket.Controllers
 
             return View();
         }
-
-        public ActionResult GetCategories()
-        {
-            var a = dbBaglantisi.Categories.ToList();
-
-            return Json(a, JsonRequestBehavior.AllowGet);
-        }
-
         public ActionResult GetComments()
         {
-            
+
             return Json(dbBaglantisi.Comments.Where(p => p.Product.ID == gelenID).ToList(),
                     JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult GetCategories()
+        {
+            return Json(dbBaglantisi.Categories.ToList(), JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult GetProducts(string catName)
         {
@@ -60,11 +59,25 @@ namespace SanalogMarket.Controllers
         }
 
         [HttpPost]
-        public ActionResult New(ProductCode gelenCode, HttpPostedFileBase file,
-            HttpPostedFileBase fileproject, HttpPostedFileBase fileIcon, string category, string subcategory)
+        public ActionResult New(ProductCode gelenCode, HttpPostedFileBase file, Dosyalar upFile,
+            HttpPostedFileBase fileproject, HttpPostedFileBase fileIcon, string category, string subcategory, string Gender, Boolean imza)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && imza)
             {
+                foreach (var i in upFile.files )
+                {
+                    if (i.ContentLength> 0)
+                    {
+                        var filename = Path.GetFileName(i.FileName);
+                        
+                       var upload = Path.Combine(Server.MapPath("/Project_File/"), filename);
+                        i.SaveAs(upload);
+                       //fileList.Add(filename);
+                    }
+                }
+
+                ViewBag.Dosyalar = fileList;
+
                 if (file != null)
 
                 {
@@ -74,7 +87,7 @@ namespace SanalogMarket.Controllers
                         ViewBag.FotoError = "The size of the file should not exceed  2 MB";
                         return View();
                     }
-                    var supportedTypes = new[] {"jpg", "jpeg", "png"};
+                    var supportedTypes = new[] { "jpg", "jpeg", "png" };
                     var fileExt = System.IO.Path.GetExtension(file.FileName).Substring(1);
                     if (!supportedTypes.Contains(fileExt))
                     {
@@ -92,6 +105,11 @@ namespace SanalogMarket.Controllers
                     @ViewBag.Screen = yol;
                     gelenCode.Screenshot = yol;
                 }
+//                else
+//                {
+//                    @ViewBag.Screenshot = "Lutfen dosya yukleyinizz.";
+//                    return View();
+//                }
                 if (fileproject != null)
                 {
                     FileInfo dosya = new FileInfo(fileproject.FileName);
@@ -103,6 +121,11 @@ namespace SanalogMarket.Controllers
                     @ViewBag.imageProject = yol;
                     gelenCode.Filepath = yol;
                 }
+//                else
+//                {
+//                    @ViewBag.filepath = "Lutfen dosya yukleyinizz.";
+//                    return View();
+//                }
                 if (fileIcon != null)
                 {
                     FileInfo dosya = new FileInfo(fileIcon.FileName);
@@ -114,13 +137,23 @@ namespace SanalogMarket.Controllers
                     @ViewBag.imageIcon = yol;
                     gelenCode.Icon = yol;
                 }
+//                else
+//                {
+//                    @ViewBag.icon = "Lutfen dosya yukleyinizz.";
+//                    return View();
+//                }
 
                 gelenCode.CreateDate = DateTime.Now;
                 gelenCode.Category = category;
                 gelenCode.SubCategory = subcategory;
+                gelenCode.HighResolution = Gender;
+                gelenCode.imza = imza.ToString();
+                gelenCode.SoftwarVersion = softwareVersion;
+                gelenCode.FilesIncluded = fileinculeded;
+                gelenCode.Browsers = browser;
                 gelenCode.IsValid = 0;
 
-                int UserID = (int) Session["UserId"];
+                int UserID = (int)Session["UserId"];
                 User EkleyenUser = dbBaglantisi.Users.Single(u => u.Id == UserID);
 
                 if (EkleyenUser != null)
@@ -130,21 +163,24 @@ namespace SanalogMarket.Controllers
                 dbBaglantisi.Codes.Add(gelenCode);
                 dbBaglantisi.SaveChanges();
 
-                return RedirectToAction("Success", new {returnUrl = Request.RawUrl});
+                return RedirectToAction("Success", new { returnUrl = Request.RawUrl });
+            }
+            else
+            {
+                @ViewBag.Imza = "Failed :  Accept the Privacy Policy !! .. ";
+
+                return View();
             }
 
-            return View();
         }
 
         public ActionResult Details(int? id)
         {
-            if (Session["UserId"] == null)
+            if (Session["UserID"]==null)
             {
-                @ViewBag.Control = "0";
+                ViewBag.Control = "0";
             }
-
             gelenID = Convert.ToInt32(id);
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -166,17 +202,16 @@ namespace SanalogMarket.Controllers
 
         public ActionResult Success(string returnUrl)
         {
+
             //Bir onceki url'i alarak kontrol ediyorum.    
             string oncekiUrl = returnUrl;
-            if (oncekiUrl != "/ProductCode/New")
-                // Eğer yönlendirme ürün yükleme sayfasından değilse anasayfaya yönlendir.
+            if (oncekiUrl != "/ProductCode/New")  // Eğer yönlendirme ürün yükleme sayfasından değilse anasayfaya yönlendir.
             {
                 RedirectToAction("Index", "Home");
             }
 
             return View();
         }
-
         [HttpPost]
         public ActionResult AddComment(string yorum)
         {
@@ -192,7 +227,58 @@ namespace SanalogMarket.Controllers
             dbBaglantisi.SaveChanges();
 
 
-            return RedirectToAction("Details", "ProductCode", new {id = gelenID});
+            return RedirectToAction("Details", "ProductCode", new { id = gelenID });
         }
+
+        public string getVersion(List<String> values)
+        {
+            if (values != null)
+            {
+                softwareVersion = values[0];
+                for (int i = 1; i < values.Count; i++)
+                {
+                    softwareVersion = softwareVersion + "," + values[i];
+                }
+            }
+            else
+            {
+                softwareVersion = null;
+            }
+            return softwareVersion;
+        }
+        public string getBrowser(List<String> values)
+        {
+            if (values != null)
+            {
+                browser = values[0];
+                for (int i = 1; i < values.Count; i++)
+                {
+                    browser = browser + "," + values[i];
+                }
+            }
+            else
+            {
+                browser = null;
+            }
+            return browser;
+        }
+        public string getFileInculeded(List<String> values)
+        {
+            if (values != null)
+            {
+                fileinculeded = values[0];
+                for (int i = 1; i < values.Count; i++)
+                {
+                    fileinculeded = fileinculeded + "," + values[i];
+                }
+            }
+            else
+            {
+                fileinculeded = null;
+            }
+            return fileinculeded;
+        }
+
+       
     }
 }
