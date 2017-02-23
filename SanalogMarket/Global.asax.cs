@@ -43,7 +43,7 @@ namespace SanalogMarket
                 {
                     Name = "Photography",
                     Description = "Photography",
-                    Category=thcat
+                    Category = thcat
                 };
 
                 ThemeSubCategory tsub1 = new ThemeSubCategory
@@ -240,7 +240,7 @@ namespace SanalogMarket
                     Category = cat3
                 };
 
-                
+
                 if (SubCategoryCount <= 0)
                 {
                     db.SubCategories.Add(sub);
@@ -274,34 +274,49 @@ namespace SanalogMarket
                         db.SaveChanges();
                     }
 
-              
 
-                        User usr = new User
+                    User usr = new User
                     {
-                        Name = "admin",
-                        Surname = "admin",
+                        Name = "İsmail Reşat",
+                        Surname = "Akcan",
                         Username = "admin",
                         Email = "admin@sanalog.org",
                         Password = "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
                         RegisterTime = DateTime.Now,
                         LastLoginTime = new DateTime(1953, 1, 1),
-                        Avatar = ""
+                        Avatar = "/Project_Icon/user.png"
                     };
 
 
                     Admin admin = new Admin()
                     {
-                        Name = "admin",
-                        Surname = "admin",
+                        Name = "İsmail Reşat",
+                        Surname = "Akcan",
                         Username = "admin",
                         Email = "admin@sanalog.org",
                         Password = "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
                         RegisterTime = DateTime.Now,
                         LastLoginTime = new DateTime(1953, 1, 1),
-                        Role = "Admin"
+                        Role = "Admin",
+                        Avatar = "/Project_Icon/user.png"
                     };
 
+                    Admin editor = new Admin()
+                    {
+                        Name = "Ramazan",
+                        Surname = "Demir",
+                        Username = "editor",
+                        Email = "editor@sanalog.org",
+                        Password = "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+                        RegisterTime = DateTime.Now,
+                        LastLoginTime = new DateTime(1953, 1, 1),
+                        Role = "Editor",
+                        Avatar = "/Project_Icon/user.png"
+                    };
+
+
                     db.Admins.Add(admin);
+                    db.Admins.Add(editor);
                     db.Users.Add(usr);
                     db.SaveChanges();
                 }
@@ -314,7 +329,7 @@ namespace SanalogMarket
                     db.ThemeSubCategories.Add(tsub3);
                     db.ThemeSubCategories.Add(tsub4);
                     db.ThemeSubCategories.Add(tsub5);
-                   // db.SaveChanges();
+                    // db.SaveChanges();
 
                     if (ThemecategoryCount <= 0)
                     {
