@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using SanalogMarket.Models;
 
+
 namespace SanalogMarket.Controllers
 {
     public class ProductCodeController : Controller
@@ -18,6 +19,7 @@ namespace SanalogMarket.Controllers
         public static string fileinculeded;
         public static string browser;
         public static int gelenID;
+        public List<string> fileList;
         // GET: ProductCode
         public ActionResult Index()
         {
@@ -57,11 +59,25 @@ namespace SanalogMarket.Controllers
         }
 
         [HttpPost]
-        public ActionResult New(ProductCode gelenCode, HttpPostedFileBase file,
+        public ActionResult New(ProductCode gelenCode, HttpPostedFileBase file, Dosyalar upFile,
             HttpPostedFileBase fileproject, HttpPostedFileBase fileIcon, string category, string subcategory, string Gender, Boolean imza)
         {
             if (ModelState.IsValid && imza)
             {
+                foreach (var i in upFile.files )
+                {
+                    if (i.ContentLength> 0)
+                    {
+                        var filename = Path.GetFileName(i.FileName);
+                        
+                       var upload = Path.Combine(Server.MapPath("/Project_File/"), filename);
+                        i.SaveAs(upload);
+                       fileList.Add(filename);
+                    }
+                }
+
+                ViewBag.Dosyalar = fileList;
+
                 if (file != null)
 
                 {
@@ -257,5 +273,7 @@ namespace SanalogMarket.Controllers
             }
             return fileinculeded;
         }
+
+       
     }
 }

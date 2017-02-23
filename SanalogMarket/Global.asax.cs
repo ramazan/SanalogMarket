@@ -274,24 +274,7 @@ namespace SanalogMarket
                         db.SaveChanges();
                     }
 
-                    if (ThemecategoryCount <= 0)
-                    {
-                        db.ThemeSubCategories.Add(tsub);
-                        db.ThemeSubCategories.Add(tsub1);
-                        db.ThemeSubCategories.Add(tsub2);
-                        db.ThemeSubCategories.Add(tsub3);
-                        db.ThemeSubCategories.Add(tsub4);
-                        db.ThemeSubCategories.Add(tsub5);
-                    }
-                    if (ThemecategoryCount <= 0)
-                        {
-                            db.ThemeCategories.Add(thcat);
-                            db.ThemeCategories.Add(thcat1);
-                            db.ThemeCategories.Add(thcat2);
-                         
-
-                            db.SaveChanges();
-                        }
+              
 
                         User usr = new User
                     {
@@ -321,6 +304,27 @@ namespace SanalogMarket
                     db.Admins.Add(admin);
                     db.Users.Add(usr);
                     db.SaveChanges();
+                }
+
+                if (ThemecategoryCount <= 0)
+                {
+                    db.ThemeSubCategories.Add(tsub);
+                    db.ThemeSubCategories.Add(tsub1);
+                    db.ThemeSubCategories.Add(tsub2);
+                    db.ThemeSubCategories.Add(tsub3);
+                    db.ThemeSubCategories.Add(tsub4);
+                    db.ThemeSubCategories.Add(tsub5);
+                   // db.SaveChanges();
+
+                    if (ThemecategoryCount <= 0)
+                    {
+                        db.ThemeCategories.Add(thcat);
+                        db.ThemeCategories.Add(thcat1);
+                        db.ThemeCategories.Add(thcat2);
+
+
+                        db.SaveChanges();
+                    }
                 }
             }
             AreaRegistration.RegisterAllAreas();
