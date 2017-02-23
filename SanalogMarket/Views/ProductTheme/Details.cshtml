@@ -4,8 +4,6 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
 <!DOCTYPE html>
 
 <html>
@@ -14,15 +12,10 @@
     <title>Details</title>
 </head>
 <body>
-<div>
-    <h4>ProductCode</h4>
-    <hr />
-
-</div>
 
 <div class="container">
 <div class="jumbotron">
-    <h2>@Html.DisplayFor(model => model.Title) Mobile Application </h2>
+    <h2>@Html.DisplayFor(model => model.Title)  </h2>
 </div>
 <div class="row">
     <div class="col-lg-7">
@@ -90,11 +83,10 @@
             </div>
             <hr>
             <div class="row">
-                <p>
-                    <a class="btn btn-warning btn-block" href="#" title="Buy">ADD TO CART</a>
-                </p>
-                <p>
-                    <a class="btn btn-primary btn-block" href="#" title="Buy">BUY NOW!</a>
+                <p style="text-align: center">
+                    <a class="btn btn-warning " href="#" title="Buy">ADD TO CART</a>
+              
+                    <a class="btn btn-primary " href="#" title="Buy">BUY NOW!</a>
                 </p>
             </div>
         </div>
