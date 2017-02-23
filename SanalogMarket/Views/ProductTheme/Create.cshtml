@@ -514,7 +514,58 @@
 
     </div>
     </div>
-    </body>
+@*        <div class="row">*@
+@*            <div class="col-sm-12">*@
+@*                <h3>User Comments </h3>*@
+@*            </div><!-- /col-sm-12 -->*@
+@*        </div><!-- /row -->*@
+@*        @using (Html.BeginForm("AddComment", "ProductCode", FormMethod.Post))*@
+@*        {*@
+@*            if (Model.Comment.ToList().Count != 0)*@
+@*            {*@
+@*                foreach (var item in Model.Comments.ToList())*@
+@*                {*@
+@*                    <div class="container">*@
+@*                        <div class="row">*@
+@*                            <div class="col-sm-1">*@
+@*                                <div class="thumbnail">*@
+@*                                    <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">*@
+@*                                </div><!-- /thumbnail -->*@
+@*                            </div><!-- /col-sm-1 -->*@
+@*                            <div class="col-sm-5">*@
+@*                                <div class="panel panel-default">*@
+@*                                    <div class="panel-heading">*@
+@*                                        <strong> @{ string adSoyad = item.User.Name + " " + item.User.Surname; } @adSoyad - </strong> <span class="text-muted">@item.CommentTime.ToShortDateString()</span>*@
+@*                                    </div>*@
+@*                                    <div class="panel-body">*@
+@*                                        @item.Content*@
+@*                                    </div><!-- /panel-body -->*@
+@*                                </div><!-- /panel panel-default -->*@
+@*                            </div><!-- /col-sm-5 -->*@
+@*                        </div><!-- /row -->*@
+@*                    </div>*@
+@*            <!-- /container -->*@
+@*                }*@
+@*            }*@
+@*            else*@
+@*            {*@
+@*                <div></div>*@
+@*            }*@
+@**@
+@*            <div class="alert" id="comment" name="comment1" style="padding: 20px">*@
+@**@
+@*                <textarea cols="1009" name="yorum"></textarea><br />*@
+@*                <input type="submit" value="Yorumu gönder" />*@
+@**@
+@*            </div>*@
+@*            <div class="col-md-6" id="notcomment" style="background-color:lightgreen">*@
+@**@
+@*                <h4 style="color:white">Yorum yapabilmek için lütfen giriş yapınız</h4>*@
+@**@
+@*            </div>*@
+@**@
+@*        }   *@
+   </body>
 </html>
 
 

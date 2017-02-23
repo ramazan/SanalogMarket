@@ -176,6 +176,11 @@ namespace SanalogMarket.Controllers
 
         public ActionResult Details(int? id)
         {
+            if (Session["UserID"]==null)
+            {
+                ViewBag.Control = "0";
+            }
+            gelenID = Convert.ToInt32(id);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

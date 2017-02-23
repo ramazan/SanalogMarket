@@ -184,7 +184,7 @@
         <h3>User Comments </h3>
     </div><!-- /col-sm-12 -->
 </div><!-- /row -->
-@using (Html.BeginForm("AddComment", "ProductCode", FormMethod.Post)) { 
+@using (Html.BeginForm("AddComment", "ProductTheme", FormMethod.Post)) { 
     if (Model.Comment.ToList().Count != 0)
     {
         foreach (var item in Model.Comments.ToList())
@@ -249,9 +249,7 @@
                   $("#notcomment").hide();
               }
     
-           $("#comment1").click(function () {
-                  location.reload();
-              });
+
              
                 
             });

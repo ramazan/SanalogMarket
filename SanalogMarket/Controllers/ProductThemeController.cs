@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
@@ -15,6 +16,7 @@ namespace SanalogMarket.Controllers
     {
         DbBaglantisi dbBaglantisi = new DbBaglantisi();
         public ProductTheme product;
+        public static int gelenID;
     
         public static string compatiblewith;
         public static string fileinculeded;
@@ -23,7 +25,13 @@ namespace SanalogMarket.Controllers
         {
             return View();
         }
-     
+        public ActionResult GetComments()
+        {
+
+            return Json(dbBaglantisi.Comments.Where(p => p.Product.ID == gelenID).ToList(),
+                    JsonRequestBehavior.AllowGet);
+        }
+
 
        
       
@@ -183,6 +191,25 @@ namespace SanalogMarket.Controllers
                 fileinculeded = null;
             }
             return fileinculeded;
+        }
+        public ActionResult Details(int? id)
+        {
+            if (Session["UserID"] == null)
+            {
+                ViewBag.Control = "0";
+            }
+            gelenID = Convert.ToInt32(id);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            product = dbBaglantisi.Themes.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(product);
         }
 
     }
