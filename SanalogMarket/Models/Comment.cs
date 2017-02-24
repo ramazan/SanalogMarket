@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Script.Serialization;
+using SanalogMarket.Models.Theme;
 
 namespace SanalogMarket.Models
 {
@@ -25,5 +26,8 @@ namespace SanalogMarket.Models
 
         [ScriptIgnore(ApplyToOverrides = true)]
         public virtual ProductCode Product {get;set;}
+
+        [ScriptIgnore(ApplyToOverrides = true)]
+        public virtual ProductTheme ThemeProduct{ get; set; }
     }
 }

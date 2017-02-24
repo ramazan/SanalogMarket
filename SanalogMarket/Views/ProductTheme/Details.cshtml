@@ -13,85 +13,161 @@
 </head>
 <body>
 
-<div class="container">
-<div class="jumbotron">
-    <h2>@Html.DisplayFor(model => model.Title)  </h2>
-</div>
-<div class="row">
-    <div class="col-lg-7">
-        <div class="panel panel-default" id="headings">
-            <div class="panel-heading">
-                Project Screenshots
-            </div>
-            <img src=@Html.DisplayFor(model => model.Screenshot) style="height: 360px; width: 530px;" />
-            <ul class="pagination" style="padding-left: 140px;">
-                <li>
-                    <a href="#">Prev</a>
-                </li>
-                <li>
-                    <a href="#">1</a>
-                </li>
-                <li>
-                    <a href="#">2</a>
-                </li>
-                <li>
-                    <a href="#">3</a>
-                </li>
-                <li>
-                    <a href="#">4</a>
-                </li>
-                <li>
-                    <a href="#">Next</a>
-                </li>
-            </ul>
+    <div class="container">
+        <div class="jumbotron">
+            <h2>@Html.DisplayFor(model => model.Title)  </h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="panel panel-default" id="headings">
+                    <div class="panel-heading">
+                        Project Screenshots
+                    </div>
+                    <img src=@Html.DisplayFor(model => model.Screenshot) style="height: 360px; width: 530px;" />
+                    <ul class="pagination" style="padding-left: 140px;">
+                        <li>
+                            <a href="#">Prev</a>
+                        </li>
+                        <li>
+                            <a href="#">1</a>
+                        </li>
+                        <li>
+                            <a href="#">2</a>
+                        </li>
+                        <li>
+                            <a href="#">3</a>
+                        </li>
+                        <li>
+                            <a href="#">4</a>
+                        </li>
+                        <li>
+                            <a href="#">Next</a>
+                        </li>
+                    </ul>
 
-            <ul class="pager">
-                <li>
-                    <a href="#">Prev</a>
-                </li>
-                <li>
-                    <a href="#">Next</a>
-                </li>
-            </ul>
+                    <ul class="pager">
+                        <li>
+                            <a href="#">Prev</a>
+                        </li>
+                        <li>
+                            <a href="#">Next</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col-lg-5">
+                <div class="panel panel-default" id="content-formatting">
+                    <div class="panel-heading" style="background-color: #ffffff">
+                        <a style="color: #676767; padding: 5px">Price</a>
+                        <span class="category-counter" style="color: #000000; font-size: 35px;">@Html.DisplayFor(model => model.Price) $</span>
+                    </div>
+                    <div style="padding-left: 10px; padding-right: 10px;">
+                        <p class="lead">@Html.DisplayFor(model => model.Title)</p>
+                        <p>@Html.DisplayFor(model => model.Description)</p>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Category)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Category)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.SubCategory)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.SubCategory)
+                        </dd>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <p style="text-align: center">
+                            <a class="btn btn-warning " href="#" title="Buy">ADD TO CART</a>
+
+                            <a class="btn btn-primary " href="#" title="Buy">BUY NOW!</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>User Comments </h3>
+        </div><!-- /col-sm-12 -->
+    </div><!-- /row -->
+    @using (Html.BeginForm("AddComment", "ProductTheme", FormMethod.Post))
+    {
+        if (Model.Comment.ToList().Count != 0)
+        {
+            foreach (var item in Model.Comments.ToList())
+            {
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="thumbnail">
+                                <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                            </div><!-- /thumbnail -->
+                        </div><!-- /col-sm-1 -->
+                        <div class="col-sm-5">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <strong> @{ string adSoyad = item.User.Name + " " + item.User.Surname; } @adSoyad - </strong> <span class="text-muted">@item.CommentTime.ToShortDateString()</span>
+                                </div>
+                                <div class="panel-body">
+                                    @item.Content
+                                </div><!-- /panel-body -->
+                            </div><!-- /panel panel-default -->
+                        </div><!-- /col-sm-5 -->
+                    </div><!-- /row -->
+                </div>
+            <!-- /container -->
+            }
+        }
+        else
+        {
+            <div></div>
+        }
+
+        <div class="alert" id="comment" name="comment1" style="padding: 20px">
+
+            <textarea cols="1009" name="yorum"></textarea><br />
+            <input type="submit" value="Yorumu gönder" />
+
+        </div>
+        <div class="col-md-6" id="notcomment" style="background-color:lightgreen">
+
+            <h4 style="color:white">Yorum yapabilmek için lütfen giriş yapınız</h4>
+
         </div>
 
-    </div>
-    <div class="col-lg-5">
-        <div class="panel panel-default" id="content-formatting">
-            <div class="panel-heading" style="background-color: #ffffff">
-                <a style="color: #676767; padding: 5px">Price</a>
-                <span class="category-counter" style="color: #000000; font-size: 35px;">@Html.DisplayFor(model => model.Price) $</span>
-            </div>
-            <div style="padding-left: 10px; padding-right: 10px;">
-                <p class="lead">@Html.DisplayFor(model => model.Title)</p>
-                <p>@Html.DisplayFor(model => model.Description)</p>
-                <dt>
-                    @Html.DisplayNameFor(model => model.Category)
-                </dt>
+    }
 
-                <dd>
-                    @Html.DisplayFor(model => model.Category)
-                </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.SubCategory)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.SubCategory)
-                </dd>
-            </div>
-            <hr>
-            <div class="row">
-                <p style="text-align: center">
-                    <a class="btn btn-warning " href="#" title="Buy">ADD TO CART</a>
-              
-                    <a class="btn btn-primary " href="#" title="Buy">BUY NOW!</a>
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
 </body>
 </html>
+@section scripts {
+
+    <script src="~/scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        var control = parseInt('@ViewBag.Control');
+        $(document)
+            .ready(function () {
+
+              if (control == 0 ) {
+                  $("#comment").hide();
+                  $("#notcomment").show();
+              }
+              else {
+                  $("#notcomment").hide();
+              }
+
+
+
+
+            });
+    </script>
+}
+

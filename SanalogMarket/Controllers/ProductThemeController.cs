@@ -17,6 +17,7 @@ namespace SanalogMarket.Controllers
         DbBaglantisi dbBaglantisi = new DbBaglantisi();
         public ProductTheme product;
         public static int gelenID;
+
     
         public static string compatiblewith;
         public static string fileinculeded;
@@ -210,6 +211,25 @@ namespace SanalogMarket.Controllers
             }
 
             return View(product);
+        }
+        [HttpPost]
+        public ActionResult AddComment(string yorum)
+        {
+            
+            Comment cm = new Comment();
+            int id = Convert.ToInt32(Session["UserId"]);
+            User EkleyenUser = dbBaglantisi.Users.Where(u => u.Id == id).FirstOrDefault();
+            product = dbBaglantisi.Themes.Find(gelenID);
+            cm.CommentTime = DateTime.Now;
+            cm.User = EkleyenUser;
+            cm.ThemeProduct = product;
+            cm.Content = yorum;
+            dbBaglantisi.Comments.Add(cm);
+            dbBaglantisi.SaveChanges();
+
+
+            return RedirectToAction("Details", "ProductTheme", new { id = gelenID });
+//            return ViewBag ile listele ajax'a' bas
         }
 
     }
