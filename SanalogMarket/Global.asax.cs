@@ -275,6 +275,11 @@ namespace SanalogMarket
                     }
 
 
+                    
+
+
+
+
                     User usr = new User
                     {
                         Name = "İsmail Reşat",
@@ -315,9 +320,116 @@ namespace SanalogMarket
                     };
 
 
+                    ProductCode productCode = new ProductCode
+                    {
+                        Title = "Php plugin",
+                        Screenshot = "/Project_Icon/350x260.png",
+                        Description = "This field is used for search",
+                        Price = 13,
+                        SalesPrice = 45,
+                        CreateDate = DateTime.Now,
+                        HighResolution = "yes",
+                        imza = "True",
+                        SoftwarVersion = "AngularJs,ReactJS",
+                        FilesIncluded = ".html,.js",
+                        Browsers = "Firefox,Safari",
+                        Category = "Site Templates",
+                        SubCategory = "Creative",
+                        IsValid = 1,
+                        Tags = "Maximum of 15 key",
+                        User = usr
+                    };
+
+                    ProductCode productCode2 = new ProductCode
+                    {
+                        Title = "Sanalog plugin",
+                        Screenshot = "/Project_Icon/350x260.png",
+                        Description = "This field is used for search",
+                        Price = 57,
+                        SalesPrice = 45,
+                        CreateDate = DateTime.Now,
+                        HighResolution = "yes",
+                        imza = "True",
+                        SoftwarVersion = "AngularJs,Jquery",
+                        FilesIncluded = ".html,.js",
+                        Browsers = "Firefox,Safari",
+                        Category = "CMS",
+                        SubCategory = "Creative",
+                        IsValid = 1,
+                        Tags = "Maximum of 15 key",
+                        User = usr
+                    };
+
+
+                    ProductCode productCode3 = new ProductCode
+                    {
+                        Title = "Android App",
+                        Screenshot = "/Project_Icon/350x260.png",
+                        Description = "This field is used for search",
+                        Price = 10,
+                        SalesPrice = 45,
+                        CreateDate = DateTime.Now,
+                        HighResolution = "yes",
+                        imza = "True",
+                        SoftwarVersion = "AngularJs,Jquery",
+                        FilesIncluded = ".html,.js",
+                        Browsers = "Firefox,Safari",
+                        Category = "Mobile",
+                        SubCategory = "Android",
+                        IsValid = 1,
+                        Tags = "Maximum of 15 key",
+                        User = usr
+                    };
+
+
+
+                    ProductTheme productTheme = new ProductTheme
+                    {
+                        Title = "Bootstrap Theme",
+                        Screenshot = "/Project_Icon/350x260.png",
+                        Description = "This field is used for search",
+                        Price = 13,
+//                        CreateDate = DateTime.Now,
+//                        HighResolution = "yes",
+                        imza = "True",
+                        CompatibleWith = "AngularJs,ReactJS",
+                        FilesIncluded = ".html,.js",
+                        CompatibleBrowsers = "Firefox,Safari",
+                        Category = "Site Templates",
+                        SubCategory = "Creative",
+                        IsValid = 1,
+                        Tags = "Maximum of 15 key",
+                        User = usr
+                    };
+
+                    ProductTheme productTheme2 = new ProductTheme
+                    {
+                        Title = "Bootstrap Login Template",
+                        Screenshot = "/Project_Icon/350x260.png",
+                        Description = "This field is used for search",
+                        Price = 13,
+                        //                        CreateDate = DateTime.Now,
+                        //                        HighResolution = "yes",
+                        imza = "True",
+                        CompatibleWith = "AngularJs,ReactJS",
+                        FilesIncluded = ".html,.js",
+                        CompatibleBrowsers = "Firefox,Safari",
+                        Category = "Site Templates",
+                        SubCategory = "Creative",
+                        IsValid = 1,
+                        Tags = "Maximum of 15 key",
+                        User = usr
+                    };
+
+                   
                     db.Admins.Add(admin);
                     db.Admins.Add(editor);
                     db.Users.Add(usr);
+                    db.Codes.Add(productCode);
+                    db.Codes.Add(productCode2); 
+                    db.Codes.Add(productCode3);
+                    db.Themes.Add(productTheme);
+                    db.Themes.Add(productTheme2);
                     db.SaveChanges();
                 }
 
