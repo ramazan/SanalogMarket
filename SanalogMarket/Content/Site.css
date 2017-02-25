@@ -1,7 +1,4 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
+﻿
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -39,4 +36,63 @@ input[type="checkbox"].input-validation-error {
 
 .validation-summary-valid {
     display: none;
+}
+.footerHeader {
+    font-size: 15px;font-weight: 600;letter-spacing: 1px;color: #fff;
+    line-height: 1.571428571428571em;
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+    margin-top:15px
+}
+.footerLink {
+    color:#787878;
+        font-size: 14px;
+    line-height: 26px;
+}
+.footerPlink {
+    margin-top: 10px;
+}
+.footerSocial {
+    margin-top: 15px;
+                margin-bottom:15px;
+}
+.footerLink:hover {
+    color: #fff!important;
+}
+.footerSocialLink:hover  {
+    color: #fff!important;
+}
+.footerSocialLink {
+    margin-right: 15px;
+}
+.subscribe {
+    margin-top: 15px;
+}
+.footerSep {
+    height: 1px;
+    background-color: #818181;
+    width: 91px;
+    height: 2px;
+    position: relative;
+    width: 110px;
+    display: block;
+    margin: 10px auto 20px auto;    background-color: #303030;
+    height: 2px;
+    position: relative;
+    display: block;
+    margin: 10px auto 20px auto;
+}
+.footerInput {
+    height: 38px !important;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 0px !important;
+        background: #262626;
+    /* background-color: #262626; */
+    border-radius: 4px;
+    margin-bottom: 8px;
+    color: #7e7e7e;
+    border: none;
+    font-size: 14px !important;
 }

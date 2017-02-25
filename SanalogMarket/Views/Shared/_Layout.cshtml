@@ -8,6 +8,8 @@
     <title>@ViewBag.Title - Sanalog Market</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="/Content/OwlCarousel/owlcarousel/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="/Content/OwlCarousel/owlcarousel/assets/owl.theme.default.min.css" />
 </head>
 <body>
 <div class="navbar navbar-fixed-top">
@@ -130,11 +132,96 @@
 <br/>
 
 <hr/>
-<footer>
-    <p class="alert-success">&copy; @DateTime.Now.Year - Sanalog Market Place</p>
+<footer style="background: #000000">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4" style="margin-top: 20px">
+                <img src="/Images/laksLogo2.png" class="img-responsive" style="width: 40%"/>
+                <h2 class="footerHeader">Meet Laks</h2>
+                <p class="footerPlink"><a href="#" class="footerLink">About Laks</a></p>
+                <p class="footerPlink"><a href="#" class="footerLink">Why buy with us</a></p>
+                <p class="footerPlink"><a href="#" class="footerLink">Laks Careers</a></p>
+                
+                <h2 class="footerHeader">Need Help ?</h2>
+                <p class="footerPlink"><a href="#" class="footerLink">Help Center</a></p>
+                <p class="footerPlink"><a href="#" class="footerLink">Sanalog Market Terms</a></p>
+                <p class="footerPlink"><a href="#" class="footerLink">Autor Terms</a></p>
+                <p class="footerPlink"><a href="#" class="footerLink">Sanalog Markert Licanses</a></p>
+                <p class="footerPlink"><a href="#" class="footerLink">Contact Laks</a></p>
+
+                <div class="footerSocial">
+                    <a href='http://twitter.com/' class="footerSocialLink" target='_blank' ><i class='fa fa-twitter fa-2x'></i></a>
+
+                    <a href='http://www.facebook.com/' class="footerSocialLink" target='_blank'><i class='fa fa-facebook fa-2x'></i></a>
+
+                    <a href='https://plus.google.com/'class="footerSocialLink"  target='_blank'><i class='fa fa-google-plus fa-2x'></i></a>
+
+                    <a href='http://instagram.com/' class="footerSocialLink" target='_blank'><i class='fa fa-instagram fa-2x'></i></a>
+
+                    <a href='https://www.tumblr.com/'class="footerSocialLink" target='_blank'><i class='fa fa-tumblr fa-2x'></i></a>
+                </div>
+            </div>
+            <div class="col-lg-4" style="margin-top: 20px">
+                <h2 class="footerHeader">Join our Community</h2>
+                <p class="footerPlink"><a href="#" class="footerLink">Home</a></p>
+                <p class="footerPlink"><a href="#" class="footerLink">Forums</a></p>
+                <p class="footerPlink"><a href="#" class="footerLink">Become an Author</a></p>
+                <p class="footerPlink"><a href="#" class="footerLink">Community Meetups</a></p>
+                <p class="footerPlink"><a href="#" class="footerLink">Become an Affiliate</a></p>
+                <div class="subscribe">
+                    <div class="input-group input-group-lg" style="margin-top:15px">
+                        <h2 class="footerHeader" style="text-align: center">Email Newsletters</h2>
+                        <div class="footerSep"></div>
+                        <input type="email" name="EMAIL" class="form-control footerInput" id="mce-EMAIL" placeholder="Email address...">
+                        <button type="submit" name="subscribe" id="mc-embedded-subscribe" style="margin-top: 15px" class="btn btn-default">Subscribe!</button>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4" style="margin-top: 20px">
+                <h2 class="footerHeader" style="text-align: center">News</h2>
+                <div class="footerSep"></div>
+                <div class="custom1 owl-carousel owl-theme">
+                    <div class="item">
+                        <p class="footerPlink" style="text-align: center"><a href="#" class="footerLink">Up uzun yollardan gelen herhangi bir içerik buraya yazılabilir</a></p>
+                        <p class="footerLink" style="text-align: center; color: #f53644 !important;margin-top:15px">@DateTime.Now.Date.ToString("dd-MM-yyyy")</p>
+                    </div>
+                    <div class="item">
+                        <p class="footerPlink" style="text-align: center;"><a href="#" class="footerLink">Up uzun yollardan gelen herhangi bir içerik buraya yazılabilir 2</a></p>
+                        <p class="footerLink" style="text-align: center; color: #f53644 !important;margin-top: 15px">@DateTime.Now.Date.ToString("dd-MM-yyyy")</p>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+        <div class="row">
+            <p class="footerLink" style="text-align: center">&copy; @DateTime.Now.Year - Sanalog Market Place</p>
+        </div>
+</div>
+    
 </footer>
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
 @RenderSection("scripts", required: false)
+    <script src="/Content/OwlCarousel/owlcarousel/owl.carousel.js"></script>
+    <script src="/Content/OwlCarousel/vendors/highlight.js"></script>
+<script src="/Content/OwlCarousel/js/app.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.custom1').owlCarousel({
+            items: 1,
+            nav: true,
+            navText: ["<div style='width:30px;height:30px;border: 2px solid #303030;border-radius: 50px;'><i style='margin-top:6px;margin-right:1px;color:#8a8a8a' class='fa fa-chevron-left'></i></div>", "<div style='width:30px;height:30px;border: 2px solid #303030;border-radius: 50px;color:#8a8a8a;'><i style='margin-top:6px;margin-left:4px' class='fa fa-chevron-right'></i></div>"],
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 2000,
+            autoplayHoverPause: true,
+            margin: 30,
+            stagePadding: 30,
+            smartSpeed: 450,
+            dots:false
+        });
+    });
+</script>
 </body>
 </html>
