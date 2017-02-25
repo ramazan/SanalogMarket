@@ -37,7 +37,7 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
-<<<<<<< HEAD
+
 .footerHeader {
     font-size: 15px;font-weight: 600;letter-spacing: 1px;color: #fff;
     line-height: 1.571428571428571em;
@@ -89,15 +89,14 @@ input[type="checkbox"].input-validation-error {
     font-size: 18px;
     line-height: 1.33;
     border-radius: 0px !important;
-        background: #262626;
+    background: #262626;
     /* background-color: #262626; */
     border-radius: 4px;
     margin-bottom: 8px;
     color: #7e7e7e;
     border: none;
     font-size: 14px !important;
-=======
-
+}
 
 #login-dp{
     min-width: 250px;
@@ -148,5 +147,4 @@ input[type="checkbox"].input-validation-error {
         background-color: inherit;
         border-top:0 none;
     }
->>>>>>> origin/master
 }
