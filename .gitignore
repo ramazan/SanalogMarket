@@ -6,3 +6,5 @@ SanalogMarket/bin/SanalogMarket.dll.config
 .vs/config/applicationhost.config
 *.cache
 *.pdb
+SanalogMarket/obj/Debug/SanalogMarket.dll
+SanalogMarket/bin/SanalogMarket.dll

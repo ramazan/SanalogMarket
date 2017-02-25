@@ -165,18 +165,21 @@
         input:focus { box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.4), 0 1px 1px rgba(255, 255, 255, 0.2); }
 
     </style>
+     @Styles.Render("~/Content/BootstrapCss");
 </head>
 <body>
-<div class="login">
+<div class="login" style="text-align: center">
     <h1>Admin Login</h1>
+    <h4 class="label label-danger" style="text-align: center; margin-bottom: 10px;">@ViewBag.Error</h4>
+
     <form method="post" action="/Admin/Login">
         @Html.ValidationSummary(true)
-        <input type="text" name="Username" id="Username" placeholder="Username" required="required"/>
-        <input type="Password" name="Password" placeholder="Password" required="required"/>
+
+        <input type="text" name="Username" id="Username" placeholder="Username" required="required"/><br/><br />
+        <input type="Password" name="Password" placeholder="Password" required="required"/><br/><br />
         <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
     </form>
 </div>
 
 </body>
 </html>
-

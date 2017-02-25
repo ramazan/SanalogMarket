@@ -15,10 +15,14 @@ namespace SanalogMarket.Controllers
         public ActionResult Index()
         {
 //          Bir sonraki adımımız aşağıdaki gibi sadece onaylanmış olan ürünleri göstermek olacak.
-          var product = db.Codes.Where(p => p.IsValid == 1).ToList();
+          var productCode = db.Codes.Where(p => p.IsValid == 1).ToList();
+          var productTheme = db.Themes.Where(p => p.IsValid == 1).ToList();
+
 
 //            var product = db.Codes.ToList();
-            ViewBag.TProduct = product;
+            ViewBag.TProduct = productCode;
+            ViewBag.TProductTheme = productTheme;
+
             return View();
         }
 
@@ -28,5 +32,15 @@ namespace SanalogMarket.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult SellProduct()
+        {
+            if (Session["UserId"] == null)
+                return RedirectToAction("Login", "User");
+
+
+            return View();
+        }
+
     }
 }

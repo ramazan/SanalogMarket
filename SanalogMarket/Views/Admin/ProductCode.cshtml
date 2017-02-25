@@ -5,79 +5,102 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-@*        <th>*@
-@*            @Html.DisplayNameFor(model => model.Icon)*@
-@*        </th>*@
-@*        <th>*@
-@*            @Html.DisplayNameFor(model => model.Screenshot)*@
-@*        </th>*@
-@*        <th>*@
-@*            @Html.DisplayNameFor(model => model.Filepath)*@
-@*        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            Price
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreateDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SubCategory)
-        </th>
-        <th>
-            Aktif mi?
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-@*        <td>*@
-@*            @Html.DisplayFor(modelItem => item.Icon)*@
-@*        </td>*@
-@*        <td>*@
-@*            <a href="@Html.DisplayFor(modelItem => item.Screenshot)" target="_blank">tıkla</a> *@
-@*        </td>*@
-@*        <td>*@
-@*            @Html.DisplayFor(modelItem => item.Filepath)*@
-@*        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreateDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SubCategory)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsValid)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "ProductCodeEdit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "ProductCodeDetails", new { id=item.ID }) |
-@*            @Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
-        </td>
-    </tr>
+@if (Model.Count() == 0)
+{
+    <div style="margin-top: 30px;" class="alert alert-info" role="alert">
+        <h3 class="alert-heading" style="text-align: center">Onay bekleyen ürün yok!</h3><br />
+    </div>
 }
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            @*        <th>*@
+            @*            @Html.DisplayNameFor(model => model.Icon)*@
+            @*        </th>*@
+            @*        <th>*@
+            @*            @Html.DisplayNameFor(model => model.Screenshot)*@
+            @*        </th>*@
+            @*        <th>*@
+            @*            @Html.DisplayNameFor(model => model.Filepath)*@
+            @*        </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubCategory)
+            </th>
+            <th>
+                Aktif mi?
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                @*        <td>*@
+                @*            @Html.DisplayFor(modelItem => item.Icon)*@
+                @*        </td>*@
+                @*        <td>*@
+                @*            <a href="@Html.DisplayFor(modelItem => item.Screenshot)" target="_blank">tıkla</a> *@
+                @*        </td>*@
+                @*        <td>*@
+                @*            @Html.DisplayFor(modelItem => item.Filepath)*@
+                @*        </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubCategory)
+                </td>
+                <td>
+                    @{
+            string a = Html.DisplayFor(modelItem => item.IsValid).ToString();
+
+            if (a == "1")
+            {
+                a = "Yayında";
+            }
+            else
+            {
+                a = "Yayında değil";
+            }
+            @a
+                    }
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "ProductCodeEdit", new { id = item.ID }, new { @class = "btn-sm btn-info" }) |
+                    @Html.ActionLink("Details", "ProductCodeDetails", new { id = item.ID }, new { @class = "btn-sm btn-success" }) |
+                    @*            @Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
+                </td>
+            </tr>
+        }
+
+    </table>
+}

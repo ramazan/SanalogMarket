@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.Mvc;
 using SanalogMarket.Models;
 
@@ -20,6 +21,7 @@ namespace SanalogMarket.Controllers
         public static string browser;
         public static int gelenID;
         public List<string> fileList;
+        List<String> Filess = new List<String>();
         // GET: ProductCode
         public ActionResult Index()
         {
@@ -59,8 +61,7 @@ namespace SanalogMarket.Controllers
         }
 
         [HttpPost]
-        public ActionResult New(ProductCode gelenCode, HttpPostedFileBase file, Dosyalar upFile,
-            HttpPostedFileBase fileproject, HttpPostedFileBase fileIcon, string category, string subcategory, string Gender, Boolean imza)
+        public ActionResult New(ProductCode gelenCode,  Dosyalar upFile,string category, string subcategory, string Gender, Boolean imza)
         {
             if (ModelState.IsValid && imza)
             {
@@ -72,76 +73,28 @@ namespace SanalogMarket.Controllers
                         
                        var upload = Path.Combine(Server.MapPath("/Project_File/"), filename);
                         i.SaveAs(upload);
-                       fileList.Add(filename);
+                        string path = HostingEnvironment.MapPath("~/Project_File/");
+                        System.Diagnostics.Debug.WriteLine(path);
+                        if (Directory.Exists(path))
+                        {
+                            DirectoryInfo di = new DirectoryInfo(path);
+                            foreach (FileInfo fi in di.GetFiles())
+                            {
+                                Filess.Add(fi.Name);
+                                System.Diagnostics.Debug.WriteLine(fi.Name);
+                            }
+
+                        }
+                        //fileList.Add(filename);
                     }
                 }
 
-                ViewBag.Dosyalar = fileList;
+                
+              
 
-                if (file != null)
+                ViewBag.Dosyalar = Filess;
 
-                {
-                    if (file.ContentLength > 10240 * 100)
-                    {
-                        ModelState.AddModelError("photo", "The size of the file should not 2 MB");
-                        ViewBag.FotoError = "The size of the file should not exceed  2 MB";
-                        return View();
-                    }
-                    var supportedTypes = new[] { "jpg", "jpeg", "png" };
-                    var fileExt = System.IO.Path.GetExtension(file.FileName).Substring(1);
-                    if (!supportedTypes.Contains(fileExt))
-                    {
-                        ModelState.AddModelError("photo",
-                            "Invalid type. Only the following types (jpg, jpeg, png) are supported.");
-                        return View();
-                    }
-                    // extract only the filename
-                    FileInfo dosya = new FileInfo(file.FileName);
-                    // extract only the filename
-                    var fileName = Path.GetFileName(file.FileName);
-                    var path = Server.MapPath("/Screenshots/" + dosya.Name);
-                    file.SaveAs(path);
-                    var yol = "/Screenshots/" + dosya.Name;
-                    @ViewBag.Screen = yol;
-                    gelenCode.Screenshot = yol;
-                }
-//                else
-//                {
-//                    @ViewBag.Screenshot = "Lutfen dosya yukleyinizz.";
-//                    return View();
-//                }
-                if (fileproject != null)
-                {
-                    FileInfo dosya = new FileInfo(fileproject.FileName);
-                    // extract only the filename
-                    var fileName = Path.GetFileName(fileproject.FileName);
-                    var path = Server.MapPath("/Project_File/" + dosya.Name);
-                    fileproject.SaveAs(path);
-                    var yol = "/Project_File/" + dosya.Name;
-                    @ViewBag.imageProject = yol;
-                    gelenCode.Filepath = yol;
-                }
-//                else
-//                {
-//                    @ViewBag.filepath = "Lutfen dosya yukleyinizz.";
-//                    return View();
-//                }
-                if (fileIcon != null)
-                {
-                    FileInfo dosya = new FileInfo(fileIcon.FileName);
-                    // extract only the filename
-                    var fileName = Path.GetFileName(fileIcon.FileName);
-                    var path = Server.MapPath("/Project_Icon/" + dosya.Name);
-                    fileIcon.SaveAs(path);
-                    var yol = "/Project_Icon/" + dosya.Name;
-                    @ViewBag.imageIcon = yol;
-                    gelenCode.Icon = yol;
-                }
-//                else
-//                {
-//                    @ViewBag.icon = "Lutfen dosya yukleyinizz.";
-//                    return View();
-//                }
+              
 
                 gelenCode.CreateDate = DateTime.Now;
                 gelenCode.Category = category;

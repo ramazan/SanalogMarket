@@ -138,6 +138,7 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\DbBaglantisi.cs" />
+    <Compile Include="Models\Dosyalar.cs" />
     <Compile Include="Models\ProductCode.cs" />
     <Compile Include="Models\SubCategory.cs" />
     <Compile Include="Models\Theme\ProductTheme.cs" />
@@ -147,12 +148,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="Content\HomeProduct.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Project_Icon\350x260.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -164,6 +171,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="ThemeFiles\Project_File\user.png" />
     <Content Include="ThemeFiles\Project_Icon\user %281%29.png" />
     <Content Include="ThemeFiles\Screenshots\user %282%29.png" />
@@ -196,9 +206,18 @@
     <Content Include="Views\Admin\RegisterUser.cshtml" />
     <Content Include="Views\ProductCode\Details.cshtml" />
     <Content Include="Views\ProductCode\New.cshtml" />
+    <Content Include="Views\Admin\ProductCode.cshtml" />
+    <Content Include="Views\ProductCode\Success.cshtml" />
+    <Content Include="Views\Admin\ProductCodeDetails.cshtml" />
+    <Content Include="Views\Admin\ProductCodeEdit.cshtml" />
+    <Content Include="Views\Admin\ProductCodeApproved.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\Admin\Category.cshtml" />
     <Content Include="Views\ProductTheme\Create.cshtml" />
     <Content Include="Views\ProductTheme\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\ProductTheme\Details.cshtml" />
+    <Content Include="Views\Home\SellProduct.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

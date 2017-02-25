@@ -91,8 +91,6 @@
     </dl>
 </div>
 <p>
-    <button class="btn btn-success">@Html.ActionLink("Edit", "ProductCodeEdit", new { id = Model.ID })</button>
-
-    
-    <button class="btn btn-info">@Html.ActionLink("Back to List", "ProductCode")</button>
+    @Html.ActionLink("Edit", "ProductCodeEdit", new {id = Model.ID}, new {@class = "btn btn-success"})
+    @Html.ActionLink("Back to List", "ProductCode", new {},new {@class = "btn btn-warning" })
 </p>

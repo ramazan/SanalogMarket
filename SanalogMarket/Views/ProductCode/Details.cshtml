@@ -12,12 +12,6 @@
     <title>Details</title>
 </head>
 <body>
-<div>
-    <h4>ProductCode</h4>
-    <hr/>   
-
-</div>
-
 <div class="container">
     <div class="jumbotron">
         <h2>@Html.DisplayFor(model => model.Title) Mobile Application </h2>
@@ -88,11 +82,10 @@
                 </div>
                 <hr>
                 <div class="row">
-                    <p>
-                        <a class="btn btn-warning btn-block" href="#" title="Buy">ADD TO CART</a>
-                    </p>
-                    <p>
-                        <a class="btn btn-primary btn-block" href="#" title="Buy">BUY NOW!</a>
+                    <p style="text-align: center">
+                        <a class="btn btn-warning " href="#" title="Buy">ADD TO CART</a>
+
+                        <a class="btn btn-primary " href="#" title="Buy">BUY NOW!</a>
                     </p>
                 </div>
             </div>
@@ -184,7 +177,7 @@
         <h3>User Comments </h3>
     </div><!-- /col-sm-12 -->
 </div><!-- /row -->
-@using (Html.BeginForm("AddComment", "ProductTheme", FormMethod.Post)) { 
+@using (Html.BeginForm("AddComment", "ProductCode", FormMethod.Post)) { 
     if (Model.Comment.ToList().Count != 0)
     {
         foreach (var item in Model.Comments.ToList())
