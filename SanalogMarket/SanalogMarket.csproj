@@ -206,11 +206,11 @@
     <Content Include="Views\Admin\RegisterUser.cshtml" />
     <Content Include="Views\ProductCode\Details.cshtml" />
     <Content Include="Views\ProductCode\New.cshtml" />
-    <Content Include="Views\Admin\ProductCode.cshtml" />
+    <Content Include="Views\Admin\ProductWaiting.cshtml" />
     <Content Include="Views\ProductCode\Success.cshtml" />
     <Content Include="Views\Admin\ProductCodeDetails.cshtml" />
     <Content Include="Views\Admin\ProductCodeEdit.cshtml" />
-    <Content Include="Views\Admin\ProductCodeApproved.cshtml" />
+    <Content Include="Views\Admin\ProductApproved.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\Admin\Category.cshtml" />
     <Content Include="Views\ProductTheme\Create.cshtml" />
@@ -218,6 +218,9 @@
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\ProductTheme\Details.cshtml" />
     <Content Include="Views\Home\SellProduct.cshtml" />
+    <Content Include="Views\Admin\ProductThemeDetails.cshtml" />
+    <Content Include="Views\Admin\ProductThemeEdit.cshtml" />
+    <Content Include="Views\Admin\ProductRejected.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

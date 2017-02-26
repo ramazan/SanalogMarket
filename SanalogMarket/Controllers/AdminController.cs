@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using SanalogMarket.Models;
+using SanalogMarket.Models.Theme;
 
 namespace SanalogMarket.Controllers
 {
@@ -231,25 +232,30 @@ namespace SanalogMarket.Controllers
         }
 
 
-        public ActionResult ProductCode()
+        public ActionResult ProductWaiting()
         {
             if (Session["AdminId"] == null)
                 return RedirectToAction("Login");
 
 
-            var product = dbBaglantisi.Codes.Where(p => p.IsValid == 0).ToList();
+            var productCode = dbBaglantisi.Codes.Where(p => p.IsValid == 0).ToList();
 
-            return View(product);
+            ViewBag.productTheme = dbBaglantisi.Themes.Where(p => p.IsValid == 0).ToList();
+
+            
+            return View(productCode);
         }
 
 
-        public ActionResult ProductCodeApproved()
+        public ActionResult ProductApproved()
         {
             if (Session["AdminId"] == null)
                 return RedirectToAction("Login");
 
 
             var product = dbBaglantisi.Codes.Where(p => p.IsValid == 1).ToList();
+
+            ViewBag.productTheme = dbBaglantisi.Themes.Where(p => p.IsValid == 1).ToList();
 
             return View(product);
         }
@@ -309,7 +315,7 @@ namespace SanalogMarket.Controllers
                     product.IsValid = 0;
 
                 }
-                //                product.IsValid = editedProductCode.IsValid;
+                //                product.IsValid = editedProductTheme.IsValid;
                 product.Price = editedProductCode.Price;
 
                 dbBaglantisi.SaveChanges();
@@ -324,6 +330,85 @@ namespace SanalogMarket.Controllers
             ViewBag.Succes = "Düzenleme başarılı";
             return View();
         }
+
+
+        public ActionResult ProductThemeDetails(int? id)
+        {
+            if (Session["AdminId"] == null)
+                return RedirectToAction("Login");
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var product = dbBaglantisi.Themes.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
+        }
+
+
+        public ActionResult ProductThemeEdit(int? id)
+        {
+            if (Session["AdminId"] == null)
+                return RedirectToAction("Login");
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var product = dbBaglantisi.Themes.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewData["CheckState"] = product.IsValid;
+
+            return View(product);
+        }
+
+        [HttpPost]
+        public ActionResult ProductThemeEdit(ProductTheme editedProductTheme, bool IsValid)
+        {
+            try
+            {
+                ProductTheme product = dbBaglantisi.Themes.Find(editedProductTheme.ID);
+
+                if (IsValid == true)
+                {
+                    product.IsValid = 1;
+                }
+                else
+                {
+                    product.IsValid = 0;
+
+                }
+                //                product.IsValid = editedProductTheme.IsValid;
+                product.Price = editedProductTheme.Price;
+
+                dbBaglantisi.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError("", "Bi hata oldu kardeş :(");
+                Console.WriteLine(e);
+                throw;
+            }
+
+            ViewBag.Succes = "Düzenleme başarılı";
+            return View();
+        }
+
+        public ActionResult ProductRejected()
+        {
+            var productCode = dbBaglantisi.Codes.Where(p => p.IsValid == 3).ToList();
+            ViewBag.productTheme = dbBaglantisi.Themes.Where(p => p.IsValid == 3).ToList();
+            return View(productCode);
+        }
+
 
         public ActionResult Category()
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -32,10 +33,13 @@ namespace SanalogMarket.Models.Theme
         public string CompatibleWith { get; set; }
         public int IsValid { get; set; }
         public Boolean Support { get; set; }
-      /*  [DataType(DataType.DateTime)]
-        public DateTime CreationDate { get; set; }
-        [DataType(DataType.DateTime)]
+
+        [DisplayName("Creating Date")]
+        public DateTime CreateDate { get; set; }
+
+        /*[DataType(DataType.DateTime)]
         public DateTime UpdateDate { get; set; }*/
+
         public virtual User User { get; set; }
 
         public string imza { get; set; }
@@ -44,11 +48,8 @@ namespace SanalogMarket.Models.Theme
 
         public virtual List<Comment> Comments { get; set; }
         public string Comment { get; set; }
-        public  string Columns { get; set; }
-        public  string Layout { get; set; }
-        public  string DemoURL { get; set; }
-
-
+        public string Columns { get; set; }
+        public string Layout { get; set; }
+        public string DemoURL { get; set; }
     }
-
 }

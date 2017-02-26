@@ -1,0 +1,263 @@
+﻿@using SanalogMarket.Models.Theme
+@model IEnumerable<SanalogMarket.Models.ProductCode>
+
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@{
+    List<ProductTheme> lt = (List<ProductTheme>)ViewBag.productTheme;
+}
+
+@if (Model.Count() == 0 && lt.Count == 0)
+{
+    <div style="margin-top: 30px;" class="alert alert-warning" role="alert">
+        <h3 class="alert-heading" style="text-align: center">Yayında ürün yok!</h3><br/>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Yayındaki Ürünler</h3>
+
+                    <div class="box-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover">
+                        <tbody>
+                        <tr>
+                            <th>Title</th>
+                            <th>Date</th>
+                            <th>Price</th>
+                            <th>Category</th>
+                            <th>Status</th>
+                            <th>User</th>
+
+                            <th>##</th>
+                        </tr>
+                        
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Title)
+                                </td>
+
+                                @*        <td>*@
+                                @*            @Html.DisplayFor(modelItem => item.Icon)*@
+                                @*        </td>*@
+                                @*        <td>*@
+                                @*            <a href="@Html.DisplayFor(modelItem => item.Screenshot)" target="_blank">tıkla</a> *@
+                                @*        </td>*@
+                                @*        <td>*@
+                                @*            @Html.DisplayFor(modelItem => item.Filepath)*@
+                                @*        </td>*@
+                                @*        <td>*@
+                                @*            @Html.DisplayFor(modelItem => item.Description)*@
+                                @*        </td>*@
+       
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CreateDate)
+                                </td>
+       
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Price)$
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Category)
+                                </td>
+                                <td>
+                                   <span class="label label-success">Yayında</span>
+                                </td>
+        
+                                <td>@Html.DisplayFor(modelItem => item.User.Name)</td>
+
+
+        
+                                @*        <td>*@
+                                @*            @Html.DisplayFor(modelItem => item.SubCategory)*@
+                                @*        </td>*@
+        
+                                <td>
+                                    @Html.ActionLink("Edit", "ProductCodeEdit", new { id = item.ID }, new { @class = "btn-sm btn-info" }) |
+                                    @Html.ActionLink("Details", "ProductCodeDetails", new { id = item.ID }, new { @class = "btn-sm btn-success" }) |
+                                    @*            @Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
+                                </td>
+                            </tr>
+                        }
+                        
+
+                        @*                    <tr>*@
+                        @*                            <td>183</td>*@
+                        @*                            <td>John Doe</td>*@
+                        @*                            <td>11-7-2014</td>*@
+                        @*                            <td><span class="label label-success">Approved</span></td>*@
+                        @*                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>*@
+                        @*                        </tr>*@
+                        @*                        <tr>*@
+                        @*                            <td>219</td>*@
+                        @*                            <td>Alexander Pierce</td>*@
+                        @*                            <td>11-7-2014</td>*@
+                        @*                            <td><span class="label label-warning">Pending</span></td>*@
+                        @*                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>*@
+                        @*                        </tr>*@
+                        @*                        <tr>*@
+                        @*                            <td>657</td>*@
+                        @*                            <td>Bob Doe</td>*@
+                        @*                            <td>11-7-2014</td>*@
+                        @*                            <td><span class="label label-primary">Approved</span></td>*@
+                        @*                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>*@
+                        @*                        </tr>*@
+                        @*                        <tr>*@
+                        @*                            <td>175</td>*@
+                        @*                            <td>Mike Doe</td>*@
+                        @*                            <td>11-7-2014</td>*@
+                        @*                            <td><span class="label label-danger">Denied</span></td>*@
+                        @*                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>*@
+                        @*                        </tr>*@
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+
+    
+     <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Onay Bekleyen Tema Ürünler</h3>
+
+                    <div class="box-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover">
+                        <tbody>
+                        <tr>
+                            <th>Title</th>
+                            <th>Date</th>
+                            <th>Price</th>
+                            <th>Category</th>
+                            <th>Status</th>
+                            <th>User</th>
+
+                            <th>##</th>
+                        </tr>
+
+                        @foreach (var item in lt)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Title)
+                                </td>
+
+                                @*        <td>*@
+                                @*            @Html.DisplayFor(modelItem => item.Icon)*@
+                                @*        </td>*@
+                                @*        <td>*@
+                                @*            <a href="@Html.DisplayFor(modelItem => item.Screenshot)" target="_blank">tıkla</a> *@
+                                @*        </td>*@
+                                @*        <td>*@
+                                @*            @Html.DisplayFor(modelItem => item.Filepath)*@
+                                @*        </td>*@
+                                @*        <td>*@
+                                @*            @Html.DisplayFor(modelItem => item.Description)*@
+                                @*        </td>*@
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CompatibleBrowsers)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Price)$
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Category)
+                                </td>
+                                <td>
+                                   <span class="label label-success">Yayında</span>
+                                </td>
+
+                                <td>@Html.DisplayFor(modelItem => item.User.Name)</td>
+
+
+                                @*        <td>*@
+                                @*            @Html.DisplayFor(modelItem => item.SubCategory)*@
+                                @*        </td>*@
+
+                                <td>
+                                    @Html.ActionLink("Edit", "ProductThemeEdit", new {id = item.ID}, new {@class = "btn-sm btn-info"}) |
+                                    @Html.ActionLink("Details", "ProductThemeDetails", new {id = item.ID}, new {@class = "btn-sm btn-success"}) |
+                                    @*            @Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
+                                </td>
+                            </tr>
+                        }
+                        @*                    <tr>*@
+                        @*                            <td>183</td>*@
+                        @*                            <td>John Doe</td>*@
+                        @*                            <td>11-7-2014</td>*@
+                        @*                            <td><span class="label label-success">Approved</span></td>*@
+                        @*                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>*@
+                        @*                        </tr>*@
+                        @*                        <tr>*@
+                        @*                            <td>219</td>*@
+                        @*                            <td>Alexander Pierce</td>*@
+                        @*                            <td>11-7-2014</td>*@
+                        @*                            <td><span class="label label-warning">Pending</span></td>*@
+                        @*                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>*@
+                        @*                        </tr>*@
+                        @*                        <tr>*@
+                        @*                            <td>657</td>*@
+                        @*                            <td>Bob Doe</td>*@
+                        @*                            <td>11-7-2014</td>*@
+                        @*                            <td><span class="label label-primary">Approved</span></td>*@
+                        @*                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>*@
+                        @*                        </tr>*@
+                        @*                        <tr>*@
+                        @*                            <td>175</td>*@
+                        @*                            <td>Mike Doe</td>*@
+                        @*                            <td>11-7-2014</td>*@
+                        @*                            <td><span class="label label-danger">Denied</span></td>*@
+                        @*                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>*@
+                        @*                        </tr>*@
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+    
+}
+
+

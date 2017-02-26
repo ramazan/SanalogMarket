@@ -275,11 +275,6 @@ namespace SanalogMarket
                     }
 
 
-                    
-
-
-
-
                     User usr = new User
                     {
                         Name = "İsmail Reşat",
@@ -382,14 +377,13 @@ namespace SanalogMarket
                     };
 
 
-
                     ProductTheme productTheme = new ProductTheme
                     {
                         Title = "Bootstrap Theme",
                         Screenshot = "/Project_Icon/350x260.png",
                         Description = "This field is used for search",
                         Price = 13,
-//                        CreateDate = DateTime.Now,
+                        CreateDate = DateTime.Now,
 //                        HighResolution = "yes",
                         imza = "True",
                         CompatibleWith = "AngularJs,ReactJS",
@@ -408,7 +402,7 @@ namespace SanalogMarket
                         Screenshot = "/Project_Icon/350x260.png",
                         Description = "This field is used for search",
                         Price = 13,
-                        //                        CreateDate = DateTime.Now,
+                        CreateDate = DateTime.Now,
                         //                        HighResolution = "yes",
                         imza = "True",
                         CompatibleWith = "AngularJs,ReactJS",
@@ -421,12 +415,12 @@ namespace SanalogMarket
                         User = usr
                     };
 
-                   
+
                     db.Admins.Add(admin);
                     db.Admins.Add(editor);
                     db.Users.Add(usr);
                     db.Codes.Add(productCode);
-                    db.Codes.Add(productCode2); 
+                    db.Codes.Add(productCode2);
                     db.Codes.Add(productCode3);
                     db.Themes.Add(productTheme);
                     db.Themes.Add(productTheme2);

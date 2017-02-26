@@ -1,5 +1,5 @@
 ﻿@using System.Web.UI.WebControls
-@model SanalogMarket.Models.ProductCode
+@model SanalogMarket.Models.Theme.ProductTheme
 
 @{
     ViewBag.Title = "Product Details";
@@ -91,6 +91,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "ProductCodeEdit", new {id = Model.ID}, new {@class = "btn btn-success"})
-    @Html.ActionLink("Back to List", "ProductWaiting", new {},new {@class = "btn btn-warning" })
+    @Html.ActionLink("Edit", "ProductCodeEdit", new { id = Model.ID }, new { @class = "btn btn-success" })
+    @Html.ActionLink("Back to List", "ProductWaiting", new { }, new { @class = "btn btn-warning" })
 </p>
