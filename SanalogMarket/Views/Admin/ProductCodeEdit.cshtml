@@ -93,11 +93,35 @@
             <div class="col-md-10">
                 @if (Convert.ToInt32(ViewData["CheckState"]) == 1)
                 {
-                    @Html.CheckBox("IsValid", true)
+@*                    @Html.CheckBox("IsValid", true)*@
+
+                     <label for="Isvalid">
+                        Accept<br />
+                         <input type="radio" name="IsValid" id="Isvalid" value="Accept" checked=""/>
+                    </label><br/>
+                    <label for="IsValid">
+                        Reject<br />
+                        <input type="radio" name="IsValid" id="IsValid" value="Reject" />
+                    </label>
                 }
-                else
+                else if (Convert.ToInt32(ViewData["CheckState"]) == 0)
                 {
-                    @Html.CheckBox("IsValid", false)
+@*                    @Html.CheckBox("IsValid", false)*@
+                    
+                     <label for="Isvalid">
+                        Onay Bekliyor 
+                        <input type="radio" name="IsValid" id="Isvalid" value="Approve" checked="" />
+                    </label>
+                    <br/>
+                    <label for="Isvalid">
+                        Accept 
+                        <input type="radio" name="IsValid" id="Isvalid" value="Accept" />
+                    </label><br/>
+                    <label for="IsValid">
+                        Reject 
+                        <input type="radio" name="IsValid" id="IsValid" value="Reject"/>
+                    </label>
+                    
                 }
                 @*                @Html.EditorFor(model => model.IsValid)*@
                 @*                @Html.ValidationMessageFor(model => model.IsValid)*@

@@ -300,19 +300,23 @@ namespace SanalogMarket.Controllers
         }
 
         [HttpPost]
-        public ActionResult ProductCodeEdit(ProductCode editedProductCode, bool IsValid)
+        public ActionResult ProductCodeEdit(ProductCode editedProductCode, string IsValid)
         {
             try
             {
                 ProductCode product = dbBaglantisi.Codes.Find(editedProductCode.ID);
 
-                if (IsValid == true)
+                if (IsValid == "Accept")
                 {
                     product.IsValid = 1;
                 }
-                else
+                else if (IsValid == "Approve")
                 {
                     product.IsValid = 0;
+                }
+                else
+                {   //Product Rejected!
+                    product.IsValid = 2;
 
                 }
                 //                product.IsValid = editedProductTheme.IsValid;
@@ -371,19 +375,23 @@ namespace SanalogMarket.Controllers
         }
 
         [HttpPost]
-        public ActionResult ProductThemeEdit(ProductTheme editedProductTheme, bool IsValid)
+        public ActionResult ProductThemeEdit(ProductTheme editedProductTheme, string IsValid)
         {
             try
             {
                 ProductTheme product = dbBaglantisi.Themes.Find(editedProductTheme.ID);
 
-                if (IsValid == true)
+                if (IsValid == "Accept")
                 {
                     product.IsValid = 1;
                 }
-                else
+                else if (IsValid == "Approve")
                 {
                     product.IsValid = 0;
+                }
+                else
+                {   //Product Rejected!
+                    product.IsValid = 2;
 
                 }
                 //                product.IsValid = editedProductTheme.IsValid;
@@ -404,8 +412,8 @@ namespace SanalogMarket.Controllers
 
         public ActionResult ProductRejected()
         {
-            var productCode = dbBaglantisi.Codes.Where(p => p.IsValid == 3).ToList();
-            ViewBag.productTheme = dbBaglantisi.Themes.Where(p => p.IsValid == 3).ToList();
+            var productCode = dbBaglantisi.Codes.Where(p => p.IsValid == 2).ToList();
+            ViewBag.productTheme = dbBaglantisi.Themes.Where(p => p.IsValid == 2).ToList();
             return View(productCode);
         }
 
