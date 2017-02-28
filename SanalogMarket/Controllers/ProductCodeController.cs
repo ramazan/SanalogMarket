@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
+using jQuery_File_Upload.MVC5.Helpers;
 using SanalogMarket.Models;
 
 
@@ -22,7 +23,22 @@ namespace SanalogMarket.Controllers
         public static int gelenID;
         public List<string> fileList;
         List<String> Filess = new List<String>();
-        // GET: ProductCode
+        public static  List<String> file_name = new List<String>();
+        FilesHelper filesHelper;
+        String tempPath = "~/somefiles/";
+        String serverMapPath = "~/Project_File/somefiles/";
+        private string StorageRoot
+        {
+            get { return Path.Combine(HostingEnvironment.MapPath(serverMapPath)); }
+        }
+        private string UrlBase = "/Project_File/somefiles/";
+        String DeleteURL = "/ProductCode/DeleteFile/?file=";
+        String DeleteType = "GET";
+        public ProductCodeController()
+        {
+            filesHelper = new FilesHelper(DeleteURL, DeleteType, StorageRoot, UrlBase, tempPath, serverMapPath);
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -231,7 +247,53 @@ namespace SanalogMarket.Controllers
             }
             return fileinculeded;
         }
+        [HttpPost]
+        public JsonResult Upload()
+        {
+            var resultList = new List<ViewDataUploadFilesResult>();
+            
+            var CurrentContext = HttpContext;
+            var httpRequest = CurrentContext.Request;
+            foreach (String inputTagName in httpRequest.Files)
+            {
 
-       
+                var headers = httpRequest.Headers;
+
+                var file = httpRequest.Files[inputTagName];
+                file_name.Add(file.FileName);
+            }
+            filesHelper.UploadAndShowResults(CurrentContext, resultList);
+            JsonFiles files = new JsonFiles(resultList);
+
+            bool isEmpty = !resultList.Any();
+            if (isEmpty)
+            {
+                return Json("Error ");
+            }
+            else
+            {
+                return Json(files);
+              
+            }
+          
+        }
+        public JsonResult GetFileList()
+        {
+            var list = filesHelper.FilesList();
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetFilename()
+        {
+           
+            return Json(file_name, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public JsonResult DeleteFile(string file)
+        {
+            filesHelper.DeleteFile(file);
+            return Json("OK", JsonRequestBehavior.AllowGet);
+        }
+
+
     }
 }
