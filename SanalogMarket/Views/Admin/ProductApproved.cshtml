@@ -44,8 +44,8 @@ else
                             <th>Price</th>
                             <th>Category</th>
                             <th>Status</th>
-                            <th>User</th>
-
+                            <th>Ürün Sahibi</th>
+                            <th>Son İşlem Yapan</th>
                             <th>##</th>
                         </tr>
                         
@@ -85,6 +85,9 @@ else
                                 </td>
         
                                 <td>@Html.DisplayFor(modelItem => item.User.Name)</td>
+
+                                <td>@Html.DisplayFor(modelItem => item.LastProcessAdmin.Name) @Html.DisplayFor(modelItem => item.LastProcessAdmin.Surname) </td>
+
 
 
         
@@ -168,7 +171,7 @@ else
                             <th>Category</th>
                             <th>Status</th>
                             <th>User</th>
-
+                            <th>Son İşlem Yapan</th>
                             <th>##</th>
                         </tr>
 
@@ -209,10 +212,8 @@ else
 
                                 <td>@Html.DisplayFor(modelItem => item.User.Name)</td>
 
+                                <td>@Html.DisplayFor(modelItem => item.LastProcessAdmin.Name) @Html.DisplayFor(modelItem => item.LastProcessAdmin.Surname) </td>
 
-                                @*        <td>*@
-                                @*            @Html.DisplayFor(modelItem => item.SubCategory)*@
-                                @*        </td>*@
 
                                 <td>
                                     @Html.ActionLink("Edit", "ProductThemeEdit", new {id = item.ID}, new {@class = "btn-sm btn-info"}) |

@@ -51,5 +51,8 @@ namespace SanalogMarket.Models.Theme
         public string Columns { get; set; }
         public string Layout { get; set; }
         public string DemoURL { get; set; }
+
+        public string RejectMessage { get; set; }
+        public virtual Admin LastProcessAdmin { get; set; }
     }
 }

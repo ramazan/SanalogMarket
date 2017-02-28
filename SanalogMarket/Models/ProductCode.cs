@@ -46,6 +46,9 @@ namespace SanalogMarket.Models
         public virtual List<Comment> Comments { get; set; }
         public string Tags { get; set; }
         public virtual User User { get; set; }
+
+        public string RejectMessage { get; set; }
+        public virtual Admin LastProcessAdmin { get; set; }
     }
 
   }

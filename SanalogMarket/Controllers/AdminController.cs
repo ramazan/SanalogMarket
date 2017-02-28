@@ -15,6 +15,8 @@ namespace SanalogMarket.Controllers
     public class AdminController : Controller
     {
         DbBaglantisi dbBaglantisi = new DbBaglantisi();
+
+        private static int AdminID;
         //
         // GET: /Admin/
         public ActionResult Index()
@@ -98,6 +100,7 @@ namespace SanalogMarket.Controllers
 
                     if (admn != null)
                     {
+                        AdminID = admn.Id;
                         Session["AdminId"] = admn.Id;
                         Session["AdminUserName"] = admn.Username;
                         Session["AdminName"] = admn.Name + " " + admn.Surname;
@@ -300,7 +303,7 @@ namespace SanalogMarket.Controllers
         }
 
         [HttpPost]
-        public ActionResult ProductCodeEdit(ProductCode editedProductCode, string IsValid)
+        public ActionResult ProductCodeEdit(ProductCode editedProductCode, string IsValid,string RejectMessage)
         {
             try
             {
@@ -309,14 +312,31 @@ namespace SanalogMarket.Controllers
                 if (IsValid == "Accept")
                 {
                     product.IsValid = 1;
+                    if (Session["AdminId"]!=null)
+                    {
+                        Admin lpa = dbBaglantisi.Admins.Single(p => p.Id == AdminID);
+                        product.LastProcessAdmin = lpa;
+                    }
+                   
                 }
                 else if (IsValid == "Approve")
                 {
+                    if (Session["AdminId"] != null)
+                    {
+                        Admin lpa = dbBaglantisi.Admins.Single(p => p.Id == AdminID);
+                        product.LastProcessAdmin = lpa;
+                    }
                     product.IsValid = 0;
                 }
                 else
                 {   //Product Rejected!
                     product.IsValid = 2;
+                    product.RejectMessage = RejectMessage;
+                    if (Session["AdminId"] != null)
+                    {
+                        Admin lpa = dbBaglantisi.Admins.Single(p => p.Id == AdminID);
+                        product.LastProcessAdmin = lpa;
+                    }
 
                 }
                 //                product.IsValid = editedProductTheme.IsValid;
@@ -375,7 +395,7 @@ namespace SanalogMarket.Controllers
         }
 
         [HttpPost]
-        public ActionResult ProductThemeEdit(ProductTheme editedProductTheme, string IsValid)
+        public ActionResult ProductThemeEdit(ProductTheme editedProductTheme, string IsValid, string RejectMessage)
         {
             try
             {
@@ -384,14 +404,30 @@ namespace SanalogMarket.Controllers
                 if (IsValid == "Accept")
                 {
                     product.IsValid = 1;
+                    if (Session["AdminId"] != null)
+                    {
+                        Admin lpa = dbBaglantisi.Admins.Single(p => p.Id == AdminID);
+                        product.LastProcessAdmin = lpa;
+                    }
                 }
                 else if (IsValid == "Approve")
                 {
                     product.IsValid = 0;
+                    if (Session["AdminId"] != null)
+                    {
+                        Admin lpa = dbBaglantisi.Admins.Single(p => p.Id == AdminID);
+                        product.LastProcessAdmin = lpa;
+                    }
                 }
                 else
                 {   //Product Rejected!
                     product.IsValid = 2;
+                    product.RejectMessage = RejectMessage;
+                    if (Session["AdminId"] != null)
+                    {
+                        Admin lpa = dbBaglantisi.Admins.Single(p => p.Id == AdminID);
+                        product.LastProcessAdmin = lpa;
+                    }
 
                 }
                 //                product.IsValid = editedProductTheme.IsValid;
@@ -412,6 +448,9 @@ namespace SanalogMarket.Controllers
 
         public ActionResult ProductRejected()
         {
+            if (Session["AdminId"] == null)
+                return RedirectToAction("Login");
+
             var productCode = dbBaglantisi.Codes.Where(p => p.IsValid == 2).ToList();
             ViewBag.productTheme = dbBaglantisi.Themes.Where(p => p.IsValid == 2).ToList();
             return View(productCode);
