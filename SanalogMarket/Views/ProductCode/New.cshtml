@@ -4,6 +4,7 @@
     ViewBag.Title = "New";
 }
 @Styles.Render("~/Content/multiple-select.css")
+@Styles.Render("~/Content/jQuery-File-Upload")
 
 @using (Html.BeginForm("New", "ProductCode", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -168,67 +169,7 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-lg-7">
-            <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
-                <h3 style="color: #454545; padding-left: 10px;">Files </h3>
-                <br />
-
-                <div class="form-horizontal" style="padding: 15px;">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Icon, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            <input name="files" id="files" type="file" multiple="multiple" />
-                            @Html.ValidationMessageFor(model => model.Icon, "", new { @class = "text-danger" })
-                            @ViewBag.icon
-                            <small>JPEG or PNG 80x80px Thumbnail</small>
-                        </div>
-                    </div>
-                    @*                            <div class="form-group">*@
-                    @*                                @Html.LabelFor(model => model.Screenshot, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                    @*                                <div class="col-md-10">*@
-                    @*                                    <input type="file" name="file" value="Publish Screenshot" />*@
-                    @*                                    @Html.ValidationMessageFor(model => model.Screenshot, "", new { @class = "text-danger" })*@
-                    @*                                    @ViewBag.FotoError*@
-                    @*                                    @ViewBag.Screenshot*@
-                    @*                                </div>*@
-                    @*                                <small>ZIP file of images (png/jpg) w/ optional text descriptions for display on the site</small>*@
-                    @*                            </div>*@
-                    @*                            <div class="form-group">*@
-                    @*                                @Html.LabelFor(model => model.Filepath, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                    @*                                <div class="col-md-10">*@
-                    @*                                    <input type="file" name="fileproject" value="Publish file" id="FileUpload1" />*@
-                    @*                                    @Html.ValidationMessageFor(model => model.Filepath, "", new { @class = "text-danger" })*@
-                    @*                                    @ViewBag.filepath*@
-                    @*                                </div>*@
-                    @*                                <small>ZIP - All files for buyers, not including preview images</small>*@
-                    @*                            </div>*@
-                </div>
-
-            </div>
-
-        </div>
-        <div class="col-lg-5">
-            <div class="panel panel-default" id="content-formatting">
-                <div class="panel-heading" style="background-color: #454545">
-                    <h5 style="color: #fdf5e6;  text-align: center; ">Corrupt Zip Files</h5>
-                </div>
-                <div style="padding-left: 10px; padding-right: 10px;">
-                    <br />
-                    <p>The following archive utilities have been found to generate non-standard zip files that our server is often unable to decompress:</p>
-                    <ul>
-                        <li>7zip</li>
-                        <li>lzarc</li>
-                        <li>WinZip (Latest version)</li>
-                    </ul>
-                    <p>Please use another archive utility to reduce the chance of problems with your uploads.</p>
-                    <br />
-                </div>
-
-
-            </div>
-        </div>
-    </div>
+   
     <div class="row">
         <div class="col-lg-7">
             <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
@@ -374,6 +315,7 @@
             </div>
 
         </div>
+     
 
     </div>
     <div class="row">
@@ -469,6 +411,9 @@
 
 
     </div>
+        
+
+
       
     </body>
 </html>
@@ -477,16 +422,181 @@
 
 }
 
+<form id="fileupload" method="POST" enctype="multipart/form-data" data-url="@Url.Action("Upload", "ProductCode")">
+    <div class="row">
+        <div class="col-lg-7">
+            <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
+                <div class="row fileupload-buttonbar">
+                    <div class="col-lg-5" style="padding-left: 35px; padding-top: 10px;">
+                        <!-- The fileinput-button span is used to style the file input field as button -->
+                        <span class="btn btn-warning fileinput-button">
+                            <i class="glyphicon glyphicon-plus"></i>
+                            <span>Choose File</span>
+                            <input type="file" name="files[]" multiple >
+                    </span>
+                    </div>
+               
+                </div>
+             
+
+                <!-- The table listing the files available for upload/download -->
+                <table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
+                
+                <div class="form-horizontal" style="padding: 15px;">
+
+                    <div class="form-group">
+                        @Html.Label("Thumbnail  ", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <select id="thumbnail" name="thumbnail" style="width: 350px;"></select>
+
+                            @Html.ValidationMessageFor(model => model.Icon, "", new { @class = "text-danger" })
+                           
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Screennshots ", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <select id="screenshot" name="screenshot" style="width: 350px;">
+                                @if (ViewBag.Liste != null)
+                                {
+                                    for (int i = 0; i < ViewBag.Liste.Count; i++)
+                                    {
+                                        <option value=@i>@ViewBag.Liste[i]</option>
+                                    }
+                                }
+                            </select>
+                            @Html.ValidationMessageFor(model => model.Screenshot, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Main File(s) ", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <select id="mainfiles" name="mainfiles" style="width: 350px;"></select>
+
+                            @Html.ValidationMessageFor(model => model.Filepath, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="panel panel-default" id="content-formatting">
+                <div class="panel-heading" style="background-color: #454545">
+                    <h5 style="color: #fdf5e6;  text-align: center; ">Corrupt Zip Files</h5>
+                </div>
+                <div style="padding-left: 10px; padding-right: 10px;">
+                    <br />
+                    <p>The following archive utilities have been found to generate non-standard zip files that our server is often unable to decompress:</p>
+                    <ul>
+                        <li>7zip</li>
+                        <li>lzarc</li>
+                        <li>WinZip (Latest version)</li>
+                    </ul>
+                    <p>Please use another archive utility to reduce the chance of problems with your uploads.</p>
+                    <br />
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</form>
+<br>
+<!-- The blueimp Gallery widget -->
+<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+</div>
+<!-- The template to display files available for upload -->
+<script id="template-upload" type="text/x-tmpl">
+    {% for (var i=0, file; file=o.files[i]; i++ ) { %}
+    <tr class="template-upload fade">
+
+        <td>
+            <p class="name">{%=file.name%}</p>
+            <strong class="error text-danger"></strong>
+        </td>
+        <td>
+            <p class="size">Processing...</p>
+            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
+        </td>
+        <td ">
+            {% if (!i && !o.options.autoUpload) { %}
+            <button class="btn btn-primary start" id="mundi" name="mundi" disabled >
+                <i class="glyphicon glyphicon-upload"></i>
+                <span>Upload</span>
+            </button>
+            {% } %}
+            {% if (!i) { %}
+            <button class="btn btn-warning cancel">
+                <i class="glyphicon glyphicon-ban-circle"></i>
+                <span>Cancel</span>
+            </button>
+            {% } %}
+        </td>
+    </tr>
+    {% } %}
+</script>
+<!-- The template to display files available for download -->
+<script id="template-download" type="text/x-tmpl">
+    {% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-download fade">
+
+        <td>
+            <p class="name">
+                {% if (file.url) { %}
+                <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>
+                {% } else { %}
+                <span>{%=file.name%}</span>
+                {% } %}
+            </p>
+            {% if (file.error) { %}
+            <div><span class="label label-danger">Error</span> {%=file.error%}</div>
+            {% } %}
+        </td>
+        <td>
+            <span class="size">{%=o.formatFileSize(file.size)%}</span>
+        </td>
+        <td>
+            {% if (file.deleteUrl) { %}
+            <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}" {% if (file.deletewithcredentials) { %} data-xhr-fields='{"withCredentials":true}' {% } %}>
+                <i class="glyphicon glyphicon-trash"></i>
+                <span>Delete</span>
+            </button>
+            <input type="checkbox" name="delete" value="1" class="toggle">
+            {% } else { %}
+            <button class="btn btn-warning cancel">
+                <i class="glyphicon glyphicon-ban-circle"></i>
+                <span>Cancel</span>
+            </button>
+            {% } %}
+        </td>
+    </tr>
+    {% } %}
+</script>
+
 
 
 @section scripts {
- 
+
     <script src="~/scripts/jquery-1.10.2.js"></script>
-    <script src="~/scripts/jquery.multi-select.js"></script>    
+    <script src="~/scripts/jquery.multi-select.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript">
+     
+       
+
         $(document)
-            .ready(function() {
+            .ready(function () {
+
+
                 // Get a list of categories and a list of products of the first category.
                 $.getJSON('/ProductCode/GetCategories',
                         null,
@@ -500,6 +610,8 @@
                                             this.Name +
                                             '</option>');
                                 });
+
+
                             $.getJSON('/ProductCode/GetProducts',
                                     { catName: $('#category').val() },
                                     function(data) {
@@ -544,9 +656,8 @@
                     });
 
 
-
                 $("#Version")
-                    .change(function () {
+                    .change(function() {
                         if (document.getElementById("Version").checked == true) {
 
                             document.getElementById("version").disabled = true;
@@ -557,7 +668,7 @@
                     });
 
                 $("#Browser")
-                    .change(function () {
+                    .change(function() {
                         if (document.getElementById("Browser").checked == true) {
 
                             document.getElementById("browser").disabled = true;
@@ -567,13 +678,14 @@
                         }
                     });
 
+
                 //JQery and Ajax with multiple select Dropdownlist.....and Post    /ProductCode/..
                 $("#imza")
-                    .change(function () {
+                    .change(function() {
                         if (document.getElementById("imza").checked == true) {
                             var selectedValues = [];
                             $("#version :selected")
-                                .each(function () {
+                                .each(function() {
                                     selectedValues.push($(this).text());
                                 });
 
@@ -583,7 +695,7 @@
                                 type: "POST",
                                 url: "/ProductCode/getVersion",
                                 data: postData,
-                                success: function (data) {
+                                success: function(data) {
 
                                 },
                                 dataType: "string",
@@ -591,10 +703,9 @@
                             });
 
 
-
                             var selectedValues2 = [];
                             $("#fileinculude :selected")
-                                .each(function () {
+                                .each(function() {
                                     selectedValues2.push($(this).text());
                                 });
                             console.log(selectedValues2 + "2");
@@ -603,7 +714,7 @@
                                 type: "POST",
                                 url: "/ProductCode/getFileInculeded",
                                 data: postData,
-                                success: function (data) {
+                                success: function(data) {
 
                                 },
                                 dataType: "string",
@@ -611,7 +722,7 @@
                             });
                             var selectedValues3 = [];
                             $("#browser :selected")
-                                .each(function () {
+                                .each(function() {
                                     selectedValues3.push($(this).text());
                                 });
                             console.log(selectedValues3 + "3");
@@ -620,7 +731,7 @@
                                 type: "POST",
                                 url: "/ProductCode/getBrowser",
                                 data: postData,
-                                success: function (data) {
+                                success: function(data) {
 
                                 },
                                 dataType: "string",
@@ -630,10 +741,27 @@
                     });
 
             });
-      
-    </script>
-    
 
+
+    </script>
+
+
+    <script>
+        var $form = null;
+        $(function() {
+
+            $form = $('#fileupload')
+                .fileupload({
+                    dataType: 'json'
+                });
+
+        });
+        $('#fileupload').addClass('fileupload-processing');
+
+
+    </script>
+
+    @Scripts.Render("~/bundles/jQuery-File-Upload")
 
 
 }

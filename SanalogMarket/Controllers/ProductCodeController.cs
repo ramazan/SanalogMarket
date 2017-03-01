@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
+using jQuery_File_Upload.MVC5.Helpers;
 using SanalogMarket.Models;
 
 
@@ -22,7 +24,28 @@ namespace SanalogMarket.Controllers
         public static int gelenID;
         public List<string> fileList;
         List<String> Filess = new List<String>();
-        // GET: ProductCode
+        public static  List<SelectOptions> file_namelist = new List<SelectOptions>();
+        FilesHelper filesHelper;
+        String tempPath = "~/somefiles/";
+        String serverMapPath = "~/Project_File/somefiles/";
+
+        public class SelectOptions
+        {
+            public String Text { get; set; }
+        }
+
+        private string StorageRoot
+        {
+            get { return Path.Combine(HostingEnvironment.MapPath(serverMapPath)); }
+        }
+        private string UrlBase = "/Project_File/somefiles/";
+        String DeleteURL = "/ProductCode/DeleteFile/?file=";
+        String DeleteType = "GET";
+        public ProductCodeController()
+        {
+            filesHelper = new FilesHelper(DeleteURL, DeleteType, StorageRoot, UrlBase, tempPath, serverMapPath);
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -231,7 +254,70 @@ namespace SanalogMarket.Controllers
             }
             return fileinculeded;
         }
+        [HttpPost]
+        public JsonResult Upload()
+        {
+            SelectOptions select=new SelectOptions();
+            var resultList = new List<ViewDataUploadFilesResult>();
+            
+            var CurrentContext = HttpContext;
+            var httpRequest = CurrentContext.Request;
+            foreach (String inputTagName in httpRequest.Files)
+            {
 
-       
+                var headers = httpRequest.Headers;
+
+                var file = httpRequest.Files[inputTagName];
+              
+                select.Text = file.FileName;
+
+                file_namelist.Add(select);
+
+            }
+            filesHelper.UploadAndShowResults(CurrentContext, resultList);
+            JsonFiles files = new JsonFiles(resultList);
+
+            bool isEmpty = !resultList.Any();
+            if (isEmpty)
+            {
+                return Json("Error ");
+            }
+            else
+            {
+                return Json(files);
+              
+            }
+            ViewBag.Liste = file_namelist;
+        }
+        public JsonResult GetFileList()
+        {
+            var list = filesHelper.FilesList();
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetFilename()
+        {
+           
+            return Json(file_namelist, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public JsonResult DeleteFile(string file)
+        {
+            SelectOptions select = new SelectOptions();
+            foreach (var item in file_namelist)
+            {
+                if (item.Text.Equals(file))
+                {
+                    file_namelist.Remove(item);
+                    break;
+                }
+            }
+            select.Text = file;
+           
+            filesHelper.DeleteFile(file);
+            
+            return Json("OK", JsonRequestBehavior.AllowGet);
+        }
+
+
     }
 }
