@@ -117,14 +117,14 @@ namespace SanalogMarket.Controllers
                     gelenCode.Icon = yol;
                 }
 
-
-
+                gelenCode.CreateDate=DateTime.Now;
+                gelenCode.UpdateDate=new DateTime(1996,01,21);
                 gelenCode.Category = category;
                 gelenCode.SubCategory = subcategory;
                 gelenCode.IsValid = 0;
                 gelenCode.Category = category;
                 gelenCode.SubCategory = subcategory;
-              // gelenCode.HighResolution = Gender;
+                gelenCode.HighResolution = Gender;
                 gelenCode.imza = imza.ToString();
                 gelenCode.CompatibleWith = compatiblewith;
                 gelenCode.FilesIncluded = fileinculeded;

@@ -37,8 +37,8 @@ namespace SanalogMarket.Models.Theme
         [DisplayName("Creating Date")]
         public DateTime CreateDate { get; set; }
 
-        /*[DataType(DataType.DateTime)]
-        public DateTime UpdateDate { get; set; }*/
+       [DataType(DataType.DateTime)]
+        public DateTime UpdateDate { get; set; }
 
         public virtual User User { get; set; }
 
@@ -51,7 +51,7 @@ namespace SanalogMarket.Models.Theme
         public string Columns { get; set; }
         public string Layout { get; set; }
         public string DemoURL { get; set; }
-
+        public string HighResolution { get; set; }
         public string RejectMessage { get; set; }
         public virtual Admin LastProcessAdmin { get; set; }
     }

@@ -19,429 +19,444 @@
 
 
     <div class="container">
-    <div class="jumbotron " style="background-color: #f5f5f5">
-        <h2 style="color: #454545 ">Upload an item to project </h2>
-        <h4 style="color: #454545 ">Upload file </h4>
-        <h3 style="color: #8b0000;text-align: center">@ViewBag.Imza</h3>
-        <h3 style="color: #8b0000;text-align: center">@ViewBag.Screenshot</h3>
-    </div>
-    <div class="row">
-        <div class="col-lg-7">
-            <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
-                <h4 style="color: #454545; text-align: center;">Hi! Before you upload to ThemeForest for the first time.</h4>
-                <br />
-                <h5 style="color: #8f919d; padding-left: 10px;">Here's a checklist to get you ready to upload:</h5>
-                <br />
-                <h5 style="color:#6e6e6f; padding-left: 10px;">1. Read the standards and requirements for the item(s) you want to sell on ThemeForest.</h5>
-                <h5 style="color:#6e6e6f; padding-left: 10px;">2. Make sure your files, supporting information and assets are all organised and ready for upload.</h5>
-                <h5 style="color:#6e6e6f; padding-left: 10px;">3.Follow our upload instructions to make sure it all goes smoothly.</h5>
-                <br />
-
-            </div>
-
+        <div class="jumbotron " style="background-color: #f5f5f5">
+            <h2 style="color: #454545 ">Upload an item to project </h2>
+            <h4 style="color: #454545 ">Upload file </h4>
+            <h3 style="color: #8b0000;text-align: center">@ViewBag.Imza</h3>
+            <h3 style="color: #8b0000;text-align: center">@ViewBag.Screenshot</h3>
         </div>
-        <div class="col-lg-5">
-            <div class="panel panel-default" id="content-formatting">
-                <div class="panel-heading" style="background-color: #454545">
-                    <h5 style="color: #fdf5e6;  text-align: center; ">Switch Upload Category</h5>
-                </div>
-                <div style="padding-left: 10px; padding-right: 10px;">
-                    <p>Need help selecting a category?</p>
-                    <ul>
-                        <li>A great way to start is by browsing through our categories to see what other authors are selling</li>
-
-                    </ul>
-
-                    <p>If you've done all that, you're ready to upload. Thanks for selling with Sanalog Market!</p>
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
+                    <h4 style="color: #454545; text-align: center;">Hi! Before you upload to ThemeForest for the first time.</h4>
+                    <br />
+                    <h5 style="color: #8f919d; padding-left: 10px;">Here's a checklist to get you ready to upload:</h5>
+                    <br />
+                    <h5 style="color:#6e6e6f; padding-left: 10px;">1. Read the standards and requirements for the item(s) you want to sell on ThemeForest.</h5>
+                    <h5 style="color:#6e6e6f; padding-left: 10px;">2. Make sure your files, supporting information and assets are all organised and ready for upload.</h5>
+                    <h5 style="color:#6e6e6f; padding-left: 10px;">3.Follow our upload instructions to make sure it all goes smoothly.</h5>
+                    <br />
 
                 </div>
 
-
             </div>
-        </div>
-    </div>
+            <div class="col-lg-5">
+                <div class="panel panel-default" id="content-formatting">
+                    <div class="panel-heading" style="background-color: #454545">
+                        <h5 style="color: #fdf5e6;  text-align: center; ">Switch Upload Category</h5>
+                    </div>
+                    <div style="padding-left: 10px; padding-right: 10px;">
+                        <p>Need help selecting a category?</p>
+                        <ul>
+                            <li>A great way to start is by browsing through our categories to see what other authors are selling</li>
 
-    <div class="row">
-        <div class="col-lg-7">
-            <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
-                <h3 style="color: #454545; padding-left: 10px;">Category & SubCategory </h3>
-                <br />
-                <div class="form-horizontal" style="padding: 15px;">
+                        </ul>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            <select id="category" name="category"></select>
-                            @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
-                            <small>  Please select the category of your project.</small>
-                        </div>
-
+                        <p>If you've done all that, you're ready to upload. Thanks for selling with Sanalog Market!</p>
 
                     </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.SubCategory, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            <select id="subcategory" name="subcategory"></select>
 
-                            @Html.ValidationMessageFor(model => model.SubCategory, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-        <div class="col-lg-5">
-            <div class="panel panel-default" id="content-formatting">
-                <div class="panel-heading" style="background-color: #454545">
-                    <h5 style="color: #fdf5e6;  text-align: center; ">Get your item accepted</h5>
-                </div>
-                <div style="padding-left: 10px; padding-right: 10px;">
-                    <p>To give your item the best chance possible to be accepted, please make sure you've:</p>
-                    <ul>
-                        <li>Read and follow the <a href="#">upload instructions</a>.</li>
-                        <li>Added useful tags and ensured they're spelled correctly (this helps buyers find your file).</li>
-                        <li>Added a thorough and useful item description (this also helps buyers find your file).</li>
-                    </ul>
-
-                    <p>If you've done all that, you're ready to upload. Thanks for selling with Sanalog Market!</p>
 
                 </div>
-
-
             </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col-lg-7">
-            <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
-                <h3 style="color: #454545; padding-left: 10px;">Name & Description </h3>
-                <br />
-                <div class="form-horizontal" style="padding: 15px;">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
+                    <h3 style="color: #454545; padding-left: 10px;">Category & SubCategory </h3>
+                    <br />
+                    <div class="form-horizontal" style="padding: 15px;">
 
-                            <small>Maximum 100 characters. No HTML allowed. Follow our </small>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-
-                            @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "resizer" }, cols = "150", rows = "8" })
-
-                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-                            <br />
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                <small style="padding-right: 10px;">
-                                    This field is used for search, so please be descriptive! If you're linking to external images, please mind the page load speed: use few, compress them and host them on a fast server or CDN.
-                                </small>
+                                <select id="category" name="category"></select>
+                                @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                                <small>  Please select the category of your project.</small>
+                            </div>
+
+
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SubCategory, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <select id="subcategory" name="subcategory"></select>
+
+                                @Html.ValidationMessageFor(model => model.SubCategory, "", new { @class = "text-danger" })
                             </div>
                         </div>
-
                     </div>
+
                 </div>
 
             </div>
+            <div class="col-lg-5">
+                <div class="panel panel-default" id="content-formatting">
+                    <div class="panel-heading" style="background-color: #454545">
+                        <h5 style="color: #fdf5e6;  text-align: center; ">Get your item accepted</h5>
+                    </div>
+                    <div style="padding-left: 10px; padding-right: 10px;">
+                        <p>To give your item the best chance possible to be accepted, please make sure you've:</p>
+                        <ul>
+                            <li>Read and follow the <a href="#">upload instructions</a>.</li>
+                            <li>Added useful tags and ensured they're spelled correctly (this helps buyers find your file).</li>
+                            <li>Added a thorough and useful item description (this also helps buyers find your file).</li>
+                        </ul>
 
-        </div>
-        <div class="col-lg-5">
-            <div class="panel panel-default" id="content-formatting">
-                <div class="panel-heading" style="background-color: #454545">
-                    <h5 style="color: #fdf5e6;  text-align: center; ">Trouble Uploading?</h5>
+                        <p>If you've done all that, you're ready to upload. Thanks for selling with Sanalog Market!</p>
+
+                    </div>
+
+
                 </div>
-                <div style="padding-left: 10px; padding-right: 10px;">
-                    <br />
-                    <p>
-                        Some users have experienced problems uploading. We've compiled a <a href="#">list of things to check first</a> which might be of help.
-                        We're always working on improving our uploading infrastructure - but if you continue to experience problems please contact support.
-                    </p>
-                    <br />
-                </div>
-
-
             </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col-lg-7">
-            <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
-                <h3 style="color: #454545; padding-left: 10px;">Files </h3>
-                <br />
-                <div class="form-horizontal" style="padding: 15px;">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Icon, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            <input type="file" name="fileIcon" value="Publish Project Icon" />
-                            @Html.ValidationMessageFor(model => model.Icon, "", new { @class = "text-danger" })
-                            @ViewBag.icon
-                            <small>JPEG or PNG 80x80px Thumbnail</small>
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
+                    <h3 style="color: #454545; padding-left: 10px;">Name & Description </h3>
+                    <br />
+                    <div class="form-horizontal" style="padding: 15px;">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+
+                                <small>Maximum 100 characters. No HTML allowed. Follow our </small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+
+                                @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "resizer" }, cols = "150", rows = "8" })
+
+                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                <br />
+                                <div class="col-md-10">
+                                    <small style="padding-right: 10px;">
+                                        This field is used for search, so please be descriptive! If you're linking to external images, please mind the page load speed: use few, compress them and host them on a fast server or CDN.
+                                    </small>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Screenshot, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            <input type="file" name="file" value="Publish Screenshot" />
-                            @Html.ValidationMessageFor(model => model.Screenshot, "", new { @class = "text-danger" })
-                            @ViewBag.FotoError
-                            @ViewBag.Screenshot
-                        </div>
-                        <small>ZIP file of images (png/jpg) w/ optional text descriptions for display on the site</small>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Filepath, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            <input type="file" name="fileproject" value="Publish file" id="FileUpload1" />
-                            @Html.ValidationMessageFor(model => model.Filepath, "", new { @class = "text-danger" })
-                            @ViewBag.filepath
-                        </div>
-                        <small>ZIP - All files for buyers, not including preview images</small>
-                    </div>
+
                 </div>
 
             </div>
+            <div class="col-lg-5">
+                <div class="panel panel-default" id="content-formatting">
+                    <div class="panel-heading" style="background-color: #454545">
+                        <h5 style="color: #fdf5e6;  text-align: center; ">Trouble Uploading?</h5>
+                    </div>
+                    <div style="padding-left: 10px; padding-right: 10px;">
+                        <br />
+                        <p>
+                            Some users have experienced problems uploading. We've compiled a <a href="#">list of things to check first</a> which might be of help.
+                            We're always working on improving our uploading infrastructure - but if you continue to experience problems please contact support.
+                        </p>
+                        <br />
+                    </div>
 
-        </div>
-        <div class="col-lg-5">
-            <div class="panel panel-default" id="content-formatting">
-                <div class="panel-heading" style="background-color: #454545">
-                    <h5 style="color: #fdf5e6;  text-align: center; ">Corrupt Zip Files</h5>
+
                 </div>
-                <div style="padding-left: 10px; padding-right: 10px;">
-                    <br />
-                    <p>The following archive utilities have been found to generate non-standard zip files that our server is often unable to decompress:</p>
-                    <ul>
-                        <li>7zip</li>
-                        <li>lzarc</li>
-                        <li>WinZip (Latest version)</li>
-                    </ul>
-                    <p>Please use another archive utility to reduce the chance of problems with your uploads.</p>
-                    <br />
-                </div>
-
-
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-7">
-            <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
-                <h3 style="color: #454545; padding-left: 10px;">Attributes </h3>
-                <br />
-                <div class="form-horizontal" style="padding: 15px;">
-                    <div class="form-group">
-                        @Html.Label("High Resolution", new { @class = "control-label col-md-2" })
-                        <div class="col-md-10 " style="padding-top: 10px;">
-                            Yes: <input checked="checked"
-                                        id="Gender"
-                                        name="Gender"
-                                        type="radio"
-                                        value="yes" />
 
-                            No: <input id="Gender"
-                                       name="Gender"
-                                       type="radio"
-                                       value="no" />
-                            N/A: <input id="Gender"
-                                        name="Gender"
-                                        type="radio"
-                                        value="na" />
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
+                    <h3 style="color: #454545; padding-left: 10px;">Files </h3>
+                    <br />
+                    <div class="form-horizontal" style="padding: 15px;">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Icon, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <input type="file" name="fileIcon" value="Publish Project Icon" />
+                                @Html.ValidationMessageFor(model => model.Icon, "", new { @class = "text-danger" })
+                                @ViewBag.icon
+                                <small>JPEG or PNG 80x80px Thumbnail</small>
+                            </div>
                         </div>
-
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Screenshot, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <input type="file" name="file" value="Publish Screenshot" />
+                                @Html.ValidationMessageFor(model => model.Screenshot, "", new { @class = "text-danger" })
+                                @ViewBag.FotoError
+                                @ViewBag.Screenshot
+                            </div>
+                            <small>ZIP file of images (png/jpg) w/ optional text descriptions for display on the site</small>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Filepath, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <input type="file" name="fileproject" value="Publish file" id="FileUpload1" />
+                                @Html.ValidationMessageFor(model => model.Filepath, "", new { @class = "text-danger" })
+                                @ViewBag.filepath
+                            </div>
+                            <small>ZIP - All files for buyers, not including preview images</small>
+                        </div>
                     </div>
-                    <br />
-                    <div class="form-group">
-                        @Html.Label("Compatible Browsers", new { @class = "control-label col-md-2" })
-                        @Html.CheckBox("Browser", false, new { @checked = "checked", @class = "control-label col-md-1" });
 
-                        <label for="Null" style="padding-right:5px">N/A</label>
-                        <br />
-                        <select multiple="multiple" name="browser" id="browser" style="width: 250px; padding-left: 10px;">
-                            <option value="1">IE6</option>
-                            <option value="2">IE7</option>
-                            <option value="3">IE8</option>
-                            <option value="4">IE9</option>
-                            <option value="5">IE10</option>
-                            <option value="6">IE11</option>
-                            <option value="7">Firefox</option>
-                            <option value="8">Safari</option>
-                            <option value="9">Opera</option>
-                            <option value="10">Chrome</option>
-                            <option value="11">Edge</option>
-                                
-                        </select>
+                </div>
 
-
-                        <h6 style="text-align: center;">
-                            Press and hold ctrl to make multiple selections
-                        </h6>
-
-                        <br />
+            </div>
+            <div class="col-lg-5">
+                <div class="panel panel-default" id="content-formatting">
+                    <div class="panel-heading" style="background-color: #454545">
+                        <h5 style="color: #fdf5e6;  text-align: center; ">Corrupt Zip Files</h5>
                     </div>
-                    <br />
-                    <div class="form-group">
-                        @Html.Label("Files Included", new { @class = "control-label col-md-2" })
-                        <select multiple="multiple" id="fileinculude" name="fileinculude" style="width: 250px; padding-left: 10px;">
-                            <option value="1">Layered PSD</option>
-                            <option value="2">Layered PNG</option>
-                            <option value="3">HTML Files</option>
-                            <option value="4">CSS Files</option>
-                            <option value="5">JS Files</option>
-                            <option value="6">Ecwid CSS Files</option>
-                        </select>
-
-                        <h6 style="text-align: center;">
-                            Press and hold ctrl to make multiple selections
-                        </h6>
-
+                    <div style="padding-left: 10px; padding-right: 10px;">
+                        <br />
+                        <p>The following archive utilities have been found to generate non-standard zip files that our server is often unable to decompress:</p>
+                        <ul>
+                            <li>7zip</li>
+                            <li>lzarc</li>
+                            <li>WinZip (Latest version)</li>
+                        </ul>
+                        <p>Please use another archive utility to reduce the chance of problems with your uploads.</p>
                         <br />
                     </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
+                    <h3 style="color: #454545; padding-left: 10px;">Attributes </h3>
                     <br />
-                    <div class="form-group">
-                        @Html.Label("Compatible With", new { @class = "control-label col-md-2" })
-                        @Html.CheckBox("CompatibleWith", false, new { @checked = "checked", @class = "control-label col-md-1" });
+                    <div class="form-horizontal" style="padding: 15px;">
+                        <div class="form-group">
+                            @Html.Label("High Resolution", new { @class = "control-label col-md-2" })
+                            <div class="col-md-10 " style="padding-top: 10px;">
+                                Yes: <input checked="checked"
+                                            id="Gender"
+                                            name="Gender"
+                                            type="radio"
+                                            value="yes" />
 
-                        <label for="Null" style="padding-right:5px">N/A</label>
+                                No: <input id="Gender"
+                                           name="Gender"
+                                           type="radio"
+                                           value="no" />
+                                N/A: <input id="Gender"
+                                            name="Gender"
+                                            type="radio"
+                                            value="na" />
+                            </div>
+
+                        </div>
                         <br />
-                        <select multiple="multiple" name="compatiblewith" id="compatiblewith" style="width: 250px; padding-left: 10px;">
-                            <option value="1">Ecwid</option>
-                            <option value="2">Bootstrap 3.x</option>
-                            <option value="3">Bootstrap 2.3.x</option>
-                            <option value="4">Bootstrap 2.2.2</option>
-                            <option value="5">Bootstrap 2.2.1</option>
-                            <option value="6">Bootstrap 2.1.1</option>
-                            <option value="7">Bootstrap 2.1.0</option>
-                            <option value="8">Bootstrap 2.0.4</option>
-                            <option value="9">Bootstrap 2.0.3</option>
-                            <option value="10">Bootstrap 2.0.2</option>
-                            <option value="11">Bootstrap 2.0.1</option>
-                            <option value="12">Bootstrap 2.0</option>
-                            <option value="13">Foundation 6</option>
-                            <option value="14">Foundation 5</option>
-                            <option value="15">Foundation 4</option>
-                        </select>
+                        <div class="form-group">
+                            @Html.Label("Compatible Browsers", new { @class = "control-label col-md-2" })
+                            @Html.CheckBox("Browser", false, new { @checked = "checked", @class = "control-label col-md-1" });
 
-                        <h6 style="text-align: center;">
-                            Press and hold ctrl to make multiple selections
-                        </h6>
+                            <label for="Null" style="padding-right:5px">N/A</label>
+                            <br />
+                            <select multiple="multiple" name="browser" id="browser" style="width: 250px; padding-left: 10px;">
+                                <option value="1">IE6</option>
+                                <option value="2">IE7</option>
+                                <option value="3">IE8</option>
+                                <option value="4">IE9</option>
+                                <option value="5">IE10</option>
+                                <option value="6">IE11</option>
+                                <option value="7">Firefox</option>
+                                <option value="8">Safari</option>
+                                <option value="9">Opera</option>
+                                <option value="10">Chrome</option>
+                                <option value="11">Edge</option>
 
+                            </select>
+
+
+                            <h6 style="text-align: center;">
+                                Press and hold ctrl to make multiple selections
+                            </h6>
+
+                            <br />
+                        </div>
                         <br />
-                        
+                        <div class="form-group">
+                            @Html.Label("Files Included", new { @class = "control-label col-md-2" })
+                            <select multiple="multiple" id="fileinculude" name="fileinculude" style="width: 250px; padding-left: 10px;">
+                                <option value="1">Layered PSD</option>
+                                <option value="2">Layered PNG</option>
+                                <option value="3">HTML Files</option>
+                                <option value="4">CSS Files</option>
+                                <option value="5">JS Files</option>
+                                <option value="6">Ecwid CSS Files</option>
+                            </select>
+
+                            <h6 style="text-align: center;">
+                                Press and hold ctrl to make multiple selections
+                            </h6>
+
+                            <br />
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            @Html.Label("Compatible With", new { @class = "control-label col-md-2" })
+                            @Html.CheckBox("CompatibleWith", false, new { @checked = "checked", @class = "control-label col-md-1" });
+
+                            <label for="Null" style="padding-right:5px">N/A</label>
+                            <br />
+                            <select multiple="multiple" name="compatiblewith" id="compatiblewith" style="width: 250px; padding-left: 10px;">
+                                <option value="1">Ecwid</option>
+                                <option value="2">Bootstrap 3.x</option>
+                                <option value="3">Bootstrap 2.3.x</option>
+                                <option value="4">Bootstrap 2.2.2</option>
+                                <option value="5">Bootstrap 2.2.1</option>
+                                <option value="6">Bootstrap 2.1.1</option>
+                                <option value="7">Bootstrap 2.1.0</option>
+                                <option value="8">Bootstrap 2.0.4</option>
+                                <option value="9">Bootstrap 2.0.3</option>
+                                <option value="10">Bootstrap 2.0.2</option>
+                                <option value="11">Bootstrap 2.0.1</option>
+                                <option value="12">Bootstrap 2.0</option>
+                                <option value="13">Foundation 6</option>
+                                <option value="14">Foundation 5</option>
+                                <option value="15">Foundation 4</option>
+                            </select>
+
+                            <h6 style="text-align: center;">
+                                Press and hold ctrl to make multiple selections
+                            </h6>
+
+                            <br />
 
 
-                        <div class="form-horizontal" style="padding: 15px;">
+
                             <div class="form-group">
-                                @Html.Label("Support", new { @class = "control-label col-md-2" })
-                                <div class="col-md-10 " style="padding-top: 10px;">
-                                    Yes: <input checked="checked"
-                                                id="support"
-                                                name="support"
-                                                type="radio"
-                                                value="True" />
+                                @Html.LabelFor(model => model.DemoURL, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.DemoURL, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.DemoURL, "", new { @class = "text-danger" })
 
-                                    No: <input id="support"
-                                               name="support"
-                                               type="radio"
-                                               value="False" />
 
                                 </div>
-
                             </div>
-                        </div>
-                        <br />
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.DemoURL, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.DemoURL, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.DemoURL, "", new { @class = "text-danger" })
-
-
-                            </div>
-                        </div>
-
-                        <br />
-
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Columns, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-
-
-                                <select name="Columns">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4+">4+</option>
-                                </select>
-
-                            </div>
-                        </div>
-
-
-                        <br />
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Layout, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-
-                                <select name="Layout" id="Layout" aria-invalid="false">
-                                    <option value="Fixed">Fixed</option>
-                                    <option value="Liquid">Liquid</option>
-                                    <option value="Responsive">Responsive</option>
-                                    <option value="N/A">N/A</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <br />
-                    <br />
-                    <p>Some of our fields allow you to select multiple values. Please use the CTRL key (PC) or COMMAND key (Mac) to select multiple items.</p>
-                </div>
-
-            </div>
-
-        </div>
-        <div class="col-lg-5">
-            <div class="panel panel-default" id="content-formatting">
-                <div class="panel-heading" style="background-color: #454545">
-                    <h5 style="color: #fdf5e6;  text-align: center; ">Attributes</h5>
-                </div>
-                <div style="padding-left: 10px; padding-right: 10px;">
-                    <br />
-                    <p>You should tell which scanners the extension of the project and the file version you have installed are working.</p>
-
-                    <br />
-                </div>
-
-
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-7">
-            <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
-                <h3 style="color: #454545; padding-left: 10px;">Tags </h3>
-                <br />
-                <div class="form-horizontal" style="padding: 15px;">
-                    <div class="form-group">
-                        @Html.Label("Tags  ", htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-
-                            @Html.TextAreaFor(model => model.Tags, new { htmlAttributes = new { @class = "resizer" }, cols = "150", rows = "8" })
-
-                            @Html.ValidationMessageFor(model => model.Tags, "", new { @class = "text-danger" })
                             <br />
-                            <div class="col-md-10">
-                                <small style="padding-right: 10px;">
-                                    Maximum of 15 keywords covering features, options and styling. Keywords should all be in lowercase and separated by commas. e.g. slider, gallery, newsletter, wordpress menu
-                                </small>
+
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Columns, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+
+
+                                    <select name="Columns">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4+">4+</option>
+                                    </select>
+
+                                </div>
                             </div>
+
+
+                            <br />
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Layout, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+
+                                    <select name="Layout" id="Layout" aria-invalid="false">
+                                        <option value="Fixed">Fixed</option>
+                                        <option value="Liquid">Liquid</option>
+                                        <option value="Responsive">Responsive</option>
+                                        <option value="N/A">N/A</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <p>Some of our fields allow you to select multiple values. Please use the CTRL key (PC) or COMMAND key (Mac) to select multiple items.</p>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-lg-5">
+                <div class="panel panel-default" id="content-formatting">
+                    <div class="panel-heading" style="background-color: #454545">
+                        <h5 style="color: #fdf5e6;  text-align: center; ">Attributes</h5>
+                    </div>
+                    <div style="padding-left: 10px; padding-right: 10px;">
+                        <br />
+                        <p>You should tell which scanners the extension of the project and the file version you have installed are working.</p>
+
+                        <br />
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
+                    <h3 style="color: #454545; padding-left: 10px;">Tags </h3>
+                    <br />
+                    <div class="form-horizontal" style="padding: 15px;">
+                        <div class="form-group">
+                            @Html.Label("Tags  ", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+
+                                @Html.TextAreaFor(model => model.Tags, new { htmlAttributes = new { @class = "resizer" }, cols = "150", rows = "8" })
+
+                                @Html.ValidationMessageFor(model => model.Tags, "", new { @class = "text-danger" })
+                                <br />
+                                <div class="col-md-10">
+                                    <small style="padding-right: 10px;">
+                                        Maximum of 15 keywords covering features, options and styling. Keywords should all be in lowercase and separated by commas. e.g. slider, gallery, newsletter, wordpress menu
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
+                    <h3 style="color: #454545; padding-left: 10px;">Support </h3>
+                    <br />
+
+
+                    <div class="form-horizontal" style="padding: 15px;">
+                        <div class="form-group">
+                            @Html.Label("Support", new { @class = "control-label col-md-2" })
+                            <div class="col-md-10 " style="padding-top: 10px;">
+                                Yes: <input checked="checked"
+                                            id="support"
+                                            name="support"
+                                            type="radio"
+                                            value="True" />
+
+                                No: <input id="support"
+                                           name="support"
+                                           type="radio"
+                                           value="False" />
+
+                            </div>
+
                         </div>
                     </div>
 
@@ -451,7 +466,8 @@
 
         </div>
 
-    </div>
+
+
     <div class="row">
         <div class="col-lg-7">
             <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
@@ -528,16 +544,14 @@
                         </div>
 
                     </div>
-                            
-                            
-                  
 
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Publish Product" class="btn btn-success " />
-                            </div>
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Publish Product" class="btn btn-success " />
                         </div>
-
                     </div>
 
                 </div>
@@ -546,61 +560,66 @@
 
         </div>
 
+    </div>
+
 
     </div>
-    
-@*        <div class="row">*@
-@*            <div class="col-sm-12">*@
-@*                <h3>User Comments </h3>*@
-@*            </div><!-- /col-sm-12 -->*@
-@*        </div><!-- /row -->*@
-@*        @using (Html.BeginForm("AddComment", "ProductCode", FormMethod.Post))*@
-@*        {*@
-@*            if (Model.Comment.ToList().Count != 0)*@
-@*            {*@
-@*                foreach (var item in Model.Comments.ToList())*@
-@*                {*@
-@*                    <div class="container">*@
-@*                        <div class="row">*@
-@*                            <div class="col-sm-1">*@
-@*                                <div class="thumbnail">*@
-@*                                    <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">*@
-@*                                </div><!-- /thumbnail -->*@
-@*                            </div><!-- /col-sm-1 -->*@
-@*                            <div class="col-sm-5">*@
-@*                                <div class="panel panel-default">*@
-@*                                    <div class="panel-heading">*@
-@*                                        <strong> @{ string adSoyad = item.User.Name + " " + item.User.Surname; } @adSoyad - </strong> <span class="text-muted">@item.CommentTime.ToShortDateString()</span>*@
-@*                                    </div>*@
-@*                                    <div class="panel-body">*@
-@*                                        @item.Content*@
-@*                                    </div><!-- /panel-body -->*@
-@*                                </div><!-- /panel panel-default -->*@
-@*                            </div><!-- /col-sm-5 -->*@
-@*                        </div><!-- /row -->*@
-@*                    </div>*@
-@*            <!-- /container -->*@
-@*                }*@
-@*            }*@
-@*            else*@
-@*            {*@
-@*                <div></div>*@
-@*            }*@
-@**@
-@*            <div class="alert" id="comment" name="comment1" style="padding: 20px">*@
-@**@
-@*                <textarea cols="1009" name="yorum"></textarea><br />*@
-@*                <input type="submit" value="Yorumu gönder" />*@
-@**@
-@*            </div>*@
-@*            <div class="col-md-6" id="notcomment" style="background-color:lightgreen">*@
-@**@
-@*                <h4 style="color:white">Yorum yapabilmek için lütfen giriş yapınız</h4>*@
-@**@
-@*            </div>*@
-@**@
+
+    @*        <div class="row">*@
+    @*            <div class="col-sm-12">*@
+    @*                <h3>User Comments </h3>*@
+    @*            </div><!-- /col-sm-12 -->*@
+    @*        </div><!-- /row -->*@
+    @*        @using (Html.BeginForm("AddComment", "ProductCode", FormMethod.Post))*@
+    @*        {*@
+    @*            if (Model.Comment.ToList().Count != 0)*@
+    @*            {*@
+    @*                foreach (var item in Model.Comments.ToList())*@
+    @*                {*@
+    @*                    <div class="container">*@
+    @*                        <div class="row">*@
+    @*                            <div class="col-sm-1">*@
+    @*                                <div class="thumbnail">*@
+    @*                                    <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">*@
+    @*                                </div><!-- /thumbnail -->*@
+    @*                            </div><!-- /col-sm-1 -->*@
+    @*                            <div class="col-sm-5">*@
+    @*                                <div class="panel panel-default">*@
+    @*                                    <div class="panel-heading">*@
+    @*                                        <strong> @{ string adSoyad = item.User.Name + " " + item.User.Surname; } @adSoyad - </strong> <span class="text-muted">@item.CommentTime.ToShortDateString()</span>*@
+    @*                                    </div>*@
+    @*                                    <div class="panel-body">*@
+    @*                                        @item.Content*@
+    @*                                    </div><!-- /panel-body -->*@
+    @*                                </div><!-- /panel panel-default -->*@
+    @*                            </div><!-- /col-sm-5 -->*@
+    @*                        </div><!-- /row -->*@
+    @*                    </div>*@
+    @*            <!-- /container -->*@
+    @*                }*@
+    @*            }*@
+    @*            else*@
+    @*            {*@
+    @*                <div></div>*@
+    @*            }*@
+    @**@
+    @*            <div class="alert" id="comment" name="comment1" style="padding: 20px">*@
+    @**@
+    @*                <textarea cols="1009" name="yorum"></textarea><br />*@
+    @*                <input type="submit" value="Yorumu gönder" />*@
+    @**@
+    @*            </div>*@
+    @*            <div class="col-md-6" id="notcomment" style="background-color:lightgreen">*@
+    @**@
+    @*                <h4 style="color:white">Yorum yapabilmek için lütfen giriş yapınız</h4>*@
+    @**@
+    @*            </div>*@
+    @**@
+        *
 @*        }   *@
-   </body>
+
+   <
+</body>
 </html>
 
 
