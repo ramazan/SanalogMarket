@@ -21,6 +21,9 @@ namespace SanalogMarket.Controllers
         public static string softwareVersion;
         public static string fileinculeded;
         public static string browser;
+        public static string file_screen;
+        public static string file_icon;
+        public static string file_main;
         public static int gelenID;
         public List<string> fileList;
         List<String> Filess = new List<String>();
@@ -86,38 +89,10 @@ namespace SanalogMarket.Controllers
         [HttpPost]
         public ActionResult New(ProductCode gelenCode,  Dosyalar upFile,string category, string subcategory, string Gender, Boolean imza)
         {
-            if (ModelState.IsValid && imza)
+            if ( imza)
             {
-                foreach (var i in upFile.files )
-                {
-                    if (i.ContentLength> 0)
-                    {
-                        var filename = Path.GetFileName(i.FileName);
-                        
-                       var upload = Path.Combine(Server.MapPath("/Project_File/"), filename);
-                        i.SaveAs(upload);
-                        string path = HostingEnvironment.MapPath("~/Project_File/");
-                        System.Diagnostics.Debug.WriteLine(path);
-                        if (Directory.Exists(path))
-                        {
-                            DirectoryInfo di = new DirectoryInfo(path);
-                            foreach (FileInfo fi in di.GetFiles())
-                            {
-                                Filess.Add(fi.Name);
-                                System.Diagnostics.Debug.WriteLine(fi.Name);
-                            }
-
-                        }
-                        //fileList.Add(filename);
-                    }
-                }
-
+               
                 
-              
-
-                ViewBag.Dosyalar = Filess;
-
-              
 
                 gelenCode.CreateDate = DateTime.Now;
                 gelenCode.Category = category;
@@ -128,6 +103,9 @@ namespace SanalogMarket.Controllers
                 gelenCode.FilesIncluded = fileinculeded;
                 gelenCode.Browsers = browser;
                 gelenCode.IsValid = 0;
+                gelenCode.Screenshot = file_screen;
+                gelenCode.Filepath = file_main;
+                gelenCode.Icon = file_icon;
 
                 int UserID = (int)Session["UserId"];
                 User EkleyenUser = dbBaglantisi.Users.Single(u => u.Id == UserID);
@@ -254,6 +232,55 @@ namespace SanalogMarket.Controllers
             }
             return fileinculeded;
         }
+        public string getScreenshot(List<String> values)
+        {
+            if (values != null)
+            {
+                file_screen = values[0];
+                for (int i = 1; i < values.Count; i++)
+                {
+                    file_screen = file_screen + "," + values[i];
+                }
+            }
+            else
+            {
+                file_screen = null;
+            }
+            return file_screen;
+        }
+        public string getIcon(List<String> values)
+        {
+            if (values != null)
+            {
+                file_icon = values[0];
+                for (int i = 1; i < values.Count; i++)
+                {
+                    file_icon = file_icon + "," + values[i];
+                }
+            }
+            else
+            {
+                file_icon = null;
+            }
+            return file_icon;
+        }
+        public string getMainFiles(List<String> values)
+        {
+            if (values != null)
+            {
+                file_main = values[0];
+                for (int i = 1; i < values.Count; i++)
+                {
+                    file_main = file_main + "," + values[i];
+                }
+            }
+            else
+            {
+                file_main = null;
+            }
+            return file_main;
+        }
+
         [HttpPost]
         public JsonResult Upload()
         {
