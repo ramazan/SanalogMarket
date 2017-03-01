@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using jQuery_File_Upload.MVC5.Helpers;
 using SanalogMarket.Models;
 
@@ -23,10 +24,16 @@ namespace SanalogMarket.Controllers
         public static int gelenID;
         public List<string> fileList;
         List<String> Filess = new List<String>();
-        public static  List<String> file_name = new List<String>();
+        public static  List<SelectOptions> file_namelist = new List<SelectOptions>();
         FilesHelper filesHelper;
         String tempPath = "~/somefiles/";
         String serverMapPath = "~/Project_File/somefiles/";
+
+        public class SelectOptions
+        {
+            public String Text { get; set; }
+        }
+
         private string StorageRoot
         {
             get { return Path.Combine(HostingEnvironment.MapPath(serverMapPath)); }
@@ -250,6 +257,7 @@ namespace SanalogMarket.Controllers
         [HttpPost]
         public JsonResult Upload()
         {
+            SelectOptions select=new SelectOptions();
             var resultList = new List<ViewDataUploadFilesResult>();
             
             var CurrentContext = HttpContext;
@@ -260,7 +268,11 @@ namespace SanalogMarket.Controllers
                 var headers = httpRequest.Headers;
 
                 var file = httpRequest.Files[inputTagName];
-                file_name.Add(file.FileName);
+              
+                select.Text = file.FileName;
+
+                file_namelist.Add(select);
+
             }
             filesHelper.UploadAndShowResults(CurrentContext, resultList);
             JsonFiles files = new JsonFiles(resultList);
@@ -275,7 +287,7 @@ namespace SanalogMarket.Controllers
                 return Json(files);
               
             }
-          
+            ViewBag.Liste = file_namelist;
         }
         public JsonResult GetFileList()
         {
@@ -285,12 +297,24 @@ namespace SanalogMarket.Controllers
         public JsonResult GetFilename()
         {
            
-            return Json(file_name, JsonRequestBehavior.AllowGet);
+            return Json(file_namelist, JsonRequestBehavior.AllowGet);
         }
         [HttpGet]
         public JsonResult DeleteFile(string file)
         {
+            SelectOptions select = new SelectOptions();
+            foreach (var item in file_namelist)
+            {
+                if (item.Text.Equals(file))
+                {
+                    file_namelist.Remove(item);
+                    break;
+                }
+            }
+            select.Text = file;
+           
             filesHelper.DeleteFile(file);
+            
             return Json("OK", JsonRequestBehavior.AllowGet);
         }
 
