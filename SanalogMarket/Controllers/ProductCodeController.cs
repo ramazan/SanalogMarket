@@ -25,8 +25,6 @@ namespace SanalogMarket.Controllers
         public static string file_icon;
         public static string file_main;
         public static int gelenID;
-        public List<string> fileList;
-        List<String> Filess = new List<String>();
         public static  List<SelectOptions> file_namelist = new List<SelectOptions>();
         FilesHelper filesHelper;
         String tempPath = "~/somefiles/";
@@ -87,7 +85,7 @@ namespace SanalogMarket.Controllers
         }
 
         [HttpPost]
-        public ActionResult New(ProductCode gelenCode,  Dosyalar upFile,string category, string subcategory, string Gender, Boolean imza)
+        public ActionResult New(ProductCode gelenCode, string Gender, Boolean imza,string category,string subcategory)
         {
             if ( imza)
             {
@@ -236,10 +234,10 @@ namespace SanalogMarket.Controllers
         {
             if (values != null)
             {
-                file_screen = values[0];
+                file_screen = "/Project_File/somefiles/"+values[0];
                 for (int i = 1; i < values.Count; i++)
                 {
-                    file_screen = file_screen + "," + values[i];
+                    file_screen = file_screen + "," + "/Project_File/somefiles/" + values[i];
                 }
             }
             else
@@ -252,10 +250,10 @@ namespace SanalogMarket.Controllers
         {
             if (values != null)
             {
-                file_icon = values[0];
+                file_icon = "/Project_File/somefiles/"+ values[0];
                 for (int i = 1; i < values.Count; i++)
                 {
-                    file_icon = file_icon + "," + values[i];
+                    file_icon = file_icon + "," + "/Project_File/somefiles/" + values[i];
                 }
             }
             else
@@ -268,10 +266,10 @@ namespace SanalogMarket.Controllers
         {
             if (values != null)
             {
-                file_main = values[0];
+                file_main = "/Project_File/somefiles/"+ values[0];
                 for (int i = 1; i < values.Count; i++)
                 {
-                    file_main = file_main + "," + values[i];
+                    file_main =  file_main + "," + "/Project_File/somefiles/" + values[i];
                 }
             }
             else
@@ -280,6 +278,7 @@ namespace SanalogMarket.Controllers
             }
             return file_main;
         }
+     
 
         [HttpPost]
         public JsonResult Upload()
