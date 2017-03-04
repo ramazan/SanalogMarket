@@ -197,6 +197,9 @@ namespace SanalogMarket.Controllers
 
         public ActionResult RegisterUser()
         {
+            if (Session["AdminId"] == null)
+                return RedirectToAction("Login");
+
             return View();
         }
 
