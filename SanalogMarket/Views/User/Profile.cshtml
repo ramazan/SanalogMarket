@@ -3,54 +3,368 @@
 @{
     ViewBag.Title = "Profile";
 }
+@*@Styles.Render("~/Content/Userprofile.css")*@
 
-<h2>Profile</h2>
-
-@using (Html.BeginForm("Profile","User",FormMethod.Post))
+@using (Html.BeginForm("Profile", "User", FormMethod.Post))
 {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.Id)
+@*    @Html.AntiForgeryToken()*@
+@*    *@
+@*    <div class="form-horizontal">*@
+@*        <hr />*@
+@*        @Html.ValidationSummary(true)*@
+@*        @Html.HiddenFor(model => model.Id)*@
+@**@
+@*        <div class="form-group">*@
+@*            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })*@
+@*            <div class="col-md-10">*@
+@*                *@
+@**@
+@*                @Html.TextBoxFor(model => model.Name, new { @Value = Session["Name"].ToString() })*@
+@*                @Html.ValidationMessageFor(model => model.Name)*@
+@*            </div>*@
+@*        </div>*@
+@**@
+@*        <div class="form-group">*@
+@*            @Html.LabelFor(model => model.Surname, new { @class = "control-label col-md-2" })*@
+@*            <div class="col-md-10">*@
+@*                @Html.TextBoxFor(model => model.Surname, new { @Value = Session["LastName"].ToString() })*@
+@*                @Html.ValidationMessageFor(model => model.Surname)*@
+@*            </div>*@
+@*        </div>*@
+@**@
+@**@
+@**@
+@*        <div class="form-group">*@
+@*            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })*@
+@*            <div class="col-md-10">*@
+@*                @Html.EditorFor(model => model.Password)*@
+@*                @Html.ValidationMessageFor(model => model.Password)*@
+@*                *@
+@*            </div>*@
+@*        </div>*@
+@**@
+@**@
+@**@
+@*        <div class="form-group">*@
+@*            <div class="col-md-offset-2 col-md-10">*@
+@*                <input type="submit" value="Save" class="btn btn-default" />*@
+@*            </div>*@
+@*        </div>*@
+@*    </div>*@
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                
+    <div class="jumbotron " style="background-color: #f5f5f5; margin-bottom: 0px;">
 
-                @Html.TextBoxFor(model => model.Name, new { @Value = Session["Name"].ToString() })
-                @Html.ValidationMessageFor(model => model.Name)
+        <div class="row">
+            <div class="col-md-1" >
+                <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5;">
+                    <img width="80" height="80" alt="kadir47" src="//public-assets.envato-static.com/assets/common/icons-buttons/default-user-2962fd43ee315eafee8bfc08f02fee84687beb0499de44e5ab2873399944b0fe.jpg">
+                </div>
             </div>
-        </div>
+            <div class="col-lg-6" >
+             
+                    <a class="t-link -decoration-none" href="#">
+                        <h2 class="t-heading h-display-inlineblock h-m0 h-p0 -size-m">Usoysal47</h2>
+                    </a>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Surname, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Surname, new { @Value = Session["LastName"].ToString() })
-                @Html.ValidationMessageFor(model => model.Surname)
-            </div>
-        </div>
+                    <p class="t-body -size-m h-p0 h-mb0">
+                        Turkey,
+                        Member since February 2017
+                    </p>
 
+                    <div class="user-info-header__cta-buttons">
 
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Password)
-                @Html.ValidationMessageFor(model => model.Password)
-                
-            </div>
-        </div>
-
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+              
             </div>
         </div>
     </div>
-}
+            <div id="exTab2" class="container" style="background-color: #f5f5f5">
+                <ul class="nav nav-tabs">
+                    <li >
+                        <a href="#1" data-toggle="tab">Dashboard</a>
+                    </li>
+                    <li class="active">
+                        <a href="#2" data-toggle="tab">Profile</a>
+                    </li>
+                    <li>
+                        <a href="#3" data-toggle="tab">Followers</a>
+                    </li>
+                    <li>
+                        <a href="#4" data-toggle="tab">Following</a>
+                    </li>
+                    <li>
+                        <a href="#5" data-toggle="tab">Downloads</a>
+                    </li>
+                    <li>
+                        <a href="#6" data-toggle="tab">Reviews</a>
+                    </li>
+                    <li>
+                        <a href="#7" data-toggle="tab">Refunds</a>
+                    </li>
+                    <li>
+                        <a href="#8" data-toggle="tab">Hidden Items</a>
+                    </li>
+                    <li>
+                        <a href="#9" data-toggle="tab">Earnings</a>
+                    </li>
+                    <li>
+                        <a href="#10" data-toggle="tab">Statements</a>
+                    </li>
+                    <li>
+                        <a href="#11" data-toggle="tab">Settings</a>
+                    </li>
+                </ul>
 
+                <div class="tab-content "  style="background-color: #ffffff">
+                    <div class="tab-pane" id="1">
+                        <br/><br/>
+                        <div class="row" style="padding-left: 15px;">
+                            <div class="col-lg-7">
+                                <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
+                                    <h4 style="color: #545454; padding-left: 10px; text-align: center">Welcome and congratulations on becoming an author with Envato Market. </h4>
+                                   
+                                    <h6 style="color: #999287; padding-left: 10px; text-align: center">Now you can sell your digital items to millions of users and make money from it. </h6>
+                                   <br/>
+                                    <div class="row" style="padding-left: 70px;">
+                                        <div class="col-lg-5" >
+                                            <div class="panel panel-default" id="content-formatting " style="background-color:#ededed; text-align: center ">
+                                                <h4 style="color: #545454; padding-left: 10px; text-align: center">Upload your first item </h4>
+                                                <br />
+                                                <h6 style="color: #999287; padding-left: 10px; text-align: center">Start uploading your digital items and working with our review team to make sure they are in great shape to start selling. </h6>
+                                                <input type="button" class="btn btn-success center-block" value="Upload My First item " style="text-align: center; border-radius: 5px;  "/>
+                                                <br />
+                                                <br />
+                                                <br />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-5" >
+                                            <div class="panel panel-default" id="content-formatting " style="background-color:#ededed; text-align: center ">
+                                                <h4 style="color: #545454; padding-left: 10px; text-align: center">Upload your first item </h4>
+                                                <br />
+                                                <h6 style="color: #999287; padding-left: 10px; text-align: center">Fill out your profile so our buyers know who created the items they're buying - doing this means you can start building relationships and a reputation on Sanalog Market.</h6>
+                                                <input type="button" class="btn btn-success center-block" value="Take Me to My Profile" style="text-align: center; border-radius: 5px;  " />
+                                                <br />
+                                                <br />
+                                            </div>
+                                            <br />
+                                        </div>
+                                    </div>
+                                 
+                                    <h6 style="color: #999287; padding-left: 10px; text-align: center">Thank you again for becoming an author and we hope you have lots of success with us!</h6>
+                                </div>
+                                    </div>
+                                    <div class="col-lg-4" style="padding-left: 5dp;">
+                                        <div class="panel panel-default" id="content-formatting">
+                                            <div class="panel-heading" style="background-color: #454545">
+                                                <h5 style="color: #fdf5e6; text-align: center;">Trouble Uploading?</h5>
+                                            </div>
+                                            <div style="padding-left: 10px; padding-right: 10px;">
+                                                <br />
+                                                <p>
+                                                    <small>Mar 04</small>
+                                                    <br>
+                                                    We're giving away <strong>ThemeForest T-shirts</strong>! Swing-by our forums and simply tell us what your favorite 5 x Coming Soon / Under Construction websites templates are on ThemeForest. <a href="https://forums.envato.com/t/best-coming-soon-under-construction-website-templates/94604">Find out more!</a>
+                                                </p>
+                                                <p>
+                                                    <small>Mar 03</small>
+                                                    <br>
+                                                    Check out this week's Famous Five: <a href="https://envato.com/blog/5-video-game-trailers-montages-using-envato-items/"> 5 video game trailers and montages using Envato items</a>
+
+                                                </p>
+                                                <p>
+                                                    <small>Feb 27</small>
+                                                    <br>
+                                                    <a href="https://forums.envato.com/t/tf-nominate-your-items-for-our-upcoming-corporate-themed-marketing-campaign/92863"> Nominate your items for our upcoming, corporate-themed marketing campaign!</a>
+
+                                                </p>
+                                                <p>
+                                                    <small>Feb 24</small>
+                                                    <br>
+                                                    This week on the Famous 5, we focus on Artistic_Influence. A relatively new author to ThemeForest, I was surprised to see with so few sales they had a lot of high profile brands and figures using their themes. Turns out two themes in their portfolio have already had a life of their own on Tumblr. Now they're available on TF. <a href="https://envato.com/blog/the-tumblr/">Find out who's using them here!</a>
+                                                </p>
+
+                                                <br />
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                    </div>
+                    <div class="tab-pane  active" id="2">
+                        <br /><br />
+                        <div class="row" style="padding-left: 15px;">
+                            <div class="col-lg-7">
+                                <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
+                              
+                                    <img src="//public-assets.envato-static.com/assets/default-Home2-dc48fa824a14ba7965e9f6982bc991cd72708682af18993941002d7af611f667.jpg" alt="Default home2" style="padding-left: 15px; padding-bottom: 15px; padding-top: 15px;">
+                                
+                                </div>
+                                <p style="text-align: center;">
+                                    Would you like to display collections on your profile page?
+                                </p>
+
+                            </div>
+                            <div class="col-lg-4" style="padding-left: 5dp;">
+                                <div class="panel panel-default" id="content-formatting"  style="background-color: #f5f5f5">
+                                    <div class="panel-heading" style="background-color: #f5f5f5">
+                                       <h4 style="font-weight: 700">Email Usoysal47</h4>
+                                    </div>
+                                    <div style="padding-left: 10px; padding-right: 10px;">
+                                        <br />
+                                        <div class="input-group">
+                                            <label for="from">Name</label>
+                                            <div class="inputs">
+                                                <h6>Umut Soysal</h6>
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="from">Email</label>
+                                            <div class="inputs">
+                                                <h6>usoysal41@gmail.com</h6>
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="from">Company Name</label>
+                                            <div class="inputs">
+                                                <h6>Laks</h6>
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="from">Country</label>
+                                            <div class="inputs">
+                                                <h6>Turkey</h6>
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="from">City</label>
+                                            <div class="inputs">
+                                                <h6>Kocaeli</h6>
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="from">Company Number</label>
+                                            <div class="inputs">
+                                                <h6>-90 555 555 5</h6>
+                                            </div>
+                                        </div>
+                                      
+                                        <label for="from">Social Networks</label>
+                                        <div class="input-group">
+                                            <img src="//public-assets.envato-static.com/assets/common/icons-buttons/social/facebook-c0cd6ad7c0c9b21c5411996a782f2622b9c26c4a447c9fc45bcb311753bcc4ad.svg"style="width: 20px;height: 20px; " />
+                                          
+                                            <a href="https://www.facebook.com/umut.soysal.180?fref=ts" style="padding-left: 15px;">Umut Soysal</a>
+                                        </div>
+                                        <br />
+                                        <div class="input-group">
+                                            <img src="//public-assets.envato-static.com/assets/common/icons-buttons/social/github-3be7eea43e0869e25b9a70d61c9f87856ffd459dc15d6fd1b0caa365218cedc7.svg" style="width: 20px;height: 20px; "/>
+
+                                            <a href="https://github.com/umut47" style="padding-left: 15px;">umut47</a>
+                                        </div>
+                                        <br />
+                                        <div class="input-group">
+                                            <img src="//public-assets.envato-static.com/assets/common/icons-buttons/social/googleplus-d0f7b9215bc6dd19fd9220fc9bb76a55e2000a1dc09fb8f75270d237dcdffa99.svg" style="width: 20px;height: 20px; " />
+
+                                            <a href="https://github.com/umut47" style="padding-left: 15px;">Umut Soysal</a>
+                                        </div>
+                                        <br />
+                                        <br />
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="3">
+                        <br /><br />
+                        <div class="row" style="padding-left: 15px;">
+                            <div class="col-lg-7">
+                                <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
+
+                                    @*                                  buraya kişini takip ettikleri geleck*@
+
+                                </div>
+                              
+                            </div>
+                            <div class="col-lg-4" style="padding-left: 5dp;">
+                                <div class="panel panel-default" id="content-formatting" style="background-color: #f5f5f5">
+                                  
+                                    <p style="text-align: center;">Your items will show up in the Follow Feed of the people following you.</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane" id="4">
+                        <br /><br />
+                        <div class="col-lg-7">
+                           
+                            <i class="fa fa-flag-o" aria-hidden="true"></i>
+                            <span>
+                               The authors you follow will appear here. Check out our <a href="/Home/Index">Top New Authors</a> to get started.
+                            </span>
+                        
+
+                        </div>
+                    </div>
+                    
+                <div class="tab-pane" id="5">
+                    <br /><br />
+                    <div class="row" style="padding-left: 30px;">
+                        <div class="col-lg-11">
+                            <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5; text-align: center;" >
+                                <h2 class="t-heading -size-m">You haven't bought anything yet.</h2>
+                                <p class="t-body h-m0">
+                                    Discover the  browse our <a href="/Home/Index">hottest new items</a>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+                    
+                    <div class="tab-pane" id="6">
+                        <br /><br />
+                        <div class="row" style="padding-left: 30px;">
+                            <div class="col-lg-7">
+                                <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5; text-align: center;">
+                                    <h2 class="t-heading -size-m">You have no ratings or reviews for any of your items.</h2>
+                                </div>
+                            </div>
+                            <div class="col-lg-4" style="padding-left: 5dp;">
+                                <div class="panel panel-default" id="content-formatting" style="background-color: #f5f5f5">
+                                    <div class="panel panel-default" style="background-color: #fafafa;color: #666666;border-radius: 4px;border: 1px solid #e1e8ed; margin:10px;padding: 15px;">
+                                      
+                                        <div class="input-group">
+                                            <img src="https://www.abweb.sk/images/Shopping%20Cart.png" style="width: 30px;height: 30px; " />
+
+                                            <span class="sidebar-stats__label"style="padding-left: 5px;font-weight: 700">0</span>
+                                            <span class="sidebar-stats__label" style="padding-left: 15px;">Sales</span>
+                                        </div>
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="col-lg-4" style="padding-left: 5dp;">
+                                <div class="panel panel-default" id="content-formatting" style="background-color: #f5f5f5">
+                                    <div class="panel panel-default" style="background-color: #fafafa;color: #666666;border-radius: 4px;border: 1px solid #e1e8ed; margin:10px;padding: 15px;">
+
+                                        <div class="input-group">
+                                            <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/223566-200.png" style="width: 30px;height: 30px; " />
+
+                                            <span class="sidebar-stats__label" style="padding-left: 5px;font-weight: 700">0</span>
+                                            <span class="sidebar-stats__label" style="padding-left: 15px;">Followers</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            }

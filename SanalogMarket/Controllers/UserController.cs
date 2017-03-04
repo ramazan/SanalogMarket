@@ -134,32 +134,32 @@ namespace SanalogMarket.Controllers
         [HttpPost]
         public ActionResult Profile(User user)
         {
-            if (user.Name != null && user.Surname != null && user.Password != null)
-            {
-                User kullanici = dbBaglantisi.Users.Find(Session["UserId"]);
-                kullanici.Name = user.Name;
-                kullanici.Surname = user.Surname;
-
-                using (var sha256 = SHA256.Create())
-                {
-                    var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(user.Password));
-                    var hash = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
-
-                    kullanici.Password = hash;
-                }
-
-                dbBaglantisi.SaveChanges();
-
-                var usr = dbBaglantisi.Users.Find(Session["UserId"]);
-
-                if (usr != null)
-                {
-                    Session["Name"] = usr.Name;
-                    Session["LastName"] = usr.Surname;
-
-                    return RedirectToAction("Index");
-                }
-            }
+//            if (user.Name != null && user.Surname != null && user.Password != null)
+//            {
+//                User kullanici = dbBaglantisi.Users.Find(Session["UserId"]);
+//                kullanici.Name = user.Name;
+//                kullanici.Surname = user.Surname;
+//
+//                using (var sha256 = SHA256.Create())
+//                {
+//                    var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(user.Password));
+//                    var hash = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
+//
+//                    kullanici.Password = hash;
+//                }
+//
+//                dbBaglantisi.SaveChanges();
+//
+//                var usr = dbBaglantisi.Users.Find(Session["UserId"]);
+//
+//                if (usr != null)
+//                {
+//                    Session["Name"] = usr.Name;
+//                    Session["LastName"] = usr.Surname;
+//
+//                    return RedirectToAction("Index");
+//                }
+//            }
 
 
             return View();
