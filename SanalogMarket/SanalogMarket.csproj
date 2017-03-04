@@ -115,8 +115,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Project_File\" />
-    <Folder Include="Project_Icon\" />
     <Folder Include="Screenshots\" />
     <Folder Include="Views\Details\" />
   </ItemGroup>
@@ -221,6 +219,7 @@
     <Content Include="Views\Admin\ProductThemeDetails.cshtml" />
     <Content Include="Views\Admin\ProductThemeEdit.cshtml" />
     <Content Include="Views\Admin\ProductRejected.cshtml" />
+    <Content Include="Views\User\ConfirmEmail.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
