@@ -10,6 +10,8 @@ using System.Web.Hosting;
 using System.Web.Mvc;
 using SanalogMarket.Models;
 using SanalogMarket.Models.Theme;
+using jQuery_File_Upload.MVC5.Helpers;
+
 namespace SanalogMarket.Controllers
 {
     public class ProductThemeController : Controller
@@ -17,11 +19,35 @@ namespace SanalogMarket.Controllers
         DbBaglantisi dbBaglantisi = new DbBaglantisi();
         public ProductTheme product;
         public static int gelenID;
+        public static string file_screen;
+        public static string file_icon;
+        public static string file_main;
+        public static List<SelectOptions> file_namelist = new List<SelectOptions>();
+        FilesHelper filesHelper;
+        String tempPath = "~/somefiles/";
+        String serverMapPath = "~/ThemeFiles/Project_File/";
 
-    
         public static string compatiblewith;
         public static string fileinculeded;
         public static string browser;
+
+
+        public class SelectOptions
+        {
+            public String Text { get; set; }
+        }
+
+        private string StorageRoot
+        {
+            get { return Path.Combine(HostingEnvironment.MapPath(serverMapPath)); }
+        }
+        private string UrlBase = "/ThemeFiles/Project_File/";
+        String DeleteURL = "/ProductTheme/DeleteFile/?file=";
+        String DeleteType = "GET";
+        public ProductThemeController()
+        {
+            filesHelper = new FilesHelper(DeleteURL, DeleteType, StorageRoot, UrlBase, tempPath, serverMapPath);
+        }
         public ActionResult Index()
         {
             return View();
@@ -62,12 +88,15 @@ namespace SanalogMarket.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(ProductTheme gelenCode, HttpPostedFileBase file,
-            HttpPostedFileBase fileproject, HttpPostedFileBase fileIcon, string category, string subcategory, Boolean imza, string Gender, Boolean support)
+        public ActionResult Create(ProductTheme gelenCode, string category, string subcategory, Boolean imza, string Gender, Boolean support)
         {
+            gelenCode.Screenshot = "";
+            gelenCode.Filepath = "";
+            gelenCode.Icon = "";
+
             if (ModelState.IsValid)
             {
-                if (file != null)
+              /*  if (file != null)
 
                 {
                     if (file.ContentLength > 10240 * 100)
@@ -115,7 +144,7 @@ namespace SanalogMarket.Controllers
                     var yol = "/ThemeFiles/Project_Icon/" + dosya.Name;
                     @ViewBag.imageIcon = yol;
                     gelenCode.Icon = yol;
-                }
+                }*/
 
                 gelenCode.CreateDate=DateTime.Now;
                 gelenCode.UpdateDate=new DateTime(1996,01,21);
@@ -130,6 +159,11 @@ namespace SanalogMarket.Controllers
                 gelenCode.FilesIncluded = fileinculeded;
                 gelenCode.CompatibleBrowsers = browser;
                 gelenCode.Support = support;
+
+                gelenCode.Screenshot = file_screen;
+                gelenCode.Filepath = file_main;
+                gelenCode.Icon = file_icon;
+
                 int UserID = (int)Session["UserId"];
                 User EkleyenUser = dbBaglantisi.Users.Single(u => u.Id == UserID);
 
@@ -231,6 +265,121 @@ namespace SanalogMarket.Controllers
             return RedirectToAction("Details", "ProductTheme", new { id = gelenID });
 //            return ViewBag ile listele ajax'a' bas
         }
+
+        public string getScreenshot(List<String> values)
+        {
+            if (values != null)
+            {
+                file_screen = "/ThemeFiles/Project_File/" + values[0];
+                for (int i = 1; i < values.Count; i++)
+                {
+                    file_screen = file_screen + "," + "/ThemeFiles/Project_File/" + values[i];
+                }
+            }
+            else
+            {
+                file_screen = null;
+            }
+            return file_screen;
+        }
+        public string getIcon(List<String> values)
+        {
+            if (values != null)
+            {
+                file_icon = "/ThemeFiles/Project_File/" + values[0];
+                for (int i = 1; i < values.Count; i++)
+                {
+                    file_icon = file_icon + "," + "/ThemeFiles/Project_File/" + values[i];
+                }
+            }
+            else
+            {
+                file_icon = null;
+            }
+            return file_icon;
+        }
+        public string getMainFiles(List<String> values)
+        {
+            if (values != null)
+            {
+                file_main = "/ThemeFiles/Project_File/" + values[0];
+                for (int i = 1; i < values.Count; i++)
+                {
+                    file_main = file_main + "," + "/ThemeFiles/Project_File/" + values[i];
+                }
+            }
+            else
+            {
+                file_main = null;
+            }
+            return file_main;
+        }
+
+
+        [HttpPost]
+        public JsonResult Upload()
+        {
+            SelectOptions select = new SelectOptions();
+            var resultList = new List<ViewDataUploadFilesResult>();
+
+            var CurrentContext = HttpContext;
+            var httpRequest = CurrentContext.Request;
+            foreach (String inputTagName in httpRequest.Files)
+            {
+
+                var headers = httpRequest.Headers;
+
+                var file = httpRequest.Files[inputTagName];
+
+                select.Text = file.FileName;
+
+                file_namelist.Add(select);
+
+            }
+            filesHelper.UploadAndShowResults(CurrentContext, resultList);
+            JsonFiles files = new JsonFiles(resultList);
+
+            bool isEmpty = !resultList.Any();
+            if (isEmpty)
+            {
+                return Json("Error ");
+            }
+            else
+            {
+                return Json(files);
+
+            }
+            ViewBag.Liste = file_namelist;
+        }
+        public JsonResult GetFileList()
+        {
+            var list = filesHelper.FilesList();
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetFilename()
+        {
+
+            return Json(file_namelist, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public JsonResult DeleteFile(string file)
+        {
+            SelectOptions select = new SelectOptions();
+            foreach (var item in file_namelist)
+            {
+                if (item.Text.Equals(file))
+                {
+                    file_namelist.Remove(item);
+                    break;
+                }
+            }
+            select.Text = file;
+
+            filesHelper.DeleteFile(file);
+
+            return Json("OK", JsonRequestBehavior.AllowGet);
+        }
+
 
     }
 }
