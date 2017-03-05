@@ -88,6 +88,7 @@ namespace SanalogMarket.Controllers
             {
                 return RedirectToAction("Login", "User");
             }
+            
             return View();
         }
 
@@ -198,12 +199,13 @@ namespace SanalogMarket.Controllers
             if (Session["UserId"] == null)
                 return RedirectToAction("Login");
 
-            return View();
-        }
+            var profile = dbBaglantisi.Users.Find(Session["UserId"]);
+            return View(profile);
+        }   
 
         [HttpPost]
         public ActionResult Profile(User user)
-        {
+        {   
 //            if (user.Name != null && user.Surname != null && user.Password != null)
 //            {
 //                User kullanici = dbBaglantisi.Users.Find(Session["UserId"]);
@@ -230,7 +232,7 @@ namespace SanalogMarket.Controllers
 //                    return RedirectToAction("Index");
 //                }
 //            }
-
+            
 
             return View();
         }
