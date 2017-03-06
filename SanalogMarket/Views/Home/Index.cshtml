@@ -34,177 +34,262 @@
 
 
 
-<div class="container">
-    <div class="row">
-        <div class="row">
-            <div class="col-md-9">
-                <h3>
-                    Featured Code Product
-                </h3>
-            </div>
-            <div class="col-md-3">
-                <!-- Controls -->
-                <div class="controls pull-right hidden-xs">
-                    <a class="left fa fa-chevron-left btn btn-success" href="#carousel-example"
-                       data-slide="prev"></a><a class="right fa fa-chevron-right btn btn-success" href="#carousel-example"
-                                                data-slide="next"></a>
-                </div>
-            </div>
-        </div>
-        <div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel">
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-                <div class="item active">
-                    <div class="row">
-                        @{ int slideCount = 0;}
-                        @foreach (var item in ViewBag.TProduct)
-                        {
-                            slideCount++;
-            
-                            <div class="col-sm-3">
-                                <div class="col-item">
-                                    <div class="photo">
-                                        <img src="@item.Screenshot" class="img-responsive" alt="a"/>
-                                    </div>
-                                    <div class="info">
-                                        <div class="row">
-                                            <div class="price col-md-6">
-                                                <h5>
-                                                    @item.Title
-                                                </h5>
-                                                <h5 class="price-text-color">
-                                                    $@item.Price
-                                                </h5>
-                                            </div>
-                                            <div class="rating hidden-sm col-md-6">
-                                                <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                                </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                                </i><i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="separator clear-left">
-                                            <p class="btn-add">
-                                                <i class="fa fa-shopping-cart"></i><a href="@Url.Action("OrderNow","ShoppingCart",new {id= item.ID})" class="hidden-sm">Add to cart</a>
-                                            </p>
-                                            <p class="btn-details">
-                                                <i class="fa fa-list"></i><a href="@Url.Action("Details","ProductCode", new { id=item.ID })" class="hidden-sm">More details</a>
-                                            </p>
-                                        </div>
-                                        <div class="clearfix">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            if (slideCount == 4)
-                            {
-                                @Html.Raw("</div></div><div class='item'><div class='row'>");
-                
-                            }
-                        }
-
+<div class="row">
+    <div class="laksTitleDiv">
+        <h2 class="laksTitle">Browse</h2>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 30px">
+    <div class="owl-carousel owl-theme">
+        <div class="item">
+            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
+                <div class="detailsP">
+                    <div class="showLearn">
+                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>
+                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
                     </div>
+                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/190132/231.0x326.0/1026023_LB_231x326_en_US_%5E_2016-05-11-02-18-28_bb5bfaf422670d9addea7e8e790f09716120d7be.png" class="img-responsive deneme" /></a>
+                </div>
+
+                <div class="laksProductDetails">
+                    <a href="#" class="laksProductTitle">Battlefield 1</a>
+                    <p class="laksProductPrice">
+                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>
+                    </p>
                 </div>
             </div>
         </div>
-        <br/><br/>
-        
-        
-        
-        <div class="row">
-            <div class="col-md-9">
-                <h3>
-                    Featured Theme Product
-                </h3>
-            </div>
-            <div class="col-md-3">
-                <!-- Controls -->
-                <div class="controls pull-right hidden-xs">
-                    <a class="left fa fa-chevron-left btn btn-success" href="#carousel-example"
-                       data-slide="prev"></a><a class="right fa fa-chevron-right btn btn-success" href="#carousel-example"
-                                                data-slide="next"></a>
-                </div>
-            </div>
-        </div>
-        <div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel">
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-                <div class="item active">
-                    <div class="row">
-                        @{ int slideCountTheme = 0;}
-                        @foreach (var item in ViewBag.TProductTheme)
-                        {
-                            slideCount++;
-
-                            <div class="col-sm-3">
-                                <div class="col-item">
-                                    <div class="photo">
-                                        <img src="@item.Screenshot" class="img-responsive" alt="a" />
-                                    </div>
-                                    <div class="info">
-                                        <div class="row">
-                                            <div class="price col-md-6">
-                                                <h5>
-                                                    @item.Title
-                                                </h5>
-                                                <h5 class="price-text-color">
-                                                    $@item.Price
-                                                </h5>
-                                            </div>
-                                            <div class="rating hidden-sm col-md-6">
-                                                <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                                </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                                </i><i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="separator clear-left">
-                                            <p class="btn-add">
-                                                <i class="fa fa-shopping-cart"></i><a href="@Url.Action("OrderNow","ShoppingCart",new {id= item.ID})" class="hidden-sm">Add to cart</a>
-                                            </p>
-                                            <p class="btn-details">
-                                                <i class="fa fa-list"></i><a href="@Url.Action("Details","ProductTheme", new { id=item.ID })" class="hidden-sm">More details</a>
-                                            </p>
-                                        </div>
-                                        <div class="clearfix">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            if (slideCountTheme == 4)
-                            {
-                                @Html.Raw("</div></div><div class='item'><div class='row'>");
-
-                            }
-                        }
-
+        <div class="item">
+            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
+                <div class="detailsP">
+                    <div class="showLearn">
+                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>
+                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
                     </div>
+                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/190134/231.0x326.0/1030900_LB_231x326_en_US_%5E_2015-06-09-16-57-20_b530ed3ed0ff42213dbd5ac4f41427325c8a3096.jpg" class="img-responsive deneme" /></a>
+                </div>
+
+                <div class="laksProductDetails">
+                    <a href="#" class="laksProductTitle">Battlefield 1</a>
+                    <p class="laksProductPrice">
+                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>
+                    </p>
                 </div>
             </div>
         </div>
+        <div class="item">
+            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
+                <div class="detailsP">
+                    <div class="showLearn">
+                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>
+                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
+                    </div>
+                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/74889/231.0x326.0/1019025_LB_231x326_en_US_%5E_2016-09-09-18-10-26_834d4754eb4e81553bc3b69a4b60a79b154cfaa3.jpg" class="img-responsive deneme" /></a>
+                </div>
 
+                <div class="laksProductDetails">
+                    <a href="#" class="laksProductTitle">Battlefield 1</a>
+                    <p class="laksProductPrice">
+                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
+                <div class="detailsP">
+                    <div class="showLearn">
+                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>
+                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
+                    </div>
+                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/185353/231.0x326.0/1024486_LB_231x326_en_US_%5E_2015-08-04-10-45-42_0f314b68e981580a1416ef0d36679e0b0608e560.jpg" class="img-responsive deneme" /></a>
+                </div>
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
+                <div class="laksProductDetails">
+                    <a href="#" class="laksProductTitle">Battlefield 1</a>
+                    <p class="laksProductPrice">
+                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
+                <div class="detailsP">
+                    <div class="showLearn">
+                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>
+                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
+                    </div>
+                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/182633/231.0x326.0/1038862_LB_231x326_en_US_%5E_2016-07-21-10-11-54_1b27093a8723b707c8433a4aafc9203fd660d669.jpg" class="img-responsive deneme" /></a>
+                </div>
 
-        
+                <div class="laksProductDetails">
+                    <a href="#" class="laksProductTitle">Battlefield 1</a>
+                    <p class="laksProductPrice">
+                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
+                <div class="detailsP">
+                    <div class="showLearn">
+                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>
+                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
+                    </div>
+                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/192492/231.0x326.0/1027088_LB_231x326_en_US_%5E_2016-05-08-23-09-52_c3dde8a110b9712b6da6222ed5841d531410eb21.jpg" class="img-responsive deneme" /></a>
+                </div>
 
+                <div class="laksProductDetails">
+                    <a href="#" class="laksProductTitle">Battlefield 1</a>
+                    <p class="laksProductPrice">
+                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
+                <div class="detailsP">
+                    <div class="showLearn">
+                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>
+                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
+                    </div>
+                    <a href="#"><img src="https://eaassets-a.akamaihd.net/content.ts4/images/55482/231.0x326.0/1031929_LB_231x326_en_GB_%5E_2017-01-03-21-23-24_6e022d778a9abf972571289cad1cf0709fa673b3.png" class="img-responsive deneme" /></a>
+                </div>
+
+                <div class="laksProductDetails">
+                    <a href="#" class="laksProductTitle">Battlefield 1</a>
+                    <p class="laksProductPrice">
+                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
+                <div class="detailsP">
+                    <div class="showLearn">
+                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>
+                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
+                    </div>
+                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/74369/231.0x326.0/1032110_LB_231x326_en_GB_%5E_2015-09-15-15-45-25_98b2647e9d55ea3ff1f046a67f9648da93422ce8.jpg" class="img-responsive deneme" /></a>
+                </div>
+
+                <div class="laksProductDetails">
+                    <a href="#" class="laksProductTitle">Battlefield 1</a>
+                    <p class="laksProductPrice">
+                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
+                <div class="detailsP">
+                    <div class="showLearn">
+                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>
+                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
+                    </div>
+                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/190132/231.0x326.0/1026023_LB_231x326_en_US_%5E_2016-05-11-02-18-28_bb5bfaf422670d9addea7e8e790f09716120d7be.png" class="img-responsive deneme" /></a>
+                </div>
+
+                <div class="laksProductDetails">
+                    <a href="#" class="laksProductTitle">Battlefield 1</a>
+                    <p class="laksProductPrice">
+                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
+                <div class="detailsP">
+                    <div class="showLearn">
+                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>
+                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
+                    </div>
+                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/76860/231.0x326.0/71779_LB_231x326_en_US_%5E_2013-01-18-08-59-41_842a1aba742dbcc03faa1acef2e1a0ff5a4d403a0d53e396f340193899a48316.jpg" class="img-responsive deneme" /></a>
+                </div>
+
+                <div class="laksProductDetails">
+                    <a href="#" class="laksProductTitle">Battlefield 1</a>
+                    <p class="laksProductPrice">
+                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
+<script>
+    window.onload = function () {
+        $('.owl-carousel')
+            .owlCarousel({
+                loop: true,
+                margin: 10,
+                responsiveClass: true,
+                nav: true,
+                navText: ["<div style='width:30px;height:30px;border: 2px solid #303030;border-radius: 50px;'><i style='margin-top:6px;margin-right:1px;color:#8a8a8a' class='fa fa-chevron-left'></i></div>", "<div style='width:30px;height:30px;border: 2px solid #303030;border-radius: 50px;color:#8a8a8a;'><i style='margin-top:6px;margin-left:4px' class='fa fa-chevron-right'></i></div>"],
+                autoplay: true,
+                autoplayTimeout: 2000,
+                autoplayHoverPause: true,
+                stagePadding: 30,
+                smartSpeed: 450,
+                responsive: {
+                    0: {
+                        items: 2,
+                        nav: true
+                    },
+                    400: {
+                        items: 3,
+                        nav: false
+                    },
+                    600: {
+                        items: 4,
+                        nav: false
+                    },
+                    700: {
+                        items: 5,
+                        nav: false
+                    },
+                    1000: {
+                        items: 6,
+                        nav: true,
+                        loop: false,
+                        margin: 20
+                    },
+                    1200: {
+                        items: 7,
+                        nav: true,
+                        loop: false,
+                        margin: 20
+                    }
+                }
+            });
+        /*$('.owl-carousel')
+            .owlCarousel({
+                items: 5,
+                nav: true,
+                navText: ["<div style='width:30px;height:30px;border: 2px solid #303030;border-radius: 50px;'><i style='margin-top:6px;margin-right:1px;color:#8a8a8a' class='fa fa-chevron-left'></i></div>", "<div style='width:30px;height:30px;border: 2px solid #303030;border-radius: 50px;color:#8a8a8a;'><i style='margin-top:6px;margin-left:4px' class='fa fa-chevron-right'></i></div>"],
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 2000,
+                autoplayHoverPause: true,
+                margin: 30,
+                stagePadding: 30,
+                smartSpeed: 450,
+                dots: false
+            });*/
+    }
+</script>
 
 
 
 
 
 
-
-@Styles.Render("~/Content/HomeProduct")
+        @Styles.Render("~/Content/HomeProduct")
 

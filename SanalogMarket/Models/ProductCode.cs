@@ -44,6 +44,7 @@ namespace SanalogMarket.Models
 
         public string Comment { get; set; } 
         public virtual List<Comment> Comments { get; set; }
+        public virtual List<Review> Reviews { get; set; }
         public string Tags { get; set; }
         public virtual User User { get; set; }
 

@@ -47,6 +47,9 @@ namespace SanalogMarket.Models.Theme
         public string Tags { get; set; }
 
         public virtual List<Comment> Comments { get; set; }
+
+        public virtual List<Review> Reviews { get; set; }
+
         public string Comment { get; set; }
         public string Columns { get; set; }
         public string Layout { get; set; }

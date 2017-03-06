@@ -422,8 +422,8 @@ namespace SanalogMarket
                     db.Codes.Add(productCode);
                     db.Codes.Add(productCode2);
                     db.Codes.Add(productCode3);
-                    db.Themes.Add(productTheme);
-                    db.Themes.Add(productTheme2);
+//                    db.Themes.Add(productTheme);
+//                    db.Themes.Add(productTheme2);
                     db.SaveChanges();
                 }
 

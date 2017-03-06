@@ -181,6 +181,23 @@ namespace SanalogMarket.Controllers
 
             return RedirectToAction("Details", "ProductCode", new { id = gelenID });
         }
+        [HttpPost]
+        public ActionResult AddReview(string ReviewDescription,int productID)
+        {
+            
+            Review rw = new Review();
+            int UserID = Convert.ToInt32(Session["UserId"]);
+            User EkleyenUser = dbBaglantisi.Users.Where(u => u.Id == UserID).FirstOrDefault();
+            product = dbBaglantisi.Codes.Find(productID);
+            rw.ReviewAutor = EkleyenUser;
+            rw.ReviewDate = DateTime.Now;
+            rw.ReviewCode = product;
+            rw.ReviewDescription = ReviewDescription;
+            dbBaglantisi.Reviews.Add(rw);
+            dbBaglantisi.SaveChanges();
+
+            return RedirectToAction("Details", "ProductCode",new {id = productID});
+        }
 
         public string getVersion(List<String> values)
         {
