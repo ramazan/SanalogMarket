@@ -17,6 +17,10 @@ namespace SanalogMarket.Models
         public DbSet<Theme.ProductTheme> Themes { get; set; }
         public DbSet<Theme.ThemeCategory> ThemeCategories { get; set; }
         public DbSet<Theme.ThemeSubCategory> ThemeSubCategories { get; set; }
+<<<<<<< HEAD
         public DbSet<Review> Reviews { get; set; }
+=======
+        public DbSet<UserConfirm> UserConfirms { get; set; }
+>>>>>>> origin/master
     }
 }

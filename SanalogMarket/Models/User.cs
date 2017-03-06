@@ -38,7 +38,7 @@ namespace SanalogMarket.Models
         public DateTime RegisterTime { get; set; }
 
 
-        [DataType(DataType.DateTime)] 
+        [DataType(DataType.DateTime)]
         public DateTime LastLoginTime { get; set; }
 
 //        public Boolean Active { get; set; }
@@ -50,6 +50,15 @@ namespace SanalogMarket.Models
 //        public int Buy { get; set; }
 
 //      [DataType(DataType.ImageUrl)]
-       public string Avatar { get; set; }
+        public string Avatar { get; set; }
+    }
+
+    public class UserConfirm
+    {
+        [Key]
+        public int Id { get; set; }
+
+        public virtual User User { get; set; }
+        public string Token { get; set; }
     }
 }
