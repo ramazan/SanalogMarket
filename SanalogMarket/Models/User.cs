@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace SanalogMarket.Models
 {
@@ -23,11 +24,13 @@ namespace SanalogMarket.Models
 
         [Required(ErrorMessage = "Username is required")]
         [DisplayName("Username")]
+        [Remote("IsUserNameExist", "User", ErrorMessage = "Username already exist")]
         public string Username { get; set; }
 
         [EmailAddress]
         [DisplayName("E-mail")]
         [Required]
+        [Remote("IsEmailExist", "User", ErrorMessage = "E-mail already exist,forget your password?")]
         public string Email { get; set; }
 
         [DataType(DataType.Password)]

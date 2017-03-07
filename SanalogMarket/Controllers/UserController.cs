@@ -67,7 +67,8 @@ namespace SanalogMarket.Controllers
 
                 if (userConfirm != null)
                 {
-                    ViewBag.mesaj = "Sayın " + userConfirm.User.Name + " " + userConfirm.User.Surname + " Kaydınız başarıyla tamamlandı!";
+                    ViewBag.mesaj = "Sayın " + userConfirm.User.Name + " " + userConfirm.User.Surname +
+                                    " Kaydınız başarıyla tamamlandı!";
                 }
             }
             catch (Exception e)
@@ -77,6 +78,18 @@ namespace SanalogMarket.Controllers
 
 
             return View();
+        }
+
+        [AllowAnonymous]
+        public JsonResult IsUserNameExist(string Username)
+        {
+            return Json(!dbBaglantisi.Users.Any(lo => lo.Username == Username), JsonRequestBehavior.AllowGet);
+        }
+
+        [AllowAnonymous]
+        public JsonResult IsEmailExist(string Email)
+        {
+            return Json(!dbBaglantisi.Users.Any(lo => lo.Email == Email), JsonRequestBehavior.AllowGet);
         }
 
 
@@ -130,8 +143,8 @@ namespace SanalogMarket.Controllers
 
                 dbBaglantisi.SaveChanges();
 
-                var user = dbBaglantisi.Users.Single(p => p.Email == createUser.Email);
-                SendConfirmEmail(user);
+//                var user = dbBaglantisi.Users.Single(p => p.Email == createUser.Email);
+//                SendConfirmEmail(user);
 
                 ViewBag.Mesaj = "You're succesfully registered! Please check your E-mail for confirm your account!";
                 return View();
