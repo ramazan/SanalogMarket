@@ -4,6 +4,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.Remoting.Messaging;
+using System.Threading;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
@@ -181,24 +183,52 @@ namespace SanalogMarket.Controllers
 
             return RedirectToAction("Details", "ProductCode", new { id = gelenID });
         }
+
         [HttpPost]
-        public ActionResult AddReview(string ReviewDescription,int productID)
+        public JsonResult NewReview(string ReviewDescription)
         {
-            
+            Thread.Sleep(1000);
             Review rw = new Review();
-            int UserID = Convert.ToInt32(Session["UserId"]);
-            User EkleyenUser = dbBaglantisi.Users.Where(u => u.Id == UserID).FirstOrDefault();
-            product = dbBaglantisi.Codes.Find(productID);
-            rw.ReviewAutor = EkleyenUser;
-            rw.ReviewDate = DateTime.Now;
-            rw.ReviewCode = product;
-            rw.ReviewDescription = ReviewDescription;
-            dbBaglantisi.Reviews.Add(rw);
-            dbBaglantisi.SaveChanges();
+            List<String> values = new List<string>();
 
-            return RedirectToAction("Details", "ProductCode",new {id = productID});
+            try
+            {
+                int UserID = Convert.ToInt32(Session["UserId"]);
+                if (UserID == 0)
+                {
+                    values.Add("MustLogin");
+                    return Json(values, JsonRequestBehavior.AllowGet);
+                }
+                UserID = 1;
+                User EkleyenUser = dbBaglantisi.Users.Where(u => u.Id == UserID).FirstOrDefault();
+                product = dbBaglantisi.Codes.Find(gelenID);
+                Review check =
+                    dbBaglantisi.Reviews.Where(u => u.ReviewAutor.Id == UserID && u.ReviewCode.ID == gelenID).FirstOrDefault();
+                if (check != null)
+                {
+                    values.Add("alreadyAdded");
+                    return Json(values, JsonRequestBehavior.AllowGet);
+                }
+                rw.ReviewAutor = EkleyenUser;
+                rw.ReviewDate = DateTime.Now;
+                rw.ReviewCode = product;
+                rw.ReviewDescription = ReviewDescription;
+                dbBaglantisi.Reviews.Add(rw);
+                dbBaglantisi.SaveChanges();
+                
+                values.Add("success");
+                values.Add(EkleyenUser.Name.ToString());
+                values.Add(DateTime.Now.ToString("dd-MM-yyyy"));
+                values.Add(ReviewDescription);
+                
+            }
+            catch (Exception ex)
+            {
+                values.Add("failed");
+            }
+            return Json(values, JsonRequestBehavior.AllowGet);
+
         }
-
         public string getVersion(List<String> values)
         {
             if (values != null)

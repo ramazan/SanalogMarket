@@ -94,7 +94,7 @@
    </div>
 <div class="row">
     <h3 style="margin-left: 20px">Reviews</h3>
-    @using (Html.BeginForm("AddReview", "ProductCode", new { productId = Convert.ToInt32(Model.ID) }, FormMethod.Post))
+    @using(Html.BeginForm())
     {
         if (Model.Reviews.ToList().Count != 0)
          {
@@ -111,18 +111,40 @@
                 </div>
              }
         }
-        <div class="col-md-7" style="margin-top: 15px; margin-bottom: 15px;">
-            <div class="form-group">
-                @Html.TextArea("ReviewDescription",new {rows=5});
-                <input style="margin-top: 15px" class="btn btn-primary" id="Button1" type="submit" value="button" />
+        
+    }
+   
+    <div class="col-md-7" id="ReviewLoading" style="display: none">
+        <img src="/Content/loading.gif" class="img-responsive" alt="" style="width: 13%; margin: 0px auto;">
+    </div>
+    <div id="errorReviewContainer" class="col-md-7" style="background-clip: content-box;margin-top: 10px; display: none;">
+        
+        <div class="alert alert-danger" id="errorReview">
+           
+        </div>
+    </div>
 
-            </div>
+    <div class="col-md-7" style="display: none" id="newReviewContainer">
+        <div class="review" id="newReview" style="background: #ffffff; border: 2px solid #ddd; margin-bottom: 15px;display: none">
+            
+        </div>
+    </div>
+    @using (Ajax.BeginForm("NewReview", "ProductCode", new AjaxOptions()
+    {
+        HttpMethod = "POST",
+        OnSuccess = "SuccesReview",
+        OnBegin = "ReviewLoadingShow"
+    }))
+    {
+        <div class="col-md-7" style="max-width: none !important">
+            @Html.TextArea("ReviewDescription", new { rows = 5, style = "max-width: none" });
+            <br />
+            <input type="submit" style="margin-top: 15px;max-width: none" class="btn btn-primary" />
         </div>
     }
-
 </div>
-    
-    
+   
+
 
 <div class="row">
     <div class="col-sm-12">
@@ -130,7 +152,8 @@
     </div><!-- /col-sm-12 -->
 </div><!-- /row -->
 
-@using (Html.BeginForm("AddComment", "ProductCode", FormMethod.Post)) { 
+@using (Html.BeginForm("AddComment", "ProductCode", FormMethod.Post))
+{
     if (Model.Comments.ToList().Count != 0)
     {
         foreach (var item in Model.Comments.ToList())
@@ -155,13 +178,13 @@
                 </div><!-- /row -->
             </div>
             <!-- /container -->
-        }
-    }
-    else
-    {
+                                        }
+                                    }
+                                    else
+                                    {
         <div></div>
-    }
-    
+                                    }
+
     <div class="alert" id="comment" name="comment1" style="padding: 20px">
     
         <textarea cols="1009" name="yorum"></textarea><br/>
@@ -181,19 +204,61 @@
 </html>
 @section scripts {
 
-    <script src="~/scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>    
     <script type="text/javascript">
+        function ReviewLoadingShow() {
+            console.log("buradasiniz");
+            $("#errorReview").empty();
+            $("#errorReviewContainer").hide();
+            $("#ReviewLoading").fadeIn(150);
+        }
+        function SuccesReview(result) {
+            if (result[0] === "success") {
+                $("#errorReview").empty();
+                $("#ReviewLoading").hide();
+                $("#errorReviewContainer").hide();
+                $('#newReview')
+                    .append("<span class='thumb-sm avatar pull-left mr-sm'><img class='img-circle'></span><h4 class='event-heading'><a href='#'>" + result[1] + "</a></h4><p class='fs-sm text-muted'>" + result[2] + "</p><p class='fs-mini'>" + result[3] + "</p>")
+                    .fadeIn(500);
+                $("#newReviewContainer").fadeIn(500);
+            }
+            if (result[0] === "failed") {
+                $("#ReviewLoading").hide();
+                $("#errorReview").empty();
+                $("#errorReview")
+                    .append("<i class='fa fa-frown-o'></i><strong>Well ,someting went wrong sorry about that</strong>!");
+                $("#errorReview").fadeIn(500);
+                $("#errorReviewContainer").fadeIn(500);
+            }
+            if (result[0] === "MustLogin") {
+                $("#ReviewLoading").hide();
+                $("#errorReview").empty();
+                $("#errorReview")
+                    .append("<i class='fa fa-frown-o'></i><strong>To add a review must logged into website</strong>!");
+                $("#errorReview").fadeIn(500);
+                $("#errorReviewContainer").fadeIn(500);
+            }
+            if (result[0] === "alreadyAdded") {
+                $("#ReviewLoading").hide();
+                $("#errorReview").empty();
+                $("#errorReview")
+                    .append("<i class='fa fa-frown-o'></i><strong>You have been already added review on this product.Only one is allowed </strong>!");
+                $("#errorReview").fadeIn(500);
+                $("#errorReviewContainer").fadeIn(500);
+            }
+
+        }
         var control = parseInt('@ViewBag.Control');
         $(document)
             .ready(function () {
 
-              if (control == 0 ) {
-                  $("#comment").hide();
-                  $("#notcomment").show();
-              }
-              else {
-                  $("#notcomment").hide();
-              }
+                if (control == 0 ) {
+                    $("#comment").hide();
+                    $("#notcomment").show();
+                }
+                else {
+                    $("#notcomment").hide();
+                }
             });
     </script>
 }
