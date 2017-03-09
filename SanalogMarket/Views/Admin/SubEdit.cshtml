@@ -1,0 +1,131 @@
+﻿@model SanalogMarket.Models.SubCategory
+
+@{
+    ViewBag.Title = "SubEdit";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@using (Html.BeginForm("SubEdit", "Admin", FormMethod.Post))
+{
+<div>
+	<hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+            @Html.TextBoxFor(x => x.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+            @Html.TextBoxFor(x => x.Description)
+        </dd>
+
+    </dl>
+    <label>kategorideki uzantılar </label>
+    <br />
+    
+    
+    <select id="uzanti" name="uzanti" multiple="multiple"></select>
+    <button type="submit" class="btn btn-danger" id="sil"> Sil</button>
+    <br />
+    
+    <label>Tüm Uzantılar</label>
+    <br />
+     
+    <select id="tum_uzanti" name="tum_uzanti"  multiple></select><label>OR</label><input type="text" name="text_value" id="text_value" />
+    <button type="submit" class="btn btn-success" id="ekle">Ekle</button>
+
+</div>
+<p>
+</p>
+    <p>
+        @Html.ActionLink("Cancel", "SubCategory")
+    </p>
+   
+}
+
+<script src="~/scripts/jquery-1.10.2.js"></script>
+<script src="~/Content/jquery.form.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+   
+        $("#sil").click(function () {
+            
+            var Secilenler = "";
+            $('#uzanti :selected').each(function (i, selected) {
+                Secilenler += $(selected).text() + ",";
+            });
+
+            var result = { values: Secilenler }
+            $.ajax({
+
+                url: "/Admin/silinecek_uzanti/",
+                type: 'POST',
+                dataType: 'json',
+                data: result,
+
+                success: function (data) {
+
+                }
+            });
+        });
+        
+        $("#ekle").click(function () {
+            var uzantilar = "";
+            $('#tum_uzanti :selected').each(function (i, selected) {
+                uzantilar += $(selected).text() + ",";
+            });
+            var text = $("#text_value").val();
+            var result = { values: uzantilar , text_value:text}
+            $.ajax({
+
+
+                url: "/Admin/eklenecek_uzanti/",
+                type: 'POST',
+                dataType: 'json',
+                data: result,
+
+                success: function (data) {
+
+                }
+            });
+          
+        });
+        $.getJSON('/Admin/secili_exten', null, function (data) {
+
+            $.each(data, function (i,item) {
+                $("#uzanti").append('<option value="' + this + '"' + '>' + this + '</option>');
+            });
+        });
+    
+        $.getJSON("/Admin/tum_uzanti_list", null, function (data) {
+            $.each(data, function () {
+                $("#tum_uzanti").append('<option value="' + this + '">' + this + '</option>');
+            });
+
+            
+        });
+        
+        $("#tum_uzanti").change(function () {
+            var name = $(this).val();
+            var data = 'name=' + name;
+        });
+
+
+    });
+    
+    </script>
+
+
+
+
+

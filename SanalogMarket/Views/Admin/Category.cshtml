@@ -1,21 +1,37 @@
-﻿@model  IEnumerable<SanalogMarket.Models.Category>
+﻿@model IEnumerable<SanalogMarket.Models.Category>
+
 @{
+    ViewBag.Title = "Category";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
-@foreach (var item in Model)
-{
-    
-    @Html.ActionLink("Alt kategori ekle","Category","Admin",new {id = item.ID})<br/>   
-    <b> @item.Name</b>
-    <br/>
-    foreach (var a in item.SubCategories)
-    {
-        
-            @a.Name
-    <br/>
-    }<br/><br/>
-    
-    
-    
-    }
-    
+
+<p>
+    @Html.ActionLink("Create New", "CreateCategory")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "CatEdit", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "CatDelete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

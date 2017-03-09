@@ -1,0 +1,34 @@
+﻿@model IEnumerable<SanalogMarket.Models.SubCategory>
+
+@{
+    ViewBag.Title = "SubCategory";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Create New", "CreateSubCategory")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+      
+        <th>Category</th><th></th>
+    </tr>
+@foreach (var item in Model) {
+       <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+         <td>
+            @item.Category.Name</td>
+        <td>
+            @Html.ActionLink("Edit", "SubEdit", new { id =item.ID}) |
+            @Html.ActionLink("Delete", "SubDelete", new { id=item.ID })
+        </td>
+    </tr>
+     
+}
+
+</table>

@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "Create  SubCategory";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+
+
+
+    <label>SubCategory Name</label><input type="text" placeholder="Subcategory Name" name="SubName" id="SubName"/>
+    <br />
+    <br />
+    
+    <label>Category Select</label>
+    <select id="category" name="category" ></select>
+    
+    <br />
+    <br />
+    <label>Extension Select</label>
+    <select id="uzanti" name="uzanti"  multiple></select>
+    <label>OR</label> <input  type="text" name="text_uzanti" id="text_uzanti"/>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-success" id="end">End</button>
+  
+
+
+
+
+    
+<script src="~/scripts/jquery-1.10.2.js"></script>
+<script src="~/Content/jquery.form.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.getJSON('/Admin/GetCategory', null, function (data) {
+            $.each(data, function (i, item) {
+                $('#category')
+                    .append('<option value="' + item.Name + '">' + item.Name + '</option>');
+            });
+
+        });
+
+        $.getJSON("/Admin/GetExtension", null, function (data) {
+            $.each(data, function (i, item) {
+                $("#uzanti").append('<option value="' + item + '">' + item + '</option>');
+            });
+        });
+
+        /*text değerlerini controllara yollayıp kayıt işlemini yapmasını sağlar */
+        $("#end").click(function () {
+            
+           
+                var uzantilar = "";
+                $('#uzanti :selected').each(function (i, selected) {
+                    uzantilar += $(selected).text() + ",";
+                });
+                var text_value = $("#text_uzanti").val();
+                var subname = $("#SubName").val();
+                var category = $("#category").val();
+                var result = { uzanti: uzantilar, text_uzanti: text_value, SubName: subname,category:category }
+                $.ajax({
+
+
+                    url: "/Admin/CreateSubCategory/",
+                     type: 'POST',
+                    dataType: 'json',
+                    data: result,
+
+                    success: function (data) {
+
+                    }
+                });
+                //window.location.reload(true);
+            
+                document.location.href = '/Admin/SubCategory';
+                
+        });
+
+    });
+</script>

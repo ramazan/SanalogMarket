@@ -159,6 +159,13 @@ namespace SanalogMarket
                     Category = cat
                 };
 
+                Extension uzanti1 = new Extension()
+                {
+                    uzanti = ".html",
+                    Category = cat,
+                    SubCategory = sub15
+                };
+
                 SubCategory cat12 = new SubCategory
                 {
                     Name = "Blog",
@@ -191,6 +198,13 @@ namespace SanalogMarket
                     Name = "Food",
                     Description = "Food",
                     Category = cat1
+                };
+
+                Extension uzanti = new Extension()
+                {
+                    uzanti = ".cs",
+                    Category = cat1,
+                    SubCategory = sub17
                 };
 
                 SubCategory cat123 = new SubCategory
@@ -240,6 +254,21 @@ namespace SanalogMarket
                     Category = cat3
                 };
 
+                List List1 = new List
+                {
+                    uzanti = ".cs"
+                };
+                List List2 = new List
+                {
+                    uzanti = ".html"
+                };
+
+                db.Lists.Add(List1);
+                db.Lists.Add(List2);
+
+
+                db.Extensions.Add(uzanti);
+                db.Extensions.Add(uzanti1);
 
                 if (SubCategoryCount <= 0)
                 {

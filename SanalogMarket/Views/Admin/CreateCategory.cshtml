@@ -1,0 +1,160 @@
+﻿
+@{
+    ViewBag.Title = "Create Category";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<div class="col-md-12">
+    <div class="form-group a">
+        <!-- Cat Name -->
+        <label for="name" class="control-label">Category Name</label>
+        <input type="text" class="form-control" id="catname" name="Catname" placeholder="Category Name" required="required">
+    </div>
+
+    
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <!-- sub Category -->
+            <label for="sub1" class="control-label">SubCategory Name 1</label>
+            <input type="text" class="form-control" id="subname1" name="subcatname" placeholder="SubCategory Name">
+            <br />
+            <div class="col-md-6">
+                <select id="uzanti1" name="subcat1" multiple></select>
+                <label>Or</label>
+            </div>
+  
+            <div class="col-md-6">
+                
+                <input type="text" class="form-control" id="textuzanti1" name="text_uzanti1" placeholder="Uzantı Giriniz">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group" id="cat2">
+            <!-- sub Category -->
+            <label for="sub2" class="control-label">SubCategory Name 2</label>
+            <input type="text" class="form-control" id="subname2" name="subcatname2" placeholder="SubCategory Name">
+            <br />
+            <div class="col-md-6">
+                <select id="uzanti2" name="subcat2" multiple></select>
+            <label>OR</label>
+            </div>
+            <div class="col-md-6">
+                <input type="text" class="form-control" id="textuzanti2" name="text_uzanti2" placeholder="Uzantı Giriniz">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <!-- sub Category -->
+            <label for="sub3" class="control-label">SubCategory Name 3</label>
+            <input type="text" class="form-control" id="subname3" name="subcatname3" placeholder="SubCategory Name">
+            <br />
+            <div class="col-md-6">
+                <select id="uzanti3" name="subcat3" multiple></select>
+                <label>OR</label>
+            </div>
+            <div class="col-md-6">
+                <input type="text" class="form-control" id="textuzanti3" name="text_uzanti3" placeholder="Uzantı Giriniz">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <!-- Submit Button -->
+        <button type="button" class="btn btn-primary" id="end">End</button>
+    </div>
+</div>
+
+
+<script src="~/scripts/jquery-1.10.2.js"></script>
+<script src="~/Content/jquery.form.js"></script>,
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+        
+        $.getJSON("/Admin/tum_uzanti_list", null, function (data) {
+            $.each(data, function () {
+                $("#uzanti1").append('<option value="' + this + '">' + this + '</option>');
+            });
+
+            $.each(data, function (i, item) {
+                $("#uzanti2").append('<option value="' + item + '">' + item + '</option>');
+            });
+
+            $.each(data, function (i, item) {
+                $("#uzanti3").append('<option value="' + item + '">' + item + '</option>');
+            });
+        });
+        
+        
+        $("#end").click(function () {
+            var catname = $("#catname").val();
+            var subname1 = $("#subname1").val();
+            var subname2 = $("#subname2").val();
+            var subname3 = $("#subname3").val();
+            
+
+            if(catname!="")
+            {
+
+                if(subname1=="" && subname2=="" && subname3=="")
+                {
+                    alert("Bir SubCategory Girmeniz Gerekiyor");
+                }
+                else
+                {
+                    
+                    /*ilk subcategori için seçilen uzantı kontrolü*/
+                    var uzantilar1 = "";
+                    $('#uzanti1 :selected').each(function (i, selected) {
+                        uzantilar1 += $(selected).text() + ",";
+                    });
+                    /*ikinci subcategori için seçilen uzantı kontrolü*/
+                    var uzantilar2 = "";
+                    $('#uzanti2 :selected').each(function (i, selected) {
+                        uzantilar2 += $(selected).text() + ",";
+                    });
+                    /*üçüncü subcategori için seçilen uzantı kontrolü*/
+                    var uzantilar3 = "";
+                    $('#uzanti3 :selected').each(function (i, selected) {
+                        uzantilar3 += $(selected).text() + ",";
+                    });
+                    
+                    /*ilk subkategori için text value kısmı*/
+                    var textvalue1 = $("#textuzanti1").val();
+                    /*ikinci subcategori için textvalue kısmı*/
+                    var textvalue2 = $("#textuzanti2").val();
+                    /*üçüncü subcategori için textvalue kısmı*/
+                    var textvalue3 = $("#textuzanti3").val();
+                    
+                    var result = { catname: catname, subname1: subname1, subname2: subname2, subname3: subname3, uzantilar1: uzantilar1, uzantilar2: uzantilar2, uzantilar3: uzantilar3, text_value1: textvalue1, text_value2: textvalue2, text_value3: textvalue3 }
+                    
+                    $.ajax({
+                        
+
+                        url: "/Admin/CreateCategory/",
+                         type: 'POST',
+                        dataType: 'json',
+                        data: result,
+
+                        success: function (data) {
+
+                        }
+                    });
+                    document.location.href = '/Admin/Category';
+                }
+            }
+            else
+            {
+                alert("Categori Name Giriniz !!!");
+            }
+        });
+
+    });  
+</script>

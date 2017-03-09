@@ -1,0 +1,330 @@
+﻿@model SanalogMarket.Models.Category
+@{
+    ViewBag.Title = "Category Edit";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="row">
+    @using (Html.BeginForm("CatEdit", "Admin", FormMethod.Post))
+    {
+        
+
+        <div class="col-md-1">
+            <div class="col-md-12">
+                @Html.DisplayNameFor(x => x.Name)
+            </div>
+            <br />
+            
+        </div>
+        <div class="col-md-1">
+            <div class="col-md-12">@Model.Name</div>
+            <br />
+            
+        </div>
+        <div class="col-md-3">
+            <div class="col-md-12">
+                <input type="text" id="cat_input" value="@Model.Name" name="yeni"/>
+                <button type="submit" class="btn btn-primary" id="big_end">End</button>
+        </div>
+    </div>
+
+       
+        
+        
+        <br />
+        //<button type="submit" class="btn btn-primary">End</button>
+        <br />
+        <br />
+        @Html.ActionLink("Cancel","Category")
+    }
+    <select id="subcat"></select>
+    <select id="uzanti"></select>
+    <button type="button" class="btn btn-primary" id="edit">Sub Edit</button>
+    <button type="button" class="btn btn-danger" id="sub_sil">Sub Sil</button>
+    <button type="button" class="btn btn-success" id="sub_ekle">Sub Ekle</button>
+
+    <br />
+    <br />
+    <div class="sub-show">
+        <label>SubCategori Name</label>
+        <br />
+        <input type="text" name="subname" id="subname" />
+
+        <br />
+        <label>Subcategori Uzantıları</label>
+        <br />
+        <select id="secili_subcat" multiple></select>
+
+        <button type="button" class="btn btn-danger" id="exten_sil">Sil</button>
+        <button type="submit" class="btn btn-success" id="ekle">Ekle</button>
+    </div>
+    <div class="exten-show">
+        <label>Uzantı Ekleme</label>
+        <br />
+      
+        <select id="olmayan_uzantilar" multiple></select>
+        <label>Or</label>
+        <input type="text" name="name" id="uzanti_ekle" />
+
+        <button type="submit" class="btn btn-primary" id="end">End</button>
+    </div>
+    <div class="subekle-show">
+        <label>SubCategory Ekleme</label>
+        <br />
+        <label>SubName</label>
+        <br />
+        <input type="text" name="name"  id="sub_ekle_name" required/>
+        <br />
+        <label>Uzantı</label>
+        <br />
+        <select id="sub_ekle_liste" multiple></select>
+        <label>OR</label>
+         
+        <input type="text" name="name" id="sub_ekle_uzanti" />
+        <button type="submit" class="btn btn-primary" id="sub_ekle_end">End</button>
+        
+    </div>
+</div>
+
+
+<script src="~/scripts/jquery-1.10.2.js"></script>
+<script src="~/Content/jquery.form.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+        $(".sub-show").hide();
+        $(".exten-show").hide();
+        $(".subekle-show").hide();
+
+
+        
+        $.getJSON('/Admin/GetSub',
+                        null,
+                        function (data) {
+                            $.each(data,
+                                function () {
+                                    $('#subcat')
+                                        .append('<option value="' +
+                                            this.ID +
+                                            '">' +
+                                            this.Name +
+                                            '</option>');
+                                });
+                            /*ilk baştada gelmesi için*/
+                            $.getJSON('/Admin/GetUzanti',
+                                            { subid: $('#subcat').val() },
+                                            function (data) {
+                                                $.each(data,
+                                                    function () {
+                                                        $('#uzanti')
+                                                            .append('<option value="' +
+                                                                this +
+                                                                '">' +
+                                                                this +
+                                                                '</option>');
+                                                    });
+                                            })
+                                        .fail(function (jqXHR, textStatus, errorThrown) {
+                                            alert('Error getting Extensions!');
+                                        });
+                        
+
+                            // Dropdown list change event.
+                            $('#subcat')
+                                .change(function () {
+                                    $('#uzanti option').remove();
+                                    $.getJSON('/Admin/GetUzanti',
+                                            { subid: $('#subcat').val() },
+                                            function (data) {
+                                                $.each(data,
+                                                    function () {
+                                                        $('#uzanti')
+                                                            .append('<option value="' +
+                                                                this +
+                                                                '">' +
+                                                                this +
+                                                                '</option>');
+                                                    });
+                                            })
+                                        .fail(function (jqXHR, textStatus, errorThrown) {
+                                            alert('Error getting Extensions!');
+                                        });
+                                });
+                        });
+
+        /*Sub categori eklerken uzantıların listelenmesi için*/
+        $.getJSON('/Admin/tum_uzanti_list/',
+                                            null,
+                                            function (data) {
+                                                $.each(data,
+                                                    function () {
+                                                        $('#sub_ekle_liste')
+                                                            .append('<option value="' +
+                                                                this +
+                                                                '">' +
+                                                                this +
+                                                                '</option>');
+                                                    });
+                                            })
+                                        .fail(function (jqXHR, textStatus, errorThrown) {
+                                            alert('Error getting Extensions!');
+                                        });
+
+        $("#edit").click(function () {
+            $(".sub-show").show();
+            $(".subekle-show").hide();
+            var name = $('#subcat :Selected').text();
+            $("#subname").val(name);
+            $('#secili_subcat option').remove();
+                                    $.getJSON('/Admin/GetUzanti',
+                                            { subid: $('#subcat').val() },
+                                            function (data) {
+                                                $.each(data,
+                                                    function () {
+                                                        $('#secili_subcat')
+                                                            .append('<option value="' +
+                                                                this +
+                                                                '">' +
+                                                                this +
+                                                                '</option>');
+                                                    });
+                                            })
+                                        .fail(function (jqXHR, textStatus, errorThrown) {
+                                            alert('Error getting Extensions!');
+                                        });
+                                
+            
+        });
+
+        $("#ekle").click(function () {
+            $(".exten-show").show();
+            $("#big_end").hide();
+            $('#olmayan_uzantilar option').remove();
+            $.getJSON('/Admin/GetExtension_disinda',
+                    { subid: $('#subcat').val() },
+                    function (data) {
+                        $.each(data,
+                            function () {
+                                $('#olmayan_uzantilar')
+                                    .append('<option value="' +
+                                        this +
+                                        '">' +
+                                        this +
+                                        '</option>');
+                            });
+                    })
+                .fail(function (jqXHR, textStatus, errorThrown) {
+                    alert('Error getting Extensions!');
+                });
+
+        });
+       
+        $("#end").click(function () {
+            var uzantilar = "";
+            $('#olmayan_uzantilar :selected').each(function (i, selected) {
+                uzantilar += $(selected).text() + ",";
+            });
+            var text = $("#uzanti_ekle").val();
+            var subid = $('#subcat :Selected').val();
+            var catname = $("#cat_input").val();
+            var subname = $("#subname").val();
+            var result = { values: uzantilar, text_value: text, subid: subid ,catname:catname,subname:subname}
+            $.ajax({
+
+
+                url: "/Admin/catedit_uzantiekle/",
+                type: 'POST',
+                dataType: 'json',
+                data: result,
+
+                success: function (data) {
+                    alert("İşlem Başarıyla Gerçekleşti");
+                }
+            });
+            window.location.reload(true);
+        });
+        /*sub ekleme için inputların gözükmesi için*/
+        $("#sub_ekle").click(function () {
+            $(".subekle-show").show();
+            $(".sub-show").hide();
+            $(".exten-show").hide();
+
+        });
+        /*Sub ekleme işlemini tamalama için end butonuna basma*/
+        $("#sub_ekle_end").click(function () {
+            var kontrol = $("#sub_ekle_name").val();
+            if(kontrol!=""){
+            var uzantilar = "";
+            $('#sub_ekle_liste :selected').each(function (i, selected) {
+                uzantilar += $(selected).text() + ",";
+            });
+            var text_value = $("#sub_ekle_uzanti").val();
+            var subname = $("#sub_ekle_name").val();
+            var result = { values: uzantilar, text_value:text_value,subname:subname}
+            $.ajax({
+
+
+                url: "/Admin/cat_sub_ekle/",
+                 type: 'POST',
+                dataType: 'json',
+                data: result,
+
+                success: function (data) {
+
+                }
+            });
+            window.location.reload(true);
+            }
+            else {
+                alert("subname giriniz");
+            }
+        });
+        /*exten silme butonu*/
+        $("#exten_sil").click(function () {
+            var uzantilar = "";
+            $('#secili_subcat :selected').each(function (i, selected) {
+                uzantilar += $(selected).text() + ",";
+            });
+            
+            var subid = $('#subcat :Selected').val()
+            var result = { values: uzantilar, subid: subid }
+            $.ajax({
+
+
+                url: "/Admin/Cat_Edit_extensil/",
+               
+                dataType: 'json',
+                data: result,
+
+                success: function (data) {
+                    
+                }
+            });
+            window.location.reload(true);
+        });
+
+        
+        /*Sub sil butonu*/
+        $("#sub_sil").click(function () {
+            var subid = $('#subcat :Selected').val()
+            var result = {  subid: subid }
+            $.ajax({
+
+
+                url: "/Admin/catedit_subsil/",
+                type: 'POST',
+                dataType: 'json',
+                data: result,
+
+                success: function (data) {
+
+                }
+            });
+            window.location.reload(true);
+        });
+
+        
+    });
+    
+</script>
