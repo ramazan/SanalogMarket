@@ -487,6 +487,7 @@ namespace SanalogMarket
                     rv.ReviewDescription = "Amazing Product!";
                     rv.ReviewCode = productCode;
                     rv.ReviewTheme= null;
+                    rv.ReviewRate = 4;
 
                     Review rv1 = new Review();
                     rv1.ReviewAutor = usr;
@@ -494,6 +495,7 @@ namespace SanalogMarket
                     rv1.ReviewDescription = "Amazing Product!";
                     rv1.ReviewCode = productCode2;
                     rv1.ReviewTheme = null;
+                    rv1.ReviewRate = 4;
 
                     Review rv2 = new Review();
                     rv2.ReviewAutor = usr;
@@ -501,6 +503,7 @@ namespace SanalogMarket
                     rv2.ReviewDescription = "Amazing Product!";
                     rv2.ReviewCode = productCode3;
                     rv2.ReviewTheme = null;
+                    rv2.ReviewRate = 1;
 
                     Review rv3 = new Review();
                     rv3.ReviewAutor = usr;
@@ -508,6 +511,7 @@ namespace SanalogMarket
                     rv3.ReviewDescription = "Amazing Product!";
                     rv3.ReviewCode = null;
                     rv3.ReviewTheme = productTheme;
+                    rv3.ReviewRate = 2;
 
                     Review rv4 = new Review();
                     rv4.ReviewAutor = usr;
@@ -515,6 +519,7 @@ namespace SanalogMarket
                     rv4.ReviewDescription = "Amazing Product!";
                     rv4.ReviewCode = null;
                     rv4.ReviewTheme = productTheme2;
+                    rv4.ReviewRate = 3;
 
 
                     db.Reviews.Add(rv);

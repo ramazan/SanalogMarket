@@ -185,7 +185,7 @@ namespace SanalogMarket.Controllers
         }
 
         [HttpPost]
-        public JsonResult NewReview(string ReviewDescription)
+        public JsonResult NewReview(string ReviewDescription,string NewReviewRate)
         {
             Thread.Sleep(1000);
             Review rw = new Review();
@@ -199,7 +199,11 @@ namespace SanalogMarket.Controllers
                     values.Add("MustLogin");
                     return Json(values, JsonRequestBehavior.AllowGet);
                 }
-                UserID = 1;
+                if (String.IsNullOrWhiteSpace(NewReviewRate))
+                {
+                    values.Add("RateProduct");
+                    return Json(values, JsonRequestBehavior.AllowGet);
+                }
                 User EkleyenUser = dbBaglantisi.Users.Where(u => u.Id == UserID).FirstOrDefault();
                 product = dbBaglantisi.Codes.Find(gelenID);
                 Review check =
@@ -212,6 +216,8 @@ namespace SanalogMarket.Controllers
                 rw.ReviewAutor = EkleyenUser;
                 rw.ReviewDate = DateTime.Now;
                 rw.ReviewCode = product;
+                NewReviewRate =  NewReviewRate.Replace('.', ',');
+                rw.ReviewRate = Convert.ToDouble(NewReviewRate);
                 rw.ReviewDescription = ReviewDescription;
                 dbBaglantisi.Reviews.Add(rw);
                 dbBaglantisi.SaveChanges();
@@ -220,6 +226,8 @@ namespace SanalogMarket.Controllers
                 values.Add(EkleyenUser.Name.ToString());
                 values.Add(DateTime.Now.ToString("dd-MM-yyyy"));
                 values.Add(ReviewDescription);
+                NewReviewRate = NewReviewRate.Replace(',', '.');
+                values.Add(NewReviewRate);
                 
             }
             catch (Exception ex)

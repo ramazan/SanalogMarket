@@ -70,7 +70,10 @@
                         <a style="color: #676767; padding: 5px">Price</a>
                         <span class="category-counter" style="color: #000000; font-size: 35px;">@Html.DisplayFor(model => model.Price) $</span>
                     </div>
-                    
+                    <div class="panel-heading" id="avgReview" style="background-color: #ffffff;">
+                        <a style="color: #676767; padding: 5px">Price</a>
+                        
+                    </div>
                 </div>
             </div>
             <div class="col-lg-3" style="padding-left: 30px;">
@@ -237,88 +240,108 @@
                                 
                 </div>
                 <div class="tab-pane" id="3b">
-                  @using (Html.BeginForm())
-                  {
-                      if (Model.Reviews.ToList().Count != 0)
-                      {
-                          foreach (var item in Model.Reviews.ToList())
-                          {
-                                <div class="container" style="padding: 15px;">
-                                    <div class="row">
-                                        <div class="col-sm-8">
-                                            <div class="panel panel-white post panel-shadow">
-                                                <div class="post-heading">
-                                                    <div class="pull-left image">
-                                                        <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
-                                                    </div>
-                                                    <div class="pull-left meta">
-                                                        <div class="title h5">
-                                                            <a href="#"><b>@item.ReviewAutor.Name @item.ReviewAutor.Surname</b></a>
-                                                            made a post.
-                                                        </div>
-                                                        <h6 class="text-muted time">@item.ReviewDate</h6>
-                                                        <div id="hearts" class="starrr"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="post-description">
-                                                    <p>@item.ReviewDescription</p>
-                                                    <div class="stats">
-                                                        <a href="#" class="btn btn-default stat-item">
-                                                            <i class="fa fa-thumbs-up icon"></i>2
-                                                        </a>
-                                                        <a href="#" class="btn btn-default stat-item">
-                                                            <i class="fa fa-thumbs-down icon"></i>12
-                                                        </a>
-                                                    </div>
-                                                </div>
+                    <div class="container" style="padding: 15px;">
+                        <div class="row">
+                            
+                            @using (Ajax.BeginForm("NewReview", "ProductCode", new AjaxOptions()
+                            {
+                                HttpMethod = "POST",
+                                OnSuccess = "SuccesReview",
+                                OnBegin = "ReviewLoadingShow"
+                            }))
+                            {
+                                <div class="col-sm-8" style="max-width: none !important">
+                                    @Html.TextArea("ReviewDescription", new { rows = 5, style = "max-width: none" })
+                                    @Html.Hidden("NewReviewRate");
+                                    <br />
+                                    <input id="input-id">
+                                            <input type="submit" style="margin-top: 10px; margin-bottom: 10px; max-width: none" class="btn btn-primary"/>
+                                        </div>
+                                        }
+                                        <div class="col-sm-8" id="ReviewLoading" style="display: none">
+                                            <img src="/Content/loading.gif" class="img-responsive" alt="" style="width: 13%; margin: 0px auto;">
+                                        </div>
+                            <div id="errorReviewContainer" class="col-sm-8" style="background-clip: content-box; margin-top: 10px; display: none;">
+
+                                <div class="alert alert-danger" id="errorReview">
+
+                                </div>
+                            </div>
+
+                            <div id="successReviewContainer" class="col-sm-8" style="background-clip: content-box; margin-top: 10px; display: none;">
+                                <div class="alert alert-success" style="display: block">
+                                    <i class="fa fa-check-circle"></i>Your review has been added Successfully our System!
+                                </div>
+                            </div>
+
+                                        <div class="col-sm-8" style="display: none" id="newReviewContainer">
+                                            <div class="review" id="newReview" style="background: #ffffff; border: 2px solid #ddd; margin-bottom: 15px; display: none">
+
                                             </div>
                                         </div>
+                                        @using (Html.BeginForm())
+                                        {
+                                            double toplam = 0;
+                                            int i = 0;
+                                            if (Model.Reviews.ToList().Count != 0)
+                                            {
+                                                foreach (var item in Model.Reviews.ToList())
+                                                {
+                                                    toplam = toplam + item.ReviewRate;
+                                                    <div class="col-sm-8">
+                                                        <div class="panel panel-white post panel-shadow">
+                                                            <div class="post-heading">
+                                                                <div class="pull-left image">
+                                                                    <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                                                                </div>
+                                                                <div class="pull-left meta">
+                                                                    <div class="title h5">
+                                                                        <a href="#"><b>@item.ReviewAutor.Name @item.ReviewAutor.Surname</b></a>
+                                                                        made a post.
+                                                                    </div>
+                                                                    <h6 class="text-muted time">@item.ReviewDate</h6>
+                                                                    <input id="input-id1" data-show-clear="false" name="input-name" type="number" class="rating" min=1 max=5 data-size="xs" data-rtl="false" value="@item.ReviewRate.ToString().Replace(",",".")" disabled>
+                                                                </div>
+                                                            </div>
+                                                            <div class="post-description">
+                                                                <p>@item.ReviewDescription</p>
+                                                                <div class="stats">
+                                                                    <a href="#" class="btn btn-default stat-item">
+                                                                        <i class="fa fa-thumbs-up icon"></i>2
+                                                                    </a>
+                                                                    <a href="#" class="btn btn-default stat-item">
+                                                                        <i class="fa fa-thumbs-down icon"></i>12
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    i ++;
+                                                }
+                                                ViewBag.ReviewRatesAll = (toplam/i);
+                                            }
+
+                                        }
                                     </div>
                                 </div>
-                            }
-                        }
-                      
-                    }
-                    <div class="col-md-7" id="ReviewLoading" style="display: none">
-                        <img src="/Content/loading.gif" class="img-responsive" alt="" style="width: 13%; margin: 0px auto;">
-                    </div>
-                    <div id="errorReviewContainer" class="col-md-7" style="background-clip: content-box;margin-top: 10px; display: none;">
 
-                        <div class="alert alert-danger" id="errorReview">
-
-                        </div>
-                    </div>
-
-                    <div class="col-md-7" style="display: none" id="newReviewContainer">
-                        <div class="review" id="newReview" style="background: #ffffff; border: 2px solid #ddd; margin-bottom: 15px;display: none">
-
-                        </div>
-                    </div>
-                    @using (Ajax.BeginForm("NewReview", "ProductCode", new AjaxOptions()
-                    {
-                        HttpMethod = "POST",
-                        OnSuccess = "SuccesReview",
-                        OnBegin = "ReviewLoadingShow"
-                    }))
-                    {
-                        <div class="col-md-7" style="max-width: none !important">
-                            @Html.TextArea("ReviewDescription", new { rows = 5, style = "max-width: none" });
-                            <br />
-                            <input type="submit" style="margin-top: 15px;max-width: none" class="btn btn-primary" />
-                        </div>
-                    }
                 </div>
 
-                  
+
+
+
+
             </div>
         </div>
-        
+       
         <div class="col-lg-4" >
             <div class="panel panel-default" id="content-formatting">
                 <div class="panel-heading" style="background-color: #ffffff;">
                     <a style="color: #676767; padding: 5px">Price</a>
                     <span class="category-counter" style="color: #000000; font-size: 35px;">@Html.DisplayFor(model => model.Price) $</span>
                 </div>
+
+
                 <div style="padding-left: 10px; padding-right: 10px;">
                     <p class="lead">@Html.DisplayFor(model => model.Title)</p>
                     <p>@Html.DisplayFor(model => model.Description)</p>
@@ -356,12 +379,18 @@
 </html>
 @section scripts {
     <script src="~/Scripts/jssor.slider-22.2.16.mini.js"></script>    
-    <script src="~/Scripts/jquery-1.11.3.min"></script>    
+    <script src="~/Scripts/jquery-1.11.3.min"></script>
+<link href="/Content/bootstrap-star-rating-master/css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
+
+
+<script src="/Content/bootstrap-star-rating-master/js/star-rating.js" type="text/javascript"></script>
+
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>    
     <script type="text/javascript">
         function ReviewLoadingShow() {
             console.log("buradasiniz");
             $("#errorReview").empty();
+            $("#successReviewContainer").hide();
             $("#errorReviewContainer").hide();
             $("#ReviewLoading").fadeIn(150);
         }
@@ -371,21 +400,38 @@
                 $("#ReviewLoading").hide();
                 $("#errorReviewContainer").hide();
                 $('#newReview')
-                    .append("<span class='thumb-sm avatar pull-left mr-sm'><img class='img-circle'></span><h4 class='event-heading'><a href='#'>" + result[1] + "</a></h4><p class='fs-sm text-muted'>" + result[2] + "</p><p class='fs-mini'>" + result[3] + "</p>")
+                    .append("<div class='panel panel-white post panel-shadow'><div class='post-heading'><div class='pull-left image'><img src='http://bootdey.com/img/Content/user_1.jpg' class='img-circle avatar' alt='user profile image'></div><div class='pull-left meta'><div class='title h5'><a href='#'><b>" + result[1] + "</b></a> made a post.</div><h6 class='text-muted time'>" + result[2] + "</h6><input id='input-Review_ajax' name='input-Review_ajax' type='number' class='rating' min=1 max=5 data-size='xs' data-show-clear='false' data-rtl='false' value='" + result[4] + "' disabled></div></div><div class='post-description'><p>" + result[3] + "</p><div class='stats'><a href='#' class='btn btn-default stat-item'><i class='fa fa-thumbs-up icon'></i>2</a><a href=#' class='btn btn-default stat-item'><i class='fa fa-thumbs-down icon'></i>12</a></div></div></div>")
                     .fadeIn(500);
                 $("#newReviewContainer").fadeIn(500);
+                $('body').find('[name="input-Review_ajax"]').rating('refresh');
+                $("#ReviewDescription").val("");
+                $('#input-id').rating('clear');
+                $('#NewReviewRate').val("");
+                $("#successReviewContainer").fadeIn(500);
+                $("#successReviewContainer").fadeOut(3000);
             }
             if (result[0] === "failed") {
                 $("#ReviewLoading").hide();
                 $("#errorReview").empty();
+                $("#successReviewContainer").hide();
                 $("#errorReview")
-                    .append("<i class='fa fa-frown-o'></i><strong>Well ,someting went wrong sorry about that</strong>!");
+                    .append("<i class='fa fa-frown-o'></i><strong>Well ,someting went wrong sorry about that,it may be caused by you are not sending any description.</strong>!");
+                $("#errorReview").fadeIn(500);
+                $("#errorReviewContainer").fadeIn(500);
+            }
+            if (result[0] === "RateProduct") {
+                $("#ReviewLoading").hide();
+                $("#errorReview").empty();
+                $("#successReviewContainer").hide();
+                $("#errorReview")
+                    .append("<i class='fa fa-frown-o'></i><strong>You must rate the product before you send your review !</strong>!");
                 $("#errorReview").fadeIn(500);
                 $("#errorReviewContainer").fadeIn(500);
             }
             if (result[0] === "MustLogin") {
                 $("#ReviewLoading").hide();
                 $("#errorReview").empty();
+                $("#successReviewContainer").hide();
                 $("#errorReview")
                     .append("<i class='fa fa-frown-o'></i><strong>To add a review must logged into website</strong>!");
                 $("#errorReview").fadeIn(500);
@@ -394,6 +440,7 @@
             if (result[0] === "alreadyAdded") {
                 $("#ReviewLoading").hide();
                 $("#errorReview").empty();
+                $("#successReviewContainer").hide();
                 $("#errorReview")
                     .append("<i class='fa fa-frown-o'></i><strong>You have been already added review on this product.Only one is allowed </strong>!");
                 $("#errorReview").fadeIn(500);
@@ -401,10 +448,18 @@
             }
 
         }
+        $('#input-id').on('rating.change', function (event, value, caption) {
+            $("#NewReviewRate").val(value);
+        });
         var control = parseInt('@ViewBag.Control');
+
         $(document)
             .ready(function () {
-
+                $("#input-id").rating({ size: 'sm' });
+                var rate = '@ViewBag.ReviewRatesAll';
+                $("#avgReview").append("<input id='ProductReview' data-show-clear='false' name='ProductReview' type='number' class='rating' min=1 max=5 data-size='xs' data-rtl='false' value='' disabled>")
+                $('body').find('[name="ProductReview"]').val(rate.replace(",", "."));
+                $('body').find('[name="ProductReview"]').rating('refresh');
                 if (control == 0 ) {
                     $("#comment").hide();
                     $("#notcomment").show();

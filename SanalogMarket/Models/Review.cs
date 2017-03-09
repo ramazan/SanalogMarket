@@ -20,6 +20,8 @@ namespace SanalogMarket.Models
         [Required(ErrorMessage = "Content is required")]
         public string ReviewDescription { get; set; }
 
+        public double ReviewRate { get; set; }
+
         public virtual ProductCode ReviewCode { get; set; }
 
         public virtual ProductTheme ReviewTheme { get; set; }
