@@ -53,7 +53,27 @@ namespace SanalogMarket.Models
 //        public int Buy { get; set; }
 
 //      [DataType(DataType.ImageUrl)]
+        
         public string Avatar { get; set; }
+
+        public string Country { get; set; }
+
+        public string City { get; set; }
+
+        public string Company { get; set; }
+
+//        [Required(ErrorMessage = "Your must provide a PhoneNumber")]
+//        [Display(Name = "Home Phone")]
+//        [DataType(DataType.PhoneNumber)]
+//        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid Phone number")]
+        public string PhoneNumber { get; set; }
+
+        public string Address { get; set; }
+
+        public string Backgroundimage { get; set; }
+
+        public string ProfileDescription { get; set; }
+
     }
 
     public class UserConfirm
