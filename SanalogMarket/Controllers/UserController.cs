@@ -206,6 +206,17 @@ namespace SanalogMarket.Controllers
             return View();
         }
 
+        public ActionResult Public_Profile()
+        {
+            if (Session["UserId"] == null)
+                return RedirectToAction("Login");
+
+            var profile = dbBaglantisi.Users.Find(Session["UserId"]);
+            return View(profile);
+        }
+
+
+
         public ActionResult Profile()
         {
             if (Session["UserId"] == null)

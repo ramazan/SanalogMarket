@@ -1,0 +1,424 @@
+﻿@model SanalogMarket.Models.User
+
+@{
+    ViewBag.Title = "Profile";
+}
+@*@Styles.Render("~/Content/Userprofile.css")*@
+
+@*using (Html.BeginForm("Profile", "User", FormMethod.Post))*@
+
+@*    @Html.AntiForgeryToken()*@
+@*    *@
+@*    <div class="form-horizontal">*@
+@*        <hr />*@
+@*        @Html.ValidationSummary(true)*@
+@*        @Html.HiddenFor(model => model.Id)*@
+@**@
+@*        <div class="form-group">*@
+@*            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })*@
+@*            <div class="col-md-10">*@
+@*                *@
+@**@
+*
+@*                @Html.TextBoxFor(model => model.Name, new { @Value = Session["Name"].ToString() })*@
+@*                @Html.ValidationMessageFor(model => model.Name)*@
+@*            </div>*@
+@*        </div>*@
+@**@
+@*        <div class="form-group">*@
+@*            @Html.LabelFor(model => model.Surname, new { @class = "control-label col-md-2" })*@
+@*            <div class="col-md-10">*@
+@*                @Html.TextBoxFor(model => model.Surname, new { @Value = Session["LastName"].ToString() })*@
+@*                @Html.ValidationMessageFor(model => model.Surname)*@
+@*            </div>*@
+@*        </div>*@
+@**@
+@**@
+@**@
+@*        <div class="form-group">*@
+@*            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })*@
+@*            <div class="col-md-10">*@
+@*                @Html.EditorFor(model => model.Password)*@
+@*                @Html.ValidationMessageFor(model => model.Password)*@
+@*                *@
+@*            </div>*@
+@*        </div>*@
+@**@
+
+
+
+@**@
+
+@*        <div class="form-group">*@
+
+@*            <div class="col-md-offset-2 col-md-10">*@
+
+@*                <input type="submit" value="Save" class="btn btn-default" />*@
+
+@*            </div>*@
+
+@*        </div>*@
+
+@*    </div>*@
+
+
+@using (Html.BeginForm("Public_Profile", "User", FormMethod.Post))
+{
+<div class="jumbotron " style="background-color: #f5f5f5; margin-bottom: 0px;">
+
+    <div class="row">
+        <div class="col-md-1">
+            <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5;">
+                <img width="80" height="80" alt="kadir47" src="@Model.Avatar">
+            </div>
+        </div>
+        <div class="col-lg-6">
+
+            <a class="t-link -decoration-none" href="/Profile/User">
+                <h2 class="t-heading h-display-inlineblock h-m0 h-p0 -size-m">@Model.Username</h2>
+            </a>
+
+            <p class="t-body -size-m h-p0 h-mb0">
+                Turkey,
+                Member since @Model.RegisterTime
+            </p>
+
+            <div class="user-info-header__cta-buttons">
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div id="exTab2" class="container" style="background-color: #f5f5f5">
+<ul class="nav nav-tabs">
+    <li class="active">
+        <a href="#1" data-toggle="tab">Profile</a>
+    </li>
+    <li>
+        <a href="#2" data-toggle="tab">Product</a>
+    </li>
+    <li>
+        <a href="#3" data-toggle="tab">Followers</a>
+    </li>
+    <li>
+        <a href="#4" data-toggle="tab">Following</a>
+    </li>
+   
+</ul>
+
+<div class="tab-content " style="background-color: #ffffff">
+
+    <div class="tab-pane  active" id="1">
+        <br/><br/>
+        <div class="row" style="padding-left: 15px;">
+            <div class="col-lg-7">
+                <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
+
+                    <img src="//public-assets.envato-static.com/assets/default-Home2-dc48fa824a14ba7965e9f6982bc991cd72708682af18993941002d7af611f667.jpg" alt="Default home2" style="padding-left: 15px; padding-bottom: 15px; padding-top: 15px;">
+
+                </div>
+                <form class="form-horizontal" role="form" method="post" action="index.php">
+                 
+                    <div class="form-group">
+                        <label for="email" class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-10">
+                            <h4>@Model.Email</h4>
+                        </div>
+                    </div>
+                    <div class="form-group" style="padding-bottom: 15px;">
+                        <label for="message" class="col-sm-2 control-label">Message</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" rows="4" name="message"></textarea>
+                        </div>
+                    </div>
+                 
+                    <div class="form-group">
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <input id="submit" name="submit" type="submit" value="Send" class="btn btn-primary">
+                        </div>
+                    </div>
+           
+                </form>
+            </div>
+          
+            <div class="col-lg-4" style="padding-left: 5px;">
+                <div class="panel panel-default" id="content-formatting" style="background-color: #f5f5f5">
+                    <div class="panel-heading" style="background-color: #f5f5f5">
+                        <h4 style="font-weight: 700">Email: @Model.Email</h4>
+                    </div>
+                    <div style="padding-left: 10px; padding-right: 10px;">
+                        <br/>
+                        <div class="input-group">
+                            <label for="from">Name</label>
+                            <div class="inputs">
+                                <h6>@Model.Name @Model.Surname</h6>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="from">Email</label>
+                            <div class="inputs">
+                                <h6>@Model.Email</h6>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="from">Company Name</label>
+                            <div class="inputs">
+                                <h6>LAKS</h6>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="from">Country</label>
+                            <div class="inputs">
+                                <h6>Turkey</h6>
+                            </div>
+                        </div>
+                       
+
+                        <label for="from">Social Networks</label>
+                        <div class="input-group">
+                            <img src="//public-assets.envato-static.com/assets/common/icons-buttons/social/facebook-c0cd6ad7c0c9b21c5411996a782f2622b9c26c4a447c9fc45bcb311753bcc4ad.svg" style="width: 20px; height: 20px;"/>
+
+                            <a href="https://www.facebook.com/umut.soysal.180?fref=ts" style="padding-left: 15px;">Umut Soysal</a>
+                        </div>
+                        <br/>
+                        <div class="input-group">
+                            <img src="//public-assets.envato-static.com/assets/common/icons-buttons/social/github-3be7eea43e0869e25b9a70d61c9f87856ffd459dc15d6fd1b0caa365218cedc7.svg" style="width: 20px; height: 20px;"/>
+
+                            <a href="https://github.com/umut47" style="padding-left: 15px;">umut47</a>
+                        </div>
+                        <br/>
+                        <div class="input-group">
+                            <img src="//public-assets.envato-static.com/assets/common/icons-buttons/social/googleplus-d0f7b9215bc6dd19fd9220fc9bb76a55e2000a1dc09fb8f75270d237dcdffa99.svg" style="width: 20px; height: 20px;"/>
+
+                            <a href="https://github.com/umut47" style="padding-left: 15px;">Umut Soysal</a>
+                        </div>
+                        <br/>
+                        <br/>
+                    </div>
+                </div>
+            </div>
+       
+        </div>
+    </div>
+    
+    <div class="tab-pane" id="2">
+        <br /><br />
+        <div class="row" style="padding-left: 50px; text-align: center; padding-bottom: 20px;">
+            <div class="col-sm-11" style="background-color: #f5f5f5; padding: 15px;">
+             
+                  
+                <div class="pull-left image">
+                    <img src="https://thumb-cc.s3.envato.com/files/190021825/Thumbnail-2.png" alt="user profile image">
+                </div>
+                <div class="col-sm-4" style="padding-left: 50px;">
+                    <div class="title h5">
+                        <a href="#" style="font-weight: bold; font-size: 18px; max-width: 300px;"><b>AdLinkFly - Monetized URL Shortener</b></a>
+                        <br/>
+                        <br />
+                        <br />
+                        Php-Java
+                    </div>
+                          
+                </div>
+                <div class="col-sm-4" >
+                    <div class="title h5">
+                        <p >in PHP Scripts / Miscellaneous
+                            High Resolution: Yes, Compatible Browsers: IE9, IE10, IE11, Firefox, Safari, Opera, Chrome, Edge,
+                            Software Version: PHP 7.x, PHP 5.6, MySQL 5.x</p>
+                        made a post.
+                    </div>
+                </div>
+                
+                <div class="col-sm-3" style="padding-left: 30px;">
+                    <div class="title h5">
+                        <h2>
+                            $49
+                        </h2>
+                      
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-sm-11" style="background-color: #f5f5f5; padding: 15px;">
+
+
+                <div class="pull-left image">
+                    <img src="https://thumb-cc.s3.envato.com/files/190021825/Thumbnail-2.png" alt="user profile image">
+                </div>
+                <div class="col-sm-4" style="padding-left: 50px;">
+                    <div class="title h5">
+                        <a href="#" style="font-weight: bold; font-size: 18px; max-width: 300px;"><b>AdLinkFly - Monetized URL Shortener</b></a>
+                        <br />
+                        <br />
+                        <br />
+                        Php-Java
+                    </div>
+
+                </div>
+                <div class="col-sm-4">
+                    <div class="title h5">
+                        <p>
+                            in PHP Scripts / Miscellaneous
+                            High Resolution: Yes, Compatible Browsers: IE9, IE10, IE11, Firefox, Safari, Opera, Chrome, Edge,
+                            Software Version: PHP 7.x, PHP 5.6, MySQL 5.x
+                        </p>
+                        made a post.
+                    </div>
+                </div>
+
+                <div class="col-sm-3" style="padding-left: 30px;">
+                    <div class="title h5">
+                        <h2>
+                            $60
+                        </h2>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane" id="3">
+    <br/><br/>
+    <div class="row" style="padding-left: 15px;">
+        <div class="col-lg-7">
+            <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
+
+                @*                                  buraya kişini takip ettikleri geleck*@
+
+            </div>
+
+        </div>
+        <div class="col-lg-4" style="padding-left: 5px;">
+            <div class="panel panel-default" id="content-formatting" style="background-color: #f5f5f5">
+
+                <p style="text-align: center;">Your items will show up in the Follow Feed of the people following you.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-pane" id="4">
+    <br/><br/>
+    <div class="col-lg-7">
+
+        <i class="fa fa-flag-o" aria-hidden="true"></i>
+        <span>
+            The authors you follow will appear here. Check out our <a href="/Home/Index">Top New Authors</a> to get started.
+        </span>
+
+
+    </div>
+</div>
+
+<div class="tab-pane" id="5">
+    <br/><br/>
+    <div class="row" style="padding-left: 30px;">
+        <div class="col-lg-11">
+            <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5; text-align: center;">
+                <h2 class="t-heading -size-m">You haven't bought anything yet.</h2>
+                <p class="t-body h-m0">
+                    Discover the browse our <a href="/Home/Index">hottest new items</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+</div>
+
+
+}
+
+
+
+@section scripts {
+    <script>
+        $(document)
+            .ready(function() {
+                console.log("girdi");
+                $("div.bhoechie-tab-menu>div.list-group>a")
+                    .click(function(e) {
+                        e.preventDefault();
+                        $(this).siblings('a.active').removeClass("active");
+                        $(this).addClass("active");
+                        var index = $(this).index();
+                        $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+                        $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+                    });
+            });
+    </script>
+}
+
+<style>
+    div.bhoechie-tab-container {
+        z-index: 10;
+        background-color: #ffffff;
+        padding: 0 !important;
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        border: 1px solid #ddd;
+        margin-top: 20px;
+        margin-left: 50px;
+        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+        -moz-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+        background-clip: padding-box;
+        opacity: 0.97;
+    }
+
+    div.bhoechie-tab-menu {
+        padding-right: 0;
+        padding-left: 0;
+        padding-bottom: 0;
+    }
+
+    div.bhoechie-tab-menu div.list-group { margin-bottom: 0; }
+
+    div.bhoechie-tab-menu div.list-group > a { margin-bottom: 0; }
+
+    div.bhoechie-tab-menu div.list-group > a .glyphicon,
+    div.bhoechie-tab-menu div.list-group > a .fa { color: #428bcc; }
+
+    div.bhoechie-tab-menu div.list-group > a:first-child {
+        border-top-right-radius: 0;
+        -moz-border-top-right-radius: 0;
+    }
+
+    div.bhoechie-tab-menu div.list-group > a:last-child {
+        border-bottom-right-radius: 0;
+        -moz-border-bottom-right-radius: 0;
+    }
+
+    div.bhoechie-tab-menu div.list-group > a.active,
+    div.bhoechie-tab-menu div.list-group > a.active .glyphicon,
+    div.bhoechie-tab-menu div.list-group > a.active .fa {
+        background-color: #428bcc;
+        color: #ffffff;
+    }
+
+    div.bhoechie-tab-menu div.list-group > a.active:after {
+        content: '';
+        position: absolute;
+        left: 100%;
+        top: 50%;
+        margin-top: -13px;
+        border-left: 0;
+        border-bottom: 13px solid transparent;
+        border-top: 13px solid transparent;
+        border-left: 10px solid #428bcc;
+    }
+
+    div.bhoechie-tab-content {
+        background-color: #ffffff;
+        /* border: 1px solid #eeeeee; */
+        padding-left: 20px;
+        padding-top: 10px;
+    }
+
+    div.bhoechie-tab div.bhoechie-tab-content:not(.active) { display: none; }
+</style>
