@@ -17,13 +17,13 @@
         <div class="navbar">
             <div class="navbar-header">
                 <div class="container">
-                    <a class="navbar-brand" href="index.html"><img src="/Images/laksLogo2.png" class="logo" alt=""></a><a style="background: #3f8dbf" class="navbar-toggle btn responsive-menu pull-right" data-toggle="collapse" data-target=".navbar-collapse"><i class='fa fa-bars' style="color:#fff"></i></a>
+                    <a class="navbar-brand" href="/Home/Index"><img src="/Images/laksLogo2.png" class="logo" alt=""></a><a style="background: #3f8dbf" class="navbar-toggle btn responsive-menu pull-right" data-toggle="collapse" data-target=".navbar-collapse"><i class='fa fa-bars' style="color:#fff"></i></a>
                 </div>
             </div>
             <div class="yamm">
                 <div class="navbar-collapse collapse">
                     <div class="container">
-                        <a class="navbar-brand" href="index.html"><img src="/Images/laksLogo2.png" class="logo" alt=""></a>
+                        <a class="navbar-brand" href="/Home/Index"><img src="/Images/laksLogo2.png" class="logo" alt=""></a>
                         <ul class="nav navbar-nav">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">PHP Scripts</a>
@@ -213,33 +213,113 @@
                                     </li>
                                 </ul>
                             </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mobile</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="contact.html">Contact I</a></li>
-                                <li><a href="contact2.html">Contact II</a></li>
-                                <li><a href="contact3.html">Contact III</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">HTML5</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="contact.html">Contact I</a></li>
-                                <li><a href="contact2.html">Contact II</a></li>
-                                <li><a href="contact3.html">Contact III</a></li>
-                            </ul>
-                        </li>
-
-                            <li class="dropdown pull-right searchbox">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search" style="color:#536a7f"></i></a>
-                                <div class="dropdown-menu">
-                                    <form id="search" class="navbar-form search" role="search">
-                                        <input style="margin-bottom: 20px;height: 40px" type="search" class="form-control" placeholder="Type to search">
-                                        <button style="background-color: #387eaa;" type="submit" class="btn btn-default btn-submit icon-right-open"><i class="fa fa-angle-right"></i></button>
-                                    </form>
-                                </div>
+@*                        <li class="dropdown">*@
+@*                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mobile</a>*@
+@*                            <ul class="dropdown-menu">*@
+@*                                <li><a href="contact.html">Contact I</a></li>*@
+@*                                <li><a href="contact2.html">Contact II</a></li>*@
+@*                                <li><a href="contact3.html">Contact III</a></li>*@
+@*                            </ul>*@
+@*                        </li>*@
+@*                        <li class="dropdown">*@
+@*                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">HTML5</a>*@
+@*                            <ul class="dropdown-menu">*@
+@*                                <li><a href="contact.html">Contact I</a></li>*@
+@*                                <li><a href="contact2.html">Contact II</a></li>*@
+@*                                <li><a href="contact3.html">Contact III</a></li>*@
+@*                            </ul>*@
+                        @*                        </li>*@
+                            
+                            
                             </li>
-                        </ul>
+                        @{
+                            
+                            
+                             <li>
+                                @{
+                                    if (Session["cart"] == null)
+                                    {
+                                        <a href="/ShoppingCart/Index"><i class="glyphicon glyphicon-shopping-cart"></i> Cart : 0</a>
+                                    }
+                                    else
+                                    {
+                                        List<ProductCode> cart = (List<ProductCode>)Session["cart"];
+                                        <a href="/ShoppingCart/Index"><i class="glyphicon glyphicon-shopping-cart"></i> @cart.Count</a>
+                                    }
+
+                                }
+                            </li>
+                                if (Session["Name"] != null)
+                                {
+                                     <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: red;">@Session["Name"] <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li> <a href="@Url.Action("Profile", "User")">My Profile</a></li>
+                                            <li> <a href="@Url.Action("Logout", "Home")">Log out</a></li>
+                                        </ul>
+                                    </li>
+                                
+                                
+                                
+                                
+                                
+                                
+                                    
+                                   
+                                }
+                                else
+                                {
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+                                        <ul id="login-dp" class="dropdown-menu">
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <p class="label-success" style="text-align: center; padding: 5px;">Login Sanalog Market </p><br />
+                                                        <form class="form" role="form" method="post" action="/User/Login" accept-charset="UTF-8" id="login-nav">
+                                                            <div class="form-group">
+                                                                <label class="sr-only" for="Username">Username</label>
+                                                                <input class="form-control" data-val="true" placeholder="Username" data-val-required="Username is required" id="Username" name="Username" type="text" value="">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="sr-only" for="Password">Password</label>
+                                                                <input class="form-control" data-val="true" placeholder="Password" data-val-required="Password is required" id="Password" name="Password" type="password" value="">
+                                                                <div class="help-block text-right"><a href="">Forget the password ?</a></div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"> keep me logged-in
+                                                                </label>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="bottom text-center">
+                                                        New here ? <a href="/User/Register"><b>Join Us</b></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                                        <li>@Html.ActionLink("Register", "Register", "User")</li>
+
+                                }
+
+
+                            }
+                           
+                        <li class="dropdown pull-right searchbox">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search" style="color:#536a7f"></i></a>
+                            <div class="dropdown-menu">
+                                <form id="search" class="navbar-form search" role="search">
+                                    <input style="margin-bottom: 20px;height: 40px" type="search" class="form-control" placeholder="Type to search">
+                                    <button style="background-color: #387eaa;" type="submit" class="btn btn-default btn-submit icon-right-open"><i class="fa fa-angle-right"></i></button>
+                                </form>
+                            </div>
+                        </li>
+                     </ul>
                     </div>
                 </div>
             </div>
