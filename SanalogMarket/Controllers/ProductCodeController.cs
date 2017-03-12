@@ -27,6 +27,7 @@ namespace SanalogMarket.Controllers
         public static string file_icon;
         public static string file_main;
         public static int gelenID;
+        public static int product_user_id;
         public static  List<SelectOptions> file_namelist = new List<SelectOptions>();
         FilesHelper filesHelper;
         String tempPath = "~/somefiles/";
@@ -135,6 +136,9 @@ namespace SanalogMarket.Controllers
                 ViewBag.Control = "0";
             }
             gelenID = Convert.ToInt32(id);
+            var urun = dbBaglantisi.Codes.Find(Convert.ToInt32(id));
+           
+            product_user_id = urun.User.Id;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
