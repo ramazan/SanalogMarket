@@ -227,7 +227,7 @@ namespace SanalogMarket.Controllers
         }
 
         [HttpPost]
-        public ActionResult Profile(User user, string user_personal_information_presenter_country_code)
+        public ActionResult Profile(User user, string country_code)
         {
             if (user.Name != null && user.Surname != null && user.Password != null)
             {
@@ -237,7 +237,7 @@ namespace SanalogMarket.Controllers
                 kullanici.Company = user.Company;
                 kullanici.Address = user.Address;
                 kullanici.City = user.City;
-                kullanici.Country = user_personal_information_presenter_country_code;
+                kullanici.Country = country_code;
                 kullanici.Email = user.Email;
 
 
