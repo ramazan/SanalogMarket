@@ -87,6 +87,20 @@ namespace SanalogMarket.Controllers
             return Json(products, JsonRequestBehavior.AllowGet);
         }
 
+
+        public void creatdir(string UserId, String ProductId)
+        {
+            string path = Server.MapPath("~/Uploads/User/" + UserId + "/AddItem/ProductCode/" + ProductId + "/Project_File");
+            string path1 = Server.MapPath("~/Uploads/User/" + UserId + "/AddItem/ProductCode/" + ProductId + "/Project_Icon");
+            string path2 = Server.MapPath("~/Uploads/User/" + UserId + "/AddItem/ProductCode/" + ProductId + "/Screenshots");
+
+
+            Directory.CreateDirectory(path);
+            Directory.CreateDirectory(path1);
+            Directory.CreateDirectory(path2);
+
+        }
+
         [HttpPost]
         public ActionResult New(ProductCode gelenCode, string Gender, Boolean imza,string category,string subcategory)
         {
@@ -117,6 +131,7 @@ namespace SanalogMarket.Controllers
                 }
                 dbBaglantisi.Codes.Add(gelenCode);
                 dbBaglantisi.SaveChanges();
+                creatdir("" + gelenCode.User.Id, "" + gelenCode.ID);
 
                 return RedirectToAction("Success", new { returnUrl = Request.RawUrl });
             }
