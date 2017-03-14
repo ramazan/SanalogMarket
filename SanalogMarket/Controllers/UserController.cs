@@ -242,6 +242,7 @@ namespace SanalogMarket.Controllers
                 kullanici.Email = user.Email;
                 kullanici.PhoneNumber = user.PhoneNumber;
                 kullanici.CompanyNo = user.CompanyNo;
+                kullanici.ProfileDescription = description;
 
 
 
@@ -257,18 +258,18 @@ namespace SanalogMarket.Controllers
                 dbBaglantisi.SaveChanges();
                 var usr = dbBaglantisi.Users.Find(Session["UserId"]);
 
-                if (profile_image.ContentLength > 0)
+                if (profile_image != null)
                 {
                     string filePath = Path.Combine(Server.MapPath("~/Project_Icon"), Guid.NewGuid().ToString() + "_" + Path.GetFileName(profile_image.FileName));
                     profile_image.SaveAs(filePath);
-                    kullanici.Avatar = "Project_Icon/" + profile_image.FileName;
+                    kullanici.Avatar = "/Project_Icon/" + profile_image.FileName;
                 }
 
-                if (background_image.ContentLength > 0)
+                if (background_image != null)
                 {
                     string filePath = Path.Combine(Server.MapPath("~/Project_Icon"), Guid.NewGuid().ToString() + "_" + Path.GetFileName(background_image.FileName));
                     background_image.SaveAs(filePath);
-                    kullanici.BackgroundImage = "Project_Icon/" + background_image.FileName;
+                    kullanici.BackgroundImage = "/Project_Icon/" + background_image.FileName;
                 }
                 dbBaglantisi.SaveChanges();
 
