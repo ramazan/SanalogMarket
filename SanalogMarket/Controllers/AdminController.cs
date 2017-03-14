@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
@@ -195,6 +196,25 @@ namespace SanalogMarket.Controllers
             return View(list);
         }
 
+
+
+        public void creatdir(string id)
+        {
+            string path = Server.MapPath("~/Uploads/User/" + id + "/AddItem/ProductCode");
+            string path1 = Server.MapPath("~/Uploads/User/" + id + "/AddItem/ProductTheme");
+            string path2 = Server.MapPath("~/Uploads/User/" + id + "/BuyItem");
+            string path3 = Server.MapPath("~/Uploads/User/" + id + "/Profile");
+            string path4 = Server.MapPath("~/Uploads/User/" + id + "/Profile/Avatar");
+
+
+            Directory.CreateDirectory(path);
+            Directory.CreateDirectory(path1);
+            Directory.CreateDirectory(path2);
+            Directory.CreateDirectory(path3);
+
+
+        }
+
         public ActionResult RegisterUser()
         {
             if (Session["AdminId"] == null)
@@ -229,6 +249,7 @@ namespace SanalogMarket.Controllers
 
 
                 dbBaglantisi.SaveChanges();
+                creatdir("" + createUser.Id);
 
                 return RedirectToAction("Users", "Admin");
             }

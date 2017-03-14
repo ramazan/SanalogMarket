@@ -3,63 +3,6 @@
 @{
     ViewBag.Title = "Profile";
 }
-@*@Styles.Render("~/Content/Userprofile.css")*@
-
-@*using (Html.BeginForm("Profile", "User", FormMethod.Post))*@
-
-@*    @Html.AntiForgeryToken()*@
-@*    *@
-@*    <div class="form-horizontal">*@
-@*        <hr />*@
-@*        @Html.ValidationSummary(true)*@
-@*        @Html.HiddenFor(model => model.Id)*@
-@**@
-@*        <div class="form-group">*@
-@*            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })*@
-@*            <div class="col-md-10">*@
-@*                *@
-@**@
-*
-@*                @Html.TextBoxFor(model => model.Name, new { @Value = Session["Name"].ToString() })*@
-@*                @Html.ValidationMessageFor(model => model.Name)*@
-@*            </div>*@
-@*        </div>*@
-@**@
-@*        <div class="form-group">*@
-@*            @Html.LabelFor(model => model.Surname, new { @class = "control-label col-md-2" })*@
-@*            <div class="col-md-10">*@
-@*                @Html.TextBoxFor(model => model.Surname, new { @Value = Session["LastName"].ToString() })*@
-@*                @Html.ValidationMessageFor(model => model.Surname)*@
-@*            </div>*@
-@*        </div>*@
-@**@
-@**@
-@**@
-@*        <div class="form-group">*@
-@*            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })*@
-@*            <div class="col-md-10">*@
-@*                @Html.EditorFor(model => model.Password)*@
-@*                @Html.ValidationMessageFor(model => model.Password)*@
-@*                *@
-@*            </div>*@
-@*        </div>*@
-@**@
-
-
-
-@**@
-
-@*        <div class="form-group">*@
-
-@*            <div class="col-md-offset-2 col-md-10">*@
-
-@*                <input type="submit" value="Save" class="btn btn-default" />*@
-
-@*            </div>*@
-
-@*        </div>*@
-
-@*    </div>*@
 
 
 @using (Html.BeginForm("Public_Profile", "User", FormMethod.Post))
@@ -204,79 +147,80 @@
     
     <div class="tab-pane" id="2">
         <br /><br />
-        <div class="row" style="padding-left: 50px; text-align: center; padding-bottom: 20px;">
-            <div class="col-sm-11" style="background-color: #f5f5f5; padding: 15px;">
-             
-                  
-                <div class="pull-left image">
-                    <img src="https://thumb-cc.s3.envato.com/files/190021825/Thumbnail-2.png" alt="user profile image">
-                </div>
-                <div class="col-sm-4" style="padding-left: 50px;">
-                    <div class="title h5">
-                        <a href="#" style="font-weight: bold; font-size: 18px; max-width: 300px;"><b>AdLinkFly - Monetized URL Shortener</b></a>
-                        <br/>
-                        <br />
-                        <br />
-                        Php-Java
-                    </div>
-                          
-                </div>
-                <div class="col-sm-4" >
-                    <div class="title h5">
-                        <p >in PHP Scripts / Miscellaneous
-                            High Resolution: Yes, Compatible Browsers: IE9, IE10, IE11, Firefox, Safari, Opera, Chrome, Edge,
-                            Software Version: PHP 7.x, PHP 5.6, MySQL 5.x</p>
-                        made a post.
-                    </div>
-                </div>
-                
-                <div class="col-sm-3" style="padding-left: 30px;">
-                    <div class="title h5">
-                        <h2>
-                            $49
-                        </h2>
-                      
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-sm-11" style="background-color: #f5f5f5; padding: 15px;">
+           <div class="row" style="padding-left: 50px; text-align: center; padding-bottom: 20px;">
+               <div class="col-sm-11" style="background-color: #f5f5f5; padding: 15px;">
 
 
-                <div class="pull-left image">
-                    <img src="https://thumb-cc.s3.envato.com/files/190021825/Thumbnail-2.png" alt="user profile image">
-                </div>
-                <div class="col-sm-4" style="padding-left: 50px;">
-                    <div class="title h5">
-                        <a href="#" style="font-weight: bold; font-size: 18px; max-width: 300px;"><b>AdLinkFly - Monetized URL Shortener</b></a>
-                        <br />
-                        <br />
-                        <br />
-                        Php-Java
-                    </div>
+                   <div class="pull-left image">
+                       <img src="https://thumb-cc.s3.envato.com/files/190021825/Thumbnail-2.png" alt="user profile image">
+                   </div>
+                   <div class="col-sm-4" style="padding-left: 50px;">
+                       <div class="title h5">
+                           <a href="#" style="font-weight: bold; font-size: 18px; max-width: 300px;"><b>AdLinkFly - Monetized URL Shortener</b></a>
+                           <br/>
+                           <br/>
+                           <br/>
+                           Php-Java
+                       </div>
 
-                </div>
-                <div class="col-sm-4">
-                    <div class="title h5">
-                        <p>
-                            in PHP Scripts / Miscellaneous
-                            High Resolution: Yes, Compatible Browsers: IE9, IE10, IE11, Firefox, Safari, Opera, Chrome, Edge,
-                            Software Version: PHP 7.x, PHP 5.6, MySQL 5.x
-                        </p>
-                        made a post.
-                    </div>
-                </div>
+                   </div>
+                   <div class="col-sm-4">
+                       <div class="title h5">
+                           <p >in PHP Scripts / Miscellaneous
+                               High Resolution: Yes, Compatible Browsers: IE9, IE10, IE11, Firefox, Safari, Opera, Chrome, Edge,
+                               Software Version: PHP 7.x, PHP 5.6, MySQL 5.x</p>
+                           made a post.
+                       </div>
+                   </div>
 
-                <div class="col-sm-3" style="padding-left: 30px;">
-                    <div class="title h5">
-                        <h2>
-                            $60
-                        </h2>
+                   <div class="col-sm-3" style="padding-left: 30px;">
+                       <div class="title h5">
+                           <h2>
+                               $49
+                           </h2>
 
-                    </div>
-                </div>
-            </div>
-        </div>
+                       </div>
+                   </div>
+               </div>
+
+               <div class="col-sm-11" style="background-color: #f5f5f5; padding: 15px;">
+
+
+                   <div class="pull-left image">
+                       <img src="https://thumb-cc.s3.envato.com/files/190021825/Thumbnail-2.png" alt="user profile image">
+                   </div>
+                   <div class="col-sm-4" style="padding-left: 50px;">
+                       <div class="title h5">
+                           <a href="#" style="font-weight: bold; font-size: 18px; max-width: 300px;"><b>AdLinkFly - Monetized URL Shortener</b></a>
+                           <br/>
+                           <br/>
+                           <br/>
+                           Php-Java
+                       </div>
+
+                   </div>
+                   <div class="col-sm-4">
+                       <div class="title h5">
+                           <p>
+                               in PHP Scripts / Miscellaneous
+                               High Resolution: Yes, Compatible Browsers: IE9, IE10, IE11, Firefox, Safari, Opera, Chrome, Edge,
+                               Software Version: PHP 7.x, PHP 5.6, MySQL 5.x
+                           </p>
+                           made a post.
+                       </div>
+                   </div>
+
+                   <div class="col-sm-3" style="padding-left: 30px;">
+                       <div class="title h5">
+                           <h2>
+                               $60
+                           </h2>
+
+                       </div>
+                   </div>
+               </div>
+           </div>
+       
     </div>
     <div class="tab-pane" id="3">
     <br/><br/>
