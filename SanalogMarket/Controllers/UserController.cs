@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -227,40 +228,60 @@ namespace SanalogMarket.Controllers
         }
 
         [HttpPost]
-        public ActionResult Profile(User user, string country_code)
+        public ActionResult Profile(User user, string country_code, string description, HttpPostedFileBase profile_image, HttpPostedFileBase background_image)
         {
-            if (user.Name != null && user.Surname != null && user.Password != null)
+            if (user.Name != null && user.Surname != null )
             {
                 User kullanici = dbBaglantisi.Users.Find(Session["UserId"]);
-                kullanici.Name = user.Name;
+                
                 kullanici.Surname = user.Surname;
                 kullanici.Company = user.Company;
                 kullanici.Address = user.Address;
                 kullanici.City = user.City;
                 kullanici.Country = country_code;
                 kullanici.Email = user.Email;
+                kullanici.PhoneNumber = user.PhoneNumber;
+                kullanici.CompanyNo = user.CompanyNo;
 
 
-                using (var sha256 = SHA256.Create())
-                {
-                    var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(user.Password));
-                    var hash = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
 
-                    kullanici.Password = hash;
-                }
+//                using (var sha256 = SHA256.Create())
+//                {
+//                    var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(user.Password));
+//                    var hash = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
+//
+//                    kullanici.Password = hash;
+//                }
 
                
                 dbBaglantisi.SaveChanges();
                 var usr = dbBaglantisi.Users.Find(Session["UserId"]);
+
+                if (profile_image.ContentLength > 0)
+                {
+                    string filePath = Path.Combine(Server.MapPath("~/Project_Icon"), Guid.NewGuid().ToString() + "_" + Path.GetFileName(profile_image.FileName));
+                    profile_image.SaveAs(filePath);
+                    kullanici.Avatar = "Project_Icon/" + profile_image.FileName;
+                }
+
+                if (background_image.ContentLength > 0)
+                {
+                    string filePath = Path.Combine(Server.MapPath("~/Project_Icon"), Guid.NewGuid().ToString() + "_" + Path.GetFileName(background_image.FileName));
+                    background_image.SaveAs(filePath);
+                    kullanici.BackgroundImage = "Project_Icon/" + background_image.FileName;
+                }
+                dbBaglantisi.SaveChanges();
 
                 if (usr != null)
                 {
                     Session["Name"] = usr.Name;
                     Session["LastName"] = usr.Surname;
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Profile","User");
                 }
             }
+
+           
 
 
             return View();
