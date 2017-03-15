@@ -43,23 +43,7 @@
                                     
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ecommerce</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">3 Columns Grid</a></li>
-                                    <li><a href="#">3 Columns Details Grid</a></li>
-                                    <li><a href="#">4 Columns Grid</a></li>
-                                    <li><a href="#">4 Columns Details Grid</a></li>
-                                    <li><a href="#">Fullscreen Grid</a></li>
-                                    <li><a href="#">Post with Slider I</a></li>
-                                    <li><a href="#">Post with Slider II</a></li>
-                                    <li><a href="#">Post with Images I</a></li>
-                                    <li><a href="#">Post with Images II</a></li>
-                                    <li><a href="#">Post with Video</a></li>
-                                    <li><a href="#">Post with Audio</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
+                           <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">WordPress</a>
                                 <ul class="dropdown-menu">
                                     <li><a href="blog.html">Sidebar right</a></li>
@@ -239,12 +223,22 @@
                                 @{
                                     if (Session["cart"] == null)
                                     {
-                                        <a href="/ShoppingCart/Index"><i class="glyphicon glyphicon-shopping-cart"></i> Cart : 0</a>
+                                     <li class="dropdown">
+                                            <a href="/ShoppingCart/Index"><i class="glyphicon glyphicon-shopping-cart"></i> Cart : 0 <span class="caret"></span></a>
+
+                                            <ul class="dropdown-menu">
+                                                <div style="margin-top: 30px;" class="alert alert-warning" role="alert">
+                                                    <h3 class="alert-heading" style="text-align: center">Your shopping cart is empty.</h3><br/>
+                                                 </div>
+                                            </ul>
+                                        </li>
+                                    
                                     }
                                     else
                                     {
                                         List<ProductCode> cart = (List<ProductCode>)Session["cart"];
-                                        <a href="/ShoppingCart/Index"><i class="glyphicon glyphicon-shopping-cart"></i> @cart.Count</a>
+                                       <a href="/ShoppingCart/Index"><i class="glyphicon glyphicon-shopping-cart"></i> @cart.Count</a>
+
                                     }
 
                                 }
@@ -259,12 +253,6 @@
                                         </ul>
                                     </li>
                                 
-                                
-                                
-                                
-                                
-                                
-                                    
                                    
                                 }
                                 else
@@ -303,7 +291,10 @@
                                             </li>
                                         </ul>
                                     </li>
-                                                        <li>@Html.ActionLink("Register", "Register", "User")</li>
+                                    <li>@Html.ActionLink("Register", "Register", "User")</li>
+                            
+                            
+
 
                                 }
 

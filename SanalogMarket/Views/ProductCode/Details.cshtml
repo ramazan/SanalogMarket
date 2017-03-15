@@ -129,8 +129,10 @@
                     <hr>
                     <div class="row">
                         <p style="text-align: center">
-                            <a class="btn btn-warning " href="#" title="Buy">ADD TO CART</a>
-
+                            <a class="btn btn-warning " href="/ShoppingCart/OrderNow/@Model.ID" title="Buy">ADD TO CART</a>
+@*                            @Html.Action("OrderNow","ShoppingCart",new {Id = Model.ID})*@
+                            
+@*                            @Html.ActionLink("Ordernow", "OrderNow", new { id = Model.ID }, new { @class = "btn-sm btn-info" }) |*@
                             <a class="btn btn-primary " href="#" title="Buy">BUY NOW!</a>
                         </p>
                     </div>
@@ -456,7 +458,7 @@
 
                 <div class="input-group" style="padding: 15px;text-align: center">
 
-                    <input class="btn btn-info" type="button" id="viewProfile" value="View Profile" style="width: 300px; height: 40px;"
+                    <input class="btn btn-info" type="button" id="viewProfile" value="View Author Profile" style="width: 300px; height: 40px;"
                             onclick="location.href='@Url.Action("Public_Profile", "User" )'"/>
                 
                   </div>

@@ -17,10 +17,10 @@
             <div class="panel-body">
                 <form id="signupform" class="form-horizontal" role="form" action="/User/Register" method="post">
 
-                    @if (ViewBag.HataMesjı != null)
+                    @if (ViewBag.HataMesajı != null)
                     {
                         <div id="signupalert" class="alert alert-danger">
-                            <span>@ViewBag.HataMesjı</span>
+                            <span>@ViewBag.HataMesajı</span>
                         </div>
                     }
 
@@ -60,7 +60,8 @@
                         @Html.LabelFor(model => model.Username, new {@class = "control-label col-md-3"})
 
                         <div class="col-md-9">
-                            @Html.TextBoxFor(model => model.Username, new {@class = "form-control"})
+@*                            @Html.TextBoxFor(model => model.Username, new {@class = "form-control"})*@
+                            <input type="text" value="" name="Username" placeholder="Username" id="Username" data-val-required="Username is required" data-val-remote-url="/User/IsUserNameExist" data-val-remote-additionalfields="*.Username" data-val-remote="Username already exist" data-val="true" class="form-control">
                             @Html.ValidationMessageFor(model => model.Username)
 
 
@@ -71,7 +72,8 @@
                         @Html.LabelFor(model => model.Email, new {@class = "control-label col-md-3"})
 
                         <div class="col-md-9">
-                            @Html.TextBoxFor(model => model.Email, new {@class = "form-control"})
+@*                            @Html.TextBoxFor(model => model.Email, new {@class = "form-control"})*@
+                            <input type="email" value="" name="Email" id="Email" placeholder="E-mail" data-val-required="E-mail alanı gereklidir." data-val-remote-url="/User/IsEmailExist" data-val-remote-additionalfields="*.Email" data-val-remote="E-mail already exist,forget your password?" data-val-email="E-mail alanı geçerli bir e-posta adresi değil." data-val="true" class="form-control">
                             @Html.ValidationMessageFor(model => model.Email)
                         </div>
                     </div>
