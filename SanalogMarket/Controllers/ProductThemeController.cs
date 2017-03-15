@@ -87,92 +87,70 @@ namespace SanalogMarket.Controllers
             return Json(products, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost]
-        public ActionResult Create(ProductTheme gelenCode, string category, string subcategory, Boolean imza, string Gender, Boolean support)
+        public void creatdir(string UserId, String ProductId)
         {
-            gelenCode.Screenshot = "";
-            gelenCode.Filepath = "";
-            gelenCode.Icon = "";
+            string path = Server.MapPath("~/Uploads/User/" + UserId + "/AddItem/ProductTheme/" + ProductId + "/Project_File");
+            string path1 = Server.MapPath("~/Uploads/User/" + UserId + "/AddItem/ProductTheme/" + ProductId + "/Project_Icon");
+            string path2 = Server.MapPath("~/Uploads/User/" + UserId + "/AddItem/ProductTheme/" + ProductId + "/Screenshots");
+
+
+            Directory.CreateDirectory(path);
+            Directory.CreateDirectory(path1);
+            Directory.CreateDirectory(path2);
+
+        }
+        public ActionResult Success(string returnUrl)
+        {
+
+            //Bir onceki url'i alarak kontrol ediyorum.    
+            string oncekiUrl = returnUrl;
+            if (oncekiUrl != "/ProductTheme/Create")  // Eğer yönlendirme ürün yükleme sayfasından değilse anasayfaya yönlendir.
+            {
+                RedirectToAction("Index", "Home");
+            }
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(ProductTheme gelenTheme, string category, string subcategory, Boolean imza, string Gender, Boolean support)
+        {
+            gelenTheme.Screenshot = "";
+            gelenTheme.Filepath = "";
+            gelenTheme.Icon = "";
 
             if (ModelState.IsValid)
             {
-              /*  if (file != null)
+                gelenTheme.CreateDate=DateTime.Now;
+                gelenTheme.UpdateDate=new DateTime(1996,01,21);
+                gelenTheme.Category = category;
+                gelenTheme.SubCategory = subcategory;
+                gelenTheme.IsValid = 0;
+                gelenTheme.Category = category;
+                gelenTheme.SubCategory = subcategory;
+                gelenTheme.HighResolution = Gender;
+                gelenTheme.imza = imza.ToString();
+                gelenTheme.CompatibleWith = compatiblewith;
+                gelenTheme.FilesIncluded = fileinculeded;
+                gelenTheme.CompatibleBrowsers = browser;
+                gelenTheme.Support = support;
 
-                {
-                    if (file.ContentLength > 10240 * 100)
-                    {
-                        ModelState.AddModelError("photo", "The size of the file should not 2 MB");
-                        ViewBag.FotoError = "The size of the file should not exceed  2 MB";
-                        return View();
-                    }
-                    var supportedTypes = new[] { "jpg", "jpeg", "png" };
-                    var fileExt = System.IO.Path.GetExtension(file.FileName).Substring(1);
-                    if (!supportedTypes.Contains(fileExt))
-                    {
-                        ModelState.AddModelError("photo",
-                            "Invalid type. Only the following types (jpg, jpeg, png) are supported.");
-                        return View();
-                    }
-                    // extract only the filename
-                    FileInfo dosya = new FileInfo(file.FileName);
-                    // extract only the filename
-                    var fileName = Path.GetFileName(file.FileName);
-                    var path = Server.MapPath("/ThemeFiles/Screenshots/" + dosya.Name);
-                    file.SaveAs(path);
-                    var yol = "/ThemeFiles/Screenshots/" + dosya.Name;
-                    @ViewBag.Screen = yol;
-                    gelenCode.Screenshot = yol;
-                }
-                if (fileproject != null )
-                {
-                    FileInfo dosya = new FileInfo(fileproject.FileName);
-                    // extract only the filename
-                    var fileName = Path.GetFileName(fileproject.FileName);
-                    var path = Server.MapPath("/ThemeFiles/Project_File/" + dosya.Name);
-                    fileproject.SaveAs(path);
-                    var yol = "/ThemeFiles/Project_File/" + dosya.Name;
-                    @ViewBag.imageProject = yol;
-                    gelenCode.Filepath = yol;
-                }
-                if (fileIcon != null)
-                {
-                    FileInfo dosya = new FileInfo(fileIcon.FileName);
-                    // extract only the filename
-                    var fileName = Path.GetFileName(fileIcon.FileName);
-                    var path = Server.MapPath("/ThemeFiles/Project_Icon/" + dosya.Name);
-                    fileIcon.SaveAs(path);
-                    var yol = "/ThemeFiles/Project_Icon/" + dosya.Name;
-                    @ViewBag.imageIcon = yol;
-                    gelenCode.Icon = yol;
-                }*/
-
-                gelenCode.CreateDate=DateTime.Now;
-                gelenCode.UpdateDate=new DateTime(1996,01,21);
-                gelenCode.Category = category;
-                gelenCode.SubCategory = subcategory;
-                gelenCode.IsValid = 0;
-                gelenCode.Category = category;
-                gelenCode.SubCategory = subcategory;
-                gelenCode.HighResolution = Gender;
-                gelenCode.imza = imza.ToString();
-                gelenCode.CompatibleWith = compatiblewith;
-                gelenCode.FilesIncluded = fileinculeded;
-                gelenCode.CompatibleBrowsers = browser;
-                gelenCode.Support = support;
-
-                gelenCode.Screenshot = file_screen;
-                gelenCode.Filepath = file_main;
-                gelenCode.Icon = file_icon;
+                gelenTheme.Screenshot = file_screen;
+                gelenTheme.Filepath = file_main;
+                gelenTheme.Icon = file_icon;
 
                 int UserID = (int)Session["UserId"];
                 User EkleyenUser = dbBaglantisi.Users.Single(u => u.Id == UserID);
 
                 if (EkleyenUser != null)
                 {
-                    gelenCode.User = EkleyenUser;
+                    gelenTheme.User = EkleyenUser;
                 }
-                dbBaglantisi.Themes.Add(gelenCode);
+                dbBaglantisi.Themes.Add(gelenTheme);
                 dbBaglantisi.SaveChanges();
+                creatdir("" + gelenTheme.User.Id, "" + gelenTheme.ID);
+                return RedirectToAction("Success", new { returnUrl = Request.RawUrl });
+
             }
 
 

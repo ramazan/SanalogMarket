@@ -62,6 +62,8 @@ namespace SanalogMarket.Models
 
         public string Company { get; set; }
 
+        public int CompanyNo { get; set; }
+
 //        [Required(ErrorMessage = "Your must provide a PhoneNumber")]
 //        [Display(Name = "Home Phone")]
 //        [DataType(DataType.PhoneNumber)]
@@ -69,8 +71,8 @@ namespace SanalogMarket.Models
         public string PhoneNumber { get; set; }
 
         public string Address { get; set; }
-
-        public string Backgroundimage { get; set; }
+        
+        public string BackgroundImage { get; set; }
 
         public string ProfileDescription { get; set; }
 

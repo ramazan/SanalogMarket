@@ -62,939 +62,933 @@
 @*    </div>*@
 
 
-@using (Html.BeginForm("Profile", "User", FormMethod.Post))
+@using (Html.BeginForm("Profile", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-<div class="jumbotron " style="background-color: #f5f5f5; margin-bottom: 0px;">
+    <div class="jumbotron " style="background-color: #f5f5f5; margin-bottom: 0px;">
 
-    <div class="row">
-        <div class="col-md-1">
-            <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5;">
-                <img width="80" height="80" alt="kadir47" src="@Model.Avatar">
+        <div class="row">
+            <div class="col-md-1">
+                <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5;">
+                    <img width="80" height="80" alt="kadir47" src="@Model.Avatar">
+                </div>
             </div>
-        </div>
-        <div class="col-lg-6">
+            <div class="col-lg-6">
 
-            <a class="t-link -decoration-none" href="/Profile/User">
-                <h2 class="t-heading h-display-inlineblock h-m0 h-p0 -size-m">@Model.Username</h2>
-            </a>
+                <a class="t-link -decoration-none" href="/Profile/User">
+                    <h2 class="t-heading h-display-inlineblock h-m0 h-p0 -size-m">@Model.Username</h2>
+                </a>
 
-            <p class="t-body -size-m h-p0 h-mb0">
-                Turkey,
-                Member since @Model.RegisterTime
-            </p>
+                <p class="t-body -size-m h-p0 h-mb0">
+                    Turkey,
+                    Member since @Model.RegisterTime
+                </p>
 
-            <div class="user-info-header__cta-buttons">
+                <div class="user-info-header__cta-buttons">
+
+                </div>
 
             </div>
-
         </div>
     </div>
-</div>
-<div id="exTab2" class="container" style="background-color: #f5f5f5">
-<ul class="nav nav-tabs">
-    <li>
-        <a href="#1" data-toggle="tab">Dashboard</a>
-    </li>
-    <li class="active">
-        <a href="#2" data-toggle="tab">Profile</a>
-    </li>
-    <li>
-        <a href="#3" data-toggle="tab">Followers</a>
-    </li>
-    <li>
-        <a href="#4" data-toggle="tab">Following</a>
-    </li>
-    <li>
-        <a href="#5" data-toggle="tab">Downloads</a>
-    </li>
-    <li>
-        <a href="#6" data-toggle="tab">Reviews</a>
-    </li>
-    <li>
-        <a href="#7" data-toggle="tab">Refunds</a>
-    </li>
-    <li>
-        <a href="#8" data-toggle="tab">Hidden Items</a>
-    </li>
-    <li>
-        <a href="#9" data-toggle="tab">Earnings</a>
-    </li>
-    <li>
-        <a href="#10" data-toggle="tab">Statements</a>
-    </li>
-    <li>
-        <a href="#11" data-toggle="tab">Settings</a>
-    </li>
-</ul>
+    <div id="exTab2" class="container" style="background-color: #f5f5f5">
+    <ul class="nav nav-tabs">
+        <li>
+            <a href="#1" data-toggle="tab">Dashboard</a>
+        </li>
+        <li class="active">
+            <a href="#2" data-toggle="tab">Profile</a>
+        </li>
+        <li>
+            <a href="#3" data-toggle="tab">Followers</a>
+        </li>
+        <li>
+            <a href="#4" data-toggle="tab">Following</a>
+        </li>
+        <li>
+            <a href="#5" data-toggle="tab">Downloads</a>
+        </li>
+        <li>
+            <a href="#6" data-toggle="tab">Reviews</a>
+        </li>
+        <li>
+            <a href="#7" data-toggle="tab">Refunds</a>
+        </li>
+        <li>
+            <a href="#8" data-toggle="tab">Hidden Items</a>
+        </li>
+        <li>
+            <a href="#9" data-toggle="tab">Earnings</a>
+        </li>
+        <li>
+            <a href="#10" data-toggle="tab">Statements</a>
+        </li>
+        <li>
+            <a href="#11" data-toggle="tab">Settings</a>
+        </li>
+    </ul>
 
-<div class="tab-content " style="background-color: #ffffff">
-<div class="tab-pane" id="1">
-    <br/><br/>
-    <div class="row" style="padding-left: 15px;">
-        <div class="col-lg-7">
-            <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
-                <h4 style="color: #545454; padding-left: 10px; text-align: center">Welcome and congratulations on becoming an author with Envato Market. </h4>
+    <div class="tab-content " style="background-color: #ffffff">
+    <div class="tab-pane" id="1">
+        <br/><br/>
+        <div class="row" style="padding-left: 15px;">
+            <div class="col-lg-7">
+                <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
+                    <h4 style="color: #545454; padding-left: 10px; text-align: center">Welcome and congratulations on becoming an author with Envato Market. </h4>
 
-                <h6 style="color: #999287; padding-left: 10px; text-align: center">Now you can sell your digital items to millions of users and make money from it. </h6>
-                <br/>
-                <div class="row" style="padding-left: 70px;">
-                    <div class="col-lg-5">
-                        <div class="panel panel-default" id="content-formatting " style="background-color: #ededed; text-align: center">
-                            <h4 style="color: #545454; padding-left: 10px; text-align: center">Upload your first item </h4>
-                            <br/>
-                            <h6 style="color: #999287; padding-left: 10px; text-align: center">Start uploading your digital items and working with our review team to make sure they are in great shape to start selling. </h6>
-                            <input type="button" class="btn btn-success center-block" value="Upload My First item " style="text-align: center; border-radius: 5px;"/>
-                            <br/>
-                            <br/>
+                    <h6 style="color: #999287; padding-left: 10px; text-align: center">Now you can sell your digital items to millions of users and make money from it. </h6>
+                    <br/>
+                    <div class="row" style="padding-left: 70px;">
+                        <div class="col-lg-5">
+                            <div class="panel panel-default" id="content-formatting " style="background-color: #ededed; text-align: center">
+                                <h4 style="color: #545454; padding-left: 10px; text-align: center">Upload your first item </h4>
+                                <br/>
+                                <h6 style="color: #999287; padding-left: 10px; text-align: center">Start uploading your digital items and working with our review team to make sure they are in great shape to start selling. </h6>
+                                <input type="button" class="btn btn-success center-block" value="Upload My First item " style="text-align: center; border-radius: 5px;"/>
+                                <br/>
+                                <br/>
+                                <br/>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="panel panel-default" id="content-formatting " style="background-color: #ededed; text-align: center">
+                                <h4 style="color: #545454; padding-left: 10px; text-align: center">Upload your first item </h4>
+                                <br/>
+                                <h6 style="color: #999287; padding-left: 10px; text-align: center">Fill out your profile so our buyers know who created the items they're buying - doing this means you can start building relationships and a reputation on Sanalog Market.</h6>
+                                <input type="button" class="btn btn-success center-block" value="Take Me to My Profile" style="text-align: center; border-radius: 5px;"/>
+                                <br/>
+                                <br/>
+                            </div>
                             <br/>
                         </div>
                     </div>
-                    <div class="col-lg-5">
-                        <div class="panel panel-default" id="content-formatting " style="background-color: #ededed; text-align: center">
-                            <h4 style="color: #545454; padding-left: 10px; text-align: center">Upload your first item </h4>
-                            <br/>
-                            <h6 style="color: #999287; padding-left: 10px; text-align: center">Fill out your profile so our buyers know who created the items they're buying - doing this means you can start building relationships and a reputation on Sanalog Market.</h6>
-                            <input type="button" class="btn btn-success center-block" value="Take Me to My Profile" style="text-align: center; border-radius: 5px;"/>
-                            <br/>
-                            <br/>
+
+                    <h6 style="color: #999287; padding-left: 10px; text-align: center">Thank you again for becoming an author and we hope you have lots of success with us!</h6>
+                </div>
+            </div>
+            <div class="col-lg-4" style="padding-left: 5px;">
+                <div class="panel panel-default" id="content-formatting">
+                    <div class="panel-heading" style="background-color: #454545">
+                        <h5 style="color: #fdf5e6; text-align: center;">Trouble Uploading?</h5>
+                    </div>
+                    <div style="padding-left: 10px; padding-right: 10px;">
+                        <br/>
+                        <p>
+                            <small>Mar 04</small>
+                            <br>
+                            We're giving away <strong>ThemeForest T-shirts</strong>! Swing-by our forums and simply tell us what your favorite 5 x Coming Soon / Under Construction websites templates are on ThemeForest. <a href="https://forums.envato.com/t/best-coming-soon-under-construction-website-templates/94604">Find out more!</a>
+                        </p>
+                        <p>
+                            <small>Mar 03</small>
+                            <br>
+                            Check out this week's Famous Five: <a href="https://envato.com/blog/5-video-game-trailers-montages-using-envato-items/"> 5 video game trailers and montages using Envato items</a>
+
+                        </p>
+                        <p>
+                            <small>Feb 27</small>
+                            <br>
+                            <a href="https://forums.envato.com/t/tf-nominate-your-items-for-our-upcoming-corporate-themed-marketing-campaign/92863"> Nominate your items for our upcoming, corporate-themed marketing campaign!</a>
+
+                        </p>
+                        <p>
+                            <small>Feb 24</small>
+                            <br>
+                            This week on the Famous 5, we focus on Artistic_Influence. A relatively new author to ThemeForest, I was surprised to see with so few sales they had a lot of high profile brands and figures using their themes. Turns out two themes in their portfolio have already had a life of their own on Tumblr. Now they're available on TF. <a href="https://envato.com/blog/the-tumblr/">Find out who's using them here!</a>
+                        </p>
+
+                        <br/>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane  active" id="2">
+        <br/><br/>
+        <div class="row" style="padding-left: 15px;">
+            <div class="col-lg-7">
+                <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
+
+                    <img src="//public-assets.envato-static.com/assets/default-Home2-dc48fa824a14ba7965e9f6982bc991cd72708682af18993941002d7af611f667.jpg" alt="Default home2" style="padding-left: 15px; padding-bottom: 15px; padding-top: 15px;">
+
+                </div>
+                <p style="text-align: center;">
+                    Would you like to display collections on your profile page?
+                </p>
+
+            </div>
+            <div class="col-lg-4" style="padding-left: 5px;">
+                <div class="panel panel-default" id="content-formatting" style="background-color: #f5f5f5">
+                    <div class="panel-heading" style="background-color: #f5f5f5">
+                        <h4 style="font-weight: 700">Email: @Model.Email</h4>
+                    </div>
+                    <div style="padding-left: 10px; padding-right: 10px;">
+                        <br/>
+                        <div class="input-group">
+                            <label for="from">Name</label>
+                            <div class="inputs">
+                                <h6>@Model.Name @Model.Surname</h6>
+                            </div>
                         </div>
+                        <div class="input-group">
+                            <label for="from">Email</label>
+                            <div class="inputs">
+                                <h6>@Model.Email</h6>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="from">Company Name</label>
+                            <div class="inputs">
+                                <h6>LAKS</h6>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="from">Country</label>
+                            <div class="inputs">
+                                <h6>Turkey</h6>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="from">City</label>
+                            <div class="inputs">
+                                <h6>Kocaeli</h6>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="from">Company Number</label>
+                            <div class="inputs">
+                                <h6>-90 555 555 5</h6>
+                            </div>
+                        </div>
+
+                        <label for="from">Social Networks</label>
+                        <div class="input-group">
+                            <img src="//public-assets.envato-static.com/assets/common/icons-buttons/social/facebook-c0cd6ad7c0c9b21c5411996a782f2622b9c26c4a447c9fc45bcb311753bcc4ad.svg" style="width: 20px; height: 20px;"/>
+
+                            <a href="https://www.facebook.com/umut.soysal.180?fref=ts" style="padding-left: 15px;">Umut Soysal</a>
+                        </div>
+                        <br/>
+                        <div class="input-group">
+                            <img src="//public-assets.envato-static.com/assets/common/icons-buttons/social/github-3be7eea43e0869e25b9a70d61c9f87856ffd459dc15d6fd1b0caa365218cedc7.svg" style="width: 20px; height: 20px;"/>
+
+                            <a href="https://github.com/umut47" style="padding-left: 15px;">umut47</a>
+                        </div>
+                        <br/>
+                        <div class="input-group">
+                            <img src="//public-assets.envato-static.com/assets/common/icons-buttons/social/googleplus-d0f7b9215bc6dd19fd9220fc9bb76a55e2000a1dc09fb8f75270d237dcdffa99.svg" style="width: 20px; height: 20px;"/>
+
+                            <a href="https://github.com/umut47" style="padding-left: 15px;">Umut Soysal</a>
+                        </div>
+                        <br/>
                         <br/>
                     </div>
                 </div>
-
-                <h6 style="color: #999287; padding-left: 10px; text-align: center">Thank you again for becoming an author and we hope you have lots of success with us!</h6>
-            </div>
-        </div>
-        <div class="col-lg-4" style="padding-left: 5px;">
-            <div class="panel panel-default" id="content-formatting">
-                <div class="panel-heading" style="background-color: #454545">
-                    <h5 style="color: #fdf5e6; text-align: center;">Trouble Uploading?</h5>
-                </div>
-                <div style="padding-left: 10px; padding-right: 10px;">
-                    <br/>
-                    <p>
-                        <small>Mar 04</small>
-                        <br>
-                        We're giving away <strong>ThemeForest T-shirts</strong>! Swing-by our forums and simply tell us what your favorite 5 x Coming Soon / Under Construction websites templates are on ThemeForest. <a href="https://forums.envato.com/t/best-coming-soon-under-construction-website-templates/94604">Find out more!</a>
-                    </p>
-                    <p>
-                        <small>Mar 03</small>
-                        <br>
-                        Check out this week's Famous Five: <a href="https://envato.com/blog/5-video-game-trailers-montages-using-envato-items/"> 5 video game trailers and montages using Envato items</a>
-
-                    </p>
-                    <p>
-                        <small>Feb 27</small>
-                        <br>
-                        <a href="https://forums.envato.com/t/tf-nominate-your-items-for-our-upcoming-corporate-themed-marketing-campaign/92863"> Nominate your items for our upcoming, corporate-themed marketing campaign!</a>
-
-                    </p>
-                    <p>
-                        <small>Feb 24</small>
-                        <br>
-                        This week on the Famous 5, we focus on Artistic_Influence. A relatively new author to ThemeForest, I was surprised to see with so few sales they had a lot of high profile brands and figures using their themes. Turns out two themes in their portfolio have already had a life of their own on Tumblr. Now they're available on TF. <a href="https://envato.com/blog/the-tumblr/">Find out who's using them here!</a>
-                    </p>
-
-                    <br/>
-                </div>
-
-
             </div>
         </div>
     </div>
-</div>
-<div class="tab-pane  active" id="2">
-    <br/><br/>
-    <div class="row" style="padding-left: 15px;">
+    <div class="tab-pane" id="3">
+        <br/><br/>
+        <div class="row" style="padding-left: 15px;">
+            <div class="col-lg-7">
+                <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
+
+                    @*                                  buraya kişini takip ettikleri geleck*@
+
+                </div>
+
+            </div>
+            <div class="col-lg-4" style="padding-left: 5px;">
+                <div class="panel panel-default" id="content-formatting" style="background-color: #f5f5f5">
+
+                    <p style="text-align: center;">Your items will show up in the Follow Feed of the people following you.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane" id="4">
+        <br/><br/>
         <div class="col-lg-7">
-            <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
 
-                <img src="//public-assets.envato-static.com/assets/default-Home2-dc48fa824a14ba7965e9f6982bc991cd72708682af18993941002d7af611f667.jpg" alt="Default home2" style="padding-left: 15px; padding-bottom: 15px; padding-top: 15px;">
+            <i class="fa fa-flag-o" aria-hidden="true"></i>
+            <span>
+                The authors you follow will appear here. Check out our <a href="/Home/Index">Top New Authors</a> to get started.
+            </span>
 
-            </div>
-            <p style="text-align: center;">
-                Would you like to display collections on your profile page?
-            </p>
 
         </div>
-        <div class="col-lg-4" style="padding-left: 5px;">
-            <div class="panel panel-default" id="content-formatting" style="background-color: #f5f5f5">
-                <div class="panel-heading" style="background-color: #f5f5f5">
-                    <h4 style="font-weight: 700">Email: @Model.Email</h4>
-                </div>
-                <div style="padding-left: 10px; padding-right: 10px;">
-                    <br/>
-                    <div class="input-group">
-                        <label for="from">Name</label>
-                        <div class="inputs">
-                            <h6>@Model.Name @Model.Surname</h6>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label for="from">Email</label>
-                        <div class="inputs">
-                            <h6>@Model.Email</h6>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label for="from">Company Name</label>
-                        <div class="inputs">
-                            <h6>LAKS</h6>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label for="from">Country</label>
-                        <div class="inputs">
-                            <h6>Turkey</h6>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label for="from">City</label>
-                        <div class="inputs">
-                            <h6>Kocaeli</h6>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label for="from">Company Number</label>
-                        <div class="inputs">
-                            <h6>-90 555 555 5</h6>
-                        </div>
-                    </div>
+    </div>
 
-                    <label for="from">Social Networks</label>
-                    <div class="input-group">
-                        <img src="//public-assets.envato-static.com/assets/common/icons-buttons/social/facebook-c0cd6ad7c0c9b21c5411996a782f2622b9c26c4a447c9fc45bcb311753bcc4ad.svg" style="width: 20px; height: 20px;"/>
-
-                        <a href="https://www.facebook.com/umut.soysal.180?fref=ts" style="padding-left: 15px;">Umut Soysal</a>
-                    </div>
-                    <br/>
-                    <div class="input-group">
-                        <img src="//public-assets.envato-static.com/assets/common/icons-buttons/social/github-3be7eea43e0869e25b9a70d61c9f87856ffd459dc15d6fd1b0caa365218cedc7.svg" style="width: 20px; height: 20px;"/>
-
-                        <a href="https://github.com/umut47" style="padding-left: 15px;">umut47</a>
-                    </div>
-                    <br/>
-                    <div class="input-group">
-                        <img src="//public-assets.envato-static.com/assets/common/icons-buttons/social/googleplus-d0f7b9215bc6dd19fd9220fc9bb76a55e2000a1dc09fb8f75270d237dcdffa99.svg" style="width: 20px; height: 20px;"/>
-
-                        <a href="https://github.com/umut47" style="padding-left: 15px;">Umut Soysal</a>
-                    </div>
-                    <br/>
-                    <br/>
+    <div class="tab-pane" id="5">
+        <br/><br/>
+        <div class="row" style="padding-left: 30px;">
+            <div class="col-lg-11">
+                <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5; text-align: center;">
+                    <h2 class="t-heading -size-m">You haven't bought anything yet.</h2>
+                    <p class="t-body h-m0">
+                        Discover the browse our <a href="/Home/Index">hottest new items</a>.
+                    </p>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="tab-pane" id="3">
-    <br/><br/>
-    <div class="row" style="padding-left: 15px;">
-        <div class="col-lg-7">
-            <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
 
-                @*                                  buraya kişini takip ettikleri geleck*@
 
+    <div class="tab-pane" id="6">
+        <br/><br/>
+        <div class="row" style="padding-left: 30px;">
+            <div class="col-lg-7">
+                <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5; text-align: center;">
+                    <h2 class="t-heading -size-m">You have no ratings or reviews for any of your items.</h2>
+                </div>
             </div>
+            <div class="col-lg-4" style="padding-left: 5px;">
+                <div class="panel panel-default" id="content-formatting" style="background-color: #f5f5f5">
+                    <div class="panel panel-default" style="background-color: #fafafa; color: #666666; border-radius: 4px; border: 1px solid #e1e8ed; margin: 10px; padding: 15px;">
 
-        </div>
-        <div class="col-lg-4" style="padding-left: 5px;">
-            <div class="panel panel-default" id="content-formatting" style="background-color: #f5f5f5">
+                        <div class="input-group">
+                            <img src="https://www.abweb.sk/images/Shopping%20Cart.png" style="width: 30px; height: 30px;"/>
 
-                <p style="text-align: center;">Your items will show up in the Follow Feed of the people following you.</p>
+                            <span class="sidebar-stats__label" style="padding-left: 5px; font-weight: 700">0</span>
+                            <span class="sidebar-stats__label" style="padding-left: 15px;">Sales</span>
+                        </div>
 
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="tab-pane" id="4">
-    <br/><br/>
-    <div class="col-lg-7">
-
-        <i class="fa fa-flag-o" aria-hidden="true"></i>
-        <span>
-            The authors you follow will appear here. Check out our <a href="/Home/Index">Top New Authors</a> to get started.
-        </span>
-
-
-    </div>
-</div>
-
-<div class="tab-pane" id="5">
-    <br/><br/>
-    <div class="row" style="padding-left: 30px;">
-        <div class="col-lg-11">
-            <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5; text-align: center;">
-                <h2 class="t-heading -size-m">You haven't bought anything yet.</h2>
-                <p class="t-body h-m0">
-                    Discover the browse our <a href="/Home/Index">hottest new items</a>.
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="tab-pane" id="6">
-    <br/><br/>
-    <div class="row" style="padding-left: 30px;">
-        <div class="col-lg-7">
-            <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5; text-align: center;">
-                <h2 class="t-heading -size-m">You have no ratings or reviews for any of your items.</h2>
-            </div>
-        </div>
-        <div class="col-lg-4" style="padding-left: 5px;">
-            <div class="panel panel-default" id="content-formatting" style="background-color: #f5f5f5">
-                <div class="panel panel-default" style="background-color: #fafafa; color: #666666; border-radius: 4px; border: 1px solid #e1e8ed; margin: 10px; padding: 15px;">
-
-                    <div class="input-group">
-                        <img src="https://www.abweb.sk/images/Shopping%20Cart.png" style="width: 30px; height: 30px;"/>
-
-                        <span class="sidebar-stats__label" style="padding-left: 5px; font-weight: 700">0</span>
-                        <span class="sidebar-stats__label" style="padding-left: 15px;">Sales</span>
                     </div>
+                </div>
+            </div>
+            <br/>
+            <div class="col-lg-4" style="padding-left: 5px;">
+                <div class="panel panel-default" id="content-formatting" style="background-color: #f5f5f5">
+                    <div class="panel panel-default" style="background-color: #fafafa; color: #666666; border-radius: 4px; border: 1px solid #e1e8ed; margin: 10px; padding: 15px;">
 
+                        <div class="input-group">
+                            <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/223566-200.png" style="width: 30px; height: 30px;"/>
+
+                            <span class="sidebar-stats__label" style="padding-left: 5px; font-weight: 700">0</span>
+                            <span class="sidebar-stats__label" style="padding-left: 15px;">Followers</span>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
-        <br/>
-        <div class="col-lg-4" style="padding-left: 5px;">
-            <div class="panel panel-default" id="content-formatting" style="background-color: #f5f5f5">
-                <div class="panel panel-default" style="background-color: #fafafa; color: #666666; border-radius: 4px; border: 1px solid #e1e8ed; margin: 10px; padding: 15px;">
+    </div>
 
-                    <div class="input-group">
-                        <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/223566-200.png" style="width: 30px; height: 30px;"/>
-
-                        <span class="sidebar-stats__label" style="padding-left: 5px; font-weight: 700">0</span>
-                        <span class="sidebar-stats__label" style="padding-left: 15px;">Followers</span>
-                    </div>
+    <div class="tab-pane" id="8">
+        <br/><br/>
+        <div class="row" style="padding-left: 30px;">
+            <div class="col-lg-11">
+                <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5; text-align: center;">
+                    <h2 class="t-heading -size-m">Yapım Aşamasında.</h2>
 
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="tab-pane" id="8">
-    <br/><br/>
-    <div class="row" style="padding-left: 30px;">
-        <div class="col-lg-11">
-            <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5; text-align: center;">
-                <h2 class="t-heading -size-m">Yapım Aşamasında.</h2>
+    <div class="tab-pane" id="11">
 
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="tab-pane" id="11">
-
-<div class="container">
-<div class="row">
-    <div class="form-group">
-
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default"/>
-        </div>
-    </div>
-</div>
-<div class="col-lg-11 col-md-11 col-sm-8 col-xs-9 bhoechie-tab-container">
-<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 bhoechie-tab-menu">
-    <div class="list-group">
-        <a href="#" class="list-group-item active text-center">
-            <h4 class="glyphicon glyphicon-user"></h4><br/>Personal Information
-        </a>
-        <a href="#" class="list-group-item text-center">
-            <h4 class="glyphicon glyphicon-user"></h4><br/>Profile
-        </a>
-        <a href="#" class="list-group-item text-center">
-            <h4 class="glyphicon glyphicon-envelope"></h4><br/>Email Settings
-        </a>
-        <a href="#" class="list-group-item text-center">
-            <h4 class="glyphicon glyphicon-credit-card"></h4><br/>Credit Card
-        </a>
-    </div>
-</div>
-<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
-<!-- flight section -->
-<div class="bhoechie-tab-content active">
-<div>
-<fieldset class="h-px2">
-<div class="input-group">
-    <label for="user_personal_information_presenter_first_name">First Name</label>
-    <div class="inputs">
-        @Html.TextBoxFor(model => model.Name, new {@Value = @Model.Name})
-        @*<input type="text" value="@Model.Name" name="user_personal_information_presenter[first_name]" id="user_personal_information_presenter_first_name">*@
-    </div>
-</div>
-<div class="input-group">
-    <label for="user_personal_information_presenter_last_name">Last Name</label>
-    <div class="inputs">
-        @Html.TextBoxFor(model => model.Surname, new { @Value = @Model.Surname })
-        @* <input type="text" value="@Model.Surname" name="user_personal_information_presenter[last_name]" id="user_personal_information_presenter_last_name">*@
-    </div>
-</div>
-<div class="input-group">
-    <label for="user_personal_information_presenter_company_name">Company Name</label>
-    <div class="inputs">
-        @Html.TextBoxFor(model => model.Company, new { @Value = @Model.Company })
-      @* <input maxlength="100" size="100" type="text" value="laks" name="user_personal_information_presenter[company_name]" id="user_personal_information_presenter_company_name">*@
-        <small>If you want your invoices addressed to a company. Leave blank to use your full name.</small>
-    </div>
-</div>
-        
-<div class="input-group h-position-relative">
-<label for="user_personal_information_presenter_country_code">Country</label>
-<div class="inputs">
-<select class="js-personal-info__country-selector" name="user_personal_information_presenter[country_code]" id="user_personal_information_presenter_country_code">
-<optgroup label="Popular countries">
-    <option data-country-id="AU" value="AU">Australia</option>
-    <option data-country-id="BR" value="BR">Brazil</option>
-    <option data-country-id="CA" value="CA">Canada</option>
-    <option data-country-id="FR" data-vat-prefix="FR" data-vat-example="FR12345678901" data-vat-local-lang="n° TVA" value="FR">France</option>
-    <option data-country-id="DE" data-vat-prefix="DE" data-vat-example="DE123456789" data-vat-local-lang="USt-IdNr." value="DE">Germany</option>
-    <option data-country-id="IT" data-vat-prefix="IT" data-vat-example="IT12345678901" data-vat-local-lang="P. IVA" value="IT">Italy</option>
-    <option data-country-id="NL" data-vat-prefix="NL" data-vat-example="NL123456789B01" data-vat-local-lang="Btw-nr." value="NL">Netherlands</option>
-    <option data-country-id="ES" data-vat-prefix="ES" data-vat-example="ES12345678X" data-vat-local-lang="NIF / CIF" value="ES">Spain</option>
-    <option data-country-id="GB" data-vat-prefix="GB" data-vat-example="GB123456789" value="GB">United Kingdom</option>
-    <option data-country-id="US" value="US">United States</option>
-</optgroup>
-<optgroup label="All countries">
-<option data-country-id="AF" value="AF">Afghanistan</option>
-<option data-country-id="AL" value="AL">Albania</option>
-<option data-country-id="DZ" value="DZ">Algeria</option>
-<option data-country-id="AS" value="AS">American Samoa</option>
-<option data-country-id="AD" value="AD">Andorra</option>
-<option data-country-id="AO" value="AO">Angola</option>
-<option data-country-id="AI" value="AI">Anguilla</option>
-<option data-country-id="AQ" value="AQ">Antarctica</option>
-<option data-country-id="AG" value="AG">Antigua and Barbuda</option>
-<option data-country-id="AR" value="AR">Argentina</option>
-<option data-country-id="AM" value="AM">Armenia</option>
-<option data-country-id="AW" value="AW">Aruba</option>
-<option data-country-id="AU" value="AU">Australia</option>
-<option data-country-id="AT" data-vat-prefix="AT" data-vat-example="ATU12345678" data-vat-local-lang="UID" value="AT">Austria</option>
-<option data-country-id="AZ" value="AZ">Azerbaijan</option>
-<option data-country-id="BS" value="BS">Bahamas</option>
-<option data-country-id="BH" value="BH">Bahrain</option>
-<option data-country-id="BD" value="BD">Bangladesh</option>
-<option data-country-id="BB" value="BB">Barbados</option>
-<option data-country-id="BY" value="BY">Belarus</option>
-<option data-country-id="BE" data-vat-prefix="BE" data-vat-example="BE1234567890" data-vat-local-lang="n° TVA / BTW-Nr / Mwst-Nr" value="BE">Belgium</option>
-<option data-country-id="BZ" value="BZ">Belize</option>
-<option data-country-id="BJ" value="BJ">Benin</option>
-<option data-country-id="BM" value="BM">Bermuda</option>
-<option data-country-id="BT" value="BT">Bhutan</option>
-<option data-country-id="BO" value="BO">Bolivia, Plurinational State of</option>
-<option data-country-id="BQ" value="BQ">Bonaire, Sint Eustatius and Saba</option>
-<option data-country-id="BA" value="BA">Bosnia and Herzegovina</option>
-<option data-country-id="BW" value="BW">Botswana</option>
-<option data-country-id="BV" value="BV">Bouvet Island</option>
-<option data-country-id="BR" value="BR">Brazil</option>
-<option data-country-id="IO" value="IO">British Indian Ocean Territory</option>
-<option data-country-id="BN" value="BN">Brunei Darussalam</option>
-<option data-country-id="BG" data-vat-prefix="BG" data-vat-example="BG123456789" data-vat-local-lang="??? ?????" value="BG">Bulgaria</option>
-<option data-country-id="BF" value="BF">Burkina Faso</option>
-<option data-country-id="BI" value="BI">Burundi</option>
-<option data-country-id="CV" value="CV">Cabo Verde</option>
-<option data-country-id="KH" value="KH">Cambodia</option>
-<option data-country-id="CM" value="CM">Cameroon</option>
-<option data-country-id="CA" value="CA">Canada</option>
-<option data-country-id="KY" value="KY">Cayman Islands</option>
-<option data-country-id="CF" value="CF">Central African Republic</option>
-<option data-country-id="TD" value="TD">Chad</option>
-<option data-country-id="CL" value="CL">Chile</option>
-<option data-country-id="CN" value="CN">China</option>
-<option data-country-id="CX" value="CX">Christmas Island</option>
-<option data-country-id="CC" value="CC">Cocos (Keeling) Islands</option>
-<option data-country-id="CO" value="CO">Colombia</option>
-<option data-country-id="KM" value="KM">Comoros</option>
-<option data-country-id="CG" value="CG">Congo</option>
-<option data-country-id="CD" value="CD">Congo, the Democratic Republic of the</option>
-<option data-country-id="CK" value="CK">Cook Islands</option>
-<option data-country-id="CR" value="CR">Costa Rica</option>
-<option data-country-id="HR" data-vat-prefix="HR" data-vat-example="HR12345678901" data-vat-local-lang="PDV-ID; OIB" value="HR">Croatia</option>
-<option data-country-id="CW" value="CW">Curaçao</option>
-<option data-country-id="CY" data-vat-prefix="CY" data-vat-example="CY12345678X" data-vat-local-lang="???" value="CY">Cyprus</option>
-<option data-country-id="CZ" data-vat-prefix="CZ" data-vat-example="CZ12345678" data-vat-local-lang="DIC" value="CZ">Czech Republic</option>
-<option data-country-id="CI" value="CI">Côte d'Ivoire</option>
-<option data-country-id="DK" data-vat-prefix="DK" data-vat-example="DK12345678" data-vat-local-lang="CVR" value="DK">Denmark</option>
-<option data-country-id="DJ" value="DJ">Djibouti</option>
-<option data-country-id="DM" value="DM">Dominica</option>
-<option data-country-id="DO" value="DO">Dominican Republic</option>
-<option data-country-id="EC" value="EC">Ecuador</option>
-<option data-country-id="EG" value="EG">Egypt</option>
-<option data-country-id="SV" value="SV">El Salvador</option>
-<option data-country-id="GQ" value="GQ">Equatorial Guinea</option>
-<option data-country-id="ER" value="ER">Eritrea</option>
-<option data-country-id="EE" data-vat-prefix="EE" data-vat-example="EE123456789" data-vat-local-lang="KMKR" value="EE">Estonia</option>
-<option data-country-id="ET" value="ET">Ethiopia</option>
-<option data-country-id="FK" value="FK">Falkland Islands (Malvinas)</option>
-<option data-country-id="FO" value="FO">Faroe Islands</option>
-<option data-country-id="FJ" value="FJ">Fiji</option>
-<option data-country-id="FI" data-vat-prefix="FI" data-vat-example="FI12345678" data-vat-local-lang="ALV nro" value="FI">Finland</option>
-<option data-country-id="FR" data-vat-prefix="FR" data-vat-example="FR12345678901" data-vat-local-lang="n° TVA" value="FR">France</option>
-<option data-country-id="GF" value="GF">French Guiana</option>
-<option data-country-id="PF" value="PF">French Polynesia</option>
-<option data-country-id="TF" value="TF">French Southern Territories</option>
-<option data-country-id="GA" value="GA">Gabon</option>
-<option data-country-id="GM" value="GM">Gambia</option>
-<option data-country-id="GE" value="GE">Georgia</option>
-<option data-country-id="DE" data-vat-prefix="DE" data-vat-example="DE123456789" data-vat-local-lang="USt-IdNr." value="DE">Germany</option>
-<option data-country-id="GH" value="GH">Ghana</option>
-<option data-country-id="GI" value="GI">Gibraltar</option>
-<option data-country-id="GR" data-vat-prefix="EL" data-vat-example="EL123456789" data-vat-local-lang="???" value="GR">Greece</option>
-<option data-country-id="GL" value="GL">Greenland</option>
-<option data-country-id="GD" value="GD">Grenada</option>
-<option data-country-id="GP" value="GP">Guadeloupe</option>
-<option data-country-id="GU" value="GU">Guam</option>
-<option data-country-id="GT" value="GT">Guatemala</option>
-<option data-country-id="GG" value="GG">Guernsey</option>
-<option data-country-id="GN" value="GN">Guinea</option>
-<option data-country-id="GW" value="GW">Guinea-Bissau</option>
-<option data-country-id="GY" value="GY">Guyana</option>
-<option data-country-id="HT" value="HT">Haiti</option>
-<option data-country-id="HM" value="HM">Heard Island and McDonald Islands</option>
-<option data-country-id="VA" value="VA">Holy See (Vatican City State)</option>
-<option data-country-id="HN" value="HN">Honduras</option>
-<option data-country-id="HK" value="HK">Hong Kong</option>
-<option data-country-id="HU" data-vat-prefix="HU" data-vat-example="HU12345678" data-vat-local-lang="ANUM" value="HU">Hungary</option>
-<option data-country-id="IS" value="IS">Iceland</option>
-<option data-country-id="IN" value="IN">India</option>
-<option data-country-id="ID" value="ID">Indonesia</option>
-<option data-country-id="IQ" value="IQ">Iraq</option>
-<option data-country-id="IE" data-vat-prefix="IE" data-vat-example="IE1234567XX" data-vat-local-lang="VAT no" value="IE">Ireland</option>
-<option data-country-id="IM" value="IM">Isle of Man</option>
-<option data-country-id="IL" value="IL">Israel</option>
-<option data-country-id="IT" data-vat-prefix="IT" data-vat-example="IT12345678901" data-vat-local-lang="P. IVA" value="IT">Italy</option>
-<option data-country-id="JM" value="JM">Jamaica</option>
-<option data-country-id="JP" value="JP">Japan</option>
-<option data-country-id="JE" value="JE">Jersey</option>
-<option data-country-id="JO" value="JO">Jordan</option>
-<option data-country-id="KZ" value="KZ">Kazakhstan</option>
-<option data-country-id="KE" value="KE">Kenya</option>
-<option data-country-id="KI" value="KI">Kiribati</option>
-<option data-country-id="KR" value="KR">Korea, Republic of</option>
-<option data-country-id="XK" value="XK">Kosovo</option>
-<option data-country-id="KW" value="KW">Kuwait</option>
-<option data-country-id="KG" value="KG">Kyrgyzstan</option>
-<option data-country-id="LA" value="LA">Lao People's Democratic Republic</option>
-<option data-country-id="LV" data-vat-prefix="LV" data-vat-example="LV12345678901" data-vat-local-lang="PVN" value="LV">Latvia</option>
-<option data-country-id="LB" value="LB">Lebanon</option>
-<option data-country-id="LS" value="LS">Lesotho</option>
-<option data-country-id="LR" value="LR">Liberia</option>
-<option data-country-id="LY" value="LY">Libya</option>
-<option data-country-id="LI" value="LI">Liechtenstein</option>
-<option data-country-id="LT" data-vat-prefix="LT" data-vat-example="LT123456789" data-vat-local-lang="PVM kodas" value="LT">Lithuania</option>
-<option data-country-id="LU" data-vat-prefix="LU" data-vat-example="LU12345678" data-vat-local-lang="No. TVA" value="LU">Luxembourg</option>
-<option data-country-id="MO" value="MO">Macao</option>
-<option data-country-id="MK" value="MK">Macedonia, the former Yugoslav Republic of</option>
-<option data-country-id="MG" value="MG">Madagascar</option>
-<option data-country-id="MW" value="MW">Malawi</option>
-<option data-country-id="MY" value="MY">Malaysia</option>
-<option data-country-id="MV" value="MV">Maldives</option>
-<option data-country-id="ML" value="ML">Mali</option>
-<option data-country-id="MT" data-vat-prefix="MT" data-vat-example="MT12345678" data-vat-local-lang="Vat No." value="MT">Malta</option>
-<option data-country-id="MH" value="MH">Marshall Islands</option>
-<option data-country-id="MQ" value="MQ">Martinique</option>
-<option data-country-id="MR" value="MR">Mauritania</option>
-<option data-country-id="MU" value="MU">Mauritius</option>
-<option data-country-id="YT" value="YT">Mayotte</option>
-<option data-country-id="MX" value="MX">Mexico</option>
-<option data-country-id="FM" value="FM">Micronesia, Federated States of</option>
-<option data-country-id="MD" value="MD">Moldova, Republic of</option>
-<option data-country-id="MC" value="MC">Monaco</option>
-<option data-country-id="MN" value="MN">Mongolia</option>
-<option data-country-id="ME" value="ME">Montenegro</option>
-<option data-country-id="MS" value="MS">Montserrat</option>
-<option data-country-id="MA" value="MA">Morocco</option>
-<option data-country-id="MZ" value="MZ">Mozambique</option>
-<option data-country-id="MM" value="MM">Myanmar</option>
-<option data-country-id="NA" value="NA">Namibia</option>
-<option data-country-id="NR" value="NR">Nauru</option>
-<option data-country-id="NP" value="NP">Nepal</option>
-<option data-country-id="NL" data-vat-prefix="NL" data-vat-example="NL123456789B01" data-vat-local-lang="Btw-nr." value="NL">Netherlands</option>
-<option data-country-id="NC" value="NC">New Caledonia</option>
-<option data-country-id="NZ" value="NZ">New Zealand</option>
-<option data-country-id="NI" value="NI">Nicaragua</option>
-<option data-country-id="NE" value="NE">Niger</option>
-<option data-country-id="NG" value="NG">Nigeria</option>
-<option data-country-id="NU" value="NU">Niue</option>
-<option data-country-id="NF" value="NF">Norfolk Island</option>
-<option data-country-id="MP" value="MP">Northern Mariana Islands</option>
-<option data-country-id="NO" value="NO">Norway</option>
-<option data-country-id="OM" value="OM">Oman</option>
-<option data-country-id="PK" value="PK">Pakistan</option>
-<option data-country-id="PW" value="PW">Palau</option>
-<option data-country-id="PS" value="PS">Palestine, State of</option>
-<option data-country-id="PA" value="PA">Panama</option>
-<option data-country-id="PG" value="PG">Papua New Guinea</option>
-<option data-country-id="PY" value="PY">Paraguay</option>
-<option data-country-id="PE" value="PE">Peru</option>
-<option data-country-id="PH" value="PH">Philippines</option>
-<option data-country-id="PN" value="PN">Pitcairn</option>
-<option data-country-id="PL" data-vat-prefix="PL" data-vat-example="PL1234567890" data-vat-local-lang="NIP" value="PL">Poland</option>
-<option data-country-id="PT" data-vat-prefix="PT" data-vat-example="PT123456789" data-vat-local-lang="NIF / NIPC" value="PT">Portugal</option>
-<option data-country-id="PR" value="PR">Puerto Rico</option>
-<option data-country-id="QA" value="QA">Qatar</option>
-<option data-country-id="RO" data-vat-prefix="RO" data-vat-example="RO1234567890" data-vat-local-lang="CIF" value="RO">Romania</option>
-<option data-country-id="RU" value="RU">Russian Federation</option>
-<option data-country-id="RW" value="RW">Rwanda</option>
-<option data-country-id="RE" value="RE">Réunion</option>
-<option data-country-id="BL" value="BL">Saint Barthélemy</option>
-<option data-country-id="SH" value="SH">Saint Helena, Ascension and Tristan da Cunha</option>
-<option data-country-id="KN" value="KN">Saint Kitts and Nevis</option>
-<option data-country-id="LC" value="LC">Saint Lucia</option>
-<option data-country-id="MF" value="MF">Saint Martin</option>
-<option data-country-id="PM" value="PM">Saint Pierre and Miquelon</option>
-<option data-country-id="VC" value="VC">Saint Vincent and the Grenadines</option>
-<option data-country-id="WS" value="WS">Samoa</option>
-<option data-country-id="SM" value="SM">San Marino</option>
-<option data-country-id="ST" value="ST">Sao Tome and Principe</option>
-<option data-country-id="SA" value="SA">Saudi Arabia</option>
-<option data-country-id="SN" value="SN">Senegal</option>
-<option data-country-id="RS" value="RS">Serbia</option>
-<option data-country-id="SC" value="SC">Seychelles</option>
-<option data-country-id="SL" value="SL">Sierra Leone</option>
-<option data-country-id="SG" value="SG">Singapore</option>
-<option data-country-id="SX" value="SX">Sint Maarten</option>
-<option data-country-id="SK" data-vat-prefix="SK" data-vat-example="SK1234567890" data-vat-local-lang="IC DPH" value="SK">Slovakia</option>
-<option data-country-id="SI" data-vat-prefix="SI" data-vat-example="SI12345678" data-vat-local-lang="ID za DDV" value="SI">Slovenia</option>
-<option data-country-id="SB" value="SB">Solomon Islands</option>
-<option data-country-id="SO" value="SO">Somalia</option>
-<option data-country-id="ZA" value="ZA">South Africa</option>
-<option data-country-id="GS" value="GS">South Georgia and the South Sandwich Islands</option>
-<option data-country-id="SS" value="SS">South Sudan</option>
-<option data-country-id="ES" data-vat-prefix="ES" data-vat-example="ES12345678X" data-vat-local-lang="NIF / CIF" value="ES">Spain</option>
-<option data-country-id="LK" value="LK">Sri Lanka</option>
-<option data-country-id="SR" value="SR">Suriname</option>
-<option data-country-id="SJ" value="SJ">Svalbard and Jan Mayen</option>
-<option data-country-id="SZ" value="SZ">Swaziland</option>
-<option data-country-id="SE" data-vat-prefix="SE" data-vat-example="SE123456789101" data-vat-local-lang="Momsnr." value="SE">Sweden</option>
-<option data-country-id="CH" value="CH">Switzerland</option>
-<option data-country-id="TW" value="TW">Taiwan</option>
-<option data-country-id="TJ" value="TJ">Tajikistan</option>
-<option data-country-id="TZ" value="TZ">Tanzania, United Republic of</option>
-<option data-country-id="TH" value="TH">Thailand</option>
-<option data-country-id="TL" value="TL">Timor-Leste</option>
-<option data-country-id="TG" value="TG">Togo</option>
-<option data-country-id="TK" value="TK">Tokelau</option>
-<option data-country-id="TO" value="TO">Tonga</option>
-<option data-country-id="TT" value="TT">Trinidad and Tobago</option>
-<option data-country-id="TN" value="TN">Tunisia</option>
-<option data-country-id="TR" selected="selected" value="TR">Turkey</option>
-<option data-country-id="TM" value="TM">Turkmenistan</option>
-<option data-country-id="TC" value="TC">Turks and Caicos Islands</option>
-<option data-country-id="TV" value="TV">Tuvalu</option>
-<option data-country-id="UG" value="UG">Uganda</option>
-<option data-country-id="UA" value="UA">Ukraine</option>
-<option data-country-id="AE" value="AE">United Arab Emirates</option>
-<option data-country-id="GB" data-vat-prefix="GB" data-vat-example="GB123456789" value="GB">United Kingdom</option>
-<option data-country-id="US" value="US">United States</option>
-<option data-country-id="UM" value="UM">United States Minor Outlying Islands</option>
-<option data-country-id="UY" value="UY">Uruguay</option>
-<option data-country-id="UZ" value="UZ">Uzbekistan</option>
-<option data-country-id="VU" value="VU">Vanuatu</option>
-<option data-country-id="VE" value="VE">Venezuela, Bolivarian Republic of</option>
-<option data-country-id="VN" value="VN">Vietnam</option>
-<option data-country-id="VG" value="VG">Virgin Islands, British</option>
-<option data-country-id="VI" value="VI">Virgin Islands, U.S.</option>
-<option data-country-id="WF" value="WF">Wallis and Futuna</option>
-<option data-country-id="EH" value="EH">Western Sahara</option>
-<option data-country-id="YE" value="YE">Yemen</option>
-<option data-country-id="ZM" value="ZM">Zambia</option>
-<option data-country-id="ZW" value="ZW">Zimbabwe</option>
-<option data-country-id="AX" value="AX">Åland Islands</option>
-</optgroup>
-</select>
-</div>
-<div class="js-callout-hint callout-hint">
-    <p class="callout-hint__text">
-        If you have a VAT number, you<br>
-        can enter it in the form below.
-    </p>
-</div>
-</div>
-
-<div class="input-group">
-    <label for="user_personal_information_presenter_address_line1">Address Line </label>
-    <div class="inputs">
-        @Html.TextBoxFor(model => model.Address, new { @Value = @Model.Address })
-@*        <input maxlength="100" size="100" type="text" value="istanbul" name="user_personal_information_presenter[address_line1]" id="user_personal_information_presenter_address_line1">*@
-    </div>
-</div>
-
-@*<div class="input-group">*@
-@*    <label for="user_personal_information_presenter_address_line2">Address Line 2</label>*@
-@*    <div class="inputs">*@
-@*        <input maxlength="100" size="100" type="text" value="kocaeli" name="user_personal_information_presenter[address_line2]" id="user_personal_information_presenter_address_line2">*@
-@*    </div>*@
-@*</div>*@
-
-<div class="input-group">
-    <label for="user_personal_information_presenter_city">City</label>
-    <div class="inputs">
-        @Html.TextBoxFor(model => model.City, new { @Value = @Model.City })
-@*    <input maxlength="100" size="100" type="text" value="istanbul" name="user_personal_information_presenter[city]" id="user_personal_information_presenter_city">*@
-    </div>
-</div>
-
-@*<div class="input-group">*@
-@**@
-@*    <label for="user_personal_information_presenter_region">State / Province / Region</label>*@
-@*    <div class="inputs">*@
-@*        <select name="us_subdivisions" id="us_subdivisions" class="js-personal-info__country-subdivision country_subdivision" data-show-for="US" style="display: none;">*@
-@*            <option value=""></option>*@
-@*            <option data-vat-exempt="true" value="Alabama">Alabama</option>*@
-@*            <option data-vat-exempt="true" value="Alaska">Alaska</option>*@
-@*            <option data-vat-exempt="true" value="Arizona">Arizona</option>*@
-@*            <option data-vat-exempt="true" value="Arkansas">Arkansas</option>*@
-@*            <option data-vat-exempt="true" value="California">California</option>*@
-@*            <option data-vat-exempt="true" value="Colorado">Colorado</option>*@
-@*            <option data-vat-exempt="true" value="Connecticut">Connecticut</option>*@
-@*            <option data-vat-exempt="true" value="Delaware">Delaware</option>*@
-@*            <option data-vat-exempt="true" value="District of Columbia">District of Columbia</option>*@
-@*            <option data-vat-exempt="true" value="Florida">Florida</option>*@
-@*            <option data-vat-exempt="true" value="Georgia">Georgia</option>*@
-@*            <option data-vat-exempt="true" value="Hawaii">Hawaii</option>*@
-@*            <option data-vat-exempt="true" value="Idaho">Idaho</option>*@
-@*            <option data-vat-exempt="true" value="Illinois">Illinois</option>*@
-@*            <option data-vat-exempt="true" value="Indiana">Indiana</option>*@
-@*            <option data-vat-exempt="true" value="Iowa">Iowa</option>*@
-@*            <option data-vat-exempt="true" value="Kansas">Kansas</option>*@
-@*            <option data-vat-exempt="true" value="Kentucky">Kentucky</option>*@
-@*            <option data-vat-exempt="true" value="Louisiana">Louisiana</option>*@
-@*            <option data-vat-exempt="true" value="Maine">Maine</option>*@
-@*            <option data-vat-exempt="true" value="Maryland">Maryland</option>*@
-@*            <option data-vat-exempt="true" value="Massachusetts">Massachusetts</option>*@
-@*            <option data-vat-exempt="true" value="Michigan">Michigan</option>*@
-@*            <option data-vat-exempt="true" value="Minnesota">Minnesota</option>*@
-@*            <option data-vat-exempt="true" value="Mississippi">Mississippi</option>*@
-@*            <option data-vat-exempt="true" value="Missouri">Missouri</option>*@
-@*            <option data-vat-exempt="true" value="Montana">Montana</option>*@
-@*            <option data-vat-exempt="true" value="Nebraska">Nebraska</option>*@
-@*            <option data-vat-exempt="true" value="Nevada">Nevada</option>*@
-@*            <option data-vat-exempt="true" value="New Hampshire">New Hampshire</option>*@
-@*            <option data-vat-exempt="true" value="New Jersey">New Jersey</option>*@
-@*            <option data-vat-exempt="true" value="New Mexico">New Mexico</option>*@
-@*            <option data-vat-exempt="true" value="New York">New York</option>*@
-@*            <option data-vat-exempt="true" value="North Carolina">North Carolina</option>*@
-@*            <option data-vat-exempt="true" value="North Dakota">North Dakota</option>*@
-@*            <option data-vat-exempt="true" value="Ohio">Ohio</option>*@
-@*            <option data-vat-exempt="true" value="Oklahoma">Oklahoma</option>*@
-@*            <option data-vat-exempt="true" value="Oregon">Oregon</option>*@
-@*            <option data-vat-exempt="true" value="Pennsylvania">Pennsylvania</option>*@
-@*            <option data-vat-exempt="true" value="Rhode Island">Rhode Island</option>*@
-@*            <option data-vat-exempt="true" value="South Carolina">South Carolina</option>*@
-@*            <option data-vat-exempt="true" value="South Dakota">South Dakota</option>*@
-@*            <option data-vat-exempt="true" value="Tennessee">Tennessee</option>*@
-@*            <option data-vat-exempt="true" value="Texas">Texas</option>*@
-@*            <option data-vat-exempt="true" value="Utah">Utah</option>*@
-@*            <option data-vat-exempt="true" value="Vermont">Vermont</option>*@
-@*            <option data-vat-exempt="true" value="Virginia">Virginia</option>*@
-@*            <option data-vat-exempt="true" value="Washington">Washington</option>*@
-@*            <option data-vat-exempt="true" value="West Virginia">West Virginia</option>*@
-@*            <option data-vat-exempt="true" value="Wisconsin">Wisconsin</option>*@
-@*            <option data-vat-exempt="true" value="Wyoming">Wyoming</option>*@
-@*            <option data-vat-exempt="true" value="American Samoa">American Samoa</option>*@
-@*        </select>*@
-@*        <select name="ca_subdivisions" id="ca_subdivisions" class="js-personal-info__country-subdivision country_subdivision" data-show-for="CA" style="display: none;">*@
-@*            <option value=""></option>*@
-@*            <option data-vat-exempt="true" value="Alberta">Alberta</option>*@
-@*            <option data-vat-exempt="true" value="British Columbia">British Columbia</option>*@
-@*            <option data-vat-exempt="true" value="Manitoba">Manitoba</option>*@
-@*            <option data-vat-exempt="true" value="New Brunswick">New Brunswick</option>*@
-@*            <option data-vat-exempt="true" value="Newfoundland and Labrador">Newfoundland and Labrador</option>*@
-@*            <option data-vat-exempt="true" value="Northwest Territories">Northwest Territories</option>*@
-@*            <option data-vat-exempt="true" value="Nova Scotia">Nova Scotia</option>*@
-@*            <option data-vat-exempt="true" value="Nunavut">Nunavut</option>*@
-@*            <option data-vat-exempt="true" value="Ontario">Ontario</option>*@
-@*            <option data-vat-exempt="true" value="Prince Edward Island">Prince Edward Island</option>*@
-@*            <option data-vat-exempt="true" value="Quebec">Quebec</option>*@
-@*            <option data-vat-exempt="true" value="Saskatchewan">Saskatchewan</option>*@
-@*            <option data-vat-exempt="true" value="Yukon">Yukon</option>*@
-@*        </select>*@
-@*        <select name="au_subdivisions" id="au_subdivisions" class="js-personal-info__country-subdivision country_subdivision" data-show-for="AU" style="display: none;">*@
-@*            <option value=""></option>*@
-@*            <option data-vat-exempt="true" value="Victoria">Victoria</option>*@
-@*            <option data-vat-exempt="true" value="Australian Capital Territory">Australian Capital Territory</option>*@
-@*            <option data-vat-exempt="true" value="Northern Territory">Northern Territory</option>*@
-@*            <option data-vat-exempt="true" value="Tasmania">Tasmania</option>*@
-@*            <option data-vat-exempt="true" value="New South Wales">New South Wales</option>*@
-@*            <option data-vat-exempt="true" value="Western Australia">Western Australia</option>*@
-@*            <option data-vat-exempt="true" value="South Australia">South Australia</option>*@
-@*            <option data-vat-exempt="true" value="Queensland">Queensland</option>*@
-@*        </select>*@
-@*        <select name="es_subdivisions" id="es_subdivisions" class="js-personal-info__country-subdivision country_subdivision" data-show-for="ES" style="display: none;">*@
-@*            <option value=""></option>*@
-@*            <option value="Andalusia">Andalusia</option>*@
-@*            <option value="Aragon">Aragon</option>*@
-@*            <option value="Asturias">Asturias</option>*@
-@*            <option value="Balearic Islands">Balearic Islands</option>*@
-@*            <option value="Basque Country">Basque Country</option>*@
-@*            <option data-vat-exempt="true" value="Canary Islands">Canary Islands</option>*@
-@*            <option value="Cantabria">Cantabria</option>*@
-@*            <option value="Castile-La Mancha">Castile-La Mancha</option>*@
-@*            <option value="Castile and León">Castile and León</option>*@
-@*            <option value="Catalonia">Catalonia</option>*@
-@*            <option data-vat-exempt="true" value="Ceuta">Ceuta</option>*@
-@*            <option value="Extremadura">Extremadura</option>*@
-@*            <option value="Galicia">Galicia</option>*@
-@*            <option value="La Rioja">La Rioja</option>*@
-@*            <option value="Madrid">Madrid</option>*@
-@*            <option data-vat-exempt="true" value="Melilla">Melilla</option>*@
-@*            <option value="Murcia">Murcia</option>*@
-@*            <option value="Navarre">Navarre</option>*@
-@*            <option value="Valencian Community">Valencian Community</option>*@
-@*        </select>*@
-@*        <input maxlength="100" class="js-personal-info__subdivision-code" size="100" type="text" value="" name="user_personal_information_presenter[region]" id="user_personal_information_presenter_region" style="display: block;">*@
-@*    </div>*@
-@*</div>*@
-
-
-<div class="js-dependent-fields is-hidden--js js-personal-info__vat-input-group input-group settings-vat__input-group" id="vat-input-group">
-    <label for="user_personal_information_presenter_vat_number">EU VAT Identification Number</label>
-    <p class="js-personal-info__vat-local-lang t-body -size-s settings-vat__local-lang">Local</p>
-
-    <div class="inputs js-personal-info__vat-input">
-        @Html.TextBoxFor(model => model.PhoneNumber, new { @Value = @Model.PhoneNumber })
-@*        <input class="js-personal-info__vat-input" type="text" value="" name="user_personal_information_presenter[vat_number]" id="user_personal_information_presenter_vat_number">*@
-        <p class="t-body -size-s">
-            (eg <span class="js-personal-info__vat-example settings-vat__example"></span>)
-        </p>
-    </div>
-</div>
-<div class="js-dependent-fields input-group">
-    <label class="js-personal-info__company_number_label" for="user_personal_information_presenter_company_number">Company No.</label>
-    <div class="inputs">
-        <input maxlength="100" class="js-personal-info__company_number" size="100" type="text" value="34" name="user_personal_information_presenter[company_number]" id="user_personal_information_presenter_company_number">
-        <small>Your Company Number will appear on your invoices if you fill in this field.</small>
-    </div>
-</div>
-<br/>
-
-<br/>
-</fieldset>
-<br/>
-</div>
-</div>
-<!-- train section -->
-<div class="bhoechie-tab-content">
-    <div class="e-fieldset__body h-m0">
-        <div id="profile" class="tab-content active">
-            <form class="horizontal-form" id="new_user_profile_updater" enctype="multipart/form-data" action="/user/kadir47/profile" accept-charset="UTF-8" method="post">
-                <input name="utf8" type="hidden" value="?"><input type="hidden" name="_method" value="put"><input type="hidden" name="authenticity_token" value="I/BZSk92WeaCnCNLTZt2bT52IOstUvyfuyltMCoIlZcA3yEE/Vg6FXCtywXyetImCUz6wB2lZ8tTa8SIg4agYQ==">
-                <fieldset class="h-px2">
-                    <div class="input-group">
-                        <label for="user_profile_updater_profile_image">Avatar</label>
-                        <div class="inputs">
-                            <label for="user_profile_updater_profile_image">Upload an avatar:</label>
-                         @*   @Html.TextBoxFor(model => model.Avatar, new { @Value = @Model.Avatar })*@
-    <input type="file" name="user_profile_updater[profile_image]" id="user_profile_updater_profile_image">
-                            <small>JPEG 80x80px</small>
+        <div class="container">
+                <div class="row">
+                    <div class="form-group">
+                        
+                        <br/>
+                        <div class="col-md-offset-5 col-md-10">
+                            <input type="submit" value="Save" class="btn-sm btn-info" />
                         </div>
                     </div>
-
-                    <div class="input-group">
-                        <label for="user_profile_updater_homepage_image">Homepage Image</label>
-                        <div class="inputs">
-                            <label for="user_profile_updater_homepage_image">Upload a homepage image:</label>
-                            <input type="file" name="user_profile_updater[homepage_image]" id="user_profile_updater_homepage_image">
-                            <small>JPEG 590x242</small>
-                        </div>
-                    </div>
-
-
-                    <div class="input-group">
-                        <label for="user_profile_updater_show_country_badge">Show country on your profile and badges</label>
-                        <div class="inputs">
-                            <input type="radio" value="true" checked="checked" name="user_profile_updater[show_country_badge]" id="user_profile_updater_show_country_badge_true">
-                            <label for="user_profile_updater_show_country_badge_true">Yes</label>
-                            <input type="radio" value="false" name="user_profile_updater[show_country_badge]" id="user_profile_updater_show_country_badge_false">
-                            <label for="user_profile_updater_show_country_badge_false">No</label>
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="user_profile_updater_by_line">Profile Heading</label>
-                        <div class="inputs">
-                            <input type="text" name="user_profile_updater[by_line]" id="user_profile_updater_by_line">
-                            <small>Appears on your profile page</small>
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="user_profile_updater_profile">Profile Text</label>
-                        <div class="inputs">
-                            <textarea class="tall" style="width: 400px; height: 200px;" name="user_profile_updater[profile]" id="user_profile_updater_profile"></textarea>
-
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="user_profile_updater_available_for_freelance">Available for freelance?</label>
-                        <div class="inputs">
-                            <label for="user_profile_updater_available_for_freelance">
-                                <input name="user_profile_updater[available_for_freelance]" type="hidden" value="0"><input type="checkbox" value="1" name="user_profile_updater[available_for_freelance]" id="user_profile_updater_available_for_freelance">
-                                Yes, advertise my availability on my profile page
-                            </label>
-                        </div>
-                    </div>
-                </fieldset>
-
-                <div class="e-fieldset__footer">
-
                 </div>
-                <br/>
-            </form>
-        </div>
-    </div>
-</div>
+            <div class="col-lg-11 col-md-11 col-sm-8 col-xs-9 bhoechie-tab-container">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 bhoechie-tab-menu">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item active text-center">
+                            <h4 class="glyphicon glyphicon-user"></h4><br />Personal Information
+                        </a>
+                        <a href="#" class="list-group-item text-center">
+                            <h4 class="glyphicon glyphicon-user"></h4><br />Profile
+                        </a>
+                        <a href="#" class="list-group-item text-center">
+                            <h4 class="glyphicon glyphicon-envelope"></h4><br />Email Settings
+                        </a>
+                        <a href="#" class="list-group-item text-center">
+                            <h4 class="glyphicon glyphicon-credit-card"></h4><br />Credit Card
+                        </a>
 
-<!-- hotel search -->
-<div class="bhoechie-tab-content">
-    
-        <div class="input-group">
-            <label for="user_profile_updater_by_line">Email</label>
-            <div class="inputs">
+ 
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
+                    <!-- flight section -->
+                    <div class="bhoechie-tab-content active">
+                        <div>
+                            <fieldset class="h-px2">
+                                <div class="input-group">
+                                    <label for="user_personal_information_presenter_first_name">First Name</label>
+                                    <div class="inputs">
+                                        @Html.TextBoxFor(model => model.Name, new { @Value = @Model.Name })
+                                        @*<input type="text" value="@Model.Name" name="user_personal_information_presenter[first_name]" id="user_personal_information_presenter_first_name">*@
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="user_personal_information_presenter_last_name">Last Name</label>
+                                    <div class="inputs">
+                                        @Html.TextBoxFor(model => model.Surname, new { @Value = @Model.Surname })
+                                        @* <input type="text" value="@Model.Surname" name="user_personal_information_presenter[last_name]" id="user_personal_information_presenter_last_name">*@
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="user_personal_information_presenter_company_name">Company Name</label>
+                                    <div class="inputs">
+                                        @Html.TextBoxFor(model => model.Company, new { @Value = @Model.Company })
+                                        @* <input maxlength="100" size="100" type="text" value="laks" name="user_personal_information_presenter[company_name]" id="user_personal_information_presenter_company_name">*@
+                                     
+                                    </div>
+                                </div>
+
+                                <div class="input-group h-position-relative">
+                                    <label for="user_personal_information_presenter_country_code">Country</label>
+                                    <div class="inputs">
+                                        <select class="js-personal-info__country-selector" name="country_code" id="user_personal_information_presenter_country_code">
+                                            <optgroup label="Popular countries">
+                                                <option data-country-id="AU" value="AU">Australia</option>
+                                                <option data-country-id="BR" value="BR">Brazil</option>
+                                                <option data-country-id="CA" value="CA">Canada</option>
+                                                <option data-country-id="FR" data-vat-prefix="FR" data-vat-example="FR12345678901" data-vat-local-lang="n° TVA" value="FR">France</option>
+                                                <option data-country-id="DE" data-vat-prefix="DE" data-vat-example="DE123456789" data-vat-local-lang="USt-IdNr." value="DE">Germany</option>
+                                                <option data-country-id="IT" data-vat-prefix="IT" data-vat-example="IT12345678901" data-vat-local-lang="P. IVA" value="IT">Italy</option>
+                                                <option data-country-id="NL" data-vat-prefix="NL" data-vat-example="NL123456789B01" data-vat-local-lang="Btw-nr." value="NL">Netherlands</option>
+                                                <option data-country-id="ES" data-vat-prefix="ES" data-vat-example="ES12345678X" data-vat-local-lang="NIF / CIF" value="ES">Spain</option>
+                                                <option data-country-id="GB" data-vat-prefix="GB" data-vat-example="GB123456789" value="GB">United Kingdom</option>
+                                                <option data-country-id="US" value="US">United States</option>
+                                            </optgroup>
+                                            <optgroup label="All countries">
+                                                <option data-country-id="AF" value="AF">Afghanistan</option>
+                                                <option data-country-id="AL" value="AL">Albania</option>
+                                                <option data-country-id="DZ" value="DZ">Algeria</option>
+                                                <option data-country-id="AS" value="AS">American Samoa</option>
+                                                <option data-country-id="AD" value="AD">Andorra</option>
+                                                <option data-country-id="AO" value="AO">Angola</option>
+                                                <option data-country-id="AI" value="AI">Anguilla</option>
+                                                <option data-country-id="AQ" value="AQ">Antarctica</option>
+                                                <option data-country-id="AG" value="AG">Antigua and Barbuda</option>
+                                                <option data-country-id="AR" value="AR">Argentina</option>
+                                                <option data-country-id="AM" value="AM">Armenia</option>
+                                                <option data-country-id="AW" value="AW">Aruba</option>
+                                                <option data-country-id="AU" value="AU">Australia</option>
+                                                <option data-country-id="AT" data-vat-prefix="AT" data-vat-example="ATU12345678" data-vat-local-lang="UID" value="AT">Austria</option>
+                                                <option data-country-id="AZ" value="AZ">Azerbaijan</option>
+                                                <option data-country-id="BS" value="BS">Bahamas</option>
+                                                <option data-country-id="BH" value="BH">Bahrain</option>
+                                                <option data-country-id="BD" value="BD">Bangladesh</option>
+                                                <option data-country-id="BB" value="BB">Barbados</option>
+                                                <option data-country-id="BY" value="BY">Belarus</option>
+                                                <option data-country-id="BE" data-vat-prefix="BE" data-vat-example="BE1234567890" data-vat-local-lang="n° TVA / BTW-Nr / Mwst-Nr" value="BE">Belgium</option>
+                                                <option data-country-id="BZ" value="BZ">Belize</option>
+                                                <option data-country-id="BJ" value="BJ">Benin</option>
+                                                <option data-country-id="BM" value="BM">Bermuda</option>
+                                                <option data-country-id="BT" value="BT">Bhutan</option>
+                                                <option data-country-id="BO" value="BO">Bolivia, Plurinational State of</option>
+                                                <option data-country-id="BQ" value="BQ">Bonaire, Sint Eustatius and Saba</option>
+                                                <option data-country-id="BA" value="BA">Bosnia and Herzegovina</option>
+                                                <option data-country-id="BW" value="BW">Botswana</option>
+                                                <option data-country-id="BV" value="BV">Bouvet Island</option>
+                                                <option data-country-id="BR" value="BR">Brazil</option>
+                                                <option data-country-id="IO" value="IO">British Indian Ocean Territory</option>
+                                                <option data-country-id="BN" value="BN">Brunei Darussalam</option>
+                                                <option data-country-id="BG" data-vat-prefix="BG" data-vat-example="BG123456789" data-vat-local-lang="??? ?????" value="BG">Bulgaria</option>
+                                                <option data-country-id="BF" value="BF">Burkina Faso</option>
+                                                <option data-country-id="BI" value="BI">Burundi</option>
+                                                <option data-country-id="CV" value="CV">Cabo Verde</option>
+                                                <option data-country-id="KH" value="KH">Cambodia</option>
+                                                <option data-country-id="CM" value="CM">Cameroon</option>
+                                                <option data-country-id="CA" value="CA">Canada</option>
+                                                <option data-country-id="KY" value="KY">Cayman Islands</option>
+                                                <option data-country-id="CF" value="CF">Central African Republic</option>
+                                                <option data-country-id="TD" value="TD">Chad</option>
+                                                <option data-country-id="CL" value="CL">Chile</option>
+                                                <option data-country-id="CN" value="CN">China</option>
+                                                <option data-country-id="CX" value="CX">Christmas Island</option>
+                                                <option data-country-id="CC" value="CC">Cocos (Keeling) Islands</option>
+                                                <option data-country-id="CO" value="CO">Colombia</option>
+                                                <option data-country-id="KM" value="KM">Comoros</option>
+                                                <option data-country-id="CG" value="CG">Congo</option>
+                                                <option data-country-id="CD" value="CD">Congo, the Democratic Republic of the</option>
+                                                <option data-country-id="CK" value="CK">Cook Islands</option>
+                                                <option data-country-id="CR" value="CR">Costa Rica</option>
+                                                <option data-country-id="HR" data-vat-prefix="HR" data-vat-example="HR12345678901" data-vat-local-lang="PDV-ID; OIB" value="HR">Croatia</option>
+                                                <option data-country-id="CW" value="CW">Curaçao</option>
+                                                <option data-country-id="CY" data-vat-prefix="CY" data-vat-example="CY12345678X" data-vat-local-lang="???" value="CY">Cyprus</option>
+                                                <option data-country-id="CZ" data-vat-prefix="CZ" data-vat-example="CZ12345678" data-vat-local-lang="DIC" value="CZ">Czech Republic</option>
+                                                <option data-country-id="CI" value="CI">Côte d'Ivoire</option>
+                                                <option data-country-id="DK" data-vat-prefix="DK" data-vat-example="DK12345678" data-vat-local-lang="CVR" value="DK">Denmark</option>
+                                                <option data-country-id="DJ" value="DJ">Djibouti</option>
+                                                <option data-country-id="DM" value="DM">Dominica</option>
+                                                <option data-country-id="DO" value="DO">Dominican Republic</option>
+                                                <option data-country-id="EC" value="EC">Ecuador</option>
+                                                <option data-country-id="EG" value="EG">Egypt</option>
+                                                <option data-country-id="SV" value="SV">El Salvador</option>
+                                                <option data-country-id="GQ" value="GQ">Equatorial Guinea</option>
+                                                <option data-country-id="ER" value="ER">Eritrea</option>
+                                                <option data-country-id="EE" data-vat-prefix="EE" data-vat-example="EE123456789" data-vat-local-lang="KMKR" value="EE">Estonia</option>
+                                                <option data-country-id="ET" value="ET">Ethiopia</option>
+                                                <option data-country-id="FK" value="FK">Falkland Islands (Malvinas)</option>
+                                                <option data-country-id="FO" value="FO">Faroe Islands</option>
+                                                <option data-country-id="FJ" value="FJ">Fiji</option>
+                                                <option data-country-id="FI" data-vat-prefix="FI" data-vat-example="FI12345678" data-vat-local-lang="ALV nro" value="FI">Finland</option>
+                                                <option data-country-id="FR" data-vat-prefix="FR" data-vat-example="FR12345678901" data-vat-local-lang="n° TVA" value="FR">France</option>
+                                                <option data-country-id="GF" value="GF">French Guiana</option>
+                                                <option data-country-id="PF" value="PF">French Polynesia</option>
+                                                <option data-country-id="TF" value="TF">French Southern Territories</option>
+                                                <option data-country-id="GA" value="GA">Gabon</option>
+                                                <option data-country-id="GM" value="GM">Gambia</option>
+                                                <option data-country-id="GE" value="GE">Georgia</option>
+                                                <option data-country-id="DE" data-vat-prefix="DE" data-vat-example="DE123456789" data-vat-local-lang="USt-IdNr." value="DE">Germany</option>
+                                                <option data-country-id="GH" value="GH">Ghana</option>
+                                                <option data-country-id="GI" value="GI">Gibraltar</option>
+                                                <option data-country-id="GR" data-vat-prefix="EL" data-vat-example="EL123456789" data-vat-local-lang="???" value="GR">Greece</option>
+                                                <option data-country-id="GL" value="GL">Greenland</option>
+                                                <option data-country-id="GD" value="GD">Grenada</option>
+                                                <option data-country-id="GP" value="GP">Guadeloupe</option>
+                                                <option data-country-id="GU" value="GU">Guam</option>
+                                                <option data-country-id="GT" value="GT">Guatemala</option>
+                                                <option data-country-id="GG" value="GG">Guernsey</option>
+                                                <option data-country-id="GN" value="GN">Guinea</option>
+                                                <option data-country-id="GW" value="GW">Guinea-Bissau</option>
+                                                <option data-country-id="GY" value="GY">Guyana</option>
+                                                <option data-country-id="HT" value="HT">Haiti</option>
+                                                <option data-country-id="HM" value="HM">Heard Island and McDonald Islands</option>
+                                                <option data-country-id="VA" value="VA">Holy See (Vatican City State)</option>
+                                                <option data-country-id="HN" value="HN">Honduras</option>
+                                                <option data-country-id="HK" value="HK">Hong Kong</option>
+                                                <option data-country-id="HU" data-vat-prefix="HU" data-vat-example="HU12345678" data-vat-local-lang="ANUM" value="HU">Hungary</option>
+                                                <option data-country-id="IS" value="IS">Iceland</option>
+                                                <option data-country-id="IN" value="IN">India</option>
+                                                <option data-country-id="ID" value="ID">Indonesia</option>
+                                                <option data-country-id="IQ" value="IQ">Iraq</option>
+                                                <option data-country-id="IE" data-vat-prefix="IE" data-vat-example="IE1234567XX" data-vat-local-lang="VAT no" value="IE">Ireland</option>
+                                                <option data-country-id="IM" value="IM">Isle of Man</option>
+                                                <option data-country-id="IL" value="IL">Israel</option>
+                                                <option data-country-id="IT" data-vat-prefix="IT" data-vat-example="IT12345678901" data-vat-local-lang="P. IVA" value="IT">Italy</option>
+                                                <option data-country-id="JM" value="JM">Jamaica</option>
+                                                <option data-country-id="JP" value="JP">Japan</option>
+                                                <option data-country-id="JE" value="JE">Jersey</option>
+                                                <option data-country-id="JO" value="JO">Jordan</option>
+                                                <option data-country-id="KZ" value="KZ">Kazakhstan</option>
+                                                <option data-country-id="KE" value="KE">Kenya</option>
+                                                <option data-country-id="KI" value="KI">Kiribati</option>
+                                                <option data-country-id="KR" value="KR">Korea, Republic of</option>
+                                                <option data-country-id="XK" value="XK">Kosovo</option>
+                                                <option data-country-id="KW" value="KW">Kuwait</option>
+                                                <option data-country-id="KG" value="KG">Kyrgyzstan</option>
+                                                <option data-country-id="LA" value="LA">Lao People's Democratic Republic</option>
+                                                <option data-country-id="LV" data-vat-prefix="LV" data-vat-example="LV12345678901" data-vat-local-lang="PVN" value="LV">Latvia</option>
+                                                <option data-country-id="LB" value="LB">Lebanon</option>
+                                                <option data-country-id="LS" value="LS">Lesotho</option>
+                                                <option data-country-id="LR" value="LR">Liberia</option>
+                                                <option data-country-id="LY" value="LY">Libya</option>
+                                                <option data-country-id="LI" value="LI">Liechtenstein</option>
+                                                <option data-country-id="LT" data-vat-prefix="LT" data-vat-example="LT123456789" data-vat-local-lang="PVM kodas" value="LT">Lithuania</option>
+                                                <option data-country-id="LU" data-vat-prefix="LU" data-vat-example="LU12345678" data-vat-local-lang="No. TVA" value="LU">Luxembourg</option>
+                                                <option data-country-id="MO" value="MO">Macao</option>
+                                                <option data-country-id="MK" value="MK">Macedonia, the former Yugoslav Republic of</option>
+                                                <option data-country-id="MG" value="MG">Madagascar</option>
+                                                <option data-country-id="MW" value="MW">Malawi</option>
+                                                <option data-country-id="MY" value="MY">Malaysia</option>
+                                                <option data-country-id="MV" value="MV">Maldives</option>
+                                                <option data-country-id="ML" value="ML">Mali</option>
+                                                <option data-country-id="MT" data-vat-prefix="MT" data-vat-example="MT12345678" data-vat-local-lang="Vat No." value="MT">Malta</option>
+                                                <option data-country-id="MH" value="MH">Marshall Islands</option>
+                                                <option data-country-id="MQ" value="MQ">Martinique</option>
+                                                <option data-country-id="MR" value="MR">Mauritania</option>
+                                                <option data-country-id="MU" value="MU">Mauritius</option>
+                                                <option data-country-id="YT" value="YT">Mayotte</option>
+                                                <option data-country-id="MX" value="MX">Mexico</option>
+                                                <option data-country-id="FM" value="FM">Micronesia, Federated States of</option>
+                                                <option data-country-id="MD" value="MD">Moldova, Republic of</option>
+                                                <option data-country-id="MC" value="MC">Monaco</option>
+                                                <option data-country-id="MN" value="MN">Mongolia</option>
+                                                <option data-country-id="ME" value="ME">Montenegro</option>
+                                                <option data-country-id="MS" value="MS">Montserrat</option>
+                                                <option data-country-id="MA" value="MA">Morocco</option>
+                                                <option data-country-id="MZ" value="MZ">Mozambique</option>
+                                                <option data-country-id="MM" value="MM">Myanmar</option>
+                                                <option data-country-id="NA" value="NA">Namibia</option>
+                                                <option data-country-id="NR" value="NR">Nauru</option>
+                                                <option data-country-id="NP" value="NP">Nepal</option>
+                                                <option data-country-id="NL" data-vat-prefix="NL" data-vat-example="NL123456789B01" data-vat-local-lang="Btw-nr." value="NL">Netherlands</option>
+                                                <option data-country-id="NC" value="NC">New Caledonia</option>
+                                                <option data-country-id="NZ" value="NZ">New Zealand</option>
+                                                <option data-country-id="NI" value="NI">Nicaragua</option>
+                                                <option data-country-id="NE" value="NE">Niger</option>
+                                                <option data-country-id="NG" value="NG">Nigeria</option>
+                                                <option data-country-id="NU" value="NU">Niue</option>
+                                                <option data-country-id="NF" value="NF">Norfolk Island</option>
+                                                <option data-country-id="MP" value="MP">Northern Mariana Islands</option>
+                                                <option data-country-id="NO" value="NO">Norway</option>
+                                                <option data-country-id="OM" value="OM">Oman</option>
+                                                <option data-country-id="PK" value="PK">Pakistan</option>
+                                                <option data-country-id="PW" value="PW">Palau</option>
+                                                <option data-country-id="PS" value="PS">Palestine, State of</option>
+                                                <option data-country-id="PA" value="PA">Panama</option>
+                                                <option data-country-id="PG" value="PG">Papua New Guinea</option>
+                                                <option data-country-id="PY" value="PY">Paraguay</option>
+                                                <option data-country-id="PE" value="PE">Peru</option>
+                                                <option data-country-id="PH" value="PH">Philippines</option>
+                                                <option data-country-id="PN" value="PN">Pitcairn</option>
+                                                <option data-country-id="PL" data-vat-prefix="PL" data-vat-example="PL1234567890" data-vat-local-lang="NIP" value="PL">Poland</option>
+                                                <option data-country-id="PT" data-vat-prefix="PT" data-vat-example="PT123456789" data-vat-local-lang="NIF / NIPC" value="PT">Portugal</option>
+                                                <option data-country-id="PR" value="PR">Puerto Rico</option>
+                                                <option data-country-id="QA" value="QA">Qatar</option>
+                                                <option data-country-id="RO" data-vat-prefix="RO" data-vat-example="RO1234567890" data-vat-local-lang="CIF" value="RO">Romania</option>
+                                                <option data-country-id="RU" value="RU">Russian Federation</option>
+                                                <option data-country-id="RW" value="RW">Rwanda</option>
+                                                <option data-country-id="RE" value="RE">Réunion</option>
+                                                <option data-country-id="BL" value="BL">Saint Barthélemy</option>
+                                                <option data-country-id="SH" value="SH">Saint Helena, Ascension and Tristan da Cunha</option>
+                                                <option data-country-id="KN" value="KN">Saint Kitts and Nevis</option>
+                                                <option data-country-id="LC" value="LC">Saint Lucia</option>
+                                                <option data-country-id="MF" value="MF">Saint Martin</option>
+                                                <option data-country-id="PM" value="PM">Saint Pierre and Miquelon</option>
+                                                <option data-country-id="VC" value="VC">Saint Vincent and the Grenadines</option>
+                                                <option data-country-id="WS" value="WS">Samoa</option>
+                                                <option data-country-id="SM" value="SM">San Marino</option>
+                                                <option data-country-id="ST" value="ST">Sao Tome and Principe</option>
+                                                <option data-country-id="SA" value="SA">Saudi Arabia</option>
+                                                <option data-country-id="SN" value="SN">Senegal</option>
+                                                <option data-country-id="RS" value="RS">Serbia</option>
+                                                <option data-country-id="SC" value="SC">Seychelles</option>
+                                                <option data-country-id="SL" value="SL">Sierra Leone</option>
+                                                <option data-country-id="SG" value="SG">Singapore</option>
+                                                <option data-country-id="SX" value="SX">Sint Maarten</option>
+                                                <option data-country-id="SK" data-vat-prefix="SK" data-vat-example="SK1234567890" data-vat-local-lang="IC DPH" value="SK">Slovakia</option>
+                                                <option data-country-id="SI" data-vat-prefix="SI" data-vat-example="SI12345678" data-vat-local-lang="ID za DDV" value="SI">Slovenia</option>
+                                                <option data-country-id="SB" value="SB">Solomon Islands</option>
+                                                <option data-country-id="SO" value="SO">Somalia</option>
+                                                <option data-country-id="ZA" value="ZA">South Africa</option>
+                                                <option data-country-id="GS" value="GS">South Georgia and the South Sandwich Islands</option>
+                                                <option data-country-id="SS" value="SS">South Sudan</option>
+                                                <option data-country-id="ES" data-vat-prefix="ES" data-vat-example="ES12345678X" data-vat-local-lang="NIF / CIF" value="ES">Spain</option>
+                                                <option data-country-id="LK" value="LK">Sri Lanka</option>
+                                                <option data-country-id="SR" value="SR">Suriname</option>
+                                                <option data-country-id="SJ" value="SJ">Svalbard and Jan Mayen</option>
+                                                <option data-country-id="SZ" value="SZ">Swaziland</option>
+                                                <option data-country-id="SE" data-vat-prefix="SE" data-vat-example="SE123456789101" data-vat-local-lang="Momsnr." value="SE">Sweden</option>
+                                                <option data-country-id="CH" value="CH">Switzerland</option>
+                                                <option data-country-id="TW" value="TW">Taiwan</option>
+                                                <option data-country-id="TJ" value="TJ">Tajikistan</option>
+                                                <option data-country-id="TZ" value="TZ">Tanzania, United Republic of</option>
+                                                <option data-country-id="TH" value="TH">Thailand</option>
+                                                <option data-country-id="TL" value="TL">Timor-Leste</option>
+                                                <option data-country-id="TG" value="TG">Togo</option>
+                                                <option data-country-id="TK" value="TK">Tokelau</option>
+                                                <option data-country-id="TO" value="TO">Tonga</option>
+                                                <option data-country-id="TT" value="TT">Trinidad and Tobago</option>
+                                                <option data-country-id="TN" value="TN">Tunisia</option>
+                                                <option data-country-id="TR" selected="selected" value="TR">Turkey</option>
+                                                <option data-country-id="TM" value="TM">Turkmenistan</option>
+                                                <option data-country-id="TC" value="TC">Turks and Caicos Islands</option>
+                                                <option data-country-id="TV" value="TV">Tuvalu</option>
+                                                <option data-country-id="UG" value="UG">Uganda</option>
+                                                <option data-country-id="UA" value="UA">Ukraine</option>
+                                                <option data-country-id="AE" value="AE">United Arab Emirates</option>
+                                                <option data-country-id="GB" data-vat-prefix="GB" data-vat-example="GB123456789" value="GB">United Kingdom</option>
+                                                <option data-country-id="US" value="US">United States</option>
+                                                <option data-country-id="UM" value="UM">United States Minor Outlying Islands</option>
+                                                <option data-country-id="UY" value="UY">Uruguay</option>
+                                                <option data-country-id="UZ" value="UZ">Uzbekistan</option>
+                                                <option data-country-id="VU" value="VU">Vanuatu</option>
+                                                <option data-country-id="VE" value="VE">Venezuela, Bolivarian Republic of</option>
+                                                <option data-country-id="VN" value="VN">Vietnam</option>
+                                                <option data-country-id="VG" value="VG">Virgin Islands, British</option>
+                                                <option data-country-id="VI" value="VI">Virgin Islands, U.S.</option>
+                                                <option data-country-id="WF" value="WF">Wallis and Futuna</option>
+                                                <option data-country-id="EH" value="EH">Western Sahara</option>
+                                                <option data-country-id="YE" value="YE">Yemen</option>
+                                                <option data-country-id="ZM" value="ZM">Zambia</option>
+                                                <option data-country-id="ZW" value="ZW">Zimbabwe</option>
+                                                <option data-country-id="AX" value="AX">Åland Islands</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                    <div class="js-callout-hint callout-hint">
+
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="user_personal_information_presenter_address_line1">Adress </label>
+                                    <div class="inputs">
+                                        @Html.TextBoxFor(model => model.Address, new { @Value = @Model.Address })
+                                        @*        <input maxlength="100" size="100" type="text" value="istanbul" name="user_personal_information_presenter[address_line1]" id="user_personal_information_presenter_address_line1">*@
+                                    </div>
+                                </div>
+
+                                @*<div class="input-group">*@
+                                @*    <label for="user_personal_information_presenter_address_line2">Address Line 2</label>*@
+                                @*    <div class="inputs">*@
+                                @*        <input maxlength="100" size="100" type="text" value="kocaeli" name="user_personal_information_presenter[address_line2]" id="user_personal_information_presenter_address_line2">*@
+                                @*    </div>*@
+                                @*</div>*@
+
+                                <div class="input-group">
+                                    <label for="user_personal_information_presenter_city">City</label>
+                                    <div class="inputs">
+                                        @Html.TextBoxFor(model => model.City, new { @Value = @Model.City })
+                                        @*    <input maxlength="100" size="100" type="text" value="istanbul" name="user_personal_information_presenter[city]" id="user_personal_information_presenter_city">*@
+                                    </div>
+                                </div>
+
+                                @*<div class="input-group">*@
+                                @**@
+                                @*    <label for="user_personal_information_presenter_region">State / Province / Region</label>*@
+                                @*    <div class="inputs">*@
+                                @*        <select name="us_subdivisions" id="us_subdivisions" class="js-personal-info__country-subdivision country_subdivision" data-show-for="US" style="display: none;">*@
+                                @*            <option value=""></option>*@
+                                @*            <option data-vat-exempt="true" value="Alabama">Alabama</option>*@
+                                @*            <option data-vat-exempt="true" value="Alaska">Alaska</option>*@
+                                @*            <option data-vat-exempt="true" value="Arizona">Arizona</option>*@
+                                @*            <option data-vat-exempt="true" value="Arkansas">Arkansas</option>*@
+                                @*            <option data-vat-exempt="true" value="California">California</option>*@
+                                @*            <option data-vat-exempt="true" value="Colorado">Colorado</option>*@
+                                @*            <option data-vat-exempt="true" value="Connecticut">Connecticut</option>*@
+                                @*            <option data-vat-exempt="true" value="Delaware">Delaware</option>*@
+                                @*            <option data-vat-exempt="true" value="District of Columbia">District of Columbia</option>*@
+                                @*            <option data-vat-exempt="true" value="Florida">Florida</option>*@
+                                @*            <option data-vat-exempt="true" value="Georgia">Georgia</option>*@
+                                @*            <option data-vat-exempt="true" value="Hawaii">Hawaii</option>*@
+                                @*            <option data-vat-exempt="true" value="Idaho">Idaho</option>*@
+                                @*            <option data-vat-exempt="true" value="Illinois">Illinois</option>*@
+                                @*            <option data-vat-exempt="true" value="Indiana">Indiana</option>*@
+                                @*            <option data-vat-exempt="true" value="Iowa">Iowa</option>*@
+                                @*            <option data-vat-exempt="true" value="Kansas">Kansas</option>*@
+                                @*            <option data-vat-exempt="true" value="Kentucky">Kentucky</option>*@
+                                @*            <option data-vat-exempt="true" value="Louisiana">Louisiana</option>*@
+                                @*            <option data-vat-exempt="true" value="Maine">Maine</option>*@
+                                @*            <option data-vat-exempt="true" value="Maryland">Maryland</option>*@
+                                @*            <option data-vat-exempt="true" value="Massachusetts">Massachusetts</option>*@
+                                @*            <option data-vat-exempt="true" value="Michigan">Michigan</option>*@
+                                @*            <option data-vat-exempt="true" value="Minnesota">Minnesota</option>*@
+                                @*            <option data-vat-exempt="true" value="Mississippi">Mississippi</option>*@
+                                @*            <option data-vat-exempt="true" value="Missouri">Missouri</option>*@
+                                @*            <option data-vat-exempt="true" value="Montana">Montana</option>*@
+                                @*            <option data-vat-exempt="true" value="Nebraska">Nebraska</option>*@
+                                @*            <option data-vat-exempt="true" value="Nevada">Nevada</option>*@
+                                @*            <option data-vat-exempt="true" value="New Hampshire">New Hampshire</option>*@
+                                @*            <option data-vat-exempt="true" value="New Jersey">New Jersey</option>*@
+                                @*            <option data-vat-exempt="true" value="New Mexico">New Mexico</option>*@
+                                @*            <option data-vat-exempt="true" value="New York">New York</option>*@
+                                @*            <option data-vat-exempt="true" value="North Carolina">North Carolina</option>*@
+                                @*            <option data-vat-exempt="true" value="North Dakota">North Dakota</option>*@
+                                @*            <option data-vat-exempt="true" value="Ohio">Ohio</option>*@
+                                @*            <option data-vat-exempt="true" value="Oklahoma">Oklahoma</option>*@
+                                @*            <option data-vat-exempt="true" value="Oregon">Oregon</option>*@
+                                @*            <option data-vat-exempt="true" value="Pennsylvania">Pennsylvania</option>*@
+                                @*            <option data-vat-exempt="true" value="Rhode Island">Rhode Island</option>*@
+                                @*            <option data-vat-exempt="true" value="South Carolina">South Carolina</option>*@
+                                @*            <option data-vat-exempt="true" value="South Dakota">South Dakota</option>*@
+                                @*            <option data-vat-exempt="true" value="Tennessee">Tennessee</option>*@
+                                @*            <option data-vat-exempt="true" value="Texas">Texas</option>*@
+                                @*            <option data-vat-exempt="true" value="Utah">Utah</option>*@
+                                @*            <option data-vat-exempt="true" value="Vermont">Vermont</option>*@
+                                @*            <option data-vat-exempt="true" value="Virginia">Virginia</option>*@
+                                @*            <option data-vat-exempt="true" value="Washington">Washington</option>*@
+                                @*            <option data-vat-exempt="true" value="West Virginia">West Virginia</option>*@
+                                @*            <option data-vat-exempt="true" value="Wisconsin">Wisconsin</option>*@
+                                @*            <option data-vat-exempt="true" value="Wyoming">Wyoming</option>*@
+                                @*            <option data-vat-exempt="true" value="American Samoa">American Samoa</option>*@
+                                @*        </select>*@
+                                @*        <select name="ca_subdivisions" id="ca_subdivisions" class="js-personal-info__country-subdivision country_subdivision" data-show-for="CA" style="display: none;">*@
+                                @*            <option value=""></option>*@
+                                @*            <option data-vat-exempt="true" value="Alberta">Alberta</option>*@
+                                @*            <option data-vat-exempt="true" value="British Columbia">British Columbia</option>*@
+                                @*            <option data-vat-exempt="true" value="Manitoba">Manitoba</option>*@
+                                @*            <option data-vat-exempt="true" value="New Brunswick">New Brunswick</option>*@
+                                @*            <option data-vat-exempt="true" value="Newfoundland and Labrador">Newfoundland and Labrador</option>*@
+                                @*            <option data-vat-exempt="true" value="Northwest Territories">Northwest Territories</option>*@
+                                @*            <option data-vat-exempt="true" value="Nova Scotia">Nova Scotia</option>*@
+                                @*            <option data-vat-exempt="true" value="Nunavut">Nunavut</option>*@
+                                @*            <option data-vat-exempt="true" value="Ontario">Ontario</option>*@
+                                @*            <option data-vat-exempt="true" value="Prince Edward Island">Prince Edward Island</option>*@
+                                @*            <option data-vat-exempt="true" value="Quebec">Quebec</option>*@
+                                @*            <option data-vat-exempt="true" value="Saskatchewan">Saskatchewan</option>*@
+                                @*            <option data-vat-exempt="true" value="Yukon">Yukon</option>*@
+                                @*        </select>*@
+                                @*        <select name="au_subdivisions" id="au_subdivisions" class="js-personal-info__country-subdivision country_subdivision" data-show-for="AU" style="display: none;">*@
+                                @*            <option value=""></option>*@
+                                @*            <option data-vat-exempt="true" value="Victoria">Victoria</option>*@
+                                @*            <option data-vat-exempt="true" value="Australian Capital Territory">Australian Capital Territory</option>*@
+                                @*            <option data-vat-exempt="true" value="Northern Territory">Northern Territory</option>*@
+                                @*            <option data-vat-exempt="true" value="Tasmania">Tasmania</option>*@
+                                @*            <option data-vat-exempt="true" value="New South Wales">New South Wales</option>*@
+                                @*            <option data-vat-exempt="true" value="Western Australia">Western Australia</option>*@
+                                @*            <option data-vat-exempt="true" value="South Australia">South Australia</option>*@
+                                @*            <option data-vat-exempt="true" value="Queensland">Queensland</option>*@
+                                @*        </select>*@
+                                @*        <select name="es_subdivisions" id="es_subdivisions" class="js-personal-info__country-subdivision country_subdivision" data-show-for="ES" style="display: none;">*@
+                                @*            <option value=""></option>*@
+                                @*            <option value="Andalusia">Andalusia</option>*@
+                                @*            <option value="Aragon">Aragon</option>*@
+                                @*            <option value="Asturias">Asturias</option>*@
+                                @*            <option value="Balearic Islands">Balearic Islands</option>*@
+                                @*            <option value="Basque Country">Basque Country</option>*@
+                                @*            <option data-vat-exempt="true" value="Canary Islands">Canary Islands</option>*@
+                                @*            <option value="Cantabria">Cantabria</option>*@
+                                @*            <option value="Castile-La Mancha">Castile-La Mancha</option>*@
+                                @*            <option value="Castile and León">Castile and León</option>*@
+                                @*            <option value="Catalonia">Catalonia</option>*@
+                                @*            <option data-vat-exempt="true" value="Ceuta">Ceuta</option>*@
+                                @*            <option value="Extremadura">Extremadura</option>*@
+                                @*            <option value="Galicia">Galicia</option>*@
+                                @*            <option value="La Rioja">La Rioja</option>*@
+                                @*            <option value="Madrid">Madrid</option>*@
+                                @*            <option data-vat-exempt="true" value="Melilla">Melilla</option>*@
+                                @*            <option value="Murcia">Murcia</option>*@
+                                @*            <option value="Navarre">Navarre</option>*@
+                                @*            <option value="Valencian Community">Valencian Community</option>*@
+                                @*        </select>*@
+                                @*        <input maxlength="100" class="js-personal-info__subdivision-code" size="100" type="text" value="" name="user_personal_information_presenter[region]" id="user_personal_information_presenter_region" style="display: block;">*@
+                                @*    </div>*@
+                                @*</div>*@
+
+
+                                <div class="js-dependent-fields is-hidden--js js-personal-info__vat-input-group input-group settings-vat__input-group" id="vat-input-group">
+                                    <label for="user_personal_information_presenter_vat_number"></label>
+                                    <label for="from">Phone Number</label>
+
+                                    <div class="inputs js-personal-info__vat-input">
+                                        @Html.TextBoxFor(model => model.PhoneNumber, new { @Value = @Model.PhoneNumber })
+                                        @*        <input class="js-personal-info__vat-input" type="text" value="" name="user_personal_information_presenter[vat_number]" id="user_personal_information_presenter_vat_number">*@
+
+                                    </div>
+                                </div>
+                                <div class="js-dependent-fields input-group">
+                                    <label class="js-personal-info__company_number_label" for="user_personal_information_presenter_company_number">Company No.</label>
+                                    <div class="inputs">
+                                        @Html.TextBoxFor(model => model.CompanyNo, new { @Value = @Model.CompanyNo })
+
+                                    </div>
+                                </div>
+                                <br />
+
+                                <br />
+                            </fieldset>
+                            <br />
+                        </div>
+                    </div>
+                    <!-- train section -->
+                    <div class="bhoechie-tab-content">
+                        <div class="e-fieldset__body h-m0">
+                            <div id="profile" class="tab-content active">
+                                <form class="horizontal-form" id="new_user_profile_updater" enctype="multipart/form-data" action="/user/kadir47/profile" accept-charset="UTF-8" method="post">
+                                    <input name="utf8" type="hidden" value="?"><input type="hidden" name="_method" value="put"><input type="hidden" name="authenticity_token" value="I/BZSk92WeaCnCNLTZt2bT52IOstUvyfuyltMCoIlZcA3yEE/Vg6FXCtywXyetImCUz6wB2lZ8tTa8SIg4agYQ==">
+                                    <fieldset class="h-px2">
+                                        <div class="input-group">
+                                            <label for="user_profile_updater_profile_image">Avatar</label>
+                                            <div class="inputs">
+                                                <label for="user_profile_updater_profile_image">Upload an avatar:</label>
+                                                @*   @Html.TextBoxFor(model => model.Avatar, new { @Value = @Model.Avatar })*@
+                                                <input type="file" name="profile_image" id="Avatar" value="@Model.Avatar">
+
+                                                <small>JPEG 80x80px</small>
+                                            </div>
+                                        </div>
+
+                                        <div class="input-group">
+                                            <label for="user_profile_updater_homepage_image">Homepage Image</label>
+                                            <div class="inputs">
+                                                <label for="user_profile_updater_homepage_image">Upload a homepage image:</label>
+                                                <input type="file" name="background_image" id="background_image" value="@Model.BackgroundImage">
+
+                                                <small>JPEG 590x242</small>
+                                            </div>
+                                        </div>
+
+
+                                        @*                        <div class="input-group">*@
+                                        @*                            <label for="user_profile_updater_show_country_badge">Show country on your profile and badges</label>*@
+                                        @*                            <div class="inputs">*@
+                                        @*                                <input type="radio" value="true" checked="checked" name="user_profile_updater[show_country_badge]" id="user_profile_updater_show_country_badge_true">*@
+                                        @*                                <label for="user_profile_updater_show_country_badge_true">Yes</label>*@
+                                        @*                                <input type="radio" value="false" name="user_profile_updater[show_country_badge]" id="user_profile_updater_show_country_badge_false">*@
+                                        @*                                <label for="user_profile_updater_show_country_badge_false">No</label>*@
+                                        @*                            </div>*@
+                                        @*                        </div>*@
+                                        @**@
+                                        @*                        <div class="input-group">*@
+                                        @*                            <label for="user_profile_updater_by_line">Profile Heading</label>*@
+                                        @*                            <div class="inputs">*@
+                                        @*                                <input type="text" name="user_profile_updater[by_line]" id="user_profile_updater_by_line">*@
+                                        @*                                <small>Appears on your profile page</small>*@
+                                        @*                            </div>*@
+                                        @*                        </div>*@
+
+                                        <div class="input-group">
+                                            <label for="user_profile_updater_profile">Profile Text</label>
+                                            <div class="inputs">
+                                                <textarea class="tall" style="width: 400px; height: 200px;" name="description" id="user_profile_updater_profile" @Model.ProfileDescription>@Model.ProfileDescription</textarea>
+                                                @*                                @Html.TextBoxFor(model => model.ProfileDescription, new { @Value = @Model.ProfileDescription })*@
+                                            </div>
+                                        </div>
+
+                                        @*                        <div class="input-group">*@
+                                        @*                            <label for="user_profile_updater_available_for_freelance">Available for freelance?</label>*@
+                                        @*                            <div class="inputs">*@
+                                        @*                                <label for="user_profile_updater_available_for_freelance">*@
+                                        @*                                    <input name="user_profile_updater[available_for_freelance]" type="hidden" value="0"><input type="checkbox" value="1" name="user_profile_updater[available_for_freelance]" id="user_profile_updater_available_for_freelance">*@
+                                        @*                                    Yes, advertise my availability on my profile page*@
+                                        @*                                </label>*@
+                                        @*                            </div>*@
+                                        @*                        </div>*@
+                                    </fieldset>
+
+                                    <div class="e-fieldset__footer">
+
+                                    </div>
+                                    <br />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- hotel search -->
+                    <div class="bhoechie-tab-content">
+
+                        <div class="input-group">
+                            <label for="user_profile_updater_by_line">Email</label>
+                            <div class="inputs">
+
+                                @Html.TextBoxFor(model => model.Email, new { @Value = @Model.Email })
+                                @*                <input type="text" name="user_profile_updater[by_line]" id="user_profile_updater_by_line">*@
+
+                            </div>
+
+                        </div>
+
+                        <br />
+                        <br />
+                        <br />
+
+                    </div>
+
+                  
+                </div>
                 
-                @Html.TextBoxFor(model => model.Email, new { @Value = @Model.Email })
-@*                <input type="text" name="user_profile_updater[by_line]" id="user_profile_updater_by_line">*@
-                
+                </div>
+               
+            
+
             </div>
         </div>
-        <br/>
+    </div>
+        <br />
+        <br />
+        <br />
+    </div>
 
-</div>
-<div class="bhoechie-tab-content">
-    <center>
+ 
 
-        <div class="input-group">
-            <label for="user_personal_information_presenter_first_name">User Name</label>
-            <div class="inputs">
-                @Html.TextBoxFor(model => model.Username, new { @Value = @Model.Username })
-                @*<input type="text" value="@Model.Name" name="user_personal_information_presenter[first_name]" id="user_personal_information_presenter_first_name">*@
-            </div>
-        </div>
-
-        <div class="input-group">
-            <label for="user_personal_information_presenter_first_name">Password</label>
-            <div class="inputs">
-                @Html.TextBoxFor(model => model.Password, new { @Value = @Model.Password ,@type="Password"})
-                @*<input type="text" value="@Model.Name" name="user_personal_information_presenter[first_name]" id="user_personal_information_presenter_first_name">*@
-            </div>
-        </div>
-    </center>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-
-</div>
+  
 
 }
 
