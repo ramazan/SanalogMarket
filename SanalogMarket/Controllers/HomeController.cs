@@ -42,5 +42,22 @@ namespace SanalogMarket.Controllers
             return View();
         }
 
+        /*categorylerin layouta gönderilmesi için*/
+
+        public JsonResult Get_Cat()
+        {
+            var item = db.Categories.ToList();
+
+            return Json(item, JsonRequestBehavior.AllowGet);
+        }
+
+        /*Sub Categorilri menüde listelemek için*/
+
+        public JsonResult Get_Sub(int a)
+        {
+            var item = db.SubCategories.Where(x => x.Category.ID == a).ToList();
+            return Json(item, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
