@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
@@ -243,7 +244,59 @@ namespace SanalogMarket.Controllers
             return RedirectToAction("Details", "ProductTheme", new { id = gelenID });
 //            return ViewBag ile listele ajax'a' bas
         }
+        [HttpPost]
+        public JsonResult NewReview(string ReviewDescription, string NewReviewRate)
+        {
+            Thread.Sleep(1000);
+            Review rw = new Review();
+            List<String> values = new List<string>();
 
+            try
+            {
+                int UserID = Convert.ToInt32(Session["UserId"]);
+                if (UserID == 0)
+                {
+                    values.Add("MustLogin");
+                    return Json(values, JsonRequestBehavior.AllowGet);
+                }
+                if (String.IsNullOrWhiteSpace(NewReviewRate))
+                {
+                    values.Add("RateProduct");
+                    return Json(values, JsonRequestBehavior.AllowGet);
+                }
+                User EkleyenUser = dbBaglantisi.Users.Where(u => u.Id == UserID).FirstOrDefault();
+                product = dbBaglantisi.Themes.Find(gelenID);
+                Review check =
+                    dbBaglantisi.Reviews.Where(u => u.ReviewAutor.Id == UserID && u.ReviewTheme.ID == gelenID).FirstOrDefault();
+                if (check != null)
+                {
+                    values.Add("alreadyAdded");
+                    return Json(values, JsonRequestBehavior.AllowGet);
+                }
+                rw.ReviewAutor = EkleyenUser;
+                rw.ReviewDate = DateTime.Now;
+                rw.ReviewTheme = product;
+                NewReviewRate = NewReviewRate.Replace('.', ',');
+                rw.ReviewRate = Convert.ToDouble(NewReviewRate);
+                rw.ReviewDescription = ReviewDescription;
+                dbBaglantisi.Reviews.Add(rw);
+                dbBaglantisi.SaveChanges();
+
+                values.Add("success");
+                values.Add(EkleyenUser.Name.ToString());
+                values.Add(DateTime.Now.ToString("dd-MM-yyyy"));
+                values.Add(ReviewDescription);
+                NewReviewRate = NewReviewRate.Replace(',', '.');
+                values.Add(NewReviewRate);
+
+            }
+            catch (Exception ex)
+            {
+                values.Add("failed");
+            }
+            return Json(values, JsonRequestBehavior.AllowGet);
+
+        }
         public string getScreenshot(List<String> values)
         {
             if (values != null)

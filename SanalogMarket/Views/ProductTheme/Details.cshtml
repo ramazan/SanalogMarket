@@ -1,356 +1,1037 @@
 ﻿@model SanalogMarket.Models.Theme.ProductTheme
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Product Details";
 }
-
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 <!DOCTYPE html>
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="width=device-width" />
     <title>Details</title>
 </head>
 <body>
-
-<div class="container">
-
-<div class="row">
-<div class="col-lg-12">
-<div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
-<h3 style="color: #454545; padding-left: 10px;">
-    <h2>@Html.DisplayFor(model => model.Title) </h2>
-</h3>
-<br/>
-
-<div>
-
-
-<div>
-
-<!-- Nav tabs -->
-<ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active">
-        <a href="#ItemDetails" aria-controls="ItemDetails" role="tab" data-toggle="tab">Item Details</a>
-    </li>
-    <li role="presentation">
-        <a href="#Comment" aria-controls="Comment" role="tab" data-toggle="tab">Comment</a>
-    </li>
-    <li role="presentation">
-        <a href="#Reviews" aria-controls="Reviews" role="tab" data-toggle="tab">Reviews</a>
-    </li>
-    <li role="presentation">
-        <a href="#Support" aria-controls="Support" role="tab" data-toggle="tab">Support</a>
-    </li>
-</ul>
-
-<!-- Tab panes -->
-<div class="tab-content">
-<div role="tabpanel" class="tab-pane active" id="ItemDetails">
-
-    <div class="row">
-        <div class="col-lg-7">
-            <div class="panel panel-default" id="headings">
-                <div class="panel-heading">
-                    Project Screenshots
-                </div>
-                <img src=@Html.DisplayFor(model => model.Screenshot) style="height: 360px; width: 530px;"/>
-                <ul class="pagination" style="padding-left: 140px;">
-                    <li>
-                        <a href="#">Prev</a>
-                    </li>
-                    <li>
-                        <a href="#">1</a>
-                    </li>
-                    <li>
-                        <a href="#">2</a>
-                    </li>
-                    <li>
-                        <a href="#">3</a>
-                    </li>
-                    <li>
-                        <a href="#">4</a>
-                    </li>
-                    <li>
-                        <a href="#">Next</a>
-                    </li>
-                </ul>
-
-                <ul class="pager">
-                    <li>
-                        <a href="#">Prev</a>
-                    </li>
-                    <li>
-                        <a href="#">Next</a>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-        <div class="col-lg-5">
-            <div class="panel panel-default" id="content-formatting">
-                <div class="panel-heading" style="background-color: #ffffff">
-                    <a style="color: #676767; padding: 5px">Price</a>
-                    <span class="category-counter" style="color: #000000; font-size: 35px;">@Html.DisplayFor(model => model.Price) $</span>
-                </div>
-                <div style="padding-left: 10px; padding-right: 10px;">
-                    <p class="lead">@Html.DisplayFor(model => model.Title)</p>
-
-                </div>
-                <hr>
-                <div class="row">
-                    <p style="text-align: center">
-                        <a class="btn btn-warning " href="#" title="Buy">ADD TO CART</a>
-
-                        <a class="btn btn-primary " href="#" title="Buy">BUY NOW!</a>
-                    </p>
-                </div>
-            </div>
-
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
-                        <h3 style="color: #454545; padding-left: 10px;">0 Sales </h3>
-                        <br/>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:770px;height:500px;overflow:hidden;visibility:hidden;background-color:#24262e;border:1px solid transparent; border-color: #000000; border-radius: 3px;">
+                    <!-- Loading Screen -->
+                    <div data-u="loading" style="position:absolute;top:0px;left:0px;background-color:rgba(0,0,0,0.7);">
+                        <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
+                        <div style="position:absolute;display:block;background:url('img/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
+                    </div>
+                    <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:770px;height:500px;overflow:hidden;">
+                        <div>
+                            <img data-u="image" src="http://iosetc.com/wp-content/uploads/2016/01/App_Screenshot_Header-620x400.jpg" />
+                            <img data-u="thumb" src="http://iosetc.com/wp-content/uploads/2016/01/App_Screenshot_Header-620x400.jpg" />
+                        </div>
+                        <div>
+                            <img data-u="image" src="http://a4.mzstatic.com/us/r30/Purple71/v4/0a/51/36/0a51369c-993a-1ff3-63b9-b6a49c377d5d/screen800x500.jpeg" />
+                            <img data-u="thumb" src="http://a4.mzstatic.com/us/r30/Purple71/v4/0a/51/36/0a51369c-993a-1ff3-63b9-b6a49c377d5d/screen800x500.jpeg" />
+                        </div>
+                        <div>
+                            <img data-u="image" src="https://placeit.net/uploads/stage/uploaded_thumb_image/7524/large_thumb_Portrait_Template_48.png" />
+                            <img data-u="thumb" src="https://placeit.net/uploads/stage/uploaded_thumb_image/7524/large_thumb_Portrait_Template_48.png" />
+                        </div>
+                        <a data-u="any" href="http://www.jssor.com" style="display:none">Image Gallery</a>
+                        <div>
+                            <img data-u="image" src="http://a1.mzstatic.com/us/r30/Purple/v4/e6/54/f4/e654f4b4-2426-b1f7-2e59-6addb0547f44/screen800x500.jpeg" />
+                            <img data-u="thumb" src="http://a1.mzstatic.com/us/r30/Purple/v4/e6/54/f4/e654f4b4-2426-b1f7-2e59-6addb0547f44/screen800x500.jpeg" />
+                        </div>
+                        <div>
+                            <img data-u="image" src="https://placeit.net/uploads/stage/uploaded_thumb_image/7515/large_thumb_01_iphone7_portrait_-NS-white-line-thumb.png" />
+                            <img data-u="thumb" src="https://placeit.net/uploads/stage/uploaded_thumb_image/7515/large_thumb_01_iphone7_portrait_-NS-white-line-thumb.png" />
+                        </div>
 
                     </div>
-                </div>
-            </div>
-
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
-                        <h3 style="color: #454545; padding-left: 10px;">0 comment </h3>
-                        <br/>
-
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
-                        <h3 style="color: #454545; padding-left: 10px;">Item Rating: Minimum of 3 votes required </h3>
-                        <br/>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
-                        <h3 style="color: #454545; padding-left: 10px;"></h3>
-                        <br/>
-                        <table width="%200">
-                            <tbody>
-                            <tr>
-                                <td>Last Update</td>
-                                <td>
-                                    <time itemprop="dateModified" class="updated" datetime="2017-03-01T01:31:43+11:00">
-                                        @Html.DisplayFor(model => model.CreateDate)
-                                    </time>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Created</td>
-                                <td>
-                                    <span>
-                                        @Html.DisplayFor(model => model.UpdateDate)
-                                    </span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>High Resolution</td>
-                                <td>
-                                    <a>@Html.DisplayFor(model => model.HighResolution)</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Compatible Browsers</td>
-                                <td>
-                                    <a>@Html.DisplayFor(model => model.CompatibleBrowsers)</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Compatible With</td>
-                                <td>
-                                    <a>@Html.DisplayFor(model => model.CompatibleWith)</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>ThemeForest Files Included</td>
-                                <td>
-                                    <a>@Html.DisplayFor(model => model.FilesIncluded)</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Columns</td>
-                                <td>
-                                    <a>@Html.DisplayFor(model => model.Columns)</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Documentation</td>
-                                <td>
-                                    <a>Well Documented</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Layout</td>
-                                <td>
-                                    <a>@Html.DisplayFor(model => model.Layout)</a>
-                                </td>
-                            </tr>
-
-
-                            <tr>
-                                <td>Tags</td>
-                                <td>
-                                    <span>
-                                        <a>@Html.DisplayFor(model => model.Comment)</a>
-                                    </span>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-    </div>
-
-
-</div>
-<div role="tabpanel" class="tab-pane" id="Comment">
-
-
-    <div class="row">
-        <div class="col-sm-12">
-            <h3>User Comments </h3>
-        </div><!-- /col-sm-12 -->
-    </div><!-- /row -->
-    @using (Html.BeginForm("AddComment", "ProductTheme", FormMethod.Post))
-    {
-        if (Model.Comments.ToList().Count != 0)
-        {
-            foreach (var item in Model.Comments.ToList())
-            {
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-1">
-                            <div class="thumbnail">
-                                <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-                            </div><!-- /thumbnail -->
-                        </div><!-- /col-sm-1 -->
-                        <div class="col-sm-5">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <strong> @{ string adSoyad = item.User.Name + " " + item.User.Surname; } @adSoyad - </strong> <span class="text-muted">@item.CommentTime.ToShortDateString()</span>
+                    <!-- Thumbnail Navigator -->
+                    <div data-u="thumbnavigator" class="jssort01" style="position:absolute;left:0px;bottom:0px;width:800px; height: 100px;" data-autocenter="1">
+                        <!-- Thumbnail Item Skin Begin -->
+                        <div data-u="slides" style="cursor: default;">
+                            <div data-u="prototype" class="p">
+                                <div class="w">
+                                    <div data-u="thumbnailtemplate" class="t"></div>
                                 </div>
-                                <div class="panel-body">
-                                    @item.Content
-                                </div><!-- /panel-body -->
-                            </div><!-- /panel panel-default -->
-                        </div><!-- /col-sm-5 -->
-                    </div><!-- /row -->
+                                <div class="c"></div>
+                            </div>
+                        </div>
+                        <!-- Thumbnail Item Skin End -->
+                    </div>
+                    <!-- Arrow Navigator -->
+                    <span data-u="arrowleft" class="jssora05l" style="top:158px;left:8px;width:40px;height:40px;"></span>
+                    <span data-u="arrowright" class="jssora05r" style="top:158px;right:8px;width:40px;height:40px;"></span>
                 </div>
-                <!-- /container -->
-            }
-        }
-        else
-        {
-            <div></div>
-        }
 
-        <div class="alert" id="comment" name="comment1" style="padding: 20px">
+            </div>
+            <div class="col-lg-3" style="padding-left: 30px;">
+                <div class="panel panel-default" id="content-formatting">
+                    <div class="panel-heading" style="background-color: #ffffff;">
+                        <a style="color:#464646; padding: 5px">@Html.DisplayFor(model => model.Title)</a>
+                    </div>
+                    <div class="panel-heading" id="avgReview" style="background-color: #ffffff;">
+                        <a style="color: #676767; padding: 5px">rating</a>
 
-            <textarea cols="1009" name="yorum"></textarea><br/>
-            <input type="submit" value="Yorumu gönder"/>
+                    </div>
+                    <div class="input-group" style="padding-left: 15px;">
+                        <img src="https://www.abweb.sk/images/Shopping%20Cart.png" style="width: 30px;height: 30px; " />
 
-        </div>
-        <div class="col-md-6" id="notcomment" style="background-color: lightgreen">
+                        <span class="sidebar-stats__label" style="padding-left: 5px; font-weight: 700;font-size: 24px;">10</span>
+                        <span class="sidebar-stats__label" style="padding-left: 15px;font-size: 18px;color:#484848">Sales</span>
+                    </div>
+                    <hr />
+                    <div class="input-group" style="padding-left: 15px; padding-bottom: 10px; ">
+                        <img src="https://cdn0.iconfinder.com/data/icons/rcorners/512/Comment-512.png" style="width: 30px;height: 30px; " />
 
-            <h4 style="color: white">Yorum yapabilmek için lütfen giriş yapınız</h4>
+                        <span class="sidebar-stats__label" style="padding-left: 5px; font-weight: 700;font-size: 24px;">1</span>
+                        <span class="sidebar-stats__label" style="padding-left: 15px;font-size: 18px;color:#484848">Comments</span>
+                    </div>
+                    <hr />
+                    <div class="input-group" style="padding-left: 15px; padding-bottom: 10px; ">
+                        <img src="http://www.solesolution.com/File/cf752078-ebfe-4371-a965-f822122fb0b3" style="width: 30px;height: 30px; " />
 
-        </div>
-    }
+                        <span class="sidebar-stats__label" style="padding-left: 5px; font-weight: 700;font-size: 24px;">1</span>
+                        <span class="sidebar-stats__label" style="padding-left: 15px;font-size: 18px;color:#484848">Reviews</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3" style="padding-left: 30px;">
+                <div class="panel panel-default" id="content-formatting">
+                    <div class="panel-heading" style="background-color: #ffffff;">
+                        <a style="color: #1792c9;; padding: 5px;font-weight: bold">Price</a>
+                        <span class="category-counter" style="color: #454545; font-size: 35px; font-weight: bold; padding-left:80px;text-align: right">@Html.DisplayFor(model => model.Price) $</span>
+                    </div>
+                    <div style="padding-left: 10px; padding-right: 10px;">
+                        <div class="purchase-form__support">
+                            <ul class="t-icon-list -font-size-s -icon-size-s -offset-flush">
+                                <li class="t-icon-list__item -icon-ok">
+                                    <img src="http://www.clipartbest.com/cliparts/acq/o4p/acqo4pMdi.png" style="width: 20px;height: 30px; " />
+                                    <span class="sidebar-stats__label" style="padding-left: 5px;">Quality checked by Sanalog</span>
+                                </li>
+                                <li class="t-icon-list__item -icon-ok">
+                                    <img src="http://www.clipartbest.com/cliparts/acq/o4p/acqo4pMdi.png" style="width: 20px;height: 30px; " />
+                                    <span class="sidebar-stats__label" style="padding-left: 5px;"> Future updates</span>
+
+                                </li>
+                                <li class="t-icon-list__item -icon-ok">
+                                    <img src="http://www.clipartbest.com/cliparts/acq/o4p/acqo4pMdi.png" style="width: 20px;height: 30px; " />
+                                    <span class="sidebar-stats__label" style="padding-left: 5px;">   6 months support from</span>
+
+                                    <br>
+
+                                </li>
 
 
-</div>
-<div role="tabpanel" class="tab-pane" id="Reviews">
-    
-    <div class="row">
-        <h3 style="margin-left: 20px">Reviews</h3>
-        @using (Html.BeginForm("AddReview", "ProductCode", new { productId = Convert.ToInt32(Model.ID) }, FormMethod.Post))
-        {
-            if (Model.Reviews.ToList().Count != 0)
-            {
-                foreach (var item in Model.Reviews.ToList())
-                {
-                    <div class="col-md-7">
-                        <div class="review" style="background: #ffffff; border: 2px solid #ddd; margin-bottom: 15px;">
-                            <span class="thumb-sm avatar pull-left mr-sm"><img class="img-circle" src="assets/images/people/a5.jpg" alt="..."></span>
-                            <h4 class="event-heading"><a href="#">@item.ReviewAutor.Name</a></h4>
-                            <p class="fs-sm text-muted">@item.ReviewDate</p>
-                            <p class="fs-mini">@item.ReviewDescription</p>
+                            </ul>
 
                         </div>
                     </div>
-                }
-            }
-            <div class="col-md-7" style="margin-top: 15px; margin-bottom: 15px;">
-                <div class="form-group">
-                    @Html.TextArea("ReviewDescription", new { rows = 5 });
-                    <input style="margin-top: 15px" class="btn btn-primary" id="Button1" type="submit" value="button" />
+                    <hr>
+                    <div class="row">
+                        <p style="text-align: center">
+                            <a class="btn btn-warning " href="/ShoppingCart/OrderNow/@Model.ID" title="Buy">ADD TO CART</a>
+                            @*                            @Html.Action("OrderNow","ShoppingCart",new {Id = Model.ID})*@
+
+                            @*                            @Html.ActionLink("Ordernow", "OrderNow", new { id = Model.ID }, new { @class = "btn-sm btn-info" }) |*@
+                            <a class="btn btn-primary " href="#" title="Buy">BUY NOW!</a>
+                        </p>
+                    </div>
+
 
                 </div>
             </div>
+        </div>
+
+        <div class="row" style="padding-top: 15px;">
+            <div id="exTab3" class="col-lg-8">
+                <ul class="nav nav-pills" style="background-color: #ffffff; ">
+                    <li class="active">
+                        <a href="#1b" data-toggle="tab">Details</a>
+                    </li>
+                    <li>
+                        <a href="#2b" data-toggle="tab">Comment</a>
+                    </li>
+                    <li>
+                        <a href="#3b" data-toggle="tab">Reviews</a>
+                    </li>
+
+                </ul>
+
+                <div class="tab-content clearfix" style="background-color: #ffffff">
+                    <div class="tab-pane active" id="1b">
+                        <div class="container" style="padding: 15px;">
+                            <div class="row" style="padding: 15px;">
+                                <div class="user-html" style="padding: 15px;">
+                                    <p>
+                                        <strong>Digital Marketing Display Ads</strong> – Animated HTML5 templates for the AdWords and DoubleClick Studio. Specially designed for agencies engaged in digital marketing, web marketing and SEO optimization. Easy to use and customize with Google Web Designer free software.
+                                    </p><h2 id="item-description__ad-templates-features">Ad Templates Features:</h2>
+                                    <ul>
+                                        <li>Created and fully editable with Google Web Designer</li>
+                                        <li>4 transitional frames and 1 final frame with fully editable text</li>
+                                        <li>Editable “Call-to-Action” button and “Services” text</li>
+                                        <li>Google Web Fonts used</li>
+                                        <li>One loop animation – 25 seconds</li>
+                                        <li>Compatible with Adwords &amp; Doubleclick</li>
+                                        <li>Tested with Google HTML5 Validator</li>
+                                    </ul>
+
+
+                                    <h2 id="item-description__the-package-includes">The package includes:</h2>
+                                    <ul>
+                                        <li>8 Popular Sizes : 160×600, 250×250, 336×280, 300×250, 728×90, 728×210 468×60, 300×600</li>
+                                        <li>GWD source and Published files</li>
+                                        <li>Adobe Illustrator files (for exporting backup images)</li>
+                                        <li>6 Month Item Support</li>
+                                        <li>Free item updates</li>
+                                        <li>Documentation PDF file to describe item and template editing processes</li>
+                                    </ul>
+
+                                    <h2 id="item-description__adwords-and-doubleclick-environments">AdWords and DoubleClick environments</h2>
+                                    <p>
+                                        By default environment set as <strong>AdWords</strong>. How to switching between <strong>AdWords</strong> and <strong>DoubleClick</strong> environments you can read here – <a href="https://support.google.com/webdesigner/answer/7053700" rel="nofollow">Google Web Designer Help</a>
+
+                                    </p><h2 id="item-description__thank-you">Thank You!</h2>
+
+                                    <p>Thank you so much for your interests. Your comments and ratings would be much appreciated.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="2b">
+                        @using (Html.BeginForm("AddComment", "ProductTheme", FormMethod.Post))
+                        {
+
+                            <div class="alert" id="comment" name="comment1" style="padding: 20px">
+
+                                <textarea cols="1009" name="yorum"></textarea><br />
+                                <input type="submit" value="Yorumu gönder" />
+
+                            </div>
+                            if (Model.Comments.ToList().Count != 0)
+                            {
+
+                                foreach (var item in Model.Comments.ToList())
+                                {
+                                    <div class="container" style="padding: 15px;">
+                                        <div class="row">
+                                            <div class="col-sm-8">
+                                                <div class="panel panel-white post panel-shadow">
+                                                    <div class="post-heading">
+                                                        <div class="pull-left image">
+                                                            <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                                                        </div>
+                                                        <div class="pull-left meta">
+                                                            <div class="title h5">
+                                                                <a href="#"><b>@item.User.Name  @item.User.Surname</b></a>
+                                                                made a post.
+                                                            </div>
+                                                            <h6 class="text-muted time">@item.CommentTime.ToShortDateString()</h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-description">
+                                                        <p>@item.Content</p>
+                                                        <div class="stats">
+                                                            <a href="#" class="btn btn-default stat-item">
+                                                                <i class="fa fa-thumbs-up icon"></i>2
+                                                            </a>
+                                                            <a href="#" class="btn btn-default stat-item">
+                                                                <i class="fa fa-thumbs-down icon"></i>12
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <!-- /container -->
+                                }
+
+                            }
+
+                            @*                            <div class="alert" id="comment" name="comment1" style="padding: 20px">*@
+                            @**@
+                            @*                                <textarea cols="1009" name="yorum"></textarea><br />*@
+                            @*                                <input type="submit" value="Yorumu gönder" />*@
+                            @**@
+                            @*                            </div>*@
+                            @**@
+                            @*                            <div class="col-md-6" id="notcomment" style="background-color:lightgreen">*@
+                            @**@
+
+                            @*                                <h4 style="color:white">Yorum yapabilmek için lütfen giriş yapınız</h4>*@
+
+                            @**@
+
+                                
+
+                                        
+
+
+
+                        }
+
+                                
+
+                            </div>
+                            <div class="tab-pane" id="3b">
+                                <div class="container" style="padding: 15px;">
+                                    <div class="row">
+
+                                        @using (Ajax.BeginForm("NewReview", "ProductTheme", new AjaxOptions()
+                                        {
+                                            HttpMethod = "POST",
+                                            OnSuccess = "SuccesReview",
+                                            OnBegin = "ReviewLoadingShow"
+                                        }))
+                                        {
+                                            <div class="col-sm-8" style="max-width: none !important">
+                                                @Html.TextArea("ReviewDescription", new { rows = 5, style = "max-width: none" })
+                                                @Html.Hidden("NewReviewRate");
+                                                <br />
+                                                <input id="input-id">
+                                                <input type="submit" style="margin-top: 10px; margin-bottom: 10px; max-width: none" class="btn btn-primary" />
+                                            </div>
+                                        }
+                                        <div class="col-sm-8" id="ReviewLoading" style="display: none">
+                                            <img src="/Content/loading.gif" class="img-responsive" alt="" style="width: 13%; margin: 0px auto;">
+                                        </div>
+                                        <div id="errorReviewContainer" class="col-sm-8" style="background-clip: content-box; margin-top: 10px; display: none;">
+
+                                            <div class="alert alert-danger" id="errorReview">
+
+                                            </div>
+                                        </div>
+
+                                        <div id="successReviewContainer" class="col-sm-8" style="background-clip: content-box; margin-top: 10px; display: none;">
+                                            <div class="alert alert-success" style="display: block">
+                                                <i class="fa fa-check-circle"></i>Your review has been added Successfully our System!
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-8" style="display: none" id="newReviewContainer">
+                                            <div class="review" id="newReview" style="background: #ffffff; border: 2px solid #ddd; margin-bottom: 15px; display: none">
+
+                                            </div>
+                                        </div>
+                                        @using (Html.BeginForm())
+                                        {
+                                            double toplam = 0;
+                                            int i = 0;
+                                            if (Model.Reviews.ToList().Count != 0)
+                                            {
+                                                foreach (var item in Model.Reviews.ToList())
+                                                {
+                                                    toplam = toplam + item.ReviewRate;
+                                                    <div class="col-sm-8">
+                                                        <div class="panel panel-white post panel-shadow">
+                                                            <div class="post-heading">
+                                                                <div class="pull-left image">
+                                                                    <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                                                                </div>
+                                                                <div class="pull-left meta">
+                                                                    <div class="title h5">
+                                                                        <a href="#"><b>@item.ReviewAutor.Name @item.ReviewAutor.Surname</b></a>
+                                                                        made a post.
+                                                                    </div>
+                                                                    <h6 class="text-muted time">@item.ReviewDate</h6>
+                                                                    <input id="input-id1" data-show-clear="false" name="input-name" type="number" class="rating" min=1 max=5 data-size="xs" data-rtl="false" value="@item.ReviewRate.ToString().Replace(",",".")" disabled>
+                                                                </div>
+                                                            </div>
+                                                            <div class="post-description">
+                                                                <p>@item.ReviewDescription</p>
+                                                                <div class="stats">
+                                                                    <a href="#" class="btn btn-default stat-item">
+                                                                        <i class="fa fa-thumbs-up icon"></i>2
+                                                                    </a>
+                                                                    <a href="#" class="btn btn-default stat-item">
+                                                                        <i class="fa fa-thumbs-down icon"></i>12
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    i++;
+                                                }
+                                                ViewBag.ReviewRatesAll = (toplam / i);
+                                            }
+
+                                        }
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="panel panel-default" id="content-formatting">
+                            <div class="panel-heading" style="background-color: #ffffff;">
+                                <h4 style="color: #676767; padding: 5px">Item Details</h4>
+                            </div>
+
+
+                            <div style="padding: 15px;">
+                                <table>
+
+
+                                    <tbody>
+                                        <tr style="padding: 15px;">
+                                            <th style="color: #454545; font-weight: bold;">Title</th>
+                                            <td style="color: #999999; font-weight: 600; padding-left: 15px;">@Html.DisplayFor(model => model.Title)</td>
+                                        </tr>
+                                        <tr style="padding: 15px;">
+                                            <th style="color: #454545; font-weight: bold;">Release Date</th>
+                                            <td style="color: #999999; font-weight: 600;padding-left: 15px;">@Html.DisplayFor(model => model.CreateDate)</td>
+                                        </tr>
+                                        <tr style="padding: 15px;">
+                                            <th style="color: #454545; font-weight: bold;">Update Date</th>
+                                            <td style="color: #999999; font-weight: 600;padding-left: 15px;">@Html.DisplayFor(model => model.CreateDate)</td>
+                                        </tr>
+
+                                        <tr style="padding: 15px;">
+                                            <th style="color: #454545; font-weight: bold;">Category</th>
+                                            <td style="color: #999999; font-weight: 600;padding-left: 15px;">@Html.DisplayFor(model => model.Category)</td>
+                                        </tr>
+
+                                        <tr style="padding: 15px;">
+                                            <th style="color: #454545; font-weight: bold;">SubCategory</th>
+                                            <td style="color: #999999; font-weight: 600;padding-left: 15px;">@Html.DisplayFor(model => model.SubCategory)</td>
+                                        </tr>
+                                        <tr style="padding: 15px;">
+                                            <th style="color: #454545; font-weight: bold;">Description</th>
+                                            <td style="color: #999999; font-weight: 600;padding-left: 15px;">@Html.DisplayFor(model => model.Description)</td>
+                                        </tr>
+
+                                        <tr style="padding: 15px;">
+                                            <th style="color: #454545; font-weight: bold;">Compatible With</th>
+                                            <td style="color: #999999; font-weight: 600;padding-left: 15px;">@Html.DisplayFor(model => model.CompatibleWith)</td>
+                                        </tr>
+                                        <tr style="padding: 15px;">
+                                            <th style="color: #454545; font-weight: bold;">Files Inculuded</th>
+                                            <td style="color: #999999; font-weight: 600;padding-left: 15px;">@Html.DisplayFor(model => model.FilesIncluded)</td>
+                                        </tr>
+                                         <tr style="padding: 15px;">
+                                            <th style="color: #454545; font-weight: bold;">Compatible Browsers</th>
+                                            <td style="color: #999999; font-weight: 600;padding-left: 15px;">@Html.DisplayFor(model => model.CompatibleBrowsers)</td>
+                                        </tr>
+                                    <tr style="padding: 15px;">
+                                        <th style="color: #454545; font-weight: bold;">Columns</th>
+                                        <td style="color: #999999; font-weight: 600;padding-left: 15px;">@Html.DisplayFor(model => model.Columns)</td>
+                                    </tr>
+                                    <tr style="padding: 15px;">
+                                        <th style="color: #454545; font-weight: bold;">Layout</th>
+                                        <td style="color: #999999; font-weight: 600;padding-left: 15px;">@Html.DisplayFor(model => model.Layout)</td>
+                                    </tr>
+                                       
+                                        <tr style="padding: 15px;">
+                                            <th style="color: #454545; font-weight: bold;">High Resolutions</th>
+                                            <td style="color: #999999; font-weight: 600;padding-left: 15px;">@Html.DisplayFor(model => model.HighResolution)</td>
+                                        </tr>
+                                        <tr style="padding: 15px;">
+                                            <th style="color: #454545; font-weight: bold;">Tags</th>
+                                            <td style="color: #999999; font-weight: 600;padding-left: 15px;">@Html.DisplayFor(model => model.Tags)</td>
+                                        </tr>
+                                        <tr style="padding: 15px;">
+                                            <th style="color: #454545; font-weight: bold;">Comment</th>
+                                            <td style="color: #999999; font-weight: 600;padding-left: 15px;">@Html.DisplayFor(model => model.Comment)</td>
+                                        </tr>
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="panel panel-default" id="content-formatting">
+
+
+                            <div class="input-group" style="padding: 15px;">
+                                <img src="http://www.astrachat.com/Images/featureForClient/Icon-_Messages%20delivery%20receipt.png" style="width: 30px;height: 30px; " />
+
+                                <span class="sidebar-stats__label" style="padding-left: 5px; font-weight: 700;font-size: 24px;">Sanalog Market guvencesi</span>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-4">
+                        <div class="panel panel-default" id="content-formatting">
+
+
+                            <div class="input-group" style="padding: 15px;text-align: center">
+
+                                <input class="btn btn-info" type="button" id="viewProfile" value="View Author Profile" style="width: 300px; height: 40px;"
+                                       onclick="location.href='@Url.Action("Public_Profile", "User" )'" />
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </body>
+    </html>
+    @section scripts {
+        <script src="~/Scripts/jssor.slider-22.2.16.mini.js"></script>
+        <script src="~/Scripts/jquery-1.11.3.min"></script>
+        <link href="/Content/bootstrap-star-rating-master/css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
+
+
+        <script src="/Content/bootstrap-star-rating-master/js/star-rating.js" type="text/javascript"></script>
+
+        <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+        <script type="text/javascript">
+        function ReviewLoadingShow() {
+            console.log("buradasiniz");
+            $("#errorReview").empty();
+            $("#successReviewContainer").hide();
+            $("#errorReviewContainer").hide();
+            $("#ReviewLoading").fadeIn(150);
         }
+        function SuccesReview(result) {
+            if (result[0] === "success") {
+                $("#errorReview").empty();
+                $("#ReviewLoading").hide();
+                $("#errorReviewContainer").hide();
+                $('#newReview')
+                    .append("<div class='panel panel-white post panel-shadow'><div class='post-heading'><div class='pull-left image'><img src='http://bootdey.com/img/Content/user_1.jpg' class='img-circle avatar' alt='user profile image'></div><div class='pull-left meta'><div class='title h5'><a href='#'><b>" + result[1] + "</b></a> made a post.</div><h6 class='text-muted time'>" + result[2] + "</h6><input id='input-Review_ajax' name='input-Review_ajax' type='number' class='rating' min=1 max=5 data-size='xs' data-show-clear='false' data-rtl='false' value='" + result[4] + "' disabled></div></div><div class='post-description'><p>" + result[3] + "</p><div class='stats'><a href='#' class='btn btn-default stat-item'><i class='fa fa-thumbs-up icon'></i>2</a><a href=#' class='btn btn-default stat-item'><i class='fa fa-thumbs-down icon'></i>12</a></div></div></div>")
+                    .fadeIn(500);
+                $("#newReviewContainer").fadeIn(500);
+                $('body').find('[name="input-Review_ajax"]').rating('refresh');
+                $("#ReviewDescription").val("");
+                $('#input-id').rating('clear');
+                $('#NewReviewRate').val("");
+                $("#successReviewContainer").fadeIn(500);
+                $("#successReviewContainer").fadeOut(3000);
+            }
+            if (result[0] === "failed") {
+                $("#ReviewLoading").hide();
+                $("#errorReview").empty();
+                $("#successReviewContainer").hide();
+                $("#errorReview")
+                    .append("<i class='fa fa-frown-o'></i><strong>Well ,someting went wrong sorry about that,it may be caused by you are not sending any description.</strong>!");
+                $("#errorReview").fadeIn(500);
+                $("#errorReviewContainer").fadeIn(500);
+            }
+            if (result[0] === "RateProduct") {
+                $("#ReviewLoading").hide();
+                $("#errorReview").empty();
+                $("#successReviewContainer").hide();
+                $("#errorReview")
+                    .append("<i class='fa fa-frown-o'></i><strong>You must rate the product before you send your review !</strong>!");
+                $("#errorReview").fadeIn(500);
+                $("#errorReviewContainer").fadeIn(500);
+            }
+            if (result[0] === "MustLogin") {
+                $("#ReviewLoading").hide();
+                $("#errorReview").empty();
+                $("#successReviewContainer").hide();
+                $("#errorReview")
+                    .append("<i class='fa fa-frown-o'></i><strong>To add a review must logged into website</strong>!");
+                $("#errorReview").fadeIn(500);
+                $("#errorReviewContainer").fadeIn(500);
+            }
+            if (result[0] === "alreadyAdded") {
+                $("#ReviewLoading").hide();
+                $("#errorReview").empty();
+                $("#successReviewContainer").hide();
+                $("#errorReview")
+                    .append("<i class='fa fa-frown-o'></i><strong>You have been already added review on this product.Only one is allowed </strong>!");
+                $("#errorReview").fadeIn(500);
+                $("#errorReviewContainer").fadeIn(500);
+            }
 
-    </div>
-
-    
-
-</div>
-<div role="tabpanel" class="tab-pane" id="Support">
-
-</div>
-</div>
-
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-
-</body>
-</html>
-@section scripts {
-
-    <script src="~/scripts/jquery-1.10.2.js"></script>
-    <script type="text/javascript">
+        }
+        $('#input-id').on('rating.change', function (event, value, caption) {
+            $("#NewReviewRate").val(value);
+        });
         var control = parseInt('@ViewBag.Control');
-        $(document)
-            .ready(function() {
 
-                if (control == 0) {
+        $(document)
+            .ready(function () {
+                $("#input-id").rating({ size: 'sm' });
+                var rate = '@ViewBag.ReviewRatesAll';
+                $("#avgReview").append("<input id='ProductReview' data-show-clear='false' name='ProductReview' type='number' class='rating' min=1 max=5 data-size='xs' data-rtl='false' value='' disabled>")
+                $('body').find('[name="ProductReview"]').val(rate.replace(",", "."));
+                $('body').find('[name="ProductReview"]').rating('refresh');
+                if (control == 0 ) {
                     $("#comment").hide();
                     $("#notcomment").show();
-                } else {
+                }
+                else {
                     $("#notcomment").hide();
+                }
+            });
+        </script>
+
+        <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+
+            var jssor_1_SlideshowTransitions = [
+                {$Duration:1200,x:0.3,$During:{$Left:[0.3,0.7]},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+                {$Duration:1200,x:-0.3,$SlideOut:true,$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+                {$Duration:1200,x:-0.3,$During:{$Left:[0.3,0.7]},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+                {$Duration:1200,x:0.3,$SlideOut:true,$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+                {$Duration:1200,y:0.3,$During:{$Top:[0.3,0.7]},$Easing:{$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+                {$Duration:1200,y:-0.3,$SlideOut:true,$Easing:{$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+                {$Duration:1200,y:-0.3,$During:{$Top:[0.3,0.7]},$Easing:{$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+                {$Duration:1200,y:0.3,$SlideOut:true,$Easing:{$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+                {$Duration:1200,x:0.3,$Cols:2,$During:{$Left:[0.3,0.7]},$ChessMode:{$Column:3},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+                {$Duration:1200,x:0.3,$Cols:2,$SlideOut:true,$ChessMode:{$Column:3},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+                {$Duration:1200,y:0.3,$Rows:2,$During:{$Top:[0.3,0.7]},$ChessMode:{$Row:12},$Easing:{$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+                {$Duration:1200,y:0.3,$Rows:2,$SlideOut:true,$ChessMode:{$Row:12},$Easing:{$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+                {$Duration:1200,y:0.3,$Cols:2,$During:{$Top:[0.3,0.7]},$ChessMode:{$Column:12},$Easing:{$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+                {$Duration:1200,y:-0.3,$Cols:2,$SlideOut:true,$ChessMode:{$Column:12},$Easing:{$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+                {$Duration:1200,x:0.3,$Rows:2,$During:{$Left:[0.3,0.7]},$ChessMode:{$Row:3},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+                {$Duration:1200,x:-0.3,$Rows:2,$SlideOut:true,$ChessMode:{$Row:3},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+                {$Duration:1200,x:0.3,y:0.3,$Cols:2,$Rows:2,$During:{$Left:[0.3,0.7],$Top:[0.3,0.7]},$ChessMode:{$Column:3,$Row:12},$Easing:{$Left:$Jease$.$InCubic,$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+                {$Duration:1200,x:0.3,y:0.3,$Cols:2,$Rows:2,$During:{$Left:[0.3,0.7],$Top:[0.3,0.7]},$SlideOut:true,$ChessMode:{$Column:3,$Row:12},$Easing:{$Left:$Jease$.$InCubic,$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+                {$Duration:1200,$Delay:20,$Clip:3,$Assembly:260,$Easing:{$Clip:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+                {$Duration:1200,$Delay:20,$Clip:3,$SlideOut:true,$Assembly:260,$Easing:{$Clip:$Jease$.$OutCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+                {$Duration:1200,$Delay:20,$Clip:12,$Assembly:260,$Easing:{$Clip:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+                {$Duration:1200,$Delay:20,$Clip:12,$SlideOut:true,$Assembly:260,$Easing:{$Clip:$Jease$.$OutCubic,$Opacity:$Jease$.$Linear},$Opacity:2}
+            ];
+
+            var jssor_1_options = {
+                $AutoPlay: true,
+                $SlideshowOptions: {
+                    $Class: $JssorSlideshowRunner$,
+                    $Transitions: jssor_1_SlideshowTransitions,
+                    $TransitionsOrder: 1
+                },
+                $ArrowNavigatorOptions: {
+                    $Class: $JssorArrowNavigator$
+                },
+                $ThumbnailNavigatorOptions: {
+                    $Class: $JssorThumbnailNavigator$,
+                    $Cols: 10,
+                    $SpacingX: 8,
+                    $SpacingY: 8,
+                    $Align: 360
+                }
+            };
+
+            var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+
+            /*responsive code begin*/
+            /*remove responsive code if you don't want the slider scales while window resizing*/
+            function ScaleSlider() {
+                var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
+                if (refSize) {
+                    refSize = Math.min(refSize, 800);
+                    jssor_1_slider.$ScaleWidth(refSize);
+                }
+                else {
+                    window.setTimeout(ScaleSlider, 30);
+                }
+            }
+            ScaleSlider();
+            $(window).bind("load", ScaleSlider);
+            $(window).bind("resize", ScaleSlider);
+            $(window).bind("orientationchange", ScaleSlider);
+            /*responsive code end*/
+        });
+        </script>
+
+
+        <script>
+        // Starrr plugin (https://github.com/dobtco/starrr)
+        var __slice = [].slice;
+
+        (function ($, window) {
+            var Starrr;
+
+            Starrr = (function () {
+                Starrr.prototype.defaults = {
+                    rating: void 0,
+                    numStars: 5,
+                    change: function (e, value) { }
+                };
+
+                function Starrr($el, options) {
+                    var i, _, _ref,
+                      _this = this;
+
+                    this.options = $.extend({}, this.defaults, options);
+                    this.$el = $el;
+                    _ref = this.defaults;
+                    for (i in _ref) {
+                        _ = _ref[i];
+                        if (this.$el.data(i) != null) {
+                            this.options[i] = this.$el.data(i);
+                        }
+                    }
+                    this.createStars();
+                    this.syncRating();
+                    this.$el.on('mouseover.starrr', 'span', function (e) {
+                        return _this.syncRating(_this.$el.find('span').index(e.currentTarget) + 1);
+                    });
+                    this.$el.on('mouseout.starrr', function () {
+                        return _this.syncRating();
+                    });
+                    this.$el.on('click.starrr', 'span', function (e) {
+                        return _this.setRating(_this.$el.find('span').index(e.currentTarget) + 1);
+                    });
+                    this.$el.on('starrr:change', this.options.change);
+                }
+
+                Starrr.prototype.createStars = function () {
+                    var _i, _ref, _results;
+
+                    _results = [];
+                    for (_i = 1, _ref = this.options.numStars; 1 <= _ref ? _i <= _ref : _i >= _ref; 1 <= _ref ? _i++ : _i--) {
+                        _results.push(this.$el.append("<span class='glyphicon .glyphicon-star-empty'></span>"));
+                    }
+                    return _results;
+                };
+
+                Starrr.prototype.setRating = function (rating) {
+                    if (this.options.rating === rating) {
+                        rating = void 0;
+                    }
+                    this.options.rating = rating;
+                    this.syncRating();
+                    return this.$el.trigger('starrr:change', rating);
+                };
+
+                Starrr.prototype.syncRating = function (rating) {
+                    var i, _i, _j, _ref;
+
+                    rating || (rating = this.options.rating);
+                    if (rating) {
+                        for (i = _i = 0, _ref = rating - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
+                            this.$el.find('span').eq(i).removeClass('glyphicon-star-empty').addClass('glyphicon-star');
+                        }
+                    }
+                    if (rating && rating < 5) {
+                        for (i = _j = rating; rating <= 4 ? _j <= 4 : _j >= 4; i = rating <= 4 ? ++_j : --_j) {
+                            this.$el.find('span').eq(i).removeClass('glyphicon-star').addClass('glyphicon-star-empty');
+                        }
+                    }
+                    if (!rating) {
+                        return this.$el.find('span').removeClass('glyphicon-star').addClass('glyphicon-star-empty');
+                    }
+                };
+
+                return Starrr;
+
+            })();
+            return $.fn.extend({
+                starrr: function () {
+                    var args, option;
+
+                    option = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+                    return this.each(function () {
+                        var data;
+
+                        data = $(this).data('star-rating');
+                        if (!data) {
+                            $(this).data('star-rating', (data = new Starrr($(this), option)));
+                        }
+                        if (typeof option === 'string') {
+                            return data[option].apply(data, args);
+                        }
+                    });
+                }
+            });
+        })(window.jQuery, window);
+
+        $(function () {
+            return $(".starrr").starrr();
+        });
+
+        $(document).ready(function () {
+
+            $('#hearts').on('starrr:change', function (e, value) {
+                $('#count').html(value);
+            });
+
+            $('#hearts-existing').on('starrr:change', function (e, value) {
+                $('#count-existing').html(value);
+            });
+        });
+        </script>
+        <style>
+                /* jssor slider arrow navigator skin 05 css */
+                /*
+            .jssora05l                  (normal)
+            .jssora05r                  (normal)
+            .jssora05l:hover            (normal mouseover)
+            .jssora05r:hover            (normal mouseover)
+            .jssora05l.jssora05ldn      (mousedown)
+            .jssora05r.jssora05rdn      (mousedown)
+            .jssora05l.jssora05lds      (disabled)
+            .jssora05r.jssora05rds      (disabled)
+            */
+                .jssora05l, .jssora05r {
+                    display: block;
+                    position: absolute;
+                    /* size of arrow element */
+                    width: 40px;
+                    height: 40px;
+                    cursor: pointer;
+                    background: url('img/a17.png') no-repeat;
+                    overflow: hidden;
+                }
+
+                .jssora05l {
+                    background-position: -10px -40px;
+                }
+
+                .jssora05r {
+                    background-position: -70px -40px;
+                }
+
+                .jssora05l:hover {
+                    background-position: -130px -40px;
+                }
+
+                .jssora05r:hover {
+                    background-position: -190px -40px;
+                }
+
+                .jssora05l.jssora05ldn {
+                    background-position: -250px -40px;
+                }
+
+                .jssora05r.jssora05rdn {
+                    background-position: -310px -40px;
+                }
+
+                .jssora05l.jssora05lds {
+                    background-position: -10px -40px;
+                    opacity: .3;
+                    pointer-events: none;
+                }
+
+                .jssora05r.jssora05rds {
+                    background-position: -70px -40px;
+                    opacity: .3;
+                    pointer-events: none;
+                }
+                /* jssor slider thumbnail navigator skin 01 css */ /*.jssort01 .p            (normal).jssort01 .p:hover      (normal mouseover).jssort01 .p.pav        (active).jssort01 .p.pdn        (mousedown)*/
+
+                .jssort01 .p {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 72px;
+                    height: 72px;
+                }
+
+                .jssort01 .t {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                }
+
+                .jssort01 .w {
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                .jssort01 .c {
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    width: 68px;
+                    height: 68px;
+                    border: #000 2px solid;
+                    box-sizing: content-box;
+                    background: url('img/t01.png') -800px -800px no-repeat;
+                    _background: none;
+                }
+
+                .jssort01 .pav .c {
+                    top: 2px;
+                    _top: 0px;
+                    left: 2px;
+                    _left: 0px;
+                    width: 68px;
+                    height: 68px;
+                    border: #000 0px solid;
+                    _border: #fff 2px solid;
+                    background-position: 50% 50%;
+                }
+
+                .jssort01 .p:hover .c {
+                    top: 0px;
+                    left: 0px;
+                    width: 70px;
+                    height: 70px;
+                    border: #fff 1px solid;
+                    background-position: 50% 50%;
+                }
+
+                .jssort01 .p.pdn .c {
+                    background-position: 50% 50%;
+                    width: 68px;
+                    height: 68px;
+                    border: #000 2px solid;
+                }
+
+                * html .jssort01 .c, * html .jssort01 .pdn .c, * html .jssort01 .pav .c { /* ie quirks mode adjust */
+                    width /**/: 72px;
+                    height /**/: 72px;
                 }
 
 
-            });
-    </script>
-}
+                .panel-shadow {
+                    box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
+                }
+
+                .panel-white {
+                    border: 1px solid #dddddd;
+                }
+
+                    .panel-white .panel-heading {
+                        color: #333;
+                        background-color: #fff;
+                        border-color: #ddd;
+                    }
+
+                    .panel-white .panel-footer {
+                        background-color: #fff;
+                        border-color: #ddd;
+                    }
+
+                .post .post-heading {
+                    height: 95px;
+                    padding: 20px 15px;
+                }
+
+                    .post .post-heading .avatar {
+                        width: 60px;
+                        height: 60px;
+                        display: block;
+                        margin-right: 15px;
+                    }
+
+                    .post .post-heading .meta .title {
+                        margin-bottom: 0;
+                    }
+
+                        .post .post-heading .meta .title a {
+                            color: black;
+                        }
+
+                            .post .post-heading .meta .title a:hover {
+                                color: #aaaaaa;
+                            }
+
+                    .post .post-heading .meta .time {
+                        margin-top: 8px;
+                        color: #999;
+                    }
+
+                .post .post-image .image {
+                    width: 100%;
+                    height: auto;
+                }
+
+                .post .post-description {
+                    padding: 15px;
+                }
+
+                    .post .post-description p {
+                        font-size: 14px;
+                    }
+
+                    .post .post-description .stats {
+                        margin-top: 20px;
+                    }
+
+                        .post .post-description .stats .stat-item {
+                            display: inline-block;
+                            margin-right: 15px;
+                        }
+
+                            .post .post-description .stats .stat-item .icon {
+                                margin-right: 8px;
+                            }
+
+                .post .post-footer {
+                    border-top: 1px solid #ddd;
+                    padding: 15px;
+                }
+
+                    .post .post-footer .input-group-addon a {
+                        color: #454545;
+                    }
+
+                    .post .post-footer .comments-list {
+                        padding: 0;
+                        margin-top: 20px;
+                        list-style-type: none;
+                    }
+
+                        .post .post-footer .comments-list .comment {
+                            display: block;
+                            width: 100%;
+                            margin: 20px 0;
+                        }
+
+                            .post .post-footer .comments-list .comment .avatar {
+                                width: 35px;
+                                height: 35px;
+                            }
+
+                            .post .post-footer .comments-list .comment .comment-heading {
+                                display: block;
+                                width: 100%;
+                            }
+
+                                .post .post-footer .comments-list .comment .comment-heading .user {
+                                    font-size: 14px;
+                                    font-weight: bold;
+                                    display: inline;
+                                    margin-top: 0;
+                                    margin-right: 10px;
+                                }
+
+                                .post .post-footer .comments-list .comment .comment-heading .time {
+                                    font-size: 12px;
+                                    color: #aaa;
+                                    margin-top: 0;
+                                    display: inline;
+                                }
+
+                            .post .post-footer .comments-list .comment .comment-body {
+                                margin-left: 50px;
+                            }
+
+                            .post .post-footer .comments-list .comment > .comments-list {
+                                margin-left: 50px;
+                            }
+
+                #hearts {
+                    color: #ee8b2d;
+                }
+
+                #hearts-existing {
+                    color: #ee8b2d;
+                }
+        </style>
+    }
