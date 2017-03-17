@@ -1,4 +1,6 @@
 ﻿@using System.Collections
+
+
 @{
     ViewBag.Title = "Home Page";
 }
@@ -32,197 +34,227 @@
 @**@
 @*}*@
 
-
-
-<div class="row">
-    <div class="laksTitleDiv">
-        <h2 class="laksTitle">Browse</h2>
-    </div>
-</div>
+<h2 style="padding-left: 20px"> Featured Code Products</h2>
+<hr />
 <div class="row" style="margin-bottom: 30px">
     <div class="owl-carousel owl-theme">
-        <div class="item">
-            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
-                <div class="detailsP">
-                    <div class="showLearn">
-                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>
-                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
+        @foreach (var item in ViewBag.TProduct)
+        { 
+            <div class="item">
+                <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
+                    <div class="detailsP">
+                        <div class="showLearn">
+                            <a href="@Url.Action("Details","ProductCode", new { id=item.ID })" class="btn btn-primary laksLearnMore">Learn More</a>
+                            <a href="@Url.Action("OrderNow","ShoppingCart", new { id=item.ID })" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
+                        </div>
+                        <a href="@Url.Action("Details","ProductCode", new { id=item.ID })"><img src="http://lorempixel.com/145/205/" class="img-responsive deneme" /></a>
                     </div>
-                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/190132/231.0x326.0/1026023_LB_231x326_en_US_%5E_2016-05-11-02-18-28_bb5bfaf422670d9addea7e8e790f09716120d7be.png" class="img-responsive deneme" /></a>
-                </div>
 
-                <div class="laksProductDetails">
-                    <a href="#" class="laksProductTitle">Battlefield 1</a>
-                    <p class="laksProductPrice">
-                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>
-                    </p>
+                    <div class="laksProductDetails">
+                        <a href="#" class="laksProductTitle">@item.Title</a>
+                        <p class="laksProductPrice">
+                            $ @item.Price <a href="@Url.Action("OrderNow","ShoppingCart", new { id=item.ID })"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="item">
-            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
-                <div class="detailsP">
-                    <div class="showLearn">
-                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>
-                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
-                    </div>
-                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/190134/231.0x326.0/1030900_LB_231x326_en_US_%5E_2015-06-09-16-57-20_b530ed3ed0ff42213dbd5ac4f41427325c8a3096.jpg" class="img-responsive deneme" /></a>
-                </div>
+        } 
+        
 
-                <div class="laksProductDetails">
-                    <a href="#" class="laksProductTitle">Battlefield 1</a>
-                    <p class="laksProductPrice">
-                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
-                <div class="detailsP">
-                    <div class="showLearn">
-                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>
-                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
-                    </div>
-                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/74889/231.0x326.0/1019025_LB_231x326_en_US_%5E_2016-09-09-18-10-26_834d4754eb4e81553bc3b69a4b60a79b154cfaa3.jpg" class="img-responsive deneme" /></a>
-                </div>
-
-                <div class="laksProductDetails">
-                    <a href="#" class="laksProductTitle">Battlefield 1</a>
-                    <p class="laksProductPrice">
-                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
-                <div class="detailsP">
-                    <div class="showLearn">
-                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>
-                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
-                    </div>
-                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/185353/231.0x326.0/1024486_LB_231x326_en_US_%5E_2015-08-04-10-45-42_0f314b68e981580a1416ef0d36679e0b0608e560.jpg" class="img-responsive deneme" /></a>
-                </div>
-
-                <div class="laksProductDetails">
-                    <a href="#" class="laksProductTitle">Battlefield 1</a>
-                    <p class="laksProductPrice">
-                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
-                <div class="detailsP">
-                    <div class="showLearn">
-                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>
-                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
-                    </div>
-                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/182633/231.0x326.0/1038862_LB_231x326_en_US_%5E_2016-07-21-10-11-54_1b27093a8723b707c8433a4aafc9203fd660d669.jpg" class="img-responsive deneme" /></a>
-                </div>
-
-                <div class="laksProductDetails">
-                    <a href="#" class="laksProductTitle">Battlefield 1</a>
-                    <p class="laksProductPrice">
-                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
-                <div class="detailsP">
-                    <div class="showLearn">
-                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>
-                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
-                    </div>
-                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/192492/231.0x326.0/1027088_LB_231x326_en_US_%5E_2016-05-08-23-09-52_c3dde8a110b9712b6da6222ed5841d531410eb21.jpg" class="img-responsive deneme" /></a>
-                </div>
-
-                <div class="laksProductDetails">
-                    <a href="#" class="laksProductTitle">Battlefield 1</a>
-                    <p class="laksProductPrice">
-                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
-                <div class="detailsP">
-                    <div class="showLearn">
-                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>
-                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
-                    </div>
-                    <a href="#"><img src="https://eaassets-a.akamaihd.net/content.ts4/images/55482/231.0x326.0/1031929_LB_231x326_en_GB_%5E_2017-01-03-21-23-24_6e022d778a9abf972571289cad1cf0709fa673b3.png" class="img-responsive deneme" /></a>
-                </div>
-
-                <div class="laksProductDetails">
-                    <a href="#" class="laksProductTitle">Battlefield 1</a>
-                    <p class="laksProductPrice">
-                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
-                <div class="detailsP">
-                    <div class="showLearn">
-                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>
-                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
-                    </div>
-                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/74369/231.0x326.0/1032110_LB_231x326_en_GB_%5E_2015-09-15-15-45-25_98b2647e9d55ea3ff1f046a67f9648da93422ce8.jpg" class="img-responsive deneme" /></a>
-                </div>
-
-                <div class="laksProductDetails">
-                    <a href="#" class="laksProductTitle">Battlefield 1</a>
-                    <p class="laksProductPrice">
-                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
-                <div class="detailsP">
-                    <div class="showLearn">
-                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>
-                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
-                    </div>
-                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/190132/231.0x326.0/1026023_LB_231x326_en_US_%5E_2016-05-11-02-18-28_bb5bfaf422670d9addea7e8e790f09716120d7be.png" class="img-responsive deneme" /></a>
-                </div>
-
-                <div class="laksProductDetails">
-                    <a href="#" class="laksProductTitle">Battlefield 1</a>
-                    <p class="laksProductPrice">
-                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
-                <div class="detailsP">
-                    <div class="showLearn">
-                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>
-                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
-                    </div>
-                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/76860/231.0x326.0/71779_LB_231x326_en_US_%5E_2013-01-18-08-59-41_842a1aba742dbcc03faa1acef2e1a0ff5a4d403a0d53e396f340193899a48316.jpg" class="img-responsive deneme" /></a>
-                </div>
-
-                <div class="laksProductDetails">
-                    <a href="#" class="laksProductTitle">Battlefield 1</a>
-                    <p class="laksProductPrice">
-                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>
-                    </p>
-                </div>
-            </div>
-        </div>
+        @*        <div class="item">*@
+        @*            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">*@
+        @*                <div class="detailsP">*@
+        @*                    <div class="showLearn">*@
+        @*                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>*@
+        @*                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>*@
+        @*                    </div>*@
+        @*                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/190134/231.0x326.0/1030900_LB_231x326_en_US_%5E_2015-06-09-16-57-20_b530ed3ed0ff42213dbd5ac4f41427325c8a3096.jpg" class="img-responsive deneme" /></a>*@
+        @*                </div>*@
+        @**@
+        @*                <div class="laksProductDetails">*@
+        @*                    <a href="#" class="laksProductTitle">Battlefield 1</a>*@
+        @*                    <p class="laksProductPrice">*@
+        @*                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>*@
+        @*                    </p>*@
+        @*                </div>*@
+        @*            </div>*@
+        @*        </div>*@
+        @*        <div class="item">*@
+        @*            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">*@
+        @*                <div class="detailsP">*@
+        @*                    <div class="showLearn">*@
+        @*                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>*@
+        @*                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>*@
+        @*                    </div>*@
+        @*                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/74889/231.0x326.0/1019025_LB_231x326_en_US_%5E_2016-09-09-18-10-26_834d4754eb4e81553bc3b69a4b60a79b154cfaa3.jpg" class="img-responsive deneme" /></a>*@
+        @*                </div>*@
+        @**@
+        @*                <div class="laksProductDetails">*@
+        @*                    <a href="#" class="laksProductTitle">Battlefield 1</a>*@
+        @*                    <p class="laksProductPrice">*@
+        @*                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>*@
+        @*                    </p>*@
+        @*                </div>*@
+        @*            </div>*@
+        @*        </div>*@
+        @*        <div class="item">*@
+        @*            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">*@
+        @*                <div class="detailsP">*@
+        @*                    <div class="showLearn">*@
+        @*                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>*@
+        @*                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>*@
+        @*                    </div>*@
+        @*                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/185353/231.0x326.0/1024486_LB_231x326_en_US_%5E_2015-08-04-10-45-42_0f314b68e981580a1416ef0d36679e0b0608e560.jpg" class="img-responsive deneme" /></a>*@
+        @*                </div>*@
+        @**@
+        @*                <div class="laksProductDetails">*@
+        @*                    <a href="#" class="laksProductTitle">Battlefield 1</a>*@
+        @*                    <p class="laksProductPrice">*@
+        @*                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>*@
+        @*                    </p>*@
+        @*                </div>*@
+        @*            </div>*@
+        @*        </div>*@
+        @*        <div class="item">*@
+        @*            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">*@
+        @*                <div class="detailsP">*@
+        @*                    <div class="showLearn">*@
+        @*                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>*@
+        @*                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>*@
+        @*                    </div>*@
+        @*                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/182633/231.0x326.0/1038862_LB_231x326_en_US_%5E_2016-07-21-10-11-54_1b27093a8723b707c8433a4aafc9203fd660d669.jpg" class="img-responsive deneme" /></a>*@
+        @*                </div>*@
+        @**@
+        @*                <div class="laksProductDetails">*@
+        @*                    <a href="#" class="laksProductTitle">Battlefield 1</a>*@
+        @*                    <p class="laksProductPrice">*@
+        @*                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>*@
+        @*                    </p>*@
+        @*                </div>*@
+        @*            </div>*@
+        @*        </div>*@
+        @*        <div class="item">*@
+        @*            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">*@
+        @*                <div class="detailsP">*@
+        @*                    <div class="showLearn">*@
+        @*                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>*@
+        @*                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>*@
+        @*                    </div>*@
+        @*                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/192492/231.0x326.0/1027088_LB_231x326_en_US_%5E_2016-05-08-23-09-52_c3dde8a110b9712b6da6222ed5841d531410eb21.jpg" class="img-responsive deneme" /></a>*@
+        @*                </div>*@
+        @**@
+        @*                <div class="laksProductDetails">*@
+        @*                    <a href="#" class="laksProductTitle">Battlefield 1</a>*@
+        @*                    <p class="laksProductPrice">*@
+        @*                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>*@
+        @*                    </p>*@
+        @*                </div>*@
+        @*            </div>*@
+        @*        </div>*@
+        @*        <div class="item">*@
+        @*            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">*@
+        @*                <div class="detailsP">*@
+        @*                    <div class="showLearn">*@
+        @*                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>*@
+        @*                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>*@
+        @*                    </div>*@
+        @*                    <a href="#"><img src="https://eaassets-a.akamaihd.net/content.ts4/images/55482/231.0x326.0/1031929_LB_231x326_en_GB_%5E_2017-01-03-21-23-24_6e022d778a9abf972571289cad1cf0709fa673b3.png" class="img-responsive deneme" /></a>*@
+        @*                </div>*@
+        @**@
+        @*                <div class="laksProductDetails">*@
+        @*                    <a href="#" class="laksProductTitle">Battlefield 1</a>*@
+        @*                    <p class="laksProductPrice">*@
+        @*                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>*@
+        @*                    </p>*@
+        @*                </div>*@
+        @*            </div>*@
+        @*        </div>*@
+        @*        <div class="item">*@
+        @*            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">*@
+        @*                <div class="detailsP">*@
+        @*                    <div class="showLearn">*@
+        @*                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>*@
+        @*                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>*@
+        @*                    </div>*@
+        @*                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/74369/231.0x326.0/1032110_LB_231x326_en_GB_%5E_2015-09-15-15-45-25_98b2647e9d55ea3ff1f046a67f9648da93422ce8.jpg" class="img-responsive deneme" /></a>*@
+        @*                </div>*@
+        @**@
+        @*                <div class="laksProductDetails">*@
+        @*                    <a href="#" class="laksProductTitle">Battlefield 1</a>*@
+        @*                    <p class="laksProductPrice">*@
+        @*                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>*@
+        @*                    </p>*@
+        @*                </div>*@
+        @*            </div>*@
+        @*        </div>*@
+        @*        <div class="item">*@
+        @*            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">*@
+        @*                <div class="detailsP">*@
+        @*                    <div class="showLearn">*@
+        @*                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>*@
+        @*                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>*@
+        @*                    </div>*@
+        @*                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/190132/231.0x326.0/1026023_LB_231x326_en_US_%5E_2016-05-11-02-18-28_bb5bfaf422670d9addea7e8e790f09716120d7be.png" class="img-responsive deneme" /></a>*@
+        @*                </div>*@
+        @**@
+        @*                <div class="laksProductDetails">*@
+        @*                    <a href="#" class="laksProductTitle">Battlefield 1</a>*@
+        @*                    <p class="laksProductPrice">*@
+        @*                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>*@
+        @*                    </p>*@
+        @*                </div>*@
+        @*            </div>*@
+        @*        </div>*@
+        @*        <div class="item">*@
+        @*            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">*@
+        @*                <div class="detailsP">*@
+        @*                    <div class="showLearn">*@
+        @*                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>*@
+        @*                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>*@
+        @*                    </div>*@
+        @*                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/76860/231.0x326.0/71779_LB_231x326_en_US_%5E_2013-01-18-08-59-41_842a1aba742dbcc03faa1acef2e1a0ff5a4d403a0d53e396f340193899a48316.jpg" class="img-responsive deneme" /></a>*@
+        @*                </div>*@
+        @**@
+        @*                <div class="laksProductDetails">*@
+        @*                    <a href="#" class="laksProductTitle">Battlefield 1</a>*@
+        @*                    <p class="laksProductPrice">*@
+        @*                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>*@
+        @*                    </p>*@
+        @*                </div>*@
+        @*            </div>*@
+        @*        </div>*@
     </div>
 </div>
+
+
+<h2 style="padding-left: 20px"> Featured Theme Products</h2>
+<hr/>
+<div class="row" style="margin-bottom: 30px">
+<div class="owl-carousel owl-theme">
+    @foreach (var item in ViewBag.TProductTheme)
+    {
+        <div class="item">
+            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
+                <div class="detailsP">
+                    <div class="showLearn">
+                        <a href="@Url.Action("Details","ProductTheme", new { id=item.ID })" class="btn btn-primary laksLearnMore">Learn More</a>
+                        <a href="@Url.Action("OrderNow","ShoppingCart", new { id=item.ID })" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
+                    </div>
+                    <a href="@Url.Action("Details", "ProductTheme", new { id = item.ID })"><img src="http://lorempixel.com/145/205/" class="img-responsive deneme" /></a>
+                </div>
+
+                <div class="laksProductDetails">
+                    <a href="#" class="laksProductTitle">@item.Title</a>
+                    <p class="laksProductPrice">
+                        $ @item.Price <a href="@Url.Action("OrderNow","ShoppingCart", new { id=item.ID })"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+    </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 
 <script>
     window.onload = function () {
