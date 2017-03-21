@@ -236,7 +236,7 @@ namespace SanalogMarket.Controllers
             if (Session["UserId"] == null)
                 return RedirectToAction("Login");
 
-            var profile = dbBaglantisi.Users.Find(ProductCodeController.product_user_id);
+            var profile = dbBaglantisi.Users.Find(ProductController.product_user_id);
             return View(profile);
         }
 

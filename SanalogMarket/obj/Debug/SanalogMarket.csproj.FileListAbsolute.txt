@@ -54,7 +54,6 @@ C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarke
 C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\System.Web.WebPages.Deployment.xml
 C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\System.Web.WebPages.Razor.xml
 C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\Newtonsoft.Json.xml
-C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\bin\Antlr3.Runtime.pdb
 C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\obj\Debug\SanalogMarket.csprojResolveAssemblyReference.cache
 C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\obj\Debug\SanalogMarket.dll
 C:\Users\Robots\Documents\Visual Studio 2015\Projects\SanalogMarket\SanalogMarket\obj\Debug\SanalogMarket.pdb

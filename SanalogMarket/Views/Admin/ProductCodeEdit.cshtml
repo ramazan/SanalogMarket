@@ -15,7 +15,13 @@
     <div class="form-horizontal">
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.ID)
-
+        <div class="form-group">
+            @Html.Label("Ürün Türü :", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.LabelFor(model => model.Product_Kind, new { @class = "control-label col-md-2" })
+                @Html.ValidationMessageFor(model => model.Title)
+            </div>
+        </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Title, new {@class = "control-label col-md-2"})
             <div class="col-md-10">
@@ -53,6 +59,34 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Description)
                 @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Browsers, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Browsers)
+                @Html.ValidationMessageFor(model => model.Browsers)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.FilesIncluded, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FilesIncluded)
+                @Html.ValidationMessageFor(model => model.FilesIncluded)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.CompatibleWith, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CompatibleWith)
+                @Html.ValidationMessageFor(model => model.CompatibleWith)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Layout, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Layout)
+                @Html.ValidationMessageFor(model => model.Layout)
             </div>
         </div>
 

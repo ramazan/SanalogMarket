@@ -44,10 +44,10 @@
                 <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
                     <div class="detailsP">
                         <div class="showLearn">
-                            <a href="@Url.Action("Details","ProductCode", new { id=item.ID })" class="btn btn-primary laksLearnMore">Learn More</a>
+                            <a href="@Url.Action("Details","Product", new { id=item.ID })" class="btn btn-primary laksLearnMore">Learn More</a>
                             <a href="@Url.Action("OrderNow","ShoppingCart", new { id=item.ID })" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
                         </div>
-                        <a href="@Url.Action("Details","ProductCode", new { id=item.ID })"><img src="http://lorempixel.com/145/205/" class="img-responsive deneme" /></a>
+                        <a href="@Url.Action("Details","Product", new { id=item.ID })"><img src="http://lorempixel.com/145/205/" class="img-responsive deneme" /></a>
                     </div>
 
                     <div class="laksProductDetails">
@@ -226,35 +226,35 @@
     </div>
 </div>
 
-
-<h2 style="padding-left: 20px"> Featured Theme Products</h2>
-<hr/>
-<div class="row" style="margin-bottom: 30px">
-<div class="owl-carousel owl-theme">
-    @foreach (var item in ViewBag.TProductTheme)
-    {
-        <div class="item">
-            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
-                <div class="detailsP">
-                    <div class="showLearn">
-                        <a href="@Url.Action("Details","ProductTheme", new { id=item.ID })" class="btn btn-primary laksLearnMore">Learn More</a>
-                        <a href="@Url.Action("OrderNow","ShoppingCart", new { id=item.ID })" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
-                    </div>
-                    <a href="@Url.Action("Details", "ProductTheme", new { id = item.ID })"><img src="http://lorempixel.com/145/205/" class="img-responsive deneme" /></a>
-                </div>
-
-                <div class="laksProductDetails">
-                    <a href="#" class="laksProductTitle">@item.Title</a>
-                    <p class="laksProductPrice">
-                        $ @item.Price <a href="@Url.Action("OrderNow","ShoppingCart", new { id=item.ID })"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    }
-
-</div>
-    </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+@**@
+@*<h2 style="padding-left: 20px"> Featured Theme Products</h2>*@
+@*<hr/>*@
+@*<div class="row" style="margin-bottom: 30px">*@
+@*<div class="owl-carousel owl-theme">*@
+@*    @foreach (var item in ViewBag.TProductTheme)*@
+@*    {*@
+@*        <div class="item">*@
+@*            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">*@
+@*                <div class="detailsP">*@
+@*                    <div class="showLearn">*@
+@*                        <a href="@Url.Action("Details","ProductTheme", new { id=item.ID })" class="btn btn-primary laksLearnMore">Learn More</a>*@
+@*                        <a href="@Url.Action("OrderNow","ShoppingCart", new { id=item.ID })" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>*@
+@*                    </div>*@
+@*                    <a href="@Url.Action("Details", "ProductTheme", new { id = item.ID })"><img src="http://lorempixel.com/145/205/" class="img-responsive deneme" /></a>*@
+@*                </div>*@
+@**@
+@*                <div class="laksProductDetails">*@
+@*                    <a href="#" class="laksProductTitle">@item.Title</a>*@
+@*                    <p class="laksProductPrice">*@
+@*                        $ @item.Price <a href="@Url.Action("OrderNow","ShoppingCart", new { id=item.ID })"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>*@
+@*                    </p>*@
+@*                </div>*@
+@*            </div>*@
+@*        </div>*@
+@*    }*@
+@**@
+@*</div>*@
+@*    </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *@
 
 <script>
     window.onload = function () {

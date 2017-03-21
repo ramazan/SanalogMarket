@@ -4,25 +4,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div style="margin-top: 0px;" class="alert alert-info" role="alert">
-    <h3 class="alert-heading" style="text-align: center">Dear, @Session["Name"] Welcome and congratulations on becoming an author with Sanalog Market.!</h3><br /><br />
-    <h4 class="mb-0" style="text-align: center">
-        Now you can sell your digital items to millions of users and make money from it.<br /><br />
-    </h4>
-    
-    <h4 style="text-align: center">
-        Start uploading your digital items and working with our review team to make
-        sure they are in great shape to start selling.
-    </h4><br /><br />
-    <p style="text-align: center">
-        <a href="/ProductCode/New" class="btn btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Upload Code or Plugin!</a>
+@using (Html.BeginForm("SellProduct" ,"Home" ,FormMethod.Post))
+{
+    <div style="margin-top: 0px;" class="alert alert-info" role="alert">
+        <h3 class="alert-heading" style="text-align: center">Dear, @Session["Name"] Welcome and congratulations on becoming an author with Sanalog Market.!</h3><br/><br/>
+        <h4 class="mb-0" style="text-align: center">
+            Now you can sell your digital items to millions of users and make money from it.<br/><br/>
+        </h4>
 
-        <a href="/ProductTheme/Create" class="btn btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Upload Theme!</a>
-    </p>
-    <br/><br/>
-    <h4 style="text-align: center">Thank you again for becoming an author and we hope you have lots of success with us!</h4>
+        <h4 style="text-align: center">
+            Start uploading your digital items and working with our review team to make
+            sure they are in great shape to start selling.
+        </h4><br/><br/>
+        <p style="text-align: center">
+                    
+            <input type="submit" class="btn btn-success" value="Upload Code or Plugin!" name="codes" id="codes" />
+            <input  type="submit" class="btn btn-success" value="Upload Theme!" name="codes" id="codes" />
+       
+         </p>
+        <br/><br/>
+        <h4 style="text-align: center">Thank you again for becoming an author and we hope you have lots of success with us!</h4>
 
-    <p style="text-align: center;">The Community Team</p>
-    
+        <p style="text-align: center;">The Community Team</p>
 
-</div>
+
+    </div>
+}

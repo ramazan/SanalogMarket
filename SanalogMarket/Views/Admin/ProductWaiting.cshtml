@@ -1,4 +1,4 @@
-﻿@using SanalogMarket.Models.Theme
+﻿@using SanalogMarket.Models
 @model IEnumerable<SanalogMarket.Models.ProductCode>
 
 @{
@@ -7,7 +7,7 @@
 }
 
 @{
-    List<ProductTheme> lt = (List<ProductTheme>) ViewBag.productTheme;
+    List<ProductCode> lt = (List<ProductCode>) ViewBag.productCode;
 }
 
 @if (Model.Count() == 0 && lt.Count == 0)
@@ -22,7 +22,7 @@ else
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Onay Bekleyen Code Ürünler</h3>
+                    <h3 class="box-title">Onay Bekleyen  Ürünler</h3>
 
                     <div class="box-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
@@ -41,6 +41,7 @@ else
                     <table class="table table-hover">
                         <tbody>
                         <tr>
+                            <th>Ürün Türü</th>
                             <th>Title</th>
                             <th>Date</th>
                             <th>Price</th>
@@ -54,6 +55,9 @@ else
                         @foreach (var item in Model)
                         {
                             <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Product_Kind)
+                                </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Title)
                                 </td>
@@ -158,100 +162,100 @@ else
                     </div>
                 </div>
                 <!-- /.box-header -->
-                <div class="box-body table-responsive no-padding">
-                    <table class="table table-hover">
-                        <tbody>
-                        <tr>
-                            <th>Title</th>
-                            <th>Date</th>
-                            <th>Price</th>
-                            <th>Category</th>
-                            <th>Status</th>
-                            <th>Ürün Sahibi</th>
-
-                            <th>##</th>
-                        </tr>
-
-                        @foreach (var item in lt)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Title)
-                                </td>
-
-                                @*        <td>*@
-                                @*            @Html.DisplayFor(modelItem => item.Icon)*@
-                                @*        </td>*@
-                                @*        <td>*@
-                                @*            <a href="@Html.DisplayFor(modelItem => item.Screenshot)" target="_blank">tıkla</a> *@
-                                @*        </td>*@
-                                @*        <td>*@
-                                @*            @Html.DisplayFor(modelItem => item.Filepath)*@
-                                @*        </td>*@
-                                @*        <td>*@
-                                @*            @Html.DisplayFor(modelItem => item.Description)*@
-                                @*        </td>*@
-
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CompatibleBrowsers)
-                                </td>
-
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Price)$
-                                </td>
-
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Category)
-                                </td>
-                                <td>
-                                    <span class="label label-warning">Onay Bekliyor</span>
-                                </td>
-
-                                <td>@Html.DisplayFor(modelItem => item.User.Name)</td>
-
-
-                                @*        <td>*@
-                                @*            @Html.DisplayFor(modelItem => item.SubCategory)*@
-                                @*        </td>*@
-
-                                <td>
-                                    @Html.ActionLink("Edit", "ProductThemeEdit", new {id = item.ID}, new {@class = "btn-sm btn-info"}) |
-                                    @Html.ActionLink("Details", "ProductThemeDetails", new {id = item.ID}, new {@class = "btn-sm btn-success"}) |
-                                    @*            @Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
-                                </td>
-                            </tr>
-                        }
-                        @*                    <tr>*@
-                        @*                            <td>183</td>*@
-                        @*                            <td>John Doe</td>*@
-                        @*                            <td>11-7-2014</td>*@
-                        @*                            <td><span class="label label-success">Approved</span></td>*@
-                        @*                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>*@
-                        @*                        </tr>*@
-                        @*                        <tr>*@
-                        @*                            <td>219</td>*@
-                        @*                            <td>Alexander Pierce</td>*@
-                        @*                            <td>11-7-2014</td>*@
-                        @*                            <td><span class="label label-warning">Pending</span></td>*@
-                        @*                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>*@
-                        @*                        </tr>*@
-                        @*                        <tr>*@
-                        @*                            <td>657</td>*@
-                        @*                            <td>Bob Doe</td>*@
-                        @*                            <td>11-7-2014</td>*@
-                        @*                            <td><span class="label label-primary">Approved</span></td>*@
-                        @*                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>*@
-                        @*                        </tr>*@
-                        @*                        <tr>*@
-                        @*                            <td>175</td>*@
-                        @*                            <td>Mike Doe</td>*@
-                        @*                            <td>11-7-2014</td>*@
-                        @*                            <td><span class="label label-danger">Denied</span></td>*@
-                        @*                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>*@
-                        @*                        </tr>*@
-                        </tbody>
-                    </table>
-                </div>
+@*                <div class="box-body table-responsive no-padding">*@
+@*                    <table class="table table-hover">*@
+@*                        <tbody>*@
+@*                        <tr>*@
+@*                            <th>Title</th>*@
+@*                            <th>Date</th>*@
+@*                            <th>Price</th>*@
+@*                            <th>Category</th>*@
+@*                            <th>Status</th>*@
+@*                            <th>Ürün Sahibi</th>*@
+@**@
+@*                            <th>##</th>*@
+@*                        </tr>*@
+@**@
+@*                        @foreach (var item in lt)*@
+@*                        {*@
+@*                            <tr>*@
+@*                                <td>*@
+@*                                    @Html.DisplayFor(modelItem => item.Title)*@
+@*                                </td>*@
+@**@
+@*                                $1$        <td>#1#*@
+@*                                $1$            @Html.DisplayFor(modelItem => item.Icon)#1#*@
+@*                                $1$        </td>#1#*@
+@*                                $1$        <td>#1#*@
+@*                                $1$            <a href="@Html.DisplayFor(modelItem => item.Screenshot)" target="_blank">tıkla</a> #1#*@
+@*                                $1$        </td>#1#*@
+@*                                $1$        <td>#1#*@
+@*                                $1$            @Html.DisplayFor(modelItem => item.Filepath)#1#*@
+@*                                $1$        </td>#1#*@
+@*                                $1$        <td>#1#*@
+@*                                $1$            @Html.DisplayFor(modelItem => item.Description)#1#*@
+@*                                $1$        </td>#1#*@
+@**@
+@*                                <td>*@
+@*                                    @Html.DisplayFor(modelItem => item.Browsers)*@
+@*                                </td>*@
+@**@
+@*                                <td>*@
+@*                                    @Html.DisplayFor(modelItem => item.Price)$*@
+@*                                </td>*@
+@**@
+@*                                <td>*@
+@*                                    @Html.DisplayFor(modelItem => item.Category)*@
+@*                                </td>*@
+@*                                <td>*@
+@*                                    <span class="label label-warning">Onay Bekliyor</span>*@
+@*                                </td>*@
+@**@
+@*                                <td>@Html.DisplayFor(modelItem => item.User.Name)</td>*@
+@**@
+@**@
+@*                                $1$        <td>#1#*@
+@*                                $1$            @Html.DisplayFor(modelItem => item.SubCategory)#1#*@
+@*                                $1$        </td>#1#*@
+@**@
+@*                                <td>*@
+@*                                    @Html.ActionLink("Edit", "ProductCodeEdit", new {id = item.ID}, new {@class = "btn-sm btn-info"}) |*@
+@*                                    @Html.ActionLink("Details", "ProductThemeDetails", new {id = item.ID}, new {@class = "btn-sm btn-success"}) |*@
+@*                                    $1$            @Html.ActionLink("Delete", "Delete", new { id=item.ID })#1#*@
+@*                                </td>*@
+@*                            </tr>*@
+@*                        }*@
+@*                        $1$                    <tr>#1#*@
+@*                        $1$                            <td>183</td>#1#*@
+@*                        $1$                            <td>John Doe</td>#1#*@
+@*                        $1$                            <td>11-7-2014</td>#1#*@
+@*                        $1$                            <td><span class="label label-success">Approved</span></td>#1#*@
+@*                        $1$                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>#1#*@
+@*                        $1$                        </tr>#1#*@
+@*                        $1$                        <tr>#1#*@
+@*                        $1$                            <td>219</td>#1#*@
+@*                        $1$                            <td>Alexander Pierce</td>#1#*@
+@*                        $1$                            <td>11-7-2014</td>#1#*@
+@*                        $1$                            <td><span class="label label-warning">Pending</span></td>#1#*@
+@*                        $1$                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>#1#*@
+@*                        $1$                        </tr>#1#*@
+@*                        $1$                        <tr>#1#*@
+@*                        $1$                            <td>657</td>#1#*@
+@*                        $1$                            <td>Bob Doe</td>#1#*@
+@*                        $1$                            <td>11-7-2014</td>#1#*@
+@*                        $1$                            <td><span class="label label-primary">Approved</span></td>#1#*@
+@*                        $1$                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>#1#*@
+@*                        $1$                        </tr>#1#*@
+@*                        $1$                        <tr>#1#*@
+@*                        $1$                            <td>175</td>#1#*@
+@*                        $1$                            <td>Mike Doe</td>#1#*@
+@*                        $1$                            <td>11-7-2014</td>#1#*@
+@*                        $1$                            <td><span class="label label-danger">Denied</span></td>#1#*@
+@*                        $1$                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>#1#*@
+@*                        $1$                        </tr>#1#*@
+@*                        </tbody>*@
+@*                    </table>*@
+@*                </div>*@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->

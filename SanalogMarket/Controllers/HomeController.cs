@@ -10,18 +10,21 @@ namespace SanalogMarket.Controllers
 {
     public class HomeController : Controller
     {
+
+        public static string Product_kind;
+
         DbBaglantisi db = new DbBaglantisi();
 
         public ActionResult Index()
         {
 //          Bir sonraki adımımız aşağıdaki gibi sadece onaylanmış olan ürünleri göstermek olacak.
-          var productCode = db.Codes.Where(p => p.IsValid == 1).ToList();
-          var productTheme = db.Themes.Where(p => p.IsValid == 1).ToList();
+          var product = db.Codes.Where(p => p.IsValid == 1).ToList();
+         // var productTheme = db.Themes.Where(p => p.IsValid == 1).ToList();
 
 
 //            var product = db.Codes.ToList();
-            ViewBag.TProduct = productCode;
-            ViewBag.TProductTheme = productTheme;
+            ViewBag.TProduct = product;
+         //   ViewBag.TProductTheme = productTheme;
 
             return View();
         }
@@ -41,7 +44,22 @@ namespace SanalogMarket.Controllers
 
             return View();
         }
+        [HttpPost]
+        public ActionResult SellProduct(string codes)
+        {
+            if (codes.Equals("Upload Code or Plugin!"))
+            {
+                Product_kind = "code";
+                return RedirectToAction("Code", "Product");
+            }
+            else
+            {
+                Product_kind = "theme";
+                return RedirectToAction("Theme", "Product");
 
+            }
+//            return View();
+        }
         /*categorylerin layouta gönderilmesi için*/
 
         public JsonResult Get_Cat()

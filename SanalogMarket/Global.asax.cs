@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using SanalogMarket.Models;
-using SanalogMarket.Models.Theme;
+
 
 namespace SanalogMarket
 {
@@ -21,61 +21,7 @@ namespace SanalogMarket
                 int categoryCount = db.Categories.Count();
                 int SubCategoryCount = db.SubCategories.Count();
 
-                int ThemecategoryCount = db.ThemeCategories.Count();
-                int ThemeSubcayegorycount = db.ThemeSubCategories.Count();
-
-                ThemeCategory thcat = new ThemeCategory
-                {
-                    Name = "Site Templates",
-                    Description = "Site Templates"
-                };
-                ThemeCategory thcat1 = new ThemeCategory
-                {
-                    Name = "CMS Themes",
-                    Description = "CMS Themes"
-                };
-                ThemeCategory thcat2 = new ThemeCategory
-                {
-                    Name = "Wordpress",
-                    Description = "Wordpress"
-                };
-                ThemeSubCategory tsub = new ThemeSubCategory
-                {
-                    Name = "Photography",
-                    Description = "Photography",
-                    Category = thcat
-                };
-
-                ThemeSubCategory tsub1 = new ThemeSubCategory
-                {
-                    Name = "Education",
-                    Description = "Education",
-                    Category = thcat
-                };
-                ThemeSubCategory tsub2 = new ThemeSubCategory
-                {
-                    Name = "Deneme",
-                    Description = "Deneme",
-                    Category = thcat1
-                };
-                ThemeSubCategory tsub3 = new ThemeSubCategory
-                {
-                    Name = "Deneme2",
-                    Description = "Deneme2",
-                    Category = thcat1
-                };
-                ThemeSubCategory tsub4 = new ThemeSubCategory
-                {
-                    Name = "Camera",
-                    Description = "Camera",
-                    Category = thcat2
-                };
-                ThemeSubCategory tsub5 = new ThemeSubCategory
-                {
-                    Name = "Computer",
-                    Description = "Computer",
-                    Category = thcat2
-                };
+           
 
 
                 Category cat = new Category
@@ -353,7 +299,7 @@ namespace SanalogMarket
                         SalesPrice = 45,
                         CreateDate = DateTime.Now,
                         HighResolution = "yes",
-                        imza = "True",
+                        Privacy_Policy = "True",
                         SoftwarVersion = "AngularJs,ReactJS",
                         FilesIncluded = ".html,.js",
                         Browsers = "Firefox,Safari",
@@ -361,7 +307,8 @@ namespace SanalogMarket
                         SubCategory = "Creative",
                         IsValid = 1,
                         Tags = "Maximum of 15 key",
-                        User = usr
+                        User = usr,
+                        Product_Kind = "theme"
                     };
 
                     ProductCode productCode2 = new ProductCode
@@ -373,7 +320,7 @@ namespace SanalogMarket
                         SalesPrice = 45,
                         CreateDate = DateTime.Now,
                         HighResolution = "yes",
-                        imza = "True",
+                        Privacy_Policy = "True",
                         SoftwarVersion = "AngularJs,Jquery",
                         FilesIncluded = ".html,.js",
                         Browsers = "Firefox,Safari",
@@ -381,7 +328,8 @@ namespace SanalogMarket
                         SubCategory = "Creative",
                         IsValid = 1,
                         Tags = "Maximum of 15 key",
-                        User = usr
+                        User = usr,
+                        Product_Kind = "code"
                     };
 
 
@@ -394,7 +342,7 @@ namespace SanalogMarket
                         SalesPrice = 45,
                         CreateDate = DateTime.Now,
                         HighResolution = "yes",
-                        imza = "True",
+                        Privacy_Policy = "True",
                         SoftwarVersion = "AngularJs,Jquery",
                         FilesIncluded = ".html,.js",
                         Browsers = "Firefox,Safari",
@@ -402,53 +350,11 @@ namespace SanalogMarket
                         SubCategory = "Android",
                         IsValid = 1,
                         Tags = "Maximum of 15 key",
-                        User = usr
-                    };
-
-
-                    ProductTheme productTheme = new ProductTheme
-                    {
-                        Title = "Bootstrap Theme",
-                        //                        Icon = "/Project_Icon/350x260.png",
-                        Screenshot = "/Project_Icon/350x260.png",
-                        //                        Filepath = "/Project_Icon/350x260.png",
-                        Description = "This search",
-                        Price = 13,
-                        Category = "Site Templates",
-                        SubCategory = "Creative",
-                        //                        CompatibleBrowsers = "Firefox,Safari",
-                        //                        FilesIncluded = ".html,.js",
-                        IsValid = 1,
-                        Support = true,
-                        UpdateDate = DateTime.Now,
-                        CreateDate = DateTime.Now,
-                        imza = "True",
-                        Tags = "Maximum key",
-                        HighResolution = "yes",
-                        CompatibleWith = "AngularJs",
                         User = usr,
+                        Product_Kind = "code"
                     };
 
-                    ProductTheme productTheme2 = new ProductTheme
-                    {
-                        Title = "Bootstrap Login Template",
-                        Screenshot = "/Project_Icon/350x260.png",
-                        Description = "This for search",
-                        Price = 13,
-                        UpdateDate = DateTime.Now,
-                        CreateDate = DateTime.Now,
-                        HighResolution = "yes",
-                        imza = "True",
-                        CompatibleWith = "AngularJs,ReactJS",
-                        FilesIncluded = ".html,.js",
-                        CompatibleBrowsers = "Firefox,Safari",
-                        Category = "Site Templates",
-                        SubCategory = "Creative",
-                        IsValid = 1,
-                        Tags = "Maximum of 15 key",
-                        User = usr,
-                        Support = true
-                    };
+
 
 
                     db.Admins.Add(admin);
@@ -457,8 +363,6 @@ namespace SanalogMarket
                     db.Codes.Add(productCode);
                     db.Codes.Add(productCode2);
                     db.Codes.Add(productCode3);
-                    db.Themes.Add(productTheme);
-                    db.Themes.Add(productTheme2);
                     db.SaveChanges();
 
 
@@ -468,35 +372,35 @@ namespace SanalogMarket
                     cm.CommentTime = DateTime.Now;
                     cm.Content = "Amazing Product!";
                     cm.Product = productCode;
-                    cm.ThemeProduct = null;
+                  
 
                     Comment cm1 = new Comment();
                     cm1.User = usr;
                     cm1.CommentTime = DateTime.Now;
                     cm1.Content = "Great Product for all of us!";
                     cm1.Product = productCode2;
-                    cm1.ThemeProduct = null;
+                  
 
                     Comment cm2 = new Comment();
                     cm2.User = usr;
                     cm2.CommentTime = DateTime.Now;
                     cm2.Content = "Amazing Product!";
                     cm2.Product = productCode3;
-                    cm2.ThemeProduct = null;
+                 
 
 
                     Comment cm3 = new Comment();
                     cm3.User = usr;
                     cm3.CommentTime = DateTime.Now;
                     cm3.Content = "Amazing Product!";
-                    cm3.ThemeProduct = productTheme;
+                 
                     cm3.Product = null;
 
                     Comment cm4 = new Comment();
                     cm4.User = usr;
                     cm4.CommentTime = DateTime.Now;
                     cm4.Content = "Amazing Product!";
-                    cm4.ThemeProduct = productTheme2;
+                  
                     cm4.Product = null;
 
 
@@ -515,7 +419,7 @@ namespace SanalogMarket
                     rv.ReviewDate = DateTime.Now;
                     rv.ReviewDescription = "Amazing Product!";
                     rv.ReviewCode = productCode;
-                    rv.ReviewTheme= null;
+               
                     rv.ReviewRate = 4;
 
                     Review rv1 = new Review();
@@ -523,7 +427,7 @@ namespace SanalogMarket
                     rv1.ReviewDate = DateTime.Now;
                     rv1.ReviewDescription = "Amazing Product!";
                     rv1.ReviewCode = productCode2;
-                    rv1.ReviewTheme = null;
+                 
                     rv1.ReviewRate = 4;
 
                     Review rv2 = new Review();
@@ -531,7 +435,7 @@ namespace SanalogMarket
                     rv2.ReviewDate = DateTime.Now;
                     rv2.ReviewDescription = "Amazing Product!";
                     rv2.ReviewCode = productCode3;
-                    rv2.ReviewTheme = null;
+                 
                     rv2.ReviewRate = 1;
 
                     Review rv3 = new Review();
@@ -539,7 +443,7 @@ namespace SanalogMarket
                     rv3.ReviewDate = DateTime.Now;
                     rv3.ReviewDescription = "Amazing Product!";
                     rv3.ReviewCode = null;
-                    rv3.ReviewTheme = productTheme;
+                  
                     rv3.ReviewRate = 2;
 
                     Review rv4 = new Review();
@@ -547,7 +451,7 @@ namespace SanalogMarket
                     rv4.ReviewDate = DateTime.Now;
                     rv4.ReviewDescription = "Amazing Product!";
                     rv4.ReviewCode = null;
-                    rv4.ReviewTheme = productTheme2;
+                  
                     rv4.ReviewRate = 3;
 
 
@@ -559,26 +463,6 @@ namespace SanalogMarket
 
                 }
 
-                if (ThemecategoryCount <= 0)
-                {
-                    db.ThemeSubCategories.Add(tsub);
-                    db.ThemeSubCategories.Add(tsub1);
-                    db.ThemeSubCategories.Add(tsub2);
-                    db.ThemeSubCategories.Add(tsub3);
-                    db.ThemeSubCategories.Add(tsub4);
-                    db.ThemeSubCategories.Add(tsub5);
-                    // db.SaveChanges();
-
-                    if (ThemecategoryCount <= 0)
-                    {
-                        db.ThemeCategories.Add(thcat);
-                        db.ThemeCategories.Add(thcat1);
-                        db.ThemeCategories.Add(thcat2);
-
-
-                        db.SaveChanges();
-                    }
-                }
             }
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

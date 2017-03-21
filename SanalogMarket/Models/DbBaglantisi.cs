@@ -14,9 +14,6 @@ namespace SanalogMarket.Models
         public DbSet<ProductCode> Codes { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }
-        public DbSet<Theme.ProductTheme> Themes { get; set; }
-        public DbSet<Theme.ThemeCategory> ThemeCategories { get; set; }
-        public DbSet<Theme.ThemeSubCategory> ThemeSubCategories { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<UserConfirm> UserConfirms { get; set; }
         public DbSet<Extension> Extensions { get; set; }

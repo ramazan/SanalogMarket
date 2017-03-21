@@ -1,12 +1,12 @@
 ﻿@using System.Web.UI.WebControls
-@model SanalogMarket.Models.Theme.ProductTheme
+@model SanalogMarket.Models.ProductCode
 @{
     ViewBag.Title = "Create";
 }
 @Styles.Render("~/Content/multiple-select.css")
 @Styles.Render("~/Content/jQuery-File-Upload")
 
-@using (Html.BeginForm("Create", "ProductTheme", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Theme", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 
     @Html.AntiForgeryToken()
@@ -16,61 +16,61 @@
 
     </head>
     <body>
-    <body>
+        <body>
 
 
 
-    <div class="container">
-        <div class="jumbotron " style="background-color: #f5f5f5">
-            <h2 style="color: #454545 ">Upload an item to project </h2>
-            <h4 style="color: #454545 ">Upload file </h4>
-            <h3 style="color: #8b0000;text-align: center">@ViewBag.Imza</h3>
-            <h3 style="color: #8b0000;text-align: center">@ViewBag.Screenshot</h3>
-        </div>
-        <div class="row">
-            <div class="col-lg-7">
-                <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
-                    <h4 style="color: #454545; text-align: center;">Hi! Before you upload to ThemeForest for the first time.</h4>
-                    <br />
-                    <h5 style="color: #8f919d; padding-left: 10px;">Here's a checklist to get you ready to upload:</h5>
-                    <br />
-                    <h5 style="color:#6e6e6f; padding-left: 10px;">1. Read the standards and requirements for the item(s) you want to sell on ThemeForest.</h5>
-                    <h5 style="color:#6e6e6f; padding-left: 10px;">2. Make sure your files, supporting information and assets are all organised and ready for upload.</h5>
-                    <h5 style="color:#6e6e6f; padding-left: 10px;">3.Follow our upload instructions to make sure it all goes smoothly.</h5>
-                    <br />
-
+            <div class="container">
+                <div class="jumbotron " style="background-color: #f5f5f5">
+                    <h2 style="color: #454545 ">Upload an item to project </h2>
+                    <h4 style="color: #454545 ">Upload file </h4>
+                    <h3 style="color: #8b0000;text-align: center">@ViewBag.Imza</h3>
+                    <h3 style="color: #8b0000;text-align: center">@ViewBag.Screenshot</h3>
                 </div>
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
+                            <h4 style="color: #454545; text-align: center;">Hi! Before you upload to ThemeForest for the first time.</h4>
+                            <br />
+                            <h5 style="color: #8f919d; padding-left: 10px;">Here's a checklist to get you ready to upload:</h5>
+                            <br />
+                            <h5 style="color:#6e6e6f; padding-left: 10px;">1. Read the standards and requirements for the item(s) you want to sell on ThemeForest.</h5>
+                            <h5 style="color:#6e6e6f; padding-left: 10px;">2. Make sure your files, supporting information and assets are all organised and ready for upload.</h5>
+                            <h5 style="color:#6e6e6f; padding-left: 10px;">3.Follow our upload instructions to make sure it all goes smoothly.</h5>
+                            <br />
 
-            </div>
-            <div class="col-lg-5">
-                <div class="panel panel-default" id="content-formatting">
-                    <div class="panel-heading" style="background-color: #454545">
-                        <h5 style="color: #fdf5e6;  text-align: center; ">Switch Upload Category</h5>
-                    </div>
-                    <div style="padding-left: 10px; padding-right: 10px;">
-                        <p>Need help selecting a category?</p>
-                        <ul>
-                            <li>A great way to start is by browsing through our categories to see what other authors are selling</li>
-
-                        </ul>
-
-                        <p>If you've done all that, you're ready to upload. Thanks for selling with Sanalog Market!</p>
+                        </div>
 
                     </div>
+                    <div class="col-lg-5">
+                        <div class="panel panel-default" id="content-formatting">
+                            <div class="panel-heading" style="background-color: #454545">
+                                <h5 style="color: #fdf5e6;  text-align: center; ">Switch Upload Category</h5>
+                            </div>
+                            <div style="padding-left: 10px; padding-right: 10px;">
+                                <p>Need help selecting a category?</p>
+                                <ul>
+                                    <li>A great way to start is by browsing through our categories to see what other authors are selling</li>
+
+                                </ul>
+
+                                <p>If you've done all that, you're ready to upload. Thanks for selling with Sanalog Market!</p>
+
+                            </div>
 
 
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    </body>
+        </body>
 
-    </html>
+</html>
 
 }
 
-<form id="fileupload" method="POST" enctype="multipart/form-data" data-url="@Url.Action("Upload", "ProductTheme")">
+<form id="fileupload" method="POST" enctype="multipart/form-data" data-url="@Url.Action("Upload", "Product")">
     <div class="row">
         <div class="col-lg-7">
             <div class="panel panel-default" id="content-formatting " style="background-color: #f5f5f5">
@@ -562,7 +562,7 @@
                             <br />
                             <div class="col-md-10">
 
-                                @Html.CheckBox("imza", false, new { @checked = "checked", @class = "control-label col-md-1" });
+                                @Html.CheckBox("Privacy_policy", false, new { @checked = "checked", @class = "control-label col-md-1" });
                                 <small style="padding-right: 10px;">
                                     Any images, sounds, video, code, flash, or other assets that are not my own work, have been appropriately licensed for use in the file preview or main download. Other than these items, this work is entirely my own and I have full rights to sell it on SanalogCode.
                                 </small>
@@ -688,7 +688,7 @@
 
                 $("#dosya").hide();
                 // Get a list of categories and a list of products of the first category.
-                $.getJSON('/ProductTheme/GetCategories',
+                $.getJSON('/Product/GetCategories',
                         null,
                         function(data) {
                             $.each(data,
@@ -702,7 +702,7 @@
                                 });
 
 
-                            $.getJSON('/ProductTheme/GetProducts',
+                            $.getJSON('/Product/GetProducts',
                                     { catName: $('#category').val() },
                                     function(data) {
                                         $.each(data,
@@ -727,7 +727,7 @@
                 $('#category')
                     .change(function() {
                         $('#subcategory option').remove();
-                        $.getJSON('/ProductTheme/GetProducts',
+                        $.getJSON('/Product/GetProducts',
                                 { catName: $('#category').val() },
                                 function(data) {
                                     $.each(data,
@@ -756,6 +756,16 @@
                             document.getElementById("compatiblewith").disabled = false;
                         }
                     });
+                $("#fileinculude")
+                   .change(function () {
+                       if (document.getElementById("fileinculude").checked == true) {
+
+                           document.getElementById("fileinculude").disabled = true;
+                       } else {
+
+                           document.getElementById("fileinculude").disabled = false;
+                       }
+                   });
 
                 $("#Browser")
                     .change(function() {
@@ -770,9 +780,9 @@
 
 
                 //JQery and Ajax with multiple select Dropdownlist.....and Post    /ProductCode/..
-                $("#imza")
+                $("#Privacy_policy")
                     .change(function() {
-                        if (document.getElementById("imza").checked == true) {
+                        if (document.getElementById("Privacy_policy").checked == true) {
 
                             var selectedValues = [];
                             $("#compatiblewith :selected")
@@ -784,7 +794,7 @@
                             console.log(selectedValues + "1");
                             $.ajax({
                                 type: "POST",
-                                url: "/ProductTheme/getCompatibleWith",
+                                url: "/Product/getCompatibleWith",
                                 data: postData,
                                 success: function(data) {
 
@@ -803,7 +813,7 @@
                             var postData = { values: selectedValues2 };
                             $.ajax({
                                 type: "POST",
-                                url: "/ProductTheme/getFileInculeded",
+                                url: "/Product/getFileInculeded",
                                 data: postData,
                                 success: function(data) {
 
@@ -820,7 +830,7 @@
                             var postData = { values: selectedValues3 };
                             $.ajax({
                                 type: "POST",
-                                url: "/ProductTheme/getBrowser",
+                                url: "/Product/getBrowser",
                                 data: postData,
                                 success: function(data) {
 
@@ -834,9 +844,9 @@
 
 
 
-                $("#imza")
+                $("#Privacy_policy")
                       .change(function () {
-                          if (document.getElementById("imza").checked == true) {
+                          if (document.getElementById("Privacy_policy").checked == true) {
 
                               var selectedValues = [];
                               $("#thumbnail :selected")
@@ -848,7 +858,7 @@
                               console.log(selectedValues + "1");
                               $.ajax({
                                   type: "POST",
-                                  url: "/ProductTheme/getIcon",
+                                  url: "/Product/getIcon",
                                   data: postData,
                                   success: function (data) {
 
@@ -867,7 +877,7 @@
                               var postData = { values: selectedValues2 };
                               $.ajax({
                                   type: "POST",
-                                  url: "/ProductTheme/getScreenshot",
+                                  url: "/Product/getScreenshot",
                                   data: postData,
                                   success: function (data) {
 
@@ -884,7 +894,7 @@
                               var postData = { values: selectedValues3 };
                               $.ajax({
                                   type: "POST",
-                                  url: "/ProductTheme/getMainFiles",
+                                  url: "/Product/getMainFiles",
                                   data: postData,
                                   success: function (data) {
 
@@ -903,7 +913,7 @@
         $("#dosya")
             .click(function() {
 
-                $.getJSON('/ProductTheme/GetFilename',
+                $.getJSON('/Product/GetFilename',
                     null,
                     function(data) {
                         $.each(data,

@@ -198,7 +198,7 @@
                     </div>
                 </div>
                 <div class="tab-pane" id="2b">
-                    @using (Html.BeginForm("AddComment", "ProductCode", FormMethod.Post))
+                    @using (Html.BeginForm("AddComment", "Product", FormMethod.Post))
                     {
 
                         <div class="alert" id="comment" name="comment1" style="padding: 20px">
@@ -272,7 +272,7 @@
                     <div class="container" style="padding: 15px;">
                         <div class="row">
                             
-                            @using (Ajax.BeginForm("NewReview", "ProductCode", new AjaxOptions()
+                            @using (Ajax.BeginForm("NewReview", "Product", new AjaxOptions()
                             {
                                 HttpMethod = "POST",
                                 OnSuccess = "SuccesReview",

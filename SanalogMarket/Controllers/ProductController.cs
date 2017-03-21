@@ -16,7 +16,7 @@ using SanalogMarket.Models;
 
 namespace SanalogMarket.Controllers
 {
-    public class ProductCodeController : Controller
+    public class ProductController : Controller
     {
         DbBaglantisi dbBaglantisi = new DbBaglantisi();
         public ProductCode product;
@@ -28,6 +28,7 @@ namespace SanalogMarket.Controllers
         public static string file_main;
         public static int gelenID;
         public static int product_user_id;
+        public static string compatiblewith;
         public static  List<SelectOptions> file_namelist = new List<SelectOptions>();
         FilesHelper filesHelper;
         String tempPath = "~/somefiles/";
@@ -45,7 +46,7 @@ namespace SanalogMarket.Controllers
         private string UrlBase = "/Project_File/somefiles/";
         String DeleteURL = "/ProductCode/DeleteFile/?file=";
         String DeleteType = "GET";
-        public ProductCodeController()
+        public ProductController()
         {
             filesHelper = new FilesHelper(DeleteURL, DeleteType, StorageRoot, UrlBase, tempPath, serverMapPath);
         }
@@ -55,7 +56,7 @@ namespace SanalogMarket.Controllers
             return View();
         }
 
-        public ActionResult New()
+        public ActionResult Code()
         {
             if (Session["UserId"] == null)
                 return RedirectToAction("Login", "User");
@@ -101,19 +102,76 @@ namespace SanalogMarket.Controllers
 
         }
 
-        [HttpPost]
-        public ActionResult New(ProductCode gelenCode, string Gender, Boolean imza,string category,string subcategory)
+        public ActionResult Theme()
         {
-            if ( imza)
-            {
-               
-                
+            if (Session["UserId"] == null)
+                return RedirectToAction("Login", "User");
 
+
+            var categories = dbBaglantisi.Categories.ToList();
+            ViewBag.DropDownAOOs = new SelectList(categories);
+
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Theme(ProductCode gelenCode, string Gender, Boolean Privacy_policy, string category, string subcategory)
+        {
+            if (Privacy_policy)
+            {
+
+
+                gelenCode.Product_Kind = HomeController.Product_kind;
                 gelenCode.CreateDate = DateTime.Now;
                 gelenCode.Category = category;
                 gelenCode.SubCategory = subcategory;
                 gelenCode.HighResolution = Gender;
-                gelenCode.imza = imza.ToString();
+                gelenCode.Privacy_Policy = Privacy_policy.ToString();
+                gelenCode.SoftwarVersion = softwareVersion;
+                gelenCode.FilesIncluded = fileinculeded;
+                gelenCode.Browsers = browser;
+                gelenCode.IsValid = 0;
+                gelenCode.Screenshot = file_screen;
+                gelenCode.Filepath = file_main;
+                gelenCode.Icon = file_icon;
+                gelenCode.CompatibleWith = compatiblewith;
+               // gelenCode.Support = support;
+                int UserID = (int)Session["UserId"];
+                User EkleyenUser = dbBaglantisi.Users.Single(u => u.Id == UserID);
+
+                if (EkleyenUser != null)
+                {
+                    gelenCode.User = EkleyenUser;
+                }
+                dbBaglantisi.Codes.Add(gelenCode);
+                dbBaglantisi.SaveChanges();
+                creatdir("" + gelenCode.User.Id, "" + gelenCode.ID);
+
+                return RedirectToAction("Success", new { returnUrl = Request.RawUrl });
+            }
+            else
+            {
+                @ViewBag.Imza = "Failed :  Accept the Privacy Policy !! .. ";
+
+                return View();
+            }
+
+        }
+
+
+        [HttpPost]
+        public ActionResult Code(ProductCode gelenCode, string Gender, Boolean Privacy_policy, string category,string subcategory)
+        {
+            if (Privacy_policy)
+            {
+
+
+                gelenCode.Product_Kind = HomeController.Product_kind;
+                gelenCode.CreateDate = DateTime.Now;
+                gelenCode.Category = category;
+                gelenCode.SubCategory = subcategory;
+                gelenCode.HighResolution = Gender;
+                gelenCode.Privacy_Policy = Privacy_policy.ToString();
                 gelenCode.SoftwarVersion = softwareVersion;
                 gelenCode.FilesIncluded = fileinculeded;
                 gelenCode.Browsers = browser;
@@ -200,7 +258,7 @@ namespace SanalogMarket.Controllers
             dbBaglantisi.SaveChanges();
 
 
-            return RedirectToAction("Details", "ProductCode", new { id = gelenID });
+            return RedirectToAction("Details", "Product", new { id = gelenID });
         }
 
         [HttpPost]
@@ -352,7 +410,23 @@ namespace SanalogMarket.Controllers
             }
             return file_main;
         }
-     
+        public string getCompatibleWith(List<String> values)
+        {
+            if (values != null)
+            {
+                compatiblewith = values[0];
+                for (int i = 1; i < values.Count; i++)
+                {
+                    compatiblewith = compatiblewith + "," + values[i];
+                }
+            }
+            else
+            {
+                compatiblewith = null;
+            }
+            return compatiblewith;
+        }
+
 
         [HttpPost]
         public JsonResult Upload()

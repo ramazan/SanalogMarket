@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using SanalogMarket.Models.Theme;
+
 
 namespace SanalogMarket.Models
 {
@@ -24,6 +24,6 @@ namespace SanalogMarket.Models
 
         public virtual ProductCode ReviewCode { get; set; }
 
-        public virtual ProductTheme ReviewTheme { get; set; }
+       // public virtual ProductTheme ReviewTheme { get; set; }
     }
 }

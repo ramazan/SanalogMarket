@@ -6,7 +6,7 @@
 @Styles.Render("~/Content/multiple-select.css")
 @Styles.Render("~/Content/jQuery-File-Upload")
 
-@using (Html.BeginForm("New", "ProductCode", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Code", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 
     @Html.AntiForgeryToken()
@@ -80,7 +80,7 @@
 
 }
 
-<form id="fileupload" method="POST" enctype="multipart/form-data" data-url="@Url.Action("Upload", "ProductCode")">
+<form id="fileupload" method="POST" enctype="multipart/form-data" data-url="@Url.Action("Upload", "Product")">
 
     <div class="row">
         <div class="col-lg-7">
@@ -314,6 +314,7 @@
 
                         <br />
                     </div>
+                  
                     <br />
                     <div class="form-group">
                         @Html.Label("Files Included", new { @class = "control-label col-md-2" })
@@ -478,7 +479,7 @@
                             <br />
                             <div class="col-md-10">
 
-                                @Html.CheckBox("imza", false, new { @checked = "checked", @class = "control-label col-md-1" });
+                                @Html.CheckBox("Privacy_policy", false, new { @checked = "checked", @class = "control-label col-md-1" });
                                 <small style="padding-right: 10px;">
                                     Any images, sounds, video, code, flash, or other assets that are not my own work, have been appropriately licensed for use in the file preview or main download. Other than these items, this work is entirely my own and I have full rights to sell it on SanalogCode.
                                 </small>
@@ -599,7 +600,7 @@
 
                 $("#dosya").hide();
                 // Get a list of categories and a list of products of the first category.
-                $.getJSON('/ProductCode/GetCategories',
+                $.getJSON('/Product/GetCategories',
                         null,
                         function(data) {
                             $.each(data,
@@ -613,7 +614,7 @@
                                 });
 
 
-                            $.getJSON('/ProductCode/GetProducts',
+                            $.getJSON('/Product/GetProducts',
                                     { catName: $('#category').val() },
                                     function(data) {
                                         $.each(data,
@@ -638,7 +639,7 @@
                 $('#category')
                     .change(function() {
                         $('#subcategory option').remove();
-                        $.getJSON('/ProductCode/GetProducts',
+                        $.getJSON('/Product/GetProducts',
                                 { catName: $('#category').val() },
                                 function(data) {
                                     $.each(data,
@@ -681,9 +682,9 @@
 
 
                 //JQery and Ajax with multiple select Dropdownlist.....and Post    /ProductCode/..
-                $("#imza")
+                $("#Privacy_policy")
                     .change(function() {
-                        if (document.getElementById("imza").checked == true) {
+                        if (document.getElementById("Privacy_policy").checked == true) {
                                                   
                             var selectedValues = [];
                             $("#version :selected")
@@ -695,7 +696,7 @@
                             console.log(selectedValues + "1");
                             $.ajax({
                                 type: "POST",
-                                url: "/ProductCode/getVersion",
+                                url: "/Product/getVersion",
                                 data: postData,
                                 success: function(data) {
 
@@ -714,7 +715,7 @@
                             var postData = { values: selectedValues2 };
                             $.ajax({
                                 type: "POST",
-                                url: "/ProductCode/getFileInculeded",
+                                url: "/Product/getFileInculeded",
                                 data: postData,
                                 success: function(data) {
 
@@ -731,7 +732,7 @@
                             var postData = { values: selectedValues3 };
                             $.ajax({
                                 type: "POST",
-                                url: "/ProductCode/getBrowser",
+                                url: "/Product/getBrowser",
                                 data: postData,
                                 success: function(data) {
 
@@ -745,9 +746,9 @@
 
             
 
-                $("#imza")
+                $("#Privacy_policy")
                       .change(function () {
-                          if (document.getElementById("imza").checked == true) {
+                          if (document.getElementById("Privacy_policy").checked == true) {
 
                               var selectedValues = [];
                               $("#thumbnail :selected")
@@ -759,7 +760,7 @@
                               console.log(selectedValues + "1");
                               $.ajax({
                                   type: "POST",
-                                  url: "/ProductCode/getIcon",
+                                  url: "/Product/getIcon",
                                   data: postData,
                                   success: function (data) {
 
@@ -778,7 +779,7 @@
                               var postData = { values: selectedValues2 };
                               $.ajax({
                                   type: "POST",
-                                  url: "/ProductCode/getScreenshot",
+                                  url: "/Product/getScreenshot",
                                   data: postData,
                                   success: function (data) {
 
@@ -795,7 +796,7 @@
                               var postData = { values: selectedValues3 };
                               $.ajax({
                                   type: "POST",
-                                  url: "/ProductCode/getMainFiles",
+                                  url: "/Product/getMainFiles",
                                   data: postData,
                                   success: function (data) {
 
@@ -814,7 +815,7 @@
         $("#dosya")
             .click(function() {
              
-                $.getJSON('/ProductCode/GetFilename',
+                $.getJSON('/Product/GetFilename',
                     null,
                     function(data) {
                         $.each(data,

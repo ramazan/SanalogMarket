@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using SanalogMarket.Models;
-using SanalogMarket.Models.Theme;
+
 
 namespace SanalogMarket.Controllers
 {
@@ -267,9 +267,10 @@ namespace SanalogMarket.Controllers
 
             var productCode = dbBaglantisi.Codes.Where(p => p.IsValid == 0).ToList();
 
-            ViewBag.productTheme = dbBaglantisi.Themes.Where(p => p.IsValid == 0).ToList();
-
+              ViewBag.productCode = dbBaglantisi.Codes.Where(p => p.IsValid == 0 ).ToList();
             
+
+
             return View(productCode);
         }
 
@@ -282,7 +283,7 @@ namespace SanalogMarket.Controllers
 
             var product = dbBaglantisi.Codes.Where(p => p.IsValid == 1).ToList();
 
-            ViewBag.productTheme = dbBaglantisi.Themes.Where(p => p.IsValid == 1).ToList();
+           // ViewBag.productTheme = dbBaglantisi.Themes.Where(p => p.IsValid == 1).ToList();
 
             return View(product);
         }
@@ -389,7 +390,7 @@ namespace SanalogMarket.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var product = dbBaglantisi.Themes.Find(id);
+            var product = dbBaglantisi.Codes.Find(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -398,77 +399,77 @@ namespace SanalogMarket.Controllers
         }
 
 
-        public ActionResult ProductThemeEdit(int? id)
-        {
-            if (Session["AdminId"] == null)
-                return RedirectToAction("Login");
-
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var product = dbBaglantisi.Themes.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-
-            ViewData["CheckState"] = product.IsValid;
-
-            return View(product);
-        }
-
-        [HttpPost]
-        public ActionResult ProductThemeEdit(ProductTheme editedProductTheme, string IsValid, string RejectMessage)
-        {
-            try
-            {
-                ProductTheme product = dbBaglantisi.Themes.Find(editedProductTheme.ID);
-
-                if (IsValid == "Accept")
-                {
-                    product.IsValid = 1;
-                    if (Session["AdminId"] != null)
-                    {
-                        Admin lpa = dbBaglantisi.Admins.Single(p => p.Id == AdminID);
-                        product.LastProcessAdmin = lpa;
-                    }
-                }
-                else if (IsValid == "Approve")
-                {
-                    product.IsValid = 0;
-                    if (Session["AdminId"] != null)
-                    {
-                        Admin lpa = dbBaglantisi.Admins.Single(p => p.Id == AdminID);
-                        product.LastProcessAdmin = lpa;
-                    }
-                }
-                else
-                {   //Product Rejected!
-                    product.IsValid = 2;
-                    product.RejectMessage = RejectMessage;
-                    if (Session["AdminId"] != null)
-                    {
-                        Admin lpa = dbBaglantisi.Admins.Single(p => p.Id == AdminID);
-                        product.LastProcessAdmin = lpa;
-                    }
-
-                }
-                //                product.IsValid = editedProductTheme.IsValid;
-                product.Price = editedProductTheme.Price;
-
-                dbBaglantisi.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                ModelState.AddModelError("", "Bi hata oldu kardeş :(");
-                Console.WriteLine(e);
-                throw;
-            }
-
-            ViewBag.Succes = "Düzenleme başarılı";
-            return View();
-        }
+//        public ActionResult ProductThemeEdit(int? id)
+//        {
+//            if (Session["AdminId"] == null)
+//                return RedirectToAction("Login");
+//
+//            if (id == null)
+//            {
+//                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+//            }
+//            var product = dbBaglantisi.Themes.Find(id);
+//            if (product == null)
+//            {
+//                return HttpNotFound();
+//            }
+//
+//            ViewData["CheckState"] = product.IsValid;
+//
+//            return View(product);
+//        }
+//
+//        [HttpPost]
+//        public ActionResult ProductThemeEdit(ProductTheme editedProductTheme, string IsValid, string RejectMessage)
+//        {
+//            try
+//            {
+//                ProductTheme product = dbBaglantisi.Themes.Find(editedProductTheme.ID);
+//
+//                if (IsValid == "Accept")
+//                {
+//                    product.IsValid = 1;
+//                    if (Session["AdminId"] != null)
+//                    {
+//                        Admin lpa = dbBaglantisi.Admins.Single(p => p.Id == AdminID);
+//                        product.LastProcessAdmin = lpa;
+//                    }
+//                }
+//                else if (IsValid == "Approve")
+//                {
+//                    product.IsValid = 0;
+//                    if (Session["AdminId"] != null)
+//                    {
+//                        Admin lpa = dbBaglantisi.Admins.Single(p => p.Id == AdminID);
+//                        product.LastProcessAdmin = lpa;
+//                    }
+//                }
+//                else
+//                {   //Product Rejected!
+//                    product.IsValid = 2;
+//                    product.RejectMessage = RejectMessage;
+//                    if (Session["AdminId"] != null)
+//                    {
+//                        Admin lpa = dbBaglantisi.Admins.Single(p => p.Id == AdminID);
+//                        product.LastProcessAdmin = lpa;
+//                    }
+//
+//                }
+//                //                product.IsValid = editedProductTheme.IsValid;
+//                product.Price = editedProductTheme.Price;
+//
+//                dbBaglantisi.SaveChanges();
+//            }
+//            catch (Exception e)
+//            {
+//                ModelState.AddModelError("", "Bi hata oldu kardeş :(");
+//                Console.WriteLine(e);
+//                throw;
+//            }
+//
+//            ViewBag.Succes = "Düzenleme başarılı";
+//            return View();
+//        }
 
         public ActionResult ProductRejected()
         {
@@ -476,7 +477,7 @@ namespace SanalogMarket.Controllers
                 return RedirectToAction("Login");
 
             var productCode = dbBaglantisi.Codes.Where(p => p.IsValid == 2).ToList();
-            ViewBag.productTheme = dbBaglantisi.Themes.Where(p => p.IsValid == 2).ToList();
+        //    ViewBag.productTheme = dbBaglantisi.Themes.Where(p => p.IsValid == 2).ToList();
             return View(productCode);
         }
 

@@ -1,5 +1,5 @@
 ﻿@using System.Web.UI.WebControls
-@model SanalogMarket.Models.Theme.ProductTheme
+@model SanalogMarket.Models.ProductCode
 
 @{
     ViewBag.Title = "Product Details";
@@ -8,6 +8,13 @@
 
 <div>
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_Kind)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Kind)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Title)
         </dt>
