@@ -41,6 +41,7 @@ namespace SanalogMarket.Controllers
                 smtp.Credentials = new System.Net.NetworkCredential("ramazan@sanalog.org", "124500");
                 //            smtp.ServerCertificateValidationCallback = () => true; //Solution for client certificate error
                 smtp.EnableSsl = true;
+                smtp.Port = 587;
                 smtp.Send(m);
                 //            return RedirectToAction("Index", "Home");
 

@@ -26,6 +26,9 @@ namespace SanalogMarket.Controllers
                 cart.Add(dbBaglantisi.Codes.Find(id));
 
                 Session["cart"] = cart;
+
+                return Json(true);
+
             }
             else
             {
@@ -34,31 +37,40 @@ namespace SanalogMarket.Controllers
                 {
                     cart.Add(dbBaglantisi.Codes.Find(id));
                     Session["cart"] = cart;
+                    return Json(true);
                 }
-                else
-                {
+               
                     TempData["infoMessage"] = "Krdş nbysn seçilen ürün sepette zaten var!";
-                }
+                    return Json(false);
             }
 
-
-            return RedirectToAction("Index");
+           
         }
 
         public ActionResult Delete(int id)
         {
             List<ProductCode> cart = (List<ProductCode>) Session["cart"];
             cart.RemoveAt(isExisting(id));
+            int itemCount;
             if (cart.Count == 0)
             {
                 Session["cart"] = null;
+                 itemCount = 0;
             }
             else
             {
                 Session["cart"] = cart;
+                itemCount = 1;
             }
 
-            return RedirectToAction("Index");
+            var results = new Order
+            {
+                itemCount = itemCount,
+                itemID = id
+            };
+            
+
+            return Json(results);
         }
 
         private int isExisting(int id)
@@ -72,8 +84,12 @@ namespace SanalogMarket.Controllers
             }
 
             return -1;
-
-            throw new NotImplementedException();
         }
+    }
+
+    public class Order
+    {
+        public int itemCount;
+        public int itemID;
     }
 }
