@@ -562,9 +562,34 @@
                             <br />
                             <div class="col-md-10">
 
+
+                                <div class="modal fade" tabindex="-1" role="dialog" id="ornekModal">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title">User Agreement</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>
+                                                    Any images, sounds, video, code, flash, or other assets that are not my own work, have been appropriately licensed for use in the file preview or main download. Other than these items, this work is entirely my own and I have full rights to sell it on SanalogCode.
+                                                </p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+                                </div><!-- /.modal -->
+
+                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ornekModal">
+                                    Read User Agreement
+                                </button>
+
+
+
                                 @Html.CheckBox("Privacy_policy", false, new { @checked = "checked", @class = "control-label col-md-1" });
                                 <small style="padding-right: 10px;">
-                                    Any images, sounds, video, code, flash, or other assets that are not my own work, have been appropriately licensed for use in the file preview or main download. Other than these items, this work is entirely my own and I have full rights to sell it on SanalogCode.
                                 </small>
                                 <br />
 
