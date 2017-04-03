@@ -1674,6 +1674,36 @@ namespace SanalogMarket.Controllers
             return RedirectToAction("Category");
         }
 
+        public ActionResult Sozlesme()
+        {
+              if (Session["AdminUserName"] == null)
+                return RedirectToAction("Login", "Admin");
+            
+
+            var sozlesme = dbBaglantisi.Pages.SingleOrDefault();
+            ViewBag.SozlesmeIcerik = sozlesme.Content;
+            ViewBag.Baslik = sozlesme.Title;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Sozlesme(Page page)
+        {
+
+            var sozlesme = dbBaglantisi.Pages.SingleOrDefault();
+
+            sozlesme.Title = page.Title;
+            sozlesme.Content = page.Content;
+            page.LastChangeTime = DateTime.Now;
+            dbBaglantisi.SaveChanges();
+
+            var sozlesmeYeni = dbBaglantisi.Pages.SingleOrDefault();
+            ViewBag.SozlesmeIcerik = sozlesmeYeni.Content;
+            ViewBag.Baslik = sozlesmeYeni.Title;
+
+
+            return View();
+        }
 
     }
 }

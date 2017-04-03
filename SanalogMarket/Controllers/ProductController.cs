@@ -61,7 +61,8 @@ namespace SanalogMarket.Controllers
             if (Session["UserId"] == null)
                 return RedirectToAction("Login", "User");
 
-
+            var Sozlesme = dbBaglantisi.Pages.SingleOrDefault();
+            ViewBag.Sozlesme = Sozlesme;
             var categories = dbBaglantisi.Categories.ToList();
             ViewBag.DropDownAOOs = new SelectList(categories);
 

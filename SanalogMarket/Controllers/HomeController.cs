@@ -77,5 +77,7 @@ namespace SanalogMarket.Controllers
             return Json(item, JsonRequestBehavior.AllowGet);
         }
 
+
+
     }
 }
