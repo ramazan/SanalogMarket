@@ -288,6 +288,69 @@ namespace SanalogMarket.Controllers
             return View(product);
         }
 
+        [HttpPost]
+        public ActionResult ProductApproved(string product_search)
+        {
+            if (Session["AdminId"] == null)
+                return RedirectToAction("Login");
+
+            List<ProductCode> same = new List<ProductCode>();
+            //          Bir sonraki adımımız aşağıdaki gibi sadece onaylanmış olan ürünleri göstermek olacak.
+
+            var product = dbBaglantisi.Codes.Where(p => p.IsValid == 1).ToList();
+            foreach (var pro in product)
+            {
+                ProductCode p = new ProductCode();
+                if (pro.Tags.ToLower().Contains(product_search.ToLower()))
+                {
+                    p = pro;
+                    same.Add(p);
+
+                }
+                else if (pro.Title.ToLower().Contains(product_search.ToLower()))
+                {
+                    p = pro;
+                    same.Add(p);
+
+                }
+                else if (pro.Description.ToLower().Contains(product_search.ToLower()))
+                {
+                    p = pro;
+                    same.Add(p);
+
+                }
+                else if (pro.Product_Kind.ToLower().Contains(product_search.ToLower()))
+                {
+                    p = pro;
+                    same.Add(p);
+
+                }
+
+            }
+            // var productTheme = db.Themes.Where(p => p.IsValid == 1).ToList();
+
+
+            //            var product = db.Codes.ToList();
+            if (same.Count == 0)
+            {
+                var productTheme = dbBaglantisi.Codes.Where(p => p.IsValid == 1).ToList();
+                ViewBag.TProduct = productTheme;
+                return View(productTheme);
+            }
+            else
+            {
+                ViewBag.TProduct = same;
+                return View(same);
+            }
+
+
+            //var product = dbBaglantisi.Codes.Where(p => p.IsValid == 1).ToList();
+
+            // ViewBag.productTheme = dbBaglantisi.Themes.Where(p => p.IsValid == 1).ToList();
+
+           // return View(product);
+        }
+
 
         public ActionResult ProductCodeDetails(int? id)
         {

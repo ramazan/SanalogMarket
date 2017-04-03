@@ -5,8 +5,10 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
+@using (Html.BeginForm("ProductApproved","Admin",FormMethod.Post))
 
-@if (Model.Count() == 0)
+{ 
+if (Model.Count() == 0)
 {
     <div style="margin-top: 30px;" class="alert alert-warning" role="alert">
         <h3 class="alert-heading" style="text-align: center">Yayında ürün yok!</h3><br/>
@@ -22,7 +24,7 @@ else
 
                     <div class="box-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+                            <input type="text" name="product_search" id="product_search" class="form-control pull-right" placeholder="Search">
 
                             <div class="input-group-btn">
                                 <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
@@ -111,7 +113,7 @@ else
     </div>
 
    
-    
+}
 }
 
 
