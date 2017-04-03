@@ -5,7 +5,9 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-@if (Model.Count() == 0)
+@using (Html.BeginForm("ProductRejected","Admin",FormMethod.Post))
+{ 
+if (Model.Count() == 0)
 {
     <div style="margin-top: 30px;" class="alert alert-warning" role="alert">
         <h3 class="alert-heading" style="text-align: center">Reddedilen  ürün yok!</h3><br />
@@ -21,10 +23,10 @@ else
 
                     <div class="box-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+                            <input type="text" name="search_product" id="search_product" class="form-control pull-right" placeholder="Search">
 
                             <div class="input-group-btn">
-                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                <button type="submit" name="search_product" id="search_product" class="btn btn-default"><i class="fa fa-search"></i></button>
                             </div>
                         </div>
                     </div>
@@ -108,3 +110,4 @@ else
 
 }
 
+}

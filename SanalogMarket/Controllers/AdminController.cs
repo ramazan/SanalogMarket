@@ -543,6 +543,62 @@ namespace SanalogMarket.Controllers
         //    ViewBag.productTheme = dbBaglantisi.Themes.Where(p => p.IsValid == 2).ToList();
             return View(productCode);
         }
+       
+        [HttpPost]
+        public ActionResult ProductRejected(string search_product)
+        {
+            if (Session["AdminId"] == null)
+                return RedirectToAction("Login");
+
+            List<ProductCode> same = new List<ProductCode>();
+            //          Bir sonraki adımımız aşağıdaki gibi sadece onaylanmış olan ürünleri göstermek olacak.
+
+            var product = dbBaglantisi.Codes.Where(p => p.IsValid == 2).ToList();
+            foreach (var pro in product)
+            {
+                ProductCode p = new ProductCode();
+                if (pro.Tags.ToLower().Contains(search_product.ToLower()))
+                {
+                    p = pro;
+                    same.Add(p);
+
+                }
+                else if (pro.Title.ToLower().Contains(search_product.ToLower()))
+                {
+                    p = pro;
+                    same.Add(p);
+
+                }
+                else if (pro.Description.ToLower().Contains(search_product.ToLower()))
+                {
+                    p = pro;
+                    same.Add(p);
+
+                }
+                else if (pro.Product_Kind.ToLower().Contains(search_product.ToLower()))
+                {
+                    p = pro;
+                    same.Add(p);
+
+                }
+
+            }
+            // var productTheme = db.Themes.Where(p => p.IsValid == 1).ToList();
+
+
+            //  var product = db.Codes.ToList();
+            if (same.Count == 0)
+            {
+                var productTheme = dbBaglantisi.Codes.Where(p => p.IsValid == 2).ToList();
+                ViewBag.TProduct = productTheme;
+                return View(productTheme);
+            }
+            else
+            {
+                ViewBag.TProduct = same;
+                return View(same);
+            }
+        }
 
 
         /*categorileri listeliyoruz*/
