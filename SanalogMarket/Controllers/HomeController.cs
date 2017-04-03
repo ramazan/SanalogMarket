@@ -17,17 +17,73 @@ namespace SanalogMarket.Controllers
 
         public ActionResult Index()
         {
-//          Bir sonraki adımımız aşağıdaki gibi sadece onaylanmış olan ürünleri göstermek olacak.
-          var product = db.Codes.Where(p => p.IsValid == 1).ToList();
-         // var productTheme = db.Themes.Where(p => p.IsValid == 1).ToList();
+            //          Bir sonraki adımımız aşağıdaki gibi sadece onaylanmış olan ürünleri göstermek olacak.
+            var product = db.Codes.Where(p => p.IsValid == 1).ToList();
+            // var productTheme = db.Themes.Where(p => p.IsValid == 1).ToList();
 
 
-//            var product = db.Codes.ToList();
+            //            var product = db.Codes.ToList();
             ViewBag.TProduct = product;
-         //   ViewBag.TProductTheme = productTheme;
+            //   ViewBag.TProductTheme = productTheme;
 
             return View();
         }
+        [HttpPost]
+        public ActionResult Index(string search_products)
+        {
+            List<ProductCode> same = new List<ProductCode>();
+            //          Bir sonraki adımımız aşağıdaki gibi sadece onaylanmış olan ürünleri göstermek olacak.
+
+            var product = db.Codes.Where(p => p.IsValid == 1).ToList();
+            foreach (var pro in product)
+            {
+                ProductCode p = new ProductCode();
+                if (pro.Tags.ToLower().Contains(search_products.ToLower()))
+                {
+                    p = pro;
+                    same.Add(p);
+
+                }
+                else if (pro.Title.ToLower().Contains(search_products.ToLower()))
+                {
+                    p = pro;
+                    same.Add(p);
+
+                }
+                else if (pro.Description.ToLower().Contains(search_products.ToLower()))
+                {
+                    p = pro;
+                    same.Add(p);
+
+                }
+                else if (pro.Product_Kind.ToLower().Contains(search_products.ToLower()))
+                {
+                    p = pro;
+                    same.Add(p);
+
+                }
+
+            }
+            // var productTheme = db.Themes.Where(p => p.IsValid == 1).ToList();
+
+
+            //            var product = db.Codes.ToList();
+            if (same.Count == 0)
+            {
+                var productTheme = db.Codes.Where(p => p.IsValid == 1).ToList();
+                ViewBag.TProduct = productTheme;
+                return View();
+            }
+            else
+            {
+                ViewBag.TProduct = same;
+                return View();
+            }
+
+
+
+        }
+
 
         public ActionResult Logout()
         {
@@ -44,6 +100,7 @@ namespace SanalogMarket.Controllers
 
             return View();
         }
+
         [HttpPost]
         public ActionResult SellProduct(string codes)
         {
@@ -58,8 +115,9 @@ namespace SanalogMarket.Controllers
                 return RedirectToAction("Theme", "Product");
 
             }
-//            return View();
+            //            return View();
         }
+
         /*categorylerin layouta gönderilmesi için*/
 
         public JsonResult Get_Cat()
@@ -77,7 +135,13 @@ namespace SanalogMarket.Controllers
             return Json(item, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult getAll()
+        {
 
+            var employeeList = db.Codes.ToList();
+            var JsonResult = Json(employeeList, JsonRequestBehavior.AllowGet);
 
+            return JsonResult;
+        }
     }
 }

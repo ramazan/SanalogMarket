@@ -18,5 +18,6 @@ namespace SanalogMarket.Models
         public DbSet<UserConfirm> UserConfirms { get; set; }
         public DbSet<Extension> Extensions { get; set; }
         public DbSet<List> Lists { get; set; }
+        public DbSet<Page> Pages { get; set; }
     }
 }

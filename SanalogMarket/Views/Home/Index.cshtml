@@ -2,159 +2,278 @@
     ViewBag.Title = "Home Page";
 }
 
-<h2 style="padding-left: 20px"> Featured Code Products</h2>
-<hr />
-<div class="row" style="margin-bottom: 30px">
-    <div class="owl-carousel owl-theme">
-        @foreach (var item in ViewBag.TProduct)
-        { 
-            <div class="item">
-                <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
-                    <div class="detailsP">
-                        <div class="showLearn">
-                            <a href="@Url.Action("Details","Product", new { id=item.ID })" class="btn btn-primary laksLearnMore">Learn More</a>
-                            <a href="@Url.Action("OrderNow","ShoppingCart", new { id=item.ID })" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
-                        </div>
-                        <a href="@Url.Action("Details","Product", new { id=item.ID })"><img src="http://lorempixel.com/145/205/" class="img-responsive deneme" /></a>
-                    </div>
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="container" style="margin-top: -50px;">
+        <div class="jumbotron " style="background-color: #d2620f;">
+            <h2 style="color: #fff; text-align: center; padding-bottom: 15px;">Everything you need for your next creative project.</h2>
+            <h5 style="color: #fff; text-align: center; padding-bottom: 20px;">
+                Over 9 million digital products created by a global community of designers,
+                developers, photographers, illustrators & producers.
+            </h5>
+            <h4 style="text-align: center; color: #fff;">Search Sanalog Market</h4>
 
-                    <div class="laksProductDetails">
-                        <a href="#" class="laksProductTitle">@item.Title</a>
-                        <p class="laksProductPrice">
-                            $ @item.Price <a class="AddCart" data-id ="@item.ID"  href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>
-                        </p>
+            <div style="text-align: center; padding-left: 250px;">
+                <div class="row" style="margin-top: 5%">
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-shopping-cart"></i></span>
+                                <div class="icon-addon addon-lg">
+                                    <input type="text" placeholder="Search products" class="form-control" id="search_products" name="search_products">
+                                    <label for="Search" class="glyphicon glyphicon-search" rel="tooltip" title="Search"></label>
+                                </div>
+                                <span class="input-group-btn">
+                                    <input class="btn btn-default" type="submit" value="Go!" />
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        } 
-        
+        </div>
+        <h2 style="padding-left: 20px"> Featured Code Products</h2>
+        <hr />
+        <div class="row" style="margin-bottom: 30px">
+            <div class="owl-carousel owl-theme">
+                @foreach (var item in ViewBag.TProduct)
+                {
+                    <div class="item">
+                        <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">
+                            <div class="detailsP">
+                                <div class="showLearn">
+                                    <a href="@Url.Action("Details", "Product", new {id = item.ID})" class="btn btn-primary laksLearnMore">Learn More</a>
+                                    <a href="@Url.Action("OrderNow", "ShoppingCart", new {id = item.ID})" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>
+                                </div>
+                                <a href="@Url.Action("Details", "Product", new {id = item.ID})"><img src="http://lorempixel.com/145/205/" class="img-responsive deneme" /></a>
+                            </div>
 
-        @*        <div class="item">*@
-        @*            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">*@
-        @*                <div class="detailsP">*@
-        @*                    <div class="showLearn">*@
-        @*                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>*@
-        @*                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>*@
-        @*                    </div>*@
-        @*                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/190134/231.0x326.0/1030900_LB_231x326_en_US_%5E_2015-06-09-16-57-20_b530ed3ed0ff42213dbd5ac4f41427325c8a3096.jpg" class="img-responsive deneme" /></a>*@
-        @*                </div>*@
-        @**@
-        @*                <div class="laksProductDetails">*@
-        @*                    <a href="#" class="laksProductTitle">Battlefield 1</a>*@
-        @*                    <p class="laksProductPrice">*@
-        @*                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>*@
-        @*                    </p>*@
-        @*                </div>*@
-        @*            </div>*@
-        @*        </div>*@
+                            <div class="laksProductDetails">
+                                <a href="#" class="laksProductTitle">@item.Title</a>
+                                <p class="laksProductPrice">
+                                    $ @item.Price <a class="AddCart" data-id="@item.ID" href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
 
+
+                @*        <div class="item">*@
+                @*            <div class="col-xs-12  col-md-12 box" style="padding: 0 !important; margin-left: 20px; margin-bottom: 30px">*@
+                @*                <div class="detailsP">*@
+                @*                    <div class="showLearn">*@
+                @*                        <a href="#" class="btn btn-primary laksLearnMore">Learn More</a>*@
+                @*                        <a href="#" class="laksLearnMore2"><i class="fa fa-shopping-cart fa-3x" style="color: #207499; float: right"></i></a>*@
+                @*                    </div>*@
+                @*                    <a href="#"><img src="https://eaassets-a.akamaihd.net/origin-com-store-final-assets-prod/190134/231.0x326.0/1030900_LB_231x326_en_US_%5E_2015-06-09-16-57-20_b530ed3ed0ff42213dbd5ac4f41427325c8a3096.jpg" class="img-responsive deneme" /></a>*@
+                @*                </div>*@
+                @**@
+                @*                <div class="laksProductDetails">*@
+                @*                    <a href="#" class="laksProductTitle">Battlefield 1</a>*@
+                @*                    <p class="laksProductPrice">*@
+                @*                        $ 29.99 <a href="#"><i class="fa fa-shopping-cart" style="color: #207499; float: right"></i></a>*@
+                @*                    </p>*@
+                @*                </div>*@
+                @*            </div>*@
+                @*        </div>*@
+
+            </div>
+        </div>
     </div>
-</div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+}
 
 <script>
-    window.onload = function () {
-        $('.owl-carousel')
-            .owlCarousel({
-                loop: true,
-                margin: 10,
-                responsiveClass: true,
-                nav: true,
-                navText: ["<div style='width:30px;height:30px;border: 2px solid #303030;border-radius: 50px;'><i style='margin-top:6px;margin-right:1px;color:#8a8a8a' class='fa fa-chevron-left'></i></div>", "<div style='width:30px;height:30px;border: 2px solid #303030;border-radius: 50px;color:#8a8a8a;'><i style='margin-top:6px;margin-left:4px' class='fa fa-chevron-right'></i></div>"],
-                autoplay: true,
-                autoplayTimeout: 2000,
-                autoplayHoverPause: true,
-                stagePadding: 30,
-                smartSpeed: 450,
-                responsive: {
-                    0: {
-                        items: 2,
-                        nav: true
-                    },
-                    400: {
-                        items: 3,
-                        nav: false
-                    },
-                    600: {
-                        items: 4,
-                        nav: false
-                    },
-                    700: {
-                        items: 5,
-                        nav: false
-                    },
-                    1000: {
-                        items: 6,
-                        nav: true,
-                        loop: false,
-                        margin: 20
-                    },
-                    1200: {
-                        items: 7,
-                        nav: true,
-                        loop: false,
-                        margin: 20
-                    }
+                window.onload = function () {
+                    $('.owl-carousel')
+                        .owlCarousel({
+                            loop: true,
+                            margin: 10,
+                            responsiveClass: true,
+                            nav: true,
+                            navText: ["<div style='width:30px;height:30px;border: 2px solid #303030;border-radius: 50px;'><i style='margin-top:6px;margin-right:1px;color:#8a8a8a' class='fa fa-chevron-left'></i></div>", "<div style='width:30px;height:30px;border: 2px solid #303030;border-radius: 50px;color:#8a8a8a;'><i style='margin-top:6px;margin-left:4px' class='fa fa-chevron-right'></i></div>"],
+                            autoplay: true,
+                            autoplayTimeout: 2000,
+                            autoplayHoverPause: true,
+                            stagePadding: 30,
+                            smartSpeed: 450,
+                            responsive: {
+                                0: {
+                                    items: 2,
+                                    nav: true
+                                },
+                                400: {
+                                    items: 3,
+                                    nav: false
+                                },
+                                600: {
+                                    items: 4,
+                                    nav: false
+                                },
+                                700: {
+                                    items: 5,
+                                    nav: false
+                                },
+                                1000: {
+                                    items: 6,
+                                    nav: true,
+                                    loop: false,
+                                    margin: 20
+                                },
+                                1200: {
+                                    items: 7,
+                                    nav: true,
+                                    loop: false,
+                                    margin: 20
+                                }
+                            }
+                        });
+                    /*$('.owl-carousel')
+                        .owlCarousel({
+                            items: 5,
+                            nav: true,
+                            navText: ["<div style='width:30px;height:30px;border: 2px solid #303030;border-radius: 50px;'><i style='margin-top:6px;margin-right:1px;color:#8a8a8a' class='fa fa-chevron-left'></i></div>", "<div style='width:30px;height:30px;border: 2px solid #303030;border-radius: 50px;color:#8a8a8a;'><i style='margin-top:6px;margin-left:4px' class='fa fa-chevron-right'></i></div>"],
+                            loop: true,
+                            autoplay: true,
+                            autoplayTimeout: 2000,
+                            autoplayHoverPause: true,
+                            margin: 30,
+                            stagePadding: 30,
+                            smartSpeed: 450,
+                            dots: false
+                        });*/
                 }
-            });
-        /*$('.owl-carousel')
-            .owlCarousel({
-                items: 5,
-                nav: true,
-                navText: ["<div style='width:30px;height:30px;border: 2px solid #303030;border-radius: 50px;'><i style='margin-top:6px;margin-right:1px;color:#8a8a8a' class='fa fa-chevron-left'></i></div>", "<div style='width:30px;height:30px;border: 2px solid #303030;border-radius: 50px;color:#8a8a8a;'><i style='margin-top:6px;margin-left:4px' class='fa fa-chevron-right'></i></div>"],
-                loop: true,
-                autoplay: true,
-                autoplayTimeout: 2000,
-                autoplayHoverPause: true,
-                margin: 30,
-                stagePadding: 30,
-                smartSpeed: 450,
-                dots: false
-            });*/
-    }
 </script>
 
 <script src="/Scripts/jquery-2.1.4.min.js"
         type="text/javascript"></script>
 <script type="text/javascript">
-    $(function () {
-        // Document.ready -> link up remove event handler
-        $(".AddCart").click(function () {
-            // Get the id from the link
-            var recordTodd = $(this).attr("data-id");
-            if (recordTodd != '') {
-                // Perform the ajax post
-                $.post("/ShoppingCart/OrderNow", { "id": recordTodd },
-                    function (data) {
-                        if (data) {
-                            alert("Ürün eklendi!");
+                $(function () {
+                    // Document.ready -> link up remove event handler
+                    $(".AddCart").click(function () {
+                        // Get the id from the link
+                        var recordTodd = $(this).attr("data-id");
+                        if (recordTodd != '') {
+                            // Perform the ajax post
+                            $.post("/ShoppingCart/OrderNow", { "id": recordTodd },
+                                function (data) {
+                                    if (data) {
+                                        alert("Ürün eklendi!");
 
-                        } else {
-                            alert("Ürün zaten sepette!");
+                                    } else {
+                                        alert("Ürün zaten sepette!");
+                                    }
+                                    // Successful requests get here
+                                    // Update the page elements
+                                    // if (data.itemCount == 0) {
+                                    //                        $('#row-' + data.itemID).fadeOut('slow');
+                                    //                        if (data.itemCount == 0) {
+                                    //                            // $.load("/ShoppingCart/Index");
+                                    //                            var result = "<div style=\"margin-top: 30px;\" class=\"alert alert-info\"  role=\"alert\"><h3 class=\"alert-heading\" style=\"text-align: center\">Your shopping cart is empty.</h3><br/><h4 style=\"text-align: center\">Discover the most popular items available or browse our hottest new items.<br/><br/><a href=\"/Home/Index\" class=\"btn btn-success\"><i class=\"glyphicon glyphicon-shopping-cart\"></i> Go Shopping!</a></h4></div>";
+                                    //                            $("#body").html(result);
+                                    //                        }
+                                    // } else {
+                                    ///  $('#item-count-' + data.DeleteId).text(data.ItemCount);
+                                    //  }
+                                    //                        $('#cart-total').text(data.CartTotal);
+                                    //                        $('#update-message').text(data.Message);
+                                    //                        $('#cart-status').text('Cart (' + data.CartCount + ')');
+                                });
+                            console.log("recordTo delete : " + recordTodd);
                         }
-                        // Successful requests get here
-                        // Update the page elements
-                        // if (data.itemCount == 0) {
-//                        $('#row-' + data.itemID).fadeOut('slow');
-//                        if (data.itemCount == 0) {
-//                            // $.load("/ShoppingCart/Index");
-//                            var result = "<div style=\"margin-top: 30px;\" class=\"alert alert-info\"  role=\"alert\"><h3 class=\"alert-heading\" style=\"text-align: center\">Your shopping cart is empty.</h3><br/><h4 style=\"text-align: center\">Discover the most popular items available or browse our hottest new items.<br/><br/><a href=\"/Home/Index\" class=\"btn btn-success\"><i class=\"glyphicon glyphicon-shopping-cart\"></i> Go Shopping!</a></h4></div>";
-//                            $("#body").html(result);
-//                        }
-                        // } else {
-                        ///  $('#item-count-' + data.DeleteId).text(data.ItemCount);
-                        //  }
-                        //                        $('#cart-total').text(data.CartTotal);
-                        //                        $('#update-message').text(data.Message);
-                        //                        $('#cart-status').text('Cart (' + data.CartCount + ')');
                     });
-                console.log("recordTo delete : " + recordTodd);
-            }
-        });
-    });
+                });
+
 </script>
 
 
 
 
-        @Styles.Render("~/Content/HomeProduct")
+@Styles.Render("~/Content/HomeProduct")
 
+<style>
+    .center-block {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .input-group .icon-addon .form-control {
+        border-radius: 0;
+    }
+
+    .icon-addon {
+        position: relative;
+        color: #555;
+        display: block;
+    }
+
+        .icon-addon:after,
+        .icon-addon:before {
+            display: table;
+            content: " ";
+        }
+
+        .icon-addon:after {
+            clear: both;
+        }
+
+        .icon-addon.addon-md .glyphicon,
+        .icon-addon .glyphicon,
+        .icon-addon.addon-md .fa,
+        .icon-addon .fa {
+            position: absolute;
+            z-index: 2;
+            left: 10px;
+            font-size: 14px;
+            width: 20px;
+            margin-left: -2.5px;
+            text-align: center;
+            padding: 10px 0;
+            top: 1px;
+        }
+
+        .icon-addon.addon-lg .form-control {
+            line-height: 1.33;
+            height: 46px;
+            font-size: 18px;
+            padding: 10px 16px 10px 40px;
+        }
+
+        .icon-addon.addon-sm .form-control {
+            height: 30px;
+            padding: 5px 10px 5px 28px;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .icon-addon.addon-lg .fa,
+        .icon-addon.addon-lg .glyphicon {
+            font-size: 18px;
+            margin-left: 0;
+            left: 11px;
+            top: 4px;
+        }
+
+        .icon-addon.addon-md .form-control,
+        .icon-addon .form-control {
+            padding-left: 30px;
+            float: left;
+            font-weight: normal;
+        }
+
+        .icon-addon.addon-sm .fa,
+        .icon-addon.addon-sm .glyphicon {
+            margin-left: 0;
+            font-size: 12px;
+            left: 5px;
+            top: -1px;
+        }
+
+        .icon-addon .form-control:focus + .glyphicon,
+        .icon-addon:hover .glyphicon,
+        .icon-addon .form-control:focus + .fa,
+        .icon-addon:hover .fa {
+            color: #2580db;
+        }
+</style>
